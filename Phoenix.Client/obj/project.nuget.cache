@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "YSuHzuBx+KohZGYBlzmb3o9zHBd0Kn6TFROJW2absDkuKkkknvSqAmcVHrqxVHe8BLZP2kr14r5MKnbV8uNZtQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bheme\\source\\repos\\Phoenix\\Phoenix.Client\\Phoenix.Client.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bheme\\.nuget\\packages\\makarovdev.expandcollapsepanel\\1.0.0\\makarovdev.expandcollapsepanel.1.0.0.nupkg.sha512",
+    "C:\\Users\\bheme\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
+    "C:\\Users\\bheme\\.nuget\\packages\\unclassified.asynctcpclient\\1.0.2\\unclassified.asynctcpclient.1.0.2.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MakarovDev.ExpandCollapsePanel 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "MakarovDev.ExpandCollapsePanel",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
+}

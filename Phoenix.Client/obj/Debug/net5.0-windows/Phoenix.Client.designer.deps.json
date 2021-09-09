@@ -1,0 +1,43 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "MakarovDev.ExpandCollapsePanel/1.0.0": {
+        "runtime": {
+          "lib/net40/MakarovDev.ExpandCollapsePanel.dll": {
+            "assemblyVersion": "1.0.7197.27666",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Serilog/2.10.0": {
+        "runtime": {
+          "lib/netstandard2.1/Serilog.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.10.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MakarovDev.ExpandCollapsePanel/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-d5S55nPqnRrG7pc3mzfA6x0AhycsW5n+X2TczQ7kMR4gkGx9prvvK+fUtwp9U/kdCh1DFldBw93OaI0bG6qFWw==",
+      "path": "makarovdev.expandcollapsepanel/1.0.0",
+      "hashPath": "makarovdev.expandcollapsepanel.1.0.0.nupkg.sha512"
+    },
+    "Serilog/2.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
+      "path": "serilog/2.10.0",
+      "hashPath": "serilog.2.10.0.nupkg.sha512"
+    }
+  }
+}
