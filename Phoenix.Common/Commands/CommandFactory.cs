@@ -40,12 +40,12 @@ namespace Phoenix.Common
 					{
 						Success = success
 					};
-				case CommandType.Message:
+				case CommandType.MessageRoom:
 					//get the message
 					if (commandParts.Length < 2)
 						return new UnknownCommand();
 
-					return new MessageCommand
+					return new MessageRoomCommand
 					{
 						Message = commandParts[1]
 					};

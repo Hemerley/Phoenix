@@ -2,7 +2,7 @@
 
 namespace Phoenix.Common
 {
-	public class MessageCommand : Command
+	public class MessageRoomCommand : Command
 	{
 		#region -- Properties --
 
@@ -10,9 +10,9 @@ namespace Phoenix.Common
 
 		#endregion
 
-		public MessageCommand()
+		public MessageRoomCommand()
 		{
-			this.CommandType = CommandType.Message;
+			this.CommandType = CommandType.MessageRoom;
 		}
 
 		public override IEnumerable<string> GetCommandParts()

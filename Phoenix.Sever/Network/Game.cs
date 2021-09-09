@@ -12,10 +12,14 @@ namespace Phoenix.Server
 	{
 		private Server server;
 
-		/// <summary>Connected clients that are NOT authenticated yet.</summary>
+		/// <summary>
+		/// Connected clients that are NOT authenticated yet.
+		/// </summary>
 		private Dictionary<string, ConnectedClient> connectedClients = new Dictionary<string, ConnectedClient>();
 
-		/// <summary>Connected clients that ARE authenticated.</summary>
+		/// <summary>
+		/// Connected clients that ARE authenticated.
+		/// </summary>
 		private List<ConnectedAccount> connectedAccounts = new List<ConnectedAccount>();
 
 		private bool stopGameWorkerThread = false;
@@ -96,7 +100,7 @@ namespace Phoenix.Server
 
 		private void SendMessageToClient(ConnectedClient client)
 		{
-			var messageCmd = new MessageCommand
+			var messageCmd = new MessageRoomCommand
 			{
 				Message = $"Hey Client! You are known to me as {client.Id}."
 			};
@@ -152,10 +156,14 @@ namespace Phoenix.Server
 							});
 
 							this.connectedClients.Remove(clientId);
+							
+							Console.ForegroundColor = ConsoleColor.Yellow;
+							Console.WriteLine($"[{DateTime.Now}][Command]: {command.CommandType} from {clientId}.");
+							Console.ResetColor();
 						}
 
 						break;
-					case CommandType.Message:
+					case CommandType.MessageRoom:
 						Console.ForegroundColor = ConsoleColor.Yellow;
 						Console.WriteLine($"[{DateTime.Now}][Command]: {command.CommandType} from {clientId}.");
 						Console.ResetColor();

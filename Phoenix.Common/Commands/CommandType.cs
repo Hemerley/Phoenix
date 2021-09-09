@@ -2,9 +2,23 @@
 {
 	public enum CommandType
 	{
+		#region ---Account & Creation (0-99)---
+
 		Unknown = 0,
-		Authenticate,
-		AuthenticateResponse,
-		Message
-	}
+		Authenticate = 1,
+		AuthenticateResponse = 2,
+		NewAccount = 3,
+		NewCharacter = 4,
+
+		#endregion
+
+		#region ---Messages (100-199)---
+
+		MessageRoom = 100,
+		MessagePlayer = 101,
+		MessageParty = 103,
+		MessageGuild = 104
+        
+		#endregion
+    }
 }
