@@ -17,7 +17,7 @@ namespace Phoenix.Client
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLauncher());
+            Application.Run(new frmClient());
         }
     }
 }

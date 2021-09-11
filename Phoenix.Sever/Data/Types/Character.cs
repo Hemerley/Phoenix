@@ -9,128 +9,58 @@ namespace Phoenix.Server
     public class Character
     {
 
-        /// <summary>
-        /// Stores Character ID.
-        /// </summary>
-        public int id { get; set; }
+        public int Id { get; set; }
+        public int AccountId { get; set; }
+        public string Name { get; set; }
+        public int Type { get; set; }
+        public int Image { get; set; }
+        public string HisHer { get; set; }
+        public string HeShe { get; set; }
+        public int Experience { get; set; }
+        public string Title { get; set; }
+        public int Caste { get; set; }
+        public int  Rank { get; set; }
+        public int Philosophy { get; set; }
+        public int Alignment { get; set; }
+        public int Creation { get; set; }
+        public int Strength { get; set; }
+        public int Agility { get; set; }
+        public int Intellect { get; set; }
+        public int Stamina { get; set; }
+        public int Damage { get; set; }
+        public double Crit { get; set; }
+        public double Haste { get; set; }
+        public double Mastery { get; set; }
+        public double Versatility { get; set; }
+        public int Health { get; set; }
+        public int Mana { get; set; }
+        public int RoomID { get; set; }
 
-        /// <summary>
-        /// Stores Character Name.
-        /// </summary>
-        public string name { get; set; }
-
-        /// <summary>
-        /// Stores Character Gender.
-        /// </summary>
-        public string gender { get; set; }
-
-        /// <summary>
-        /// Stores Character Philosophy.
-        /// </summary>
-        public string philosophy { get; set; }
-
-        /// <summary>
-        /// Stores Character Level.
-        /// </summary>
-        public int level { get; set; }
-
-        /// <summary>
-        /// Stores Character Experience.
-        /// </summary>
-        public int experience { get; set; }
-
-        /// <summary>
-        /// Stores Character Strength.
-        /// </summary>
-        public int strength { get; set; }
-
-        /// <summary>
-        /// Stores Character Agility.
-        /// </summary>
-        public int agility { get; set; }
-
-        /// <summary>
-        /// Stores Character Intellect.
-        /// </summary>
-        public int intellect { get; set; }
-
-        /// <summary>
-        /// Stores Character Stamina.
-        /// </summary>
-        public int stamina { get; set; }
-
-        /// <summary>
-        /// Stores Character Armor.
-        /// </summary>
-        public int armor { get; set; }
-
-        /// <summary>
-        /// Stores Character Damage.
-        /// </summary>
-        public int damage { get; set; }
-
-        /// <summary>
-        /// Stores Character Crit.
-        /// </summary>
-        public int crit { get; set; }
-
-        /// <summary>
-        /// Stores Character Haste.
-        /// </summary>
-        public int haste { get; set; }
-
-        /// <summary>
-        /// Stores Character Mastery.
-        /// </summary>
-        public int mastery { get; set; }
-
-        /// <summary>
-        /// Stores Character Versatility.
-        /// </summary>
-        public int versatility { get; set; }
-
-        /// <summary>
-        /// Stores Character Weight.
-        /// </summary>
-        public int weight { get; set; }
-
-        /// <summary>
-        /// Stores Character Health.
-        /// </summary>
-        public int health { get; set; }
-
-        /// <summary>
-        /// Stores Character Mana.
-        /// </summary>
-        public int mana { get; set; }
-
-        /// <summary>
-        /// Stores Character Inventory.
-        /// </summary>
-        public string[] inventory { get; set; }
-
-        public Character(int id, string name, string gender, string philosophy, int level, int experience, int strength, int agility, int intellect, int stamina, int armor, int damage, int crit, int haste, int mastery, int versatility, int weight, int health, int mana, string inventory)
+        public Character(int id, int accountId, string name, int image, string hisHer, string heshe, int experience, string title, int caste, int rank, int philosophy, int alignment, int creation, int strength, int agility, int intellect, int stamina, int damage, int health, int mana, int roomID)
         {
 
-            this.id = id;
-            this.name = name;
-            this.gender = gender;
-            this.philosophy = philosophy;
-            this.level = level;
-            this.experience = experience;
-            this.strength = strength;
-            this.agility = agility;
-            this.intellect = intellect;
-            this.stamina = stamina;
-            this.armor = armor;
-            this.crit = crit;
-            this.haste = haste;
-            this.mastery = mastery;
-            this.versatility = versatility;
-            this.weight = weight;
-            this.health = health;
-            this.mana = mana;
-            this.inventory = inventory.Split("|");
+            this.Id = id;
+            this.AccountId = accountId;
+            this.Name = name;
+            this.Image = image;
+            this.HisHer = hisHer;
+            this.HeShe = heshe;
+            this.Experience = experience;
+            this.Title = title;
+            this.Caste = caste;
+            this.Rank = rank;
+            this.Philosophy = philosophy;
+            this.Alignment = alignment;
+            this.Creation = creation;
+            this.Strength = strength;
+            this.Agility = agility;
+            this.Intellect = intellect;
+            this.Stamina = stamina;
+            this.Damage = damage;
+            this.Health = health;
+            this.Mana = mana;
+            this.RoomID = roomID;
+
         }
     }
 }

@@ -24,9 +24,6 @@
     <Reference Include="CircularProgressBar">
       <HintPath>Resources\CircularProgressBar.dll</HintPath>
     </Reference>
-    <Reference Include="ProgBar">
-      <HintPath>Resources\ProgBar.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
