@@ -19,10 +19,16 @@ namespace Phoenix.Common
 			switch (commandType)
 			{
 				case CommandType.Authenticate:
-					//get the username and password
+					
+					/// <summary>
+					/// Validate Incoming Command is Proper Format.
+					/// </summary>
 					if (commandParts.Length < 3)
 						return new UnknownCommand();
 
+					/// <summary>
+					/// Return Authenticate Command.
+					/// </summary>
 					return new AuthenticateCommand
 					{
 						Username = commandParts[1],
@@ -49,6 +55,7 @@ namespace Phoenix.Common
 					{
 						Message = commandParts[1]
 					};
+
 				default:
 					return new UnknownCommand();
 			}

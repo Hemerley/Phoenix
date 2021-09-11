@@ -22,27 +22,40 @@ namespace Phoenix.Server
 		/// </summary>
 		private List<ConnectedAccount> connectedAccounts = new List<ConnectedAccount>();
 
+		/// <summary>
+		/// Boolean for Game Thread.
+		/// </summary>
 		private bool stopGameWorkerThread = false;
 
+		/// <summary>
+		/// Declaration of Game Thread that controls Game Logic.
+		/// </summary>
 		private Thread gameWorkerThread;
 
+		/// <summary>
+		/// Declaration of Concurrent Queue that handles queue of commands.
+		/// </summary>
 		private ConcurrentQueue<ClientCommand> queuedCommand = new ConcurrentQueue<ClientCommand>();
+
+		/// <summary>
+		/// Declare Game Objects.
+		/// </summary>
+		private List<Item> items = new List<Item>();
+		private List<Room> rooms = new List<Room>();
+		private List<Entity> entities = new List<Entity>();
+
+		/// <summary>
+		/// Declare Database Object.
+		/// </summary>
+		private Database database;
 
 		public void Start()
 		{
+			this.database = new Database();
+
 			//Setup your Game thread
 			this.gameWorkerThread = new Thread(new ThreadStart(GameWorkerThread));
 			this.gameWorkerThread.Start();
-
-			this.server = new Server();
-
-			this.server.OnClientConnected += Server_OnClientConnected;
-			this.server.OnClientDisconnected += Server_OnClientDisconnected;
-			this.server.OnClientMessage += Server_OnClientMessage;
-			this.server.OnServerStarted += Server_OnServerStarted;
-			this.server.OnServerStopped += Server_OnServerStopped;
-
-			this.server.Start(IPAddress.IPv6Any, 4444);
 		}
 
 		private void Server_OnClientConnected(object sender, ConnectedClient e)
@@ -50,9 +63,8 @@ namespace Phoenix.Server
 			//store the connected client
 			this.connectedClients.Add(e.Id, e);
 
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.WriteLine($"[{DateTime.Now}][Connection]: {e.Id}  has connected.");
-			Console.ResetColor();
+			// Log Command
+			Logger.ConsoleLog("Connection", $"{e.Id} has connected.");
 		}
 
 		private void Server_OnClientMessage(object sender, ConnectedClientMessage e)
@@ -77,25 +89,20 @@ namespace Phoenix.Server
 			if (connectedAccount != null)
 				this.connectedAccounts.Remove(connectedAccount);
 
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.WriteLine($"[{DateTime.Now}][Connection]: {e.Id} has disconnected.");
-			Console.ResetColor();
+			// Log Command
+			Logger.ConsoleLog("Connection", $"{e.Id} has disconnected.");
 		}
 
 		private void Server_OnServerStarted(object sender, EventArgs e)
 		{
-			//TODO: Log this
-			Console.ForegroundColor = ConsoleColor.Green;
-			Console.WriteLine($"[{DateTime.Now}][System]: Server Started");
-			Console.ResetColor();
+			// Log Command
+			Logger.ConsoleLog("System", "Server Started.");
 		}
 
 		private void Server_OnServerStopped(object sender, EventArgs e)
 		{
-			//TODO: Log this
-			Console.ForegroundColor = ConsoleColor.Green;
-			Console.WriteLine($"[{DateTime.Now}][System]: Server Stopped");
-			Console.ResetColor();
+			// Log Command
+			Logger.ConsoleLog("System", "Server Shutdown.");
 		}
 
 		private void SendMessageToClient(ConnectedClient client)
@@ -112,6 +119,7 @@ namespace Phoenix.Server
 		{
 			var message = CommandFactory.FormatCommand(command);
 			client.Send(message);
+			Logger.ConsoleLog("Command", $"{command.CommandType} sent to {client.Id}");
 		}
 
 		/// <summary>
@@ -119,6 +127,26 @@ namespace Phoenix.Server
 		/// </summary>
 		private void GameWorkerThread()
 		{
+
+			this.database.InitializeDatabse();
+
+			/*
+			 * Load Rooms
+			 * Rooms Request Entity Creation
+			 * Rooms 
+			 * 
+			 */
+
+			this.server = new Server();
+
+			this.server.OnClientConnected += Server_OnClientConnected;
+			this.server.OnClientDisconnected += Server_OnClientDisconnected;
+			this.server.OnClientMessage += Server_OnClientMessage;
+			this.server.OnServerStarted += Server_OnServerStarted;
+			this.server.OnServerStopped += Server_OnServerStopped;
+
+			this.server.Start(IPAddress.IPv6Any, 4444);
+
 			while (!this.stopGameWorkerThread)
 			{
 				if (!this.queuedCommand.TryDequeue(out ClientCommand cmd))
@@ -134,6 +162,9 @@ namespace Phoenix.Server
 				switch (command.CommandType)
 				{
 					case CommandType.Authenticate:
+						// Log Command
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+
 						var authCommand = command as AuthenticateCommand;
 						//authCommand.Username
 
@@ -150,30 +181,28 @@ namespace Phoenix.Server
 
 						if (authenticated)
 						{
-							this.connectedAccounts.Add(new ConnectedAccount
+							var connectedAccount = new ConnectedAccount
 							{
 								Client = clientWhoSendCommand
-							});
-
+							};
+							//connectAccount.Account = this.database.LoadAcccount(authCommand.Username);
+							this.connectedAccounts.Add(connectedAccount);
 							this.connectedClients.Remove(clientId);
-							
-							Console.ForegroundColor = ConsoleColor.Yellow;
-							Console.WriteLine($"[{DateTime.Now}][Command]: {command.CommandType} from {clientId}.");
-							Console.ResetColor();
 						}
 
 						break;
+					case CommandType.NewAccount:
+						//TODO: Create New Account.
+						break;
 					case CommandType.MessageRoom:
-						Console.ForegroundColor = ConsoleColor.Yellow;
-						Console.WriteLine($"[{DateTime.Now}][Command]: {command.CommandType} from {clientId}.");
-						Console.ResetColor();
 						//TODO: Send the message to everyone in the same room as e.ConnectedClient.Id
+						// Log Command
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 						break;
 					case CommandType.Unknown:
 					default:
-						Console.ForegroundColor = ConsoleColor.Yellow;
-						Console.WriteLine($"[{DateTime.Now}][Command]: Unknown command from {clientId}.");
-						Console.ResetColor();
+						// Log Command
+						Logger.ConsoleLog("Command", $"Unknown command from {clientId}.");
 						break;
 				}
 
@@ -181,6 +210,11 @@ namespace Phoenix.Server
 			}
 		}
 
+		/// <summary>
+		/// Returns a Client ID.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		private ConnectedClient GetClientById(string id)
 		{
 			if (this.connectedClients.ContainsKey(id))

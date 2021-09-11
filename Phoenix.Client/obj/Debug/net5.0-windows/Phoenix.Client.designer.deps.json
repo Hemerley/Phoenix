@@ -21,6 +21,14 @@
             "fileVersion": "2.10.0.0"
           }
         }
+      },
+      "Unclassified.AsyncTcpClient/1.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/AsyncTcpClient.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
       }
     }
   },
@@ -38,6 +46,13 @@
       "sha512": "sha512-+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
       "path": "serilog/2.10.0",
       "hashPath": "serilog.2.10.0.nupkg.sha512"
+    },
+    "Unclassified.AsyncTcpClient/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kMttAth+0AiWy70JGjbxq6E8Y2Zw0cvme9e0gFDjDGMd+MCIac8bbL//1c1sicYRWTyHd13xQOE01jmIb9GfmQ==",
+      "path": "unclassified.asynctcpclient/1.0.2",
+      "hashPath": "unclassified.asynctcpclient.1.0.2.nupkg.sha512"
     }
   }
 }

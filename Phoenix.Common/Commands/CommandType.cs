@@ -9,6 +9,7 @@
 		AuthenticateResponse = 2,
 		NewAccount = 3,
 		NewCharacter = 4,
+		Connected = 5,
 
 		#endregion
 

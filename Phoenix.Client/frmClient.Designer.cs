@@ -30,15 +30,7 @@ namespace Phoenix.Client
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            ProgBar.cBlendItems cBlendItems1 = new ProgBar.cBlendItems();
-            ProgBar.cFocalPoints cFocalPoints1 = new ProgBar.cFocalPoints();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClient));
-            ProgBar.cBlendItems cBlendItems2 = new ProgBar.cBlendItems();
-            ProgBar.cFocalPoints cFocalPoints2 = new ProgBar.cFocalPoints();
-            ProgBar.cBlendItems cBlendItems3 = new ProgBar.cBlendItems();
-            ProgBar.cFocalPoints cFocalPoints3 = new ProgBar.cFocalPoints();
-            ProgBar.cBlendItems cBlendItems4 = new ProgBar.cBlendItems();
-            ProgBar.cFocalPoints cFocalPoints4 = new ProgBar.cFocalPoints();
             this.pnlDrawMap = new System.Windows.Forms.Panel();
             this.pnlMap = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.lblName = new System.Windows.Forms.Label();
@@ -85,6 +77,7 @@ namespace Phoenix.Client
             this.pbExp = new ProgBar.ProgBarPlus();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlCharacter = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlHotBar = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.label23 = new System.Windows.Forms.Label();
             this.pbCast = new ProgBar.ProgBarPlus();
@@ -156,13 +149,26 @@ namespace Phoenix.Client
             this.pnlSecondaryWindow = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.rtbSecondary = new System.Windows.Forms.RichTextBox();
             this.pnlRoom = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.lstvRoom = new Phoenix.Client.ListViewWithoutScrollBar();
+            this.lstvRoomCName = new System.Windows.Forms.ColumnHeader();
+            this.lstvRoomCType = new System.Windows.Forms.ColumnHeader();
             this.ilAvatar = new System.Windows.Forms.ImageList(this.components);
             this.pnlDrops = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.lstvDrops = new Phoenix.Client.ListViewWithoutScrollBar();
+            this.lstvDropsCName = new System.Windows.Forms.ColumnHeader();
+            this.lstvDropsCType = new System.Windows.Forms.ColumnHeader();
             this.ilItems = new System.Windows.Forms.ImageList(this.components);
             this.pnlEquipped = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.lstvEquipped = new Phoenix.Client.ListViewWithoutScrollBar();
+            this.lstvEquippedCName = new System.Windows.Forms.ColumnHeader();
+            this.lstvEquippedCSlot = new System.Windows.Forms.ColumnHeader();
+            this.lstvEquippedCType = new System.Windows.Forms.ColumnHeader();
             this.pnlInventory = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lstvInventory = new Phoenix.Client.ListViewWithoutScrollBar();
+            this.lsvtInventoryCName = new System.Windows.Forms.ColumnHeader();
+            this.lstvInventoryCType = new System.Windows.Forms.ColumnHeader();
             this.cmsInventory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.equipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unEquipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,22 +184,10 @@ namespace Phoenix.Client
             this.ilSkills = new System.Windows.Forms.ImageList(this.components);
             this.bgwBuffs = new System.ComponentModel.BackgroundWorker();
             this.bgwGCD = new System.ComponentModel.BackgroundWorker();
-            this.lstvInventory = new Phoenix.Client.ListViewWithoutScrollBar();
-            this.lsvtInventoryCName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstvInventoryCType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstvEquipped = new Phoenix.Client.ListViewWithoutScrollBar();
-            this.lstvEquippedCName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstvEquippedCSlot = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstvEquippedCType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstvDrops = new Phoenix.Client.ListViewWithoutScrollBar();
-            this.lstvDropsCName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstvDropsCType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstvRoom = new Phoenix.Client.ListViewWithoutScrollBar();
-            this.lstvRoomCName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstvRoomCType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblLevel = new System.Windows.Forms.Label();
             this.pnlMap.SuspendLayout();
             this.pnlCharacter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlHotBar.SuspendLayout();
             this.pnlBuff.SuspendLayout();
             this.pnlGameChat.SuspendLayout();
@@ -203,7 +197,6 @@ namespace Phoenix.Client
             this.pnlEquipped.SuspendLayout();
             this.pnlInventory.SuspendLayout();
             this.cmsInventory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlDrawMap
@@ -232,20 +225,20 @@ namespace Phoenix.Client
             // 
             // lblName
             // 
-            this.lblName.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lblName.Location = new System.Drawing.Point(5, 47);
+            this.lblName.Location = new System.Drawing.Point(5, 43);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(150, 23);
+            this.lblName.Size = new System.Drawing.Size(150, 26);
             this.lblName.TabIndex = 179;
             this.lblName.Text = "Name: Zombeh";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCaste
             // 
-            this.lblCaste.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCaste.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblCaste.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lblCaste.Location = new System.Drawing.Point(5, 73);
+            this.lblCaste.Location = new System.Drawing.Point(5, 69);
             this.lblCaste.Name = "lblCaste";
             this.lblCaste.Size = new System.Drawing.Size(150, 23);
             this.lblCaste.TabIndex = 180;
@@ -254,9 +247,9 @@ namespace Phoenix.Client
             // 
             // lblPhilsophy
             // 
-            this.lblPhilsophy.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhilsophy.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPhilsophy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lblPhilsophy.Location = new System.Drawing.Point(5, 98);
+            this.lblPhilsophy.Location = new System.Drawing.Point(5, 92);
             this.lblPhilsophy.Name = "lblPhilsophy";
             this.lblPhilsophy.Size = new System.Drawing.Size(150, 23);
             this.lblPhilsophy.TabIndex = 181;
@@ -266,7 +259,7 @@ namespace Phoenix.Client
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label7.Location = new System.Drawing.Point(4, 179);
             this.label7.Name = "label7";
@@ -277,7 +270,7 @@ namespace Phoenix.Client
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label8.Location = new System.Drawing.Point(3, 138);
             this.label8.Name = "label8";
@@ -288,7 +281,7 @@ namespace Phoenix.Client
             // 
             // lblBaseStr
             // 
-            this.lblBaseStr.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseStr.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseStr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseStr.Location = new System.Drawing.Point(73, 179);
             this.lblBaseStr.Name = "lblBaseStr";
@@ -300,7 +293,7 @@ namespace Phoenix.Client
             // lblStateName
             // 
             this.lblStateName.AutoSize = true;
-            this.lblStateName.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStateName.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblStateName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblStateName.Location = new System.Drawing.Point(3, 161);
             this.lblStateName.Name = "lblStateName";
@@ -311,7 +304,7 @@ namespace Phoenix.Client
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label11.Location = new System.Drawing.Point(69, 161);
             this.label11.Name = "label11";
@@ -322,7 +315,7 @@ namespace Phoenix.Client
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label12.Location = new System.Drawing.Point(144, 161);
             this.label12.Name = "label12";
@@ -332,7 +325,7 @@ namespace Phoenix.Client
             // 
             // lblModStr
             // 
-            this.lblModStr.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModStr.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lblModStr.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModStr.Location = new System.Drawing.Point(144, 179);
             this.lblModStr.Name = "lblModStr";
@@ -344,7 +337,7 @@ namespace Phoenix.Client
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label16.Location = new System.Drawing.Point(4, 194);
             this.label16.Name = "label16";
@@ -355,7 +348,7 @@ namespace Phoenix.Client
             // 
             // lblBaseAgi
             // 
-            this.lblBaseAgi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseAgi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseAgi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseAgi.Location = new System.Drawing.Point(73, 194);
             this.lblBaseAgi.Name = "lblBaseAgi";
@@ -366,7 +359,7 @@ namespace Phoenix.Client
             // 
             // lblModAgi
             // 
-            this.lblModAgi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModAgi.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lblModAgi.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModAgi.Location = new System.Drawing.Point(144, 194);
             this.lblModAgi.Name = "lblModAgi";
@@ -378,7 +371,7 @@ namespace Phoenix.Client
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label19.Location = new System.Drawing.Point(4, 209);
             this.label19.Name = "label19";
@@ -389,7 +382,7 @@ namespace Phoenix.Client
             // 
             // lblBaseInt
             // 
-            this.lblBaseInt.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseInt.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseInt.Location = new System.Drawing.Point(73, 209);
             this.lblBaseInt.Name = "lblBaseInt";
@@ -400,7 +393,7 @@ namespace Phoenix.Client
             // 
             // lblModInt
             // 
-            this.lblModInt.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModInt.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lblModInt.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModInt.Location = new System.Drawing.Point(144, 209);
             this.lblModInt.Name = "lblModInt";
@@ -412,7 +405,7 @@ namespace Phoenix.Client
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label22.Location = new System.Drawing.Point(4, 224);
             this.label22.Name = "label22";
@@ -423,7 +416,7 @@ namespace Phoenix.Client
             // 
             // lblBaseStam
             // 
-            this.lblBaseStam.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseStam.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseStam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseStam.Location = new System.Drawing.Point(73, 224);
             this.lblBaseStam.Name = "lblBaseStam";
@@ -434,7 +427,7 @@ namespace Phoenix.Client
             // 
             // lblModStam
             // 
-            this.lblModStam.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModStam.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lblModStam.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModStam.Location = new System.Drawing.Point(144, 224);
             this.lblModStam.Name = "lblModStam";
@@ -446,7 +439,7 @@ namespace Phoenix.Client
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label50.Location = new System.Drawing.Point(4, 292);
             this.label50.Name = "label50";
@@ -457,7 +450,7 @@ namespace Phoenix.Client
             // 
             // label49
             // 
-            this.label49.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label49.Location = new System.Drawing.Point(3, 250);
             this.label49.Name = "label49";
@@ -468,7 +461,7 @@ namespace Phoenix.Client
             // 
             // lblBaseArmor
             // 
-            this.lblBaseArmor.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseArmor.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseArmor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseArmor.Location = new System.Drawing.Point(73, 292);
             this.lblBaseArmor.Name = "lblBaseArmor";
@@ -480,7 +473,7 @@ namespace Phoenix.Client
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label47.Location = new System.Drawing.Point(3, 273);
             this.label47.Name = "label47";
@@ -491,7 +484,7 @@ namespace Phoenix.Client
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label46.Location = new System.Drawing.Point(69, 273);
             this.label46.Name = "label46";
@@ -502,7 +495,7 @@ namespace Phoenix.Client
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label45.Location = new System.Drawing.Point(144, 273);
             this.label45.Name = "label45";
@@ -512,7 +505,7 @@ namespace Phoenix.Client
             // 
             // lblModArmor
             // 
-            this.lblModArmor.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModArmor.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblModArmor.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModArmor.Location = new System.Drawing.Point(144, 292);
             this.lblModArmor.Name = "lblModArmor";
@@ -524,7 +517,7 @@ namespace Phoenix.Client
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label43.Location = new System.Drawing.Point(4, 306);
             this.label43.Name = "label43";
@@ -535,7 +528,7 @@ namespace Phoenix.Client
             // 
             // lblBaseDamage
             // 
-            this.lblBaseDamage.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseDamage.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseDamage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseDamage.Location = new System.Drawing.Point(73, 306);
             this.lblBaseDamage.Name = "lblBaseDamage";
@@ -546,7 +539,7 @@ namespace Phoenix.Client
             // 
             // lblModDamage
             // 
-            this.lblModDamage.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModDamage.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblModDamage.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModDamage.Location = new System.Drawing.Point(144, 306);
             this.lblModDamage.Name = "lblModDamage";
@@ -558,7 +551,7 @@ namespace Phoenix.Client
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label40.Location = new System.Drawing.Point(4, 321);
             this.label40.Name = "label40";
@@ -569,7 +562,7 @@ namespace Phoenix.Client
             // 
             // lblBaseCrit
             // 
-            this.lblBaseCrit.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseCrit.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseCrit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseCrit.Location = new System.Drawing.Point(73, 321);
             this.lblBaseCrit.Name = "lblBaseCrit";
@@ -580,7 +573,7 @@ namespace Phoenix.Client
             // 
             // lblModCrit
             // 
-            this.lblModCrit.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModCrit.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblModCrit.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModCrit.Location = new System.Drawing.Point(144, 321);
             this.lblModCrit.Name = "lblModCrit";
@@ -592,7 +585,7 @@ namespace Phoenix.Client
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label37.Location = new System.Drawing.Point(4, 336);
             this.label37.Name = "label37";
@@ -603,7 +596,7 @@ namespace Phoenix.Client
             // 
             // lblBaseHaste
             // 
-            this.lblBaseHaste.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseHaste.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseHaste.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseHaste.Location = new System.Drawing.Point(73, 336);
             this.lblBaseHaste.Name = "lblBaseHaste";
@@ -614,7 +607,7 @@ namespace Phoenix.Client
             // 
             // lblModHaste
             // 
-            this.lblModHaste.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModHaste.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblModHaste.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModHaste.Location = new System.Drawing.Point(144, 336);
             this.lblModHaste.Name = "lblModHaste";
@@ -626,7 +619,7 @@ namespace Phoenix.Client
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label34.Location = new System.Drawing.Point(4, 351);
             this.label34.Name = "label34";
@@ -637,7 +630,7 @@ namespace Phoenix.Client
             // 
             // lblBaseMastery
             // 
-            this.lblBaseMastery.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseMastery.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseMastery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseMastery.Location = new System.Drawing.Point(73, 351);
             this.lblBaseMastery.Name = "lblBaseMastery";
@@ -648,7 +641,7 @@ namespace Phoenix.Client
             // 
             // lblModMastery
             // 
-            this.lblModMastery.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModMastery.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblModMastery.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModMastery.Location = new System.Drawing.Point(144, 351);
             this.lblModMastery.Name = "lblModMastery";
@@ -660,7 +653,7 @@ namespace Phoenix.Client
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label31.Location = new System.Drawing.Point(4, 366);
             this.label31.Name = "label31";
@@ -671,7 +664,7 @@ namespace Phoenix.Client
             // 
             // lblBaseVers
             // 
-            this.lblBaseVers.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseVers.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBaseVers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblBaseVers.Location = new System.Drawing.Point(73, 366);
             this.lblBaseVers.Name = "lblBaseVers";
@@ -682,7 +675,7 @@ namespace Phoenix.Client
             // 
             // lblModVers
             // 
-            this.lblModVers.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModVers.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblModVers.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblModVers.Location = new System.Drawing.Point(144, 366);
             this.lblModVers.Name = "lblModVers";
@@ -691,59 +684,9 @@ namespace Phoenix.Client
             this.lblModVers.Text = "100";
             this.lblModVers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbExp
-            // 
-            this.pbExp.BarBackColor = System.Drawing.Color.DarkGoldenrod;
-            cBlendItems1.iColor = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(0)))))};
-            cBlendItems1.iPoint = new float[] {
-        0F,
-        0.5527951F,
-        1F};
-            this.pbExp.BarColorBlend = cBlendItems1;
-            this.pbExp.BarColorSolid = System.Drawing.Color.Black;
-            this.pbExp.BarColorSolidB = System.Drawing.Color.White;
-            this.pbExp.BarLengthValue = ((short)(100));
-            this.pbExp.BarPadding = new System.Windows.Forms.Padding(0);
-            this.pbExp.BarStyleFill = ProgBar.ProgBarPlus.eBarStyle.GradientLinear;
-            this.pbExp.BarStyleHatch = System.Drawing.Drawing2D.HatchStyle.Shingle;
-            this.pbExp.BarStyleLinear = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.pbExp.BarStyleTexture = null;
-            this.pbExp.Border = true;
-            this.pbExp.BorderColor = System.Drawing.Color.Gray;
-            this.pbExp.BorderWidth = ((short)(1));
-            this.pbExp.Corners.All = ((short)(7));
-            this.pbExp.Corners.LowerLeft = ((short)(7));
-            this.pbExp.Corners.LowerRight = ((short)(7));
-            this.pbExp.Corners.UpperLeft = ((short)(7));
-            this.pbExp.Corners.UpperRight = ((short)(7));
-            this.pbExp.CylonInterval = ((short)(1));
-            this.pbExp.CylonMove = 1F;
-            cFocalPoints1.CenterPoint = ((System.Drawing.PointF)(resources.GetObject("cFocalPoints1.CenterPoint")));
-            cFocalPoints1.FocusScales = ((System.Drawing.PointF)(resources.GetObject("cFocalPoints1.FocusScales")));
-            this.pbExp.FocalPoints = cFocalPoints1;
-            this.pbExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.pbExp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.pbExp.Location = new System.Drawing.Point(3, 422);
-            this.pbExp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbExp.Name = "pbExp";
-            this.pbExp.ShapeTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pbExp.ShowDesignBorder = false;
-            this.pbExp.Size = new System.Drawing.Size(226, 19);
-            this.pbExp.TabIndex = 220;
-            this.pbExp.TabStop = false;
-            this.pbExp.TextFormat = "";
-            this.pbExp.TextShadow = true;
-            this.pbExp.TextShadowColor = System.Drawing.Color.Black;
-            this.pbExp.TextShow = ProgBar.ProgBarPlus.eTextShow.TextOnly;
-            this.pbExp.TextValue = "2500/2500";
-            this.pbExp.Value = 50;
-            // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label6.Location = new System.Drawing.Point(5, 395);
             this.label6.Name = "label6";
@@ -757,6 +700,7 @@ namespace Phoenix.Client
             this.pnlCharacter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.pnlCharacter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCharacter.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this.pnlCharacter.Controls.Add(this.lblLevel);
             this.pnlCharacter.Controls.Add(this.pictureBox1);
             this.pnlCharacter.Controls.Add(this.label6);
             this.pnlCharacter.Controls.Add(this.pbExp);
@@ -808,6 +752,15 @@ namespace Phoenix.Client
             this.pnlCharacter.Size = new System.Drawing.Size(240, 450);
             this.pnlCharacter.TabIndex = 1;
             this.pnlCharacter.Text = "Character Information";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(147, 46);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 223;
+            this.pictureBox1.TabStop = false;
             // 
             // pnlHotBar
             // 
@@ -864,7 +817,7 @@ namespace Phoenix.Client
             // 
             // label23
             // 
-            this.label23.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label23.Location = new System.Drawing.Point(428, 126);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(201, 23);
@@ -872,62 +825,12 @@ namespace Phoenix.Client
             this.label23.Text = "Cast Bar";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbCast
-            // 
-            this.pbCast.BarBackColor = System.Drawing.Color.Indigo;
-            cBlendItems2.iColor = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(0)))), ((int)(((byte)(128))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(0)))))};
-            cBlendItems2.iPoint = new float[] {
-        0F,
-        0.5527951F,
-        1F};
-            this.pbCast.BarColorBlend = cBlendItems2;
-            this.pbCast.BarColorSolid = System.Drawing.Color.Black;
-            this.pbCast.BarColorSolidB = System.Drawing.Color.White;
-            this.pbCast.BarLengthValue = ((short)(100));
-            this.pbCast.BarPadding = new System.Windows.Forms.Padding(0);
-            this.pbCast.BarStyleFill = ProgBar.ProgBarPlus.eBarStyle.GradientLinear;
-            this.pbCast.BarStyleHatch = System.Drawing.Drawing2D.HatchStyle.Shingle;
-            this.pbCast.BarStyleLinear = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.pbCast.BarStyleTexture = null;
-            this.pbCast.Border = true;
-            this.pbCast.BorderColor = System.Drawing.Color.Gray;
-            this.pbCast.BorderWidth = ((short)(1));
-            this.pbCast.Corners.All = ((short)(7));
-            this.pbCast.Corners.LowerLeft = ((short)(7));
-            this.pbCast.Corners.LowerRight = ((short)(7));
-            this.pbCast.Corners.UpperLeft = ((short)(7));
-            this.pbCast.Corners.UpperRight = ((short)(7));
-            this.pbCast.CylonInterval = ((short)(1));
-            this.pbCast.CylonMove = 1F;
-            cFocalPoints2.CenterPoint = ((System.Drawing.PointF)(resources.GetObject("cFocalPoints2.CenterPoint")));
-            cFocalPoints2.FocusScales = ((System.Drawing.PointF)(resources.GetObject("cFocalPoints2.FocusScales")));
-            this.pbCast.FocalPoints = cFocalPoints2;
-            this.pbCast.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.pbCast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.pbCast.Location = new System.Drawing.Point(428, 153);
-            this.pbCast.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbCast.Name = "pbCast";
-            this.pbCast.ShapeTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pbCast.ShowDesignBorder = false;
-            this.pbCast.Size = new System.Drawing.Size(201, 19);
-            this.pbCast.TabIndex = 216;
-            this.pbCast.TabStop = false;
-            this.pbCast.TextFormat = "";
-            this.pbCast.TextShadow = true;
-            this.pbCast.TextShadowColor = System.Drawing.Color.Black;
-            this.pbCast.TextShow = ProgBar.ProgBarPlus.eTextShow.TextOnly;
-            this.pbCast.TextValue = "52s";
-            this.pbCast.Value = 50;
-            // 
             // btnHK32
             // 
             this.btnHK32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK32.FlatAppearance.BorderSize = 0;
             this.btnHK32.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK32.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK32.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK32.Location = new System.Drawing.Point(635, 90);
             this.btnHK32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -941,7 +844,7 @@ namespace Phoenix.Client
             this.btnHK31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK31.FlatAppearance.BorderSize = 0;
             this.btnHK31.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK31.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK31.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK31.Location = new System.Drawing.Point(594, 90);
             this.btnHK31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -955,7 +858,7 @@ namespace Phoenix.Client
             this.btnHK30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK30.FlatAppearance.BorderSize = 0;
             this.btnHK30.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK30.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK30.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK30.Location = new System.Drawing.Point(553, 90);
             this.btnHK30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -969,7 +872,7 @@ namespace Phoenix.Client
             this.btnHK29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK29.FlatAppearance.BorderSize = 0;
             this.btnHK29.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK29.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK29.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK29.Location = new System.Drawing.Point(512, 90);
             this.btnHK29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -983,7 +886,7 @@ namespace Phoenix.Client
             this.btnHK28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK28.FlatAppearance.BorderSize = 0;
             this.btnHK28.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK28.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK28.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK28.Location = new System.Drawing.Point(471, 90);
             this.btnHK28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -997,7 +900,7 @@ namespace Phoenix.Client
             this.btnHK27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK27.FlatAppearance.BorderSize = 0;
             this.btnHK27.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK27.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK27.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK27.Location = new System.Drawing.Point(429, 90);
             this.btnHK27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1011,7 +914,7 @@ namespace Phoenix.Client
             this.btnHK26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK26.FlatAppearance.BorderSize = 0;
             this.btnHK26.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK26.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK26.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK26.Location = new System.Drawing.Point(390, 90);
             this.btnHK26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1025,7 +928,7 @@ namespace Phoenix.Client
             this.btnHK25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK25.FlatAppearance.BorderSize = 0;
             this.btnHK25.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK25.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK25.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK25.Location = new System.Drawing.Point(348, 90);
             this.btnHK25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1039,7 +942,7 @@ namespace Phoenix.Client
             this.btnHK24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK24.FlatAppearance.BorderSize = 0;
             this.btnHK24.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK24.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK24.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK24.Location = new System.Drawing.Point(307, 90);
             this.btnHK24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1053,7 +956,7 @@ namespace Phoenix.Client
             this.btnHK23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK23.FlatAppearance.BorderSize = 0;
             this.btnHK23.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK23.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK23.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK23.Location = new System.Drawing.Point(266, 90);
             this.btnHK23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1067,7 +970,7 @@ namespace Phoenix.Client
             this.btnHK22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK22.FlatAppearance.BorderSize = 0;
             this.btnHK22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK22.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK22.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK22.Location = new System.Drawing.Point(225, 90);
             this.btnHK22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1081,7 +984,7 @@ namespace Phoenix.Client
             this.btnHK21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK21.FlatAppearance.BorderSize = 0;
             this.btnHK21.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK21.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK21.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK21.Location = new System.Drawing.Point(184, 90);
             this.btnHK21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1095,7 +998,7 @@ namespace Phoenix.Client
             this.btnHK20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK20.FlatAppearance.BorderSize = 0;
             this.btnHK20.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK20.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK20.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK20.Location = new System.Drawing.Point(143, 90);
             this.btnHK20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1109,7 +1012,7 @@ namespace Phoenix.Client
             this.btnHK19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK19.FlatAppearance.BorderSize = 0;
             this.btnHK19.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK19.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK19.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK19.Location = new System.Drawing.Point(102, 90);
             this.btnHK19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1123,7 +1026,7 @@ namespace Phoenix.Client
             this.btnHK18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK18.FlatAppearance.BorderSize = 0;
             this.btnHK18.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK18.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK18.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK18.Location = new System.Drawing.Point(60, 90);
             this.btnHK18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1137,7 +1040,7 @@ namespace Phoenix.Client
             this.btnHK17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK17.FlatAppearance.BorderSize = 0;
             this.btnHK17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK17.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK17.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK17.Location = new System.Drawing.Point(21, 90);
             this.btnHK17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1151,7 +1054,7 @@ namespace Phoenix.Client
             this.btnHK16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK16.FlatAppearance.BorderSize = 0;
             this.btnHK16.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK16.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK16.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK16.Location = new System.Drawing.Point(635, 49);
             this.btnHK16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1165,7 +1068,7 @@ namespace Phoenix.Client
             this.btnHK15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK15.FlatAppearance.BorderSize = 0;
             this.btnHK15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK15.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK15.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK15.Location = new System.Drawing.Point(594, 49);
             this.btnHK15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1179,7 +1082,7 @@ namespace Phoenix.Client
             this.btnHK14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK14.FlatAppearance.BorderSize = 0;
             this.btnHK14.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK14.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK14.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK14.Location = new System.Drawing.Point(553, 49);
             this.btnHK14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1193,7 +1096,7 @@ namespace Phoenix.Client
             this.btnHK13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK13.FlatAppearance.BorderSize = 0;
             this.btnHK13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK13.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK13.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK13.Location = new System.Drawing.Point(512, 49);
             this.btnHK13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1207,7 +1110,7 @@ namespace Phoenix.Client
             this.btnHK12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK12.FlatAppearance.BorderSize = 0;
             this.btnHK12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK12.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK12.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK12.Location = new System.Drawing.Point(471, 49);
             this.btnHK12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1221,7 +1124,7 @@ namespace Phoenix.Client
             this.btnHK11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK11.FlatAppearance.BorderSize = 0;
             this.btnHK11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK11.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK11.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK11.Location = new System.Drawing.Point(429, 49);
             this.btnHK11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1235,7 +1138,7 @@ namespace Phoenix.Client
             this.btnHK10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK10.FlatAppearance.BorderSize = 0;
             this.btnHK10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK10.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK10.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK10.Location = new System.Drawing.Point(390, 49);
             this.btnHK10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1249,7 +1152,7 @@ namespace Phoenix.Client
             this.btnHK9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK9.FlatAppearance.BorderSize = 0;
             this.btnHK9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK9.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK9.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK9.Location = new System.Drawing.Point(348, 49);
             this.btnHK9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1263,7 +1166,7 @@ namespace Phoenix.Client
             this.btnHK8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK8.FlatAppearance.BorderSize = 0;
             this.btnHK8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK8.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK8.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK8.Location = new System.Drawing.Point(307, 49);
             this.btnHK8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1277,7 +1180,7 @@ namespace Phoenix.Client
             this.btnHK7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK7.FlatAppearance.BorderSize = 0;
             this.btnHK7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK7.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK7.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK7.Location = new System.Drawing.Point(266, 49);
             this.btnHK7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1291,7 +1194,7 @@ namespace Phoenix.Client
             this.btnHK6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK6.FlatAppearance.BorderSize = 0;
             this.btnHK6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK6.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK6.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK6.Location = new System.Drawing.Point(225, 49);
             this.btnHK6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1305,7 +1208,7 @@ namespace Phoenix.Client
             this.btnHK5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK5.FlatAppearance.BorderSize = 0;
             this.btnHK5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK5.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK5.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK5.Location = new System.Drawing.Point(184, 49);
             this.btnHK5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1319,7 +1222,7 @@ namespace Phoenix.Client
             this.btnHK4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK4.FlatAppearance.BorderSize = 0;
             this.btnHK4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK4.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK4.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK4.Location = new System.Drawing.Point(143, 49);
             this.btnHK4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1333,7 +1236,7 @@ namespace Phoenix.Client
             this.btnHK3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK3.FlatAppearance.BorderSize = 0;
             this.btnHK3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK3.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK3.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK3.Location = new System.Drawing.Point(102, 49);
             this.btnHK3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1347,7 +1250,7 @@ namespace Phoenix.Client
             this.btnHK2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK2.FlatAppearance.BorderSize = 0;
             this.btnHK2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK2.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK2.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK2.Location = new System.Drawing.Point(60, 49);
             this.btnHK2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1361,7 +1264,7 @@ namespace Phoenix.Client
             this.btnHK1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.btnHK1.FlatAppearance.BorderSize = 0;
             this.btnHK1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHK1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHK1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHK1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnHK1.Location = new System.Drawing.Point(21, 49);
             this.btnHK1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1395,7 +1298,7 @@ namespace Phoenix.Client
             this.cpbGCD.Bar5.FinishColor = System.Drawing.Color.LightGreen;
             this.cpbGCD.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbGCD.DisplayPercentage = false;
-            this.cpbGCD.Font = new System.Drawing.Font("Nirmala UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbGCD.Font = new System.Drawing.Font("Nirmala UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cpbGCD.Image = null;
             this.cpbGCD.Info = "GCD";
             this.cpbGCD.Location = new System.Drawing.Point(645, 139);
@@ -1408,7 +1311,7 @@ namespace Phoenix.Client
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(221, 126);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(201, 23);
@@ -1416,59 +1319,9 @@ namespace Phoenix.Client
             this.label5.Text = "Mana";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbMana
-            // 
-            this.pbMana.BarBackColor = System.Drawing.Color.MidnightBlue;
-            cBlendItems3.iColor = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(0)))))};
-            cBlendItems3.iPoint = new float[] {
-        0F,
-        0.5527951F,
-        1F};
-            this.pbMana.BarColorBlend = cBlendItems3;
-            this.pbMana.BarColorSolid = System.Drawing.Color.Black;
-            this.pbMana.BarColorSolidB = System.Drawing.Color.White;
-            this.pbMana.BarLengthValue = ((short)(100));
-            this.pbMana.BarPadding = new System.Windows.Forms.Padding(0);
-            this.pbMana.BarStyleFill = ProgBar.ProgBarPlus.eBarStyle.GradientLinear;
-            this.pbMana.BarStyleHatch = System.Drawing.Drawing2D.HatchStyle.Shingle;
-            this.pbMana.BarStyleLinear = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.pbMana.BarStyleTexture = null;
-            this.pbMana.Border = true;
-            this.pbMana.BorderColor = System.Drawing.Color.Gray;
-            this.pbMana.BorderWidth = ((short)(1));
-            this.pbMana.Corners.All = ((short)(7));
-            this.pbMana.Corners.LowerLeft = ((short)(7));
-            this.pbMana.Corners.LowerRight = ((short)(7));
-            this.pbMana.Corners.UpperLeft = ((short)(7));
-            this.pbMana.Corners.UpperRight = ((short)(7));
-            this.pbMana.CylonInterval = ((short)(1));
-            this.pbMana.CylonMove = 1F;
-            cFocalPoints3.CenterPoint = ((System.Drawing.PointF)(resources.GetObject("cFocalPoints3.CenterPoint")));
-            cFocalPoints3.FocusScales = ((System.Drawing.PointF)(resources.GetObject("cFocalPoints3.FocusScales")));
-            this.pbMana.FocalPoints = cFocalPoints3;
-            this.pbMana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.pbMana.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.pbMana.Location = new System.Drawing.Point(221, 153);
-            this.pbMana.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbMana.Name = "pbMana";
-            this.pbMana.ShapeTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pbMana.ShowDesignBorder = false;
-            this.pbMana.Size = new System.Drawing.Size(201, 19);
-            this.pbMana.TabIndex = 182;
-            this.pbMana.TabStop = false;
-            this.pbMana.TextFormat = "";
-            this.pbMana.TextShadow = true;
-            this.pbMana.TextShadowColor = System.Drawing.Color.Black;
-            this.pbMana.TextShow = ProgBar.ProgBarPlus.eTextShow.TextOnly;
-            this.pbMana.TextValue = "2500/2500";
-            this.pbMana.Value = 50;
-            // 
             // lblHealth
             // 
-            this.lblHealth.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHealth.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblHealth.Location = new System.Drawing.Point(14, 126);
             this.lblHealth.Name = "lblHealth";
             this.lblHealth.Size = new System.Drawing.Size(201, 23);
@@ -1476,61 +1329,11 @@ namespace Phoenix.Client
             this.lblHealth.Text = "Health";
             this.lblHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbHealth
-            // 
-            this.pbHealth.BarBackColor = System.Drawing.Color.Maroon;
-            cBlendItems4.iColor = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(40)))), ((int)(((byte)(0)))))};
-            cBlendItems4.iPoint = new float[] {
-        0F,
-        0.5527951F,
-        1F};
-            this.pbHealth.BarColorBlend = cBlendItems4;
-            this.pbHealth.BarColorSolid = System.Drawing.Color.Black;
-            this.pbHealth.BarColorSolidB = System.Drawing.Color.White;
-            this.pbHealth.BarLengthValue = ((short)(100));
-            this.pbHealth.BarPadding = new System.Windows.Forms.Padding(0);
-            this.pbHealth.BarStyleFill = ProgBar.ProgBarPlus.eBarStyle.GradientLinear;
-            this.pbHealth.BarStyleHatch = System.Drawing.Drawing2D.HatchStyle.Shingle;
-            this.pbHealth.BarStyleLinear = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.pbHealth.BarStyleTexture = null;
-            this.pbHealth.Border = true;
-            this.pbHealth.BorderColor = System.Drawing.Color.Gray;
-            this.pbHealth.BorderWidth = ((short)(1));
-            this.pbHealth.Corners.All = ((short)(7));
-            this.pbHealth.Corners.LowerLeft = ((short)(7));
-            this.pbHealth.Corners.LowerRight = ((short)(7));
-            this.pbHealth.Corners.UpperLeft = ((short)(7));
-            this.pbHealth.Corners.UpperRight = ((short)(7));
-            this.pbHealth.CylonInterval = ((short)(1));
-            this.pbHealth.CylonMove = 1F;
-            cFocalPoints4.CenterPoint = ((System.Drawing.PointF)(resources.GetObject("cFocalPoints4.CenterPoint")));
-            cFocalPoints4.FocusScales = ((System.Drawing.PointF)(resources.GetObject("cFocalPoints4.FocusScales")));
-            this.pbHealth.FocalPoints = cFocalPoints4;
-            this.pbHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.pbHealth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.pbHealth.Location = new System.Drawing.Point(14, 153);
-            this.pbHealth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbHealth.Name = "pbHealth";
-            this.pbHealth.ShapeTextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pbHealth.ShowDesignBorder = false;
-            this.pbHealth.Size = new System.Drawing.Size(201, 19);
-            this.pbHealth.TabIndex = 179;
-            this.pbHealth.TabStop = false;
-            this.pbHealth.TextFormat = "";
-            this.pbHealth.TextShadow = true;
-            this.pbHealth.TextShadowColor = System.Drawing.Color.Empty;
-            this.pbHealth.TextShow = ProgBar.ProgBarPlus.eTextShow.TextOnly;
-            this.pbHealth.TextValue = "2500/2500";
-            this.pbHealth.Value = 50;
-            // 
             // txtInput
             // 
             this.txtInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.txtInput.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtInput.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInput.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.txtInput.Location = new System.Drawing.Point(0, 184);
             this.txtInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1601,7 +1404,7 @@ namespace Phoenix.Client
             this.cpbBuff24.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff24.BarWidth = 5;
             this.cpbBuff24.DisplayPercentage = false;
-            this.cpbBuff24.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff24.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff24.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff24.Image")));
             this.cpbBuff24.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1641,7 +1444,7 @@ namespace Phoenix.Client
             this.cpbBuff23.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff23.BarWidth = 5;
             this.cpbBuff23.DisplayPercentage = false;
-            this.cpbBuff23.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff23.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff23.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff23.Image")));
             this.cpbBuff23.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1681,7 +1484,7 @@ namespace Phoenix.Client
             this.cpbBuff22.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff22.BarWidth = 5;
             this.cpbBuff22.DisplayPercentage = false;
-            this.cpbBuff22.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff22.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff22.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff22.Image")));
             this.cpbBuff22.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1721,7 +1524,7 @@ namespace Phoenix.Client
             this.cpbBuff21.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff21.BarWidth = 5;
             this.cpbBuff21.DisplayPercentage = false;
-            this.cpbBuff21.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff21.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff21.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff21.Image")));
             this.cpbBuff21.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1761,7 +1564,7 @@ namespace Phoenix.Client
             this.cpbBuff20.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff20.BarWidth = 5;
             this.cpbBuff20.DisplayPercentage = false;
-            this.cpbBuff20.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff20.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff20.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff20.Image")));
             this.cpbBuff20.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1801,7 +1604,7 @@ namespace Phoenix.Client
             this.cpbBuff19.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff19.BarWidth = 5;
             this.cpbBuff19.DisplayPercentage = false;
-            this.cpbBuff19.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff19.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff19.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff19.Image")));
             this.cpbBuff19.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1841,7 +1644,7 @@ namespace Phoenix.Client
             this.cpbBuff18.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff18.BarWidth = 5;
             this.cpbBuff18.DisplayPercentage = false;
-            this.cpbBuff18.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff18.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff18.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff18.Image")));
             this.cpbBuff18.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1881,7 +1684,7 @@ namespace Phoenix.Client
             this.cpbBuff17.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff17.BarWidth = 5;
             this.cpbBuff17.DisplayPercentage = false;
-            this.cpbBuff17.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff17.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff17.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff17.Image")));
             this.cpbBuff17.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1921,7 +1724,7 @@ namespace Phoenix.Client
             this.cpbBuff16.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff16.BarWidth = 5;
             this.cpbBuff16.DisplayPercentage = false;
-            this.cpbBuff16.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff16.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff16.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff16.Image")));
             this.cpbBuff16.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -1961,7 +1764,7 @@ namespace Phoenix.Client
             this.cpbBuff15.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff15.BarWidth = 5;
             this.cpbBuff15.DisplayPercentage = false;
-            this.cpbBuff15.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff15.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff15.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff15.Image")));
             this.cpbBuff15.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2001,7 +1804,7 @@ namespace Phoenix.Client
             this.cpbBuff14.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff14.BarWidth = 5;
             this.cpbBuff14.DisplayPercentage = false;
-            this.cpbBuff14.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff14.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff14.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff14.Image")));
             this.cpbBuff14.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2041,7 +1844,7 @@ namespace Phoenix.Client
             this.cpbBuff13.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff13.BarWidth = 5;
             this.cpbBuff13.DisplayPercentage = false;
-            this.cpbBuff13.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff13.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff13.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff13.Image")));
             this.cpbBuff13.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2081,7 +1884,7 @@ namespace Phoenix.Client
             this.cpbBuff12.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff12.BarWidth = 5;
             this.cpbBuff12.DisplayPercentage = false;
-            this.cpbBuff12.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff12.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff12.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff12.Image")));
             this.cpbBuff12.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2121,7 +1924,7 @@ namespace Phoenix.Client
             this.cpbBuff11.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff11.BarWidth = 5;
             this.cpbBuff11.DisplayPercentage = false;
-            this.cpbBuff11.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff11.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff11.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff11.Image")));
             this.cpbBuff11.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2161,7 +1964,7 @@ namespace Phoenix.Client
             this.cpbBuff10.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff10.BarWidth = 5;
             this.cpbBuff10.DisplayPercentage = false;
-            this.cpbBuff10.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff10.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff10.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff10.Image")));
             this.cpbBuff10.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2201,7 +2004,7 @@ namespace Phoenix.Client
             this.cpbBuff9.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff9.BarWidth = 5;
             this.cpbBuff9.DisplayPercentage = false;
-            this.cpbBuff9.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff9.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff9.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff9.Image")));
             this.cpbBuff9.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2241,7 +2044,7 @@ namespace Phoenix.Client
             this.cpbBuff8.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff8.BarWidth = 5;
             this.cpbBuff8.DisplayPercentage = false;
-            this.cpbBuff8.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff8.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff8.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff8.Image")));
             this.cpbBuff8.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2281,7 +2084,7 @@ namespace Phoenix.Client
             this.cpbBuff7.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff7.BarWidth = 5;
             this.cpbBuff7.DisplayPercentage = false;
-            this.cpbBuff7.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff7.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff7.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff7.Image")));
             this.cpbBuff7.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2321,7 +2124,7 @@ namespace Phoenix.Client
             this.cpbBuff6.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff6.BarWidth = 5;
             this.cpbBuff6.DisplayPercentage = false;
-            this.cpbBuff6.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff6.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff6.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff6.Image")));
             this.cpbBuff6.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2361,7 +2164,7 @@ namespace Phoenix.Client
             this.cpbBuff5.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff5.BarWidth = 5;
             this.cpbBuff5.DisplayPercentage = false;
-            this.cpbBuff5.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff5.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff5.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff5.Image")));
             this.cpbBuff5.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2401,7 +2204,7 @@ namespace Phoenix.Client
             this.cpbBuff4.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff4.BarWidth = 5;
             this.cpbBuff4.DisplayPercentage = false;
-            this.cpbBuff4.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff4.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff4.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff4.Image")));
             this.cpbBuff4.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2441,7 +2244,7 @@ namespace Phoenix.Client
             this.cpbBuff3.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff3.BarWidth = 5;
             this.cpbBuff3.DisplayPercentage = false;
-            this.cpbBuff3.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff3.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff3.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff3.Image")));
             this.cpbBuff3.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2481,7 +2284,7 @@ namespace Phoenix.Client
             this.cpbBuff2.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff2.BarWidth = 5;
             this.cpbBuff2.DisplayPercentage = false;
-            this.cpbBuff2.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff2.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff2.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff2.Image")));
             this.cpbBuff2.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2521,7 +2324,7 @@ namespace Phoenix.Client
             this.cpbBuff1.Bar5.InactiveColor = System.Drawing.Color.LightGray;
             this.cpbBuff1.BarWidth = 5;
             this.cpbBuff1.DisplayPercentage = false;
-            this.cpbBuff1.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbBuff1.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cpbBuff1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cpbBuff1.Image = ((System.Drawing.Image)(resources.GetObject("cpbBuff1.Image")));
             this.cpbBuff1.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -2551,7 +2354,7 @@ namespace Phoenix.Client
             // 
             this.rtbChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.rtbChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbChat.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbChat.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rtbChat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.rtbChat.Location = new System.Drawing.Point(3, 55);
             this.rtbChat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2578,7 +2381,7 @@ namespace Phoenix.Client
             // 
             this.rtbSecondary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.rtbSecondary.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbSecondary.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbSecondary.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rtbSecondary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.rtbSecondary.Location = new System.Drawing.Point(3, 55);
             this.rtbSecondary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2602,8 +2405,36 @@ namespace Phoenix.Client
             this.pnlRoom.TabIndex = 23;
             this.pnlRoom.Text = "Room Occupants";
             // 
+            // lstvRoom
+            // 
+            this.lstvRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lstvRoom.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstvRoomCName,
+            this.lstvRoomCType});
+            this.lstvRoom.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lstvRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lstvRoom.FullRowSelect = true;
+            this.lstvRoom.HideSelection = false;
+            this.lstvRoom.LargeImageList = this.ilAvatar;
+            this.lstvRoom.Location = new System.Drawing.Point(3, 48);
+            this.lstvRoom.Name = "lstvRoom";
+            this.lstvRoom.Size = new System.Drawing.Size(232, 505);
+            this.lstvRoom.SmallImageList = this.ilAvatar;
+            this.lstvRoom.TabIndex = 1;
+            this.lstvRoom.UseCompatibleStateImageBehavior = false;
+            this.lstvRoom.View = System.Windows.Forms.View.Tile;
+            // 
+            // lstvRoomCName
+            // 
+            this.lstvRoomCName.Width = 30;
+            // 
+            // lstvRoomCType
+            // 
+            this.lstvRoomCType.Width = 30;
+            // 
             // ilAvatar
             // 
+            this.ilAvatar.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.ilAvatar.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilAvatar.ImageStream")));
             this.ilAvatar.TransparentColor = System.Drawing.Color.Transparent;
             this.ilAvatar.Images.SetKeyName(0, "character (1).png");
@@ -3118,8 +2949,36 @@ namespace Phoenix.Client
             this.pnlDrops.TabIndex = 24;
             this.pnlDrops.Text = "Room Items";
             // 
+            // lstvDrops
+            // 
+            this.lstvDrops.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lstvDrops.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstvDropsCName,
+            this.lstvDropsCType});
+            this.lstvDrops.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lstvDrops.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lstvDrops.FullRowSelect = true;
+            this.lstvDrops.HideSelection = false;
+            this.lstvDrops.LargeImageList = this.ilItems;
+            this.lstvDrops.Location = new System.Drawing.Point(4, 48);
+            this.lstvDrops.Name = "lstvDrops";
+            this.lstvDrops.Size = new System.Drawing.Size(232, 233);
+            this.lstvDrops.SmallImageList = this.ilItems;
+            this.lstvDrops.TabIndex = 2;
+            this.lstvDrops.UseCompatibleStateImageBehavior = false;
+            this.lstvDrops.View = System.Windows.Forms.View.Tile;
+            // 
+            // lstvDropsCName
+            // 
+            this.lstvDropsCName.Width = 0;
+            // 
+            // lstvDropsCType
+            // 
+            this.lstvDropsCType.Width = 0;
+            // 
             // ilItems
             // 
+            this.ilItems.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.ilItems.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilItems.ImageStream")));
             this.ilItems.TransparentColor = System.Drawing.Color.Transparent;
             this.ilItems.Images.SetKeyName(0, "item (1).png");
@@ -5146,6 +5005,34 @@ namespace Phoenix.Client
             this.pnlEquipped.TabIndex = 25;
             this.pnlEquipped.Text = "Equipped";
             // 
+            // lstvEquipped
+            // 
+            this.lstvEquipped.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lstvEquipped.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstvEquippedCName,
+            this.lstvEquippedCSlot,
+            this.lstvEquippedCType});
+            this.lstvEquipped.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lstvEquipped.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lstvEquipped.FullRowSelect = true;
+            this.lstvEquipped.HideSelection = false;
+            this.lstvEquipped.LargeImageList = this.ilItems;
+            this.lstvEquipped.Location = new System.Drawing.Point(4, 48);
+            this.lstvEquipped.Name = "lstvEquipped";
+            this.lstvEquipped.Size = new System.Drawing.Size(232, 506);
+            this.lstvEquipped.SmallImageList = this.ilItems;
+            this.lstvEquipped.TabIndex = 2;
+            this.lstvEquipped.UseCompatibleStateImageBehavior = false;
+            this.lstvEquipped.View = System.Windows.Forms.View.Tile;
+            // 
+            // lstvEquippedCName
+            // 
+            this.lstvEquippedCName.Width = 0;
+            // 
+            // lstvEquippedCSlot
+            // 
+            this.lstvEquippedCSlot.Width = 0;
+            // 
             // pnlInventory
             // 
             this.pnlInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
@@ -5162,7 +5049,7 @@ namespace Phoenix.Client
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label2.Location = new System.Drawing.Point(6, 73);
             this.label2.Name = "label2";
@@ -5173,7 +5060,7 @@ namespace Phoenix.Client
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label1.Location = new System.Drawing.Point(6, 50);
             this.label1.Name = "label1";
@@ -5181,6 +5068,34 @@ namespace Phoenix.Client
             this.label1.TabIndex = 180;
             this.label1.Text = "Gold: 0";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lstvInventory
+            // 
+            this.lstvInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lstvInventory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lsvtInventoryCName,
+            this.lstvInventoryCType});
+            this.lstvInventory.ContextMenuStrip = this.cmsInventory;
+            this.lstvInventory.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lstvInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lstvInventory.FullRowSelect = true;
+            this.lstvInventory.HideSelection = false;
+            this.lstvInventory.LargeImageList = this.ilItems;
+            this.lstvInventory.Location = new System.Drawing.Point(4, 99);
+            this.lstvInventory.Name = "lstvInventory";
+            this.lstvInventory.Size = new System.Drawing.Size(232, 289);
+            this.lstvInventory.SmallImageList = this.ilItems;
+            this.lstvInventory.TabIndex = 2;
+            this.lstvInventory.UseCompatibleStateImageBehavior = false;
+            this.lstvInventory.View = System.Windows.Forms.View.Tile;
+            // 
+            // lsvtInventoryCName
+            // 
+            this.lsvtInventoryCName.Width = 0;
+            // 
+            // lstvInventoryCType
+            // 
+            this.lstvInventoryCType.Width = 0;
             // 
             // cmsInventory
             // 
@@ -5258,7 +5173,7 @@ namespace Phoenix.Client
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(14, 126);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(201, 23);
@@ -5268,6 +5183,7 @@ namespace Phoenix.Client
             // 
             // ilSkills
             // 
+            this.ilSkills.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.ilSkills.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilSkills.ImageStream")));
             this.ilSkills.TransparentColor = System.Drawing.Color.Transparent;
             this.ilSkills.Images.SetKeyName(0, "skill (1).png");
@@ -6883,124 +6799,16 @@ namespace Phoenix.Client
             this.ilSkills.Images.SetKeyName(1610, "skill (1611).png");
             this.ilSkills.Images.SetKeyName(1611, "skill (1612).png");
             // 
-            // lstvInventory
+            // lblLevel
             // 
-            this.lstvInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lstvInventory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lsvtInventoryCName,
-            this.lstvInventoryCType});
-            this.lstvInventory.ContextMenuStrip = this.cmsInventory;
-            this.lstvInventory.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstvInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lstvInventory.FullRowSelect = true;
-            this.lstvInventory.HideSelection = false;
-            this.lstvInventory.LargeImageList = this.ilItems;
-            this.lstvInventory.Location = new System.Drawing.Point(4, 99);
-            this.lstvInventory.Name = "lstvInventory";
-            this.lstvInventory.Size = new System.Drawing.Size(232, 289);
-            this.lstvInventory.SmallImageList = this.ilItems;
-            this.lstvInventory.TabIndex = 2;
-            this.lstvInventory.UseCompatibleStateImageBehavior = false;
-            this.lstvInventory.View = System.Windows.Forms.View.Tile;
-            // 
-            // lsvtInventoryCName
-            // 
-            this.lsvtInventoryCName.Width = 0;
-            // 
-            // lstvInventoryCType
-            // 
-            this.lstvInventoryCType.Width = 0;
-            // 
-            // lstvEquipped
-            // 
-            this.lstvEquipped.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lstvEquipped.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lstvEquippedCName,
-            this.lstvEquippedCSlot,
-            this.lstvEquippedCType});
-            this.lstvEquipped.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstvEquipped.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lstvEquipped.FullRowSelect = true;
-            this.lstvEquipped.HideSelection = false;
-            this.lstvEquipped.LargeImageList = this.ilItems;
-            this.lstvEquipped.Location = new System.Drawing.Point(4, 48);
-            this.lstvEquipped.Name = "lstvEquipped";
-            this.lstvEquipped.Size = new System.Drawing.Size(232, 506);
-            this.lstvEquipped.SmallImageList = this.ilItems;
-            this.lstvEquipped.TabIndex = 2;
-            this.lstvEquipped.UseCompatibleStateImageBehavior = false;
-            this.lstvEquipped.View = System.Windows.Forms.View.Tile;
-            // 
-            // lstvEquippedCName
-            // 
-            this.lstvEquippedCName.Width = 0;
-            // 
-            // lstvEquippedCSlot
-            // 
-            this.lstvEquippedCSlot.Width = 0;
-            // 
-            // lstvDrops
-            // 
-            this.lstvDrops.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lstvDrops.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lstvDropsCName,
-            this.lstvDropsCType});
-            this.lstvDrops.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstvDrops.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lstvDrops.FullRowSelect = true;
-            this.lstvDrops.HideSelection = false;
-            this.lstvDrops.LargeImageList = this.ilItems;
-            this.lstvDrops.Location = new System.Drawing.Point(4, 48);
-            this.lstvDrops.Name = "lstvDrops";
-            this.lstvDrops.Size = new System.Drawing.Size(232, 233);
-            this.lstvDrops.SmallImageList = this.ilItems;
-            this.lstvDrops.TabIndex = 2;
-            this.lstvDrops.UseCompatibleStateImageBehavior = false;
-            this.lstvDrops.View = System.Windows.Forms.View.Tile;
-            // 
-            // lstvDropsCName
-            // 
-            this.lstvDropsCName.Width = 0;
-            // 
-            // lstvDropsCType
-            // 
-            this.lstvDropsCType.Width = 0;
-            // 
-            // lstvRoom
-            // 
-            this.lstvRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lstvRoom.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lstvRoomCName,
-            this.lstvRoomCType});
-            this.lstvRoom.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstvRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lstvRoom.FullRowSelect = true;
-            this.lstvRoom.HideSelection = false;
-            this.lstvRoom.LargeImageList = this.ilAvatar;
-            this.lstvRoom.Location = new System.Drawing.Point(3, 48);
-            this.lstvRoom.Name = "lstvRoom";
-            this.lstvRoom.Size = new System.Drawing.Size(232, 505);
-            this.lstvRoom.SmallImageList = this.ilAvatar;
-            this.lstvRoom.TabIndex = 1;
-            this.lstvRoom.UseCompatibleStateImageBehavior = false;
-            this.lstvRoom.View = System.Windows.Forms.View.Tile;
-            // 
-            // lstvRoomCName
-            // 
-            this.lstvRoomCName.Width = 30;
-            // 
-            // lstvRoomCType
-            // 
-            this.lstvRoomCType.Width = 30;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(147, 46);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 223;
-            this.pictureBox1.TabStop = false;
+            this.lblLevel.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLevel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lblLevel.Location = new System.Drawing.Point(5, 115);
+            this.lblLevel.Name = "lblLevel";
+            this.lblLevel.Size = new System.Drawing.Size(150, 23);
+            this.lblLevel.TabIndex = 224;
+            this.lblLevel.Text = "Level: 1";
+            this.lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmClient
             // 
@@ -7018,7 +6826,7 @@ namespace Phoenix.Client
             this.Controls.Add(this.pnlHotBar);
             this.Controls.Add(this.pnlCharacter);
             this.Controls.Add(this.pnlMap);
-            this.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -7028,6 +6836,7 @@ namespace Phoenix.Client
             this.pnlMap.PerformLayout();
             this.pnlCharacter.ResumeLayout(false);
             this.pnlCharacter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlHotBar.ResumeLayout(false);
             this.pnlHotBar.PerformLayout();
             this.pnlBuff.ResumeLayout(false);
@@ -7045,7 +6854,6 @@ namespace Phoenix.Client
             this.pnlInventory.ResumeLayout(false);
             this.pnlInventory.PerformLayout();
             this.cmsInventory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7204,5 +7012,6 @@ namespace Phoenix.Client
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblLevel;
     }
 }

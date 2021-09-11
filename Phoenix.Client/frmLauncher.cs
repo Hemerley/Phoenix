@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Phoenix.Common;
+using System;
 using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
@@ -7,13 +8,16 @@ namespace Phoenix.Client
 {
     public partial class frmLauncher : Form
     {
-
+        public bool authMode = false;
+        
         public frmLauncher()
         {
             InitializeComponent();
 
             this.client = new Client();
             this.client.OnActivity += Client_OnActivity;
+            this.client.IsConnected += Client_IsConnected;
+            this.client.IsClosed += Client_IsClosed;
 
             // Setup UI Display
             pnlSide.Height = btnAccount.Height;
@@ -22,25 +26,97 @@ namespace Phoenix.Client
             btnAccount.BackColor = Color.FromArgb(57, 62, 70);
         }
 
-        #region ---Network Controllers---
+        #region -- Network Controllers --
         
         private Client client;
 
         #endregion
 
-        #region ---Form Controllers---
+        #region -- Data Controllers --
 
-        private void Client_OnActivity(object sender, string e)
+        /// <summary>
+        /// Sends command to server.
+        /// </summary>
+        /// <param name="command"></param>
+        private void SendCommand(Command command)
         {
-            this.pnlAccountView.Invoke((Action)delegate
-            {
-                this.pnlAccountView.Visible = true;
-           });
+            var message = CommandFactory.FormatCommand(command);
+            client.Send(message);
         }
 
         #endregion
 
-        #region ---Move Window---
+        #region -- Client Controllers --
+
+        /// <summary>
+        /// Handles closed client connection.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="remote"></param>
+        private void Client_IsClosed(object sender, bool remote)
+        {
+            switch (remote)
+            {
+                case true:
+                    MessageBox.Show("The connection was closed by the server. The client will now close.", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                    return;
+                default:
+                    MessageBox.Show("The connection was interrupted for unknown reasons. The client will now close.", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                    return;
+            }
+        }
+
+        /// <summary>
+        /// Handles connected client connection.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="isReconnected"></param>
+        private void Client_IsConnected(object sender, bool isReconnected)
+        {
+            if (authMode)
+            {
+                var authCommand = new AuthenticateCommand();
+                authCommand.Username = txtAccountName.Text.Trim();
+                authCommand.Password = txtPassword.Text.Trim();
+                SendCommand(authCommand);
+            }
+            else
+            {
+                //TODO: Account Create
+            }
+ 
+        }
+
+        /// <summary>
+        /// Handles incoming message from the client connection.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Client_OnActivity(object sender, string e)
+        {
+            var command = CommandFactory.ParseCommand(e);
+            switch (command.CommandType)
+            {
+                case CommandType.AuthenticateResponse:
+                    this.pnlAuthenicate.Invoke((Action)delegate
+                    {
+                        btnAccount.Enabled = false;
+                        btnCreate.Enabled = false;
+                        lblAccount.Text = this.txtAccountName.Text;
+                        this.txtAccountName.Text = "";
+                        this.txtPassword.Text = "";
+                        pnlAuthenicate.Hide();
+                        pnlAccountView.Show();
+                    });
+                    return;
+            }
+        }
+
+        #endregion
+
+        #region -- Move Window --
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -62,7 +138,7 @@ namespace Phoenix.Client
         
         #endregion
 
-        #region ---Button Controllers---
+        #region -- Button Controllers --
        
         private void btnAccount_Click(object sender, EventArgs e)
         {
@@ -84,15 +160,24 @@ namespace Phoenix.Client
         
         private void btnNCreate_Click(object sender, EventArgs e)
         {
-            //TODO: Creation Stuff
             btnNCreate.Enabled = false;
+            btnAccount.Enabled = false;
+            btnCreate.Enabled = false;
+            authMode = false;
+            this.client.Start(IPAddress.Loopback, 4444);
         }
         
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        
+
+        private void btnCharacterCreate_Click(object sender, EventArgs e)
+        {
+            pnlCharacterCreation.Show();
+            pnlAccountView.Hide();
+        }
+
         private void btnCreate_Leave(object sender, EventArgs e)
         {
             btnCreate.BackColor = Color.FromArgb(34, 40, 49);
@@ -101,13 +186,13 @@ namespace Phoenix.Client
         private void btnAuthenticate_Click(object sender, EventArgs e)
         {
             btnAuthenticate.Enabled = false;
-            // TODO: Authentication Stuff
+            authMode = true;
             this.client.Start(IPAddress.Loopback, 4444);
         }
         
         private void btnCharcterCreate_Click(object sender, EventArgs e)
         {
-            btnCharcterCreate.Enabled = false;
+            btnNCharcterCreate.Enabled = false;
         }
         
         private void btnAccount_Leave(object sender, EventArgs e)
@@ -117,7 +202,7 @@ namespace Phoenix.Client
         
         #endregion
 
-        #region ---Form Design---
+        #region -- Form Design --
 
         private void txtAccountName_Enter(object sender, EventArgs e)
         {
@@ -220,7 +305,7 @@ namespace Phoenix.Client
                 txtNVerifyPassword.PasswordChar = '\0';
             }
         }
-        
+
         #endregion
 
     }

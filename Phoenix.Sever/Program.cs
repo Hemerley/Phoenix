@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Phoenix.Common;
+using System;
 using System.Net;
 
 namespace Phoenix.Server
@@ -7,8 +8,12 @@ namespace Phoenix.Server
 	{
 		static void Main(string[] args)
 		{
+			Console.Title = Constants.GAME_NAME + " Server - V" + Constants.GAME_VERSION;
+			
 			new Game().Start();
-			Console.ReadLine();
+
+			// Get Under Input
+			string input = Console.ReadLine();
 		}
 	}
 }

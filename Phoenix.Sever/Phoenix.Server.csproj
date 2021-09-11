@@ -5,11 +5,13 @@
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Phoenix.Server</AssemblyName>
     <RootNamespace>Phoenix.Server</RootNamespace>
+    <ApplicationIcon>Resources\Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.90" />
     <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115" />
     <PackageReference Include="Unclassified.AsyncTcpClient" Version="1.0.2" />
   </ItemGroup>

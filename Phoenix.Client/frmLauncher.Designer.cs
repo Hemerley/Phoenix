@@ -72,7 +72,7 @@ namespace Phoenix.Client
             this.cboPhilosophy = new System.Windows.Forms.ComboBox();
             this.cboGender = new System.Windows.Forms.ComboBox();
             this.lblHeader4 = new System.Windows.Forms.Label();
-            this.btnCharcterCreate = new System.Windows.Forms.Button();
+            this.btnNCharcterCreate = new System.Windows.Forms.Button();
             this.txtCharacterName = new System.Windows.Forms.TextBox();
             this.ptbPhoenix4 = new System.Windows.Forms.PictureBox();
             this.pnlSide.SuspendLayout();
@@ -110,7 +110,7 @@ namespace Phoenix.Client
             this.btnStore.Enabled = false;
             this.btnStore.FlatAppearance.BorderSize = 0;
             this.btnStore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStore.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStore.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnStore.Location = new System.Drawing.Point(0, 226);
             this.btnStore.Name = "btnStore";
@@ -125,7 +125,7 @@ namespace Phoenix.Client
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnExit.Location = new System.Drawing.Point(0, 529);
             this.btnExit.Name = "btnExit";
@@ -140,7 +140,7 @@ namespace Phoenix.Client
             this.btnCreate.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCreate.FlatAppearance.BorderSize = 0;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnCreate.Location = new System.Drawing.Point(0, 185);
             this.btnCreate.Name = "btnCreate";
@@ -157,7 +157,7 @@ namespace Phoenix.Client
             this.btnAccount.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAccount.FlatAppearance.BorderSize = 0;
             this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccount.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccount.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnAccount.Location = new System.Drawing.Point(0, 144);
             this.btnAccount.Name = "btnAccount";
@@ -217,7 +217,7 @@ namespace Phoenix.Client
             // lblHeader1
             // 
             this.lblHeader1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lblHeader1.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader1.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblHeader1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblHeader1.Location = new System.Drawing.Point(0, 0);
             this.lblHeader1.Name = "lblHeader1";
@@ -231,7 +231,7 @@ namespace Phoenix.Client
             this.btnAuthenticate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.btnAuthenticate.FlatAppearance.BorderSize = 0;
             this.btnAuthenticate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAuthenticate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuthenticate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAuthenticate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnAuthenticate.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnAuthenticate.Location = new System.Drawing.Point(254, 289);
@@ -245,7 +245,7 @@ namespace Phoenix.Client
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.txtPassword.Location = new System.Drawing.Point(254, 254);
             this.txtPassword.Name = "txtPassword";
@@ -258,7 +258,7 @@ namespace Phoenix.Client
             // txtAccountName
             // 
             this.txtAccountName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtAccountName.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountName.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.txtAccountName.Location = new System.Drawing.Point(254, 210);
             this.txtAccountName.Name = "txtAccountName";
@@ -307,7 +307,7 @@ namespace Phoenix.Client
             // txtNVerifyPassword
             // 
             this.txtNVerifyPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtNVerifyPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNVerifyPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtNVerifyPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.txtNVerifyPassword.Location = new System.Drawing.Point(254, 315);
             this.txtNVerifyPassword.Name = "txtNVerifyPassword";
@@ -320,7 +320,7 @@ namespace Phoenix.Client
             // txtEmail
             // 
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtEmail.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.txtEmail.Location = new System.Drawing.Point(254, 245);
             this.txtEmail.Name = "txtEmail";
@@ -333,7 +333,7 @@ namespace Phoenix.Client
             // lblHeader2
             // 
             this.lblHeader2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lblHeader2.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader2.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblHeader2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblHeader2.Location = new System.Drawing.Point(0, 0);
             this.lblHeader2.Name = "lblHeader2";
@@ -347,7 +347,7 @@ namespace Phoenix.Client
             this.btnNCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.btnNCreate.FlatAppearance.BorderSize = 0;
             this.btnNCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnNCreate.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnNCreate.Location = new System.Drawing.Point(254, 350);
@@ -361,7 +361,7 @@ namespace Phoenix.Client
             // txtNPassword
             // 
             this.txtNPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtNPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtNPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.txtNPassword.Location = new System.Drawing.Point(254, 280);
             this.txtNPassword.Name = "txtNPassword";
@@ -374,7 +374,7 @@ namespace Phoenix.Client
             // txtNAccount
             // 
             this.txtNAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtNAccount.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNAccount.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtNAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.txtNAccount.Location = new System.Drawing.Point(254, 210);
             this.txtNAccount.Name = "txtNAccount";
@@ -465,7 +465,7 @@ namespace Phoenix.Client
             this.btnDeleteCharacter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.btnDeleteCharacter.FlatAppearance.BorderSize = 0;
             this.btnDeleteCharacter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteCharacter.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteCharacter.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDeleteCharacter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnDeleteCharacter.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnDeleteCharacter.Location = new System.Drawing.Point(3, 160);
@@ -480,7 +480,7 @@ namespace Phoenix.Client
             this.btnTransferCharacter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.btnTransferCharacter.FlatAppearance.BorderSize = 0;
             this.btnTransferCharacter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransferCharacter.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransferCharacter.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnTransferCharacter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnTransferCharacter.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnTransferCharacter.Location = new System.Drawing.Point(3, 119);
@@ -495,7 +495,7 @@ namespace Phoenix.Client
             this.btnCharacterCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.btnCharacterCreate.FlatAppearance.BorderSize = 0;
             this.btnCharacterCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCharacterCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCharacterCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCharacterCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnCharacterCreate.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnCharacterCreate.Location = new System.Drawing.Point(3, 78);
@@ -504,11 +504,12 @@ namespace Phoenix.Client
             this.btnCharacterCreate.TabIndex = 36;
             this.btnCharacterCreate.Text = "Create";
             this.btnCharacterCreate.UseVisualStyleBackColor = false;
+            this.btnCharacterCreate.Click += new System.EventHandler(this.btnCharacterCreate_Click);
             // 
             // lblHeader3
             // 
             this.lblHeader3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lblHeader3.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader3.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblHeader3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblHeader3.Location = new System.Drawing.Point(0, 0);
             this.lblHeader3.Name = "lblHeader3";
@@ -522,7 +523,7 @@ namespace Phoenix.Client
             this.btnCharacterConnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.btnCharacterConnect.FlatAppearance.BorderSize = 0;
             this.btnCharacterConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCharacterConnect.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCharacterConnect.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCharacterConnect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnCharacterConnect.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnCharacterConnect.Location = new System.Drawing.Point(3, 37);
@@ -549,7 +550,7 @@ namespace Phoenix.Client
             this.pnlCharacterCreation.Controls.Add(this.cboPhilosophy);
             this.pnlCharacterCreation.Controls.Add(this.cboGender);
             this.pnlCharacterCreation.Controls.Add(this.lblHeader4);
-            this.pnlCharacterCreation.Controls.Add(this.btnCharcterCreate);
+            this.pnlCharacterCreation.Controls.Add(this.btnNCharcterCreate);
             this.pnlCharacterCreation.Controls.Add(this.txtCharacterName);
             this.pnlCharacterCreation.Controls.Add(this.ptbPhoenix4);
             this.pnlCharacterCreation.Location = new System.Drawing.Point(222, 22);
@@ -595,7 +596,7 @@ namespace Phoenix.Client
             // lblHeader4
             // 
             this.lblHeader4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lblHeader4.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader4.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblHeader4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblHeader4.Location = new System.Drawing.Point(0, 0);
             this.lblHeader4.Name = "lblHeader4";
@@ -604,26 +605,26 @@ namespace Phoenix.Client
             this.lblHeader4.Text = "Project: Phoenix";
             this.lblHeader4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnCharcterCreate
+            // btnNCharcterCreate
             // 
-            this.btnCharcterCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.btnCharcterCreate.FlatAppearance.BorderSize = 0;
-            this.btnCharcterCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCharcterCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCharcterCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnCharcterCreate.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnCharcterCreate.Location = new System.Drawing.Point(58, 199);
-            this.btnCharcterCreate.Name = "btnCharcterCreate";
-            this.btnCharcterCreate.Size = new System.Drawing.Size(237, 35);
-            this.btnCharcterCreate.TabIndex = 35;
-            this.btnCharcterCreate.Text = "Create Character";
-            this.btnCharcterCreate.UseVisualStyleBackColor = false;
-            this.btnCharcterCreate.Click += new System.EventHandler(this.btnCharcterCreate_Click);
+            this.btnNCharcterCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.btnNCharcterCreate.FlatAppearance.BorderSize = 0;
+            this.btnNCharcterCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNCharcterCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNCharcterCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnNCharcterCreate.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnNCharcterCreate.Location = new System.Drawing.Point(58, 199);
+            this.btnNCharcterCreate.Name = "btnNCharcterCreate";
+            this.btnNCharcterCreate.Size = new System.Drawing.Size(237, 35);
+            this.btnNCharcterCreate.TabIndex = 35;
+            this.btnNCharcterCreate.Text = "Create Character";
+            this.btnNCharcterCreate.UseVisualStyleBackColor = false;
+            this.btnNCharcterCreate.Click += new System.EventHandler(this.btnCharcterCreate_Click);
             // 
             // txtCharacterName
             // 
             this.txtCharacterName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtCharacterName.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCharacterName.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCharacterName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.txtCharacterName.Location = new System.Drawing.Point(58, 94);
             this.txtCharacterName.Name = "txtCharacterName";
@@ -652,7 +653,7 @@ namespace Phoenix.Client
             this.Controls.Add(this.pnlAccountCreate);
             this.Controls.Add(this.pnlAuthenicate);
             this.Controls.Add(this.pnlSide);
-            this.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -720,7 +721,7 @@ namespace Phoenix.Client
         private System.Windows.Forms.ComboBox cboPhilosophy;
         private System.Windows.Forms.ComboBox cboGender;
         private System.Windows.Forms.Label lblHeader4;
-        private System.Windows.Forms.Button btnCharcterCreate;
+        private System.Windows.Forms.Button btnNCharcterCreate;
         private System.Windows.Forms.TextBox txtCharacterName;
         private System.Windows.Forms.PictureBox ptbPhoenix4;
     }

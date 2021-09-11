@@ -11,10 +11,14 @@ namespace Phoenix.Server
 	{
 		#region -- Fields --
 
-		/// <summary>TCP Listener that does all of the TCP logic.</summary>
+		/// <summary>
+		/// TCP Listener that does all of the TCP logic.
+		/// </summary>
 		private AsyncTcpListener listener;
 
-		/// <summary>The list of currently connected clients.</summary>
+		/// <summary>
+		/// The list of currently connected clients.
+		/// </summary>
 		private List<ConnectedClient> clients = new List<ConnectedClient>();
 
 		#endregion
@@ -25,19 +29,29 @@ namespace Phoenix.Server
 
 		#region -- Events --
 
-		/// <summary>Event fires when a new client connects.</summary>
+		/// <summary>
+		/// Event fires when a new client connects.
+		/// </summary>
 		public event EventHandler<ConnectedClient> OnClientConnected;
 
-		/// <summary>Event fires when a client disconnects.</summary>
+		/// <summary>
+		/// Event fires when a client disconnects.
+		/// </summary>
 		public event EventHandler<ConnectedClient> OnClientDisconnected;
 
-		/// <summary>Event fires when a connected client sends a message.</summary>
+		/// <summary>
+		/// Event fires when a connected client sends a message.
+		/// </summary>
 		public event EventHandler<ConnectedClientMessage> OnClientMessage;
 
-		/// <summary>Event fires when the server starts listening.</summary>
+		/// <summary>
+		/// Event fires when the server starts listening.
+		/// </summary>
 		public event EventHandler OnServerStarted;
 
-		/// <summary>Event fires when the server stops listening.</summary>
+		/// <summary>
+		/// Event fires when the server stops listening.
+		/// </summary>
 		public event EventHandler OnServerStopped;
 
 		#endregion
