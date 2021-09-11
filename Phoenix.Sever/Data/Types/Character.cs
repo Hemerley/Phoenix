@@ -14,6 +14,7 @@ namespace Phoenix.Server
         public string Name { get; set; }
         public int Type { get; set; }
         public int Image { get; set; }
+        public string Gender { get; set; }
         public string HisHer { get; set; }
         public string HeShe { get; set; }
         public int Experience { get; set; }
@@ -36,13 +37,15 @@ namespace Phoenix.Server
         public int Mana { get; set; }
         public int RoomID { get; set; }
 
-        public Character(int id, int accountId, string name, int image, string hisHer, string heshe, int experience, string title, int caste, int rank, int philosophy, int alignment, int creation, int strength, int agility, int intellect, int stamina, int damage, int health, int mana, int roomID)
+        public Character(int id, int accountId, string name, int type, int image, string gender, string hisHer, string heshe, int experience, string title, int caste, int rank, int philosophy, int alignment, int creation, int strength, int agility, int intellect, int stamina, int damage, int health, int mana, int roomID)
         {
 
             this.Id = id;
             this.AccountId = accountId;
             this.Name = name;
+            this.Type = type;
             this.Image = image;
+            this.Gender = gender;
             this.HisHer = hisHer;
             this.HeShe = heshe;
             this.Experience = experience;

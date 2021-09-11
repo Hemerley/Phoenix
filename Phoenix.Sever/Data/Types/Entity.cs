@@ -10,6 +10,7 @@ namespace Phoenix.Server
     {
         public int Id { get; set; }
         public int Type { get; set; }
+        public int Rank { get; set; }
         public string Name { get; set; }
         public int Image { get; set; }
         public string HisHer { get; set; }

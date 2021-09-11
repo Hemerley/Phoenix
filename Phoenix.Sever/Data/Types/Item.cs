@@ -10,7 +10,6 @@ namespace Phoenix.Server
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string OriginalName { get; set; }
         public int Image { get; set; }
         public int Type { get; set; }
         public int Slot { get; set; }
@@ -22,6 +21,7 @@ namespace Phoenix.Server
         public int Agility { get; set; }
         public int Intellect { get; set; }
         public int Stamina { get; set; }
+        public double Crit { get; set; }
         public double Haste { get; set; }
         public double Mastery { get; set; }
         public double Versatility { get; set; }
@@ -33,11 +33,10 @@ namespace Phoenix.Server
         public int AlignmentReq { get; set; }
         public string Script { get; set; }
 
-        public Item(int id, string name, string originalName, int image, int type, int slot, int value, int rarity, int weight, int damage, int strength, int agility, int intellect, int stamina, double haste, double mastery, double versatility, int philosopherReq, int strengthReq, int agilityReq, int intellectReq, int staminaReq, int alignmentReq, string script)
+        public Item(int id, string name, int image, int type, int slot, int value, int rarity, int weight, int damage, int strength, int agility, int intellect, int stamina, double crit, double haste, double mastery, double versatility, int philosopherReq, int strengthReq, int agilityReq, int intellectReq, int staminaReq, int alignmentReq, string script)
         {
             this.Id = id;
             this.Name = name;
-            this.OriginalName = originalName;
             this.Image = image;
             this.Type = type;
             this.Slot = slot;
@@ -49,6 +48,7 @@ namespace Phoenix.Server
             this.Agility = agility;
             this.Intellect = intellect;
             this.Stamina = stamina;
+            this.Crit = crit;
             this.Haste = haste;
             this.Mastery = mastery;
             this.Versatility = versatility;

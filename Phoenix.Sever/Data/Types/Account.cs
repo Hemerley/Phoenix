@@ -8,13 +8,9 @@ namespace Phoenix.Server
 {
     public class Account
     {
-
 		public int id { get; set; }
-
 		public int gold { get; set; }
-
 		public Character character { get; set; }
-
 		public Account(int id, int gold)
 		{
 			this.id = id;
