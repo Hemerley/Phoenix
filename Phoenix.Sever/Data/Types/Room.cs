@@ -53,7 +53,16 @@ namespace Phoenix.Server
         public string KeyFailUp { get; set; }
         public string KeyFailDown { get; set; }
         public string Script { get; set; }
+        public List<Entity> Entities { get; set; } = new();
 
+        // Live Instances
+        public List<Character> Characters { get; set; } = new();
+        public List<Entity> currentEntities { get; set; } = new();
+
+        public Room()
+        {
+
+        }
         public Room(int id, string name, string area, int status, int type, string description, string exits, int tile, int north, int south, int west, int east, int up, int down, int keymodenorth, int keymodesouth, int keymodewest, int keymodeeast, int keymodeup, int keymodedown, string keynamenorth, string keynamesouth, string keynamewest, string keynameeast, string keynameup, string keynamedown, int keytypenorth, int keytypesouth, int keytypewest, int keytypeeast, int keytypeup, int keytypedown, string keypassnorth, string keypasssouth, string keypasswest, string keypasseast, string keypassup, string keypassdown, string keyfailnorth, string keyfailsouth, string keyfailwest, string keyfaileast, string keyfailup, string keyfaildown, string script)
         {
             this.Id = id;

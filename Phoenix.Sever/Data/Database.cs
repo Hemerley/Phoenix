@@ -1,13 +1,24 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
 using System.Data.SQLite;
 using System.IO;
-using System.Reflection;
 
 namespace Phoenix.Server
 {
     public class Database
     {
+
+        /// <summary>
+        /// Declare Game Objects.
+        /// </summary>
+
+        #region -- Abilities --
+  
+        #endregion
+
+        #region -- Accounts --
+        #endregion
 
         #region -- Helpers --
 
@@ -16,354 +27,130 @@ namespace Phoenix.Server
         /// </summary>
         /// <param name="id"></param>
         /// <returns>ConnectionString</returns>
-        private static string LoadConnectionString(string id = "Live")
+        public static string LoadConnectionString(string id = "Live")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
-
-        public void InitializeDatabse()
+        /// <summary>
+        /// Intialize Database
+        /// </summary>
+        public static void InitializeDatabse()
         {
-            // Create LiveDB if it doesn't exist.
-            if (!File.Exists("./LiveDB.db"))
+            CheckDatabase("LiveDB.db", "Live");
+            CheckDatabase("TestDB.db","Test");   
+        }
+        /// <summary>
+        /// Run Query
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="file"></param>
+        private static void ExecuteQuery(SQLiteConnection connection, string file)
+        {
+            using (var command = new SQLiteCommand(connection))
             {
-                SQLiteConnection.CreateFile("LiveDB.db");
-
-                // Log Database Creation
-                Logger.ConsoleLog("Error", "LiveDB.db could not be located. Created new LiveDB.db.");
-
-                using (var connection = new SQLiteConnection(LoadConnectionString("Live")))
-                {
-                    connection.Open();
-                    using (var command = new SQLiteCommand(connection))
-                    {
-                        // Create Accounts
-                        command.CommandText = File.ReadAllText("./SQL/CreateAccount.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Accounts Table.");
-
-                        // Create RoomStatus
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomStatus.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomStatuses Table.");
-
-                        // Create RoomType
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomType.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomTypes Table.");
-
-                        // Create RoomTiles
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomTile.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomTiles Table.");
-
-                        // Create RoomKeyTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomKeyType.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomKeyTypes Table.");
-
-                        // Create RoomKeyModes
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomKeyMode.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomKeyModes Table.");
-
-                        // Create CharacterTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateCharacterTypes.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created CharacterTypes Table.");
-
-                        // Create Rooms
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoom.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Rooms Table.");
-
-                        // Create Characters
-                        command.CommandText = File.ReadAllText("./SQL/CreateCharacter.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Characters Table.");
-
-                        // Create ItemTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateItemType.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created ItemTypes Table.");
-
-                        // Create ItemSlots
-                        command.CommandText = File.ReadAllText("./SQL/CreateItemSlot.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created ItemSlots Table.");
-
-                        // Create Rarity
-                        command.CommandText = File.ReadAllText("./SQL/CreateRarity.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Rarity Table.");
-
-                        // Create Philosophies
-                        command.CommandText = File.ReadAllText("./SQL/CreatePhilosophies.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Philosophies Table.");
-
-                        // Create AbilityTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateAbilityType.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created AbilityTypes Table.");
-
-                        // Create AbilityRanks
-                        command.CommandText = File.ReadAllText("./SQL/CreateAbilityRank.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created AbilityRanks Table.");
-
-                        // Create Abilities
-                        command.CommandText = File.ReadAllText("./SQL/CreateAbility.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Abilities Table.");
-
-                        // Create Items
-                        command.CommandText = File.ReadAllText("./SQL/CreateItem.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Items Table.");
-
-                        // Create EntityTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateEntityTypes.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created EntityTypes Table.");
-
-                        // Create Entities
-                        command.CommandText = File.ReadAllText("./SQL/CreateEntity.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Entities Table.");
-
-                        // Create RoomEntities
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomEntities.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomEntities Table.");
-
-                        // Create RoomItems
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomItems.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomItems Table.");
-
-                        // Create CharacterItems
-                        command.CommandText = File.ReadAllText("./SQL/CreateCharacterItems.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created CharacterItems Table.");
-
-                        // Create EntityItems
-                        command.CommandText = File.ReadAllText("./SQL/CreateEntityItems.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created EntityItems Table.");
-                    }
-                    connection.Close();
-                }
+                command.CommandText = File.ReadAllText(file);
+                command.ExecuteNonQuery();
+                Logger.ConsoleLog("Database", $"Executed query from {file}.");
             }
-
+        }
+        /// <summary>
+       /// Checks Database, Creates if not there.
+       /// </summary>
+        private static void CheckDatabase(string database, string connectionType)
+        {
             // Create TestDB if it doesn't exist.
-            if (!File.Exists("./TestDB.db"))
+            if (!File.Exists($"./{database}"))
             {
-                SQLiteConnection.CreateFile("TestDB.db");
+                SQLiteConnection.CreateFile(database);
 
                 // Log Database Creation
-                Logger.ConsoleLog("Error", "TestDB.db could not be located. Created new TestDB.db.");
+                Logger.ConsoleLog("Error", $"{database} could not be located. Created new {database}.");
 
-                using (var connection = new SQLiteConnection(LoadConnectionString("Test")))
+                using (var connection = new SQLiteConnection(LoadConnectionString(connectionType)))
                 {
                     connection.Open();
                     using (var command = new SQLiteCommand(connection))
                     {
-                        // Create Accounts
-                        command.CommandText = File.ReadAllText("./SQL/CreateAccount.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Accounts Table.");
-
-                        // Create RoomStatus
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomStatus.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomStatuses Table.");
-
-                        // Create RoomType
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomType.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomTypes Table.");
-
-                        // Create RoomTiles
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomTile.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomTiles Table.");
-
-                        // Create RoomKeyTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomKeyType.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomKeyTypes Table.");
-
-                        // Create RoomKeyModes
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomKeyMode.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomKeyModes Table.");
-
-                        // Create CharacterTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateCharacterTypes.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created CharacterTypes Table.");
-
-                        // Create Rooms
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoom.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Rooms Table.");
-
-                        // Create Characters
-                        command.CommandText = File.ReadAllText("./SQL/CreateCharacter.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Characters Table.");
-
-                        // Create ItemTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateItemType.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created ItemTypes Table.");
-
-                        // Create ItemSlots
-                        command.CommandText = File.ReadAllText("./SQL/CreateItemSlot.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created ItemSlots Table.");
-
-                        // Create Rarity
-                        command.CommandText = File.ReadAllText("./SQL/CreateRarity.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Rarity Table.");
-
-                        // Create Philosophies
-                        command.CommandText = File.ReadAllText("./SQL/CreatePhilosophies.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Philosophies Table.");
-
-                        // Create AbilityTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateAbilityType.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created AbilityTypes Table.");
-
-                        // Create AbilityRanks
-                        command.CommandText = File.ReadAllText("./SQL/CreateAbilityRank.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created AbilityRanks Table.");
-
-                        // Create Abilities
-                        command.CommandText = File.ReadAllText("./SQL/CreateAbility.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Abilities Table.");
-
-                        // Create Items
-                        command.CommandText = File.ReadAllText("./SQL/CreateItem.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Items Table.");
-
-                        // Create EntityTypes
-                        command.CommandText = File.ReadAllText("./SQL/CreateEntityTypes.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created EntityTypes Table.");
-
-                        // Create Entities
-                        command.CommandText = File.ReadAllText("./SQL/CreateEntity.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created Entities Table.");
-
-                        // Create RoomEntities
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomEntities.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomEntities Table.");
-
-                        // Create RoomItems
-                        command.CommandText = File.ReadAllText("./SQL/CreateRoomItems.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created RoomItems Table.");
-
-                        // Create CharacterItems
-                        command.CommandText = File.ReadAllText("./SQL/CreateCharacterItems.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created CharacterItems Table.");
-
-                        // Create EntityItems
-                        command.CommandText = File.ReadAllText("./SQL/CreateEntityItems.sql");
-                        command.ExecuteNonQuery();
-                        // Log Table Creation
-                        Logger.ConsoleLog("Database", "Created EntityItems Table.");
+                        foreach (var file in Directory.EnumerateFiles("./SQL/", "*.sql"))
+                        {
+                            ExecuteQuery(connection, file);
+                        }
                     }
                     connection.Close();
+                }
+            }
+        }
+        private static void LoadDatabaseTable<T>(List<T> list, string table, string connectionType)
+        {
+            using (var connection = new SQLiteConnection(LoadConnectionString(connectionType)))
+            {
+                connection.Open();
+                string query = $"SELECT * FROM {table}";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            for(int i = 0; i < reader.FieldCount; i++)
+                            {
+                                Logger.ConsoleLog("System", $"New Data: {reader[i]}");
+                            }
+                        }
+                    }
+                }
+                connection.Close();
+            }
+        }
+
+        public static List<Room> LoadRooms(string connectionType)
+        {
+            using (var connection = new SQLiteConnection(LoadConnectionString(connectionType)))
+            {
+                connection.Open();
+                string query = $"SELECT  r.Id as RoomId, r.Name as RoomName, e.Id as EntityId, e.Name as EntityName FROM Rooms r LEFT OUTER JOIN RoomEntities re ON re.RoomId = r.Id LEFT OUTER JOIN Entities e ON e.Id = re.EntityId; ";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        List<RoomEntityDto> rawData = new();
+                        while (reader.Read())
+                        {
+                            var roomEntityDto = new RoomEntityDto
+                            {
+                                RoomId = int.Parse(reader["RoomId"].ToString()),
+                                RoomName = reader["RoomName"].ToString(),
+                                EntityId = int.TryParse(reader["EntityId"]?.ToString(), out int entityId) ? entityId : (int?)null,
+                                EntityName = reader["EntityName"]?.ToString()
+                            };
+                            rawData.Add(roomEntityDto);
+                        }
+                        return (from data in rawData
+                                group data by new { data.RoomId, data.RoomName } into g
+                                select new Room
+                                {
+                                    Id = g.Key.RoomId,
+                                    Name = g.Key.RoomName,
+                                    Entities = g.Where(e => e.EntityId.HasValue).ToList().Select(e => new Entity
+                                    {
+                                        Id = e.EntityId.Value,
+                                        Name = e.EntityName
+                                    }).ToList()
+                                }).ToList();
+                    }
                 }
             }
         }
 
         #endregion
 
-        #region -- Account ---
+        /*
+        Open Server
+        Init Database
+        Load Rooms From Database
+        Load Rooms Enti
 
-        public void SaveAccount(string name, string password, string email)
-        {
-            using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
-            {
-                return;
-            }
-        }
 
-        #endregion
-
-        #region -- Items--
-
-        public void LoadItems()
-        {
-
-        }
-
-        #endregion
-
-        #region -- Debug --
-
-        public void TestLogger()
-        {
-            Logger.ConsoleLog("System", "Testing System Logger.");
-        }
-
-        #endregion
+         */
     }
 }

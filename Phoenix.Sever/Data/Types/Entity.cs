@@ -34,7 +34,12 @@ namespace Phoenix.Server
         public int SpawnDelay { get; set; }
         public int VanishTime { get; set; }
         public string Script { get; set; }
+        public int InstanceID { get; set; }
 
+        public Entity()
+        {
+
+        }
         public Entity(int id, int type, string name, int image, string hisHer, string heShe, string bName, int level, int gold, int strength, int agility, int intellect, int stamina, int damage, double crit, double haste, double mastery, double versatility, int health, int mana, int taunt, int spawnTime, int spawnDelay, int vanishTime, string script)
         {
             this.Id = id;

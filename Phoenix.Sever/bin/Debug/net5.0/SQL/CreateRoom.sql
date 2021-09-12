@@ -68,7 +68,10 @@ CREATE TABLE Rooms (
     REFERENCES RoomTypes(ID), 
   CONSTRAINT FK_Status
     FOREIGN KEY (Status)
-    REFERENCES RoomStatuses(ID), 
+    REFERENCES RoomStatuses(ID),
+  CONSTRAINT FK_Tile
+    FOREIGN KEY (Tile)
+    REFERENCES RoomTiles(ID),  
   CONSTRAINT FK_KeyModeNorth
     FOREIGN KEY (KeyModeNorth)
     REFERENCES RoomKeyModes(ID), 

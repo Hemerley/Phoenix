@@ -15,17 +15,17 @@ namespace Phoenix.Server
 		/// <summary>
 		/// Connected clients that are NOT authenticated yet.
 		/// </summary>
-		private Dictionary<string, ConnectedClient> connectedClients = new Dictionary<string, ConnectedClient>();
+		private readonly Dictionary<string, ConnectedClient> connectedClients = new();
 
 		/// <summary>
 		/// Connected clients that ARE authenticated.
 		/// </summary>
-		private List<ConnectedAccount> connectedAccounts = new List<ConnectedAccount>();
+		private readonly List<ConnectedAccount> connectedAccounts = new();
 
 		/// <summary>
 		/// Boolean for Game Thread.
 		/// </summary>
-		private bool stopGameWorkerThread = false;
+		private readonly bool stopGameWorkerThread = false;
 
 		/// <summary>
 		/// Declaration of Game Thread that controls Game Logic.
@@ -35,23 +35,16 @@ namespace Phoenix.Server
 		/// <summary>
 		/// Declaration of Concurrent Queue that handles queue of commands.
 		/// </summary>
-		private ConcurrentQueue<ClientCommand> queuedCommand = new ConcurrentQueue<ClientCommand>();
+		private readonly ConcurrentQueue<ClientCommand> queuedCommand = new();
 
-		/// <summary>
-		/// Declare Game Objects.
-		/// </summary>
-		private List<Item> items = new List<Item>();
-		private List<Room> rooms = new List<Room>();
-		private List<Entity> entities = new List<Entity>();
+		// Templates
 
-		/// <summary>
-		/// Declare Database Object.
-		/// </summary>
-		private Database database;
+
+		// Game as Lives
+		private List<Room> rooms = new();
 
 		public void Start()
 		{
-			this.database = new Database();
 
 			//Setup your Game thread
 			this.gameWorkerThread = new Thread(new ThreadStart(GameWorkerThread));
@@ -128,7 +121,13 @@ namespace Phoenix.Server
 		private void GameWorkerThread()
 		{
 
-			this.database.InitializeDatabse();
+			Database.InitializeDatabse();
+			this.rooms = Database.LoadRooms("Live");
+
+			foreach(var room in this.rooms)
+            {
+				Logger.ConsoleLog("System", $"{room.Name}");
+            }
 
 			/*
 			 * Load Rooms

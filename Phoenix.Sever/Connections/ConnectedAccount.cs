@@ -8,7 +8,7 @@
 		/// </summary>
 		public ConnectedClient Client { get; set; }
 		
-		public Account account { get; set; }
+		public Account Account { get; set; }
 
     }
 }

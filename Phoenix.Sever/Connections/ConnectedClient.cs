@@ -10,9 +10,9 @@ namespace Phoenix.Server
 	{
 		public Action<ConnectedClient, bool> Disconnected;
 
-		private AsyncTcpClient tcpClient;
+		private readonly AsyncTcpClient tcpClient;
 
-		private Server server;
+		private readonly Server server;
 
 		public string Id { get; private set; }
 

@@ -3,6 +3,7 @@ CREATE TABLE Characters (
   AccountID integer,
   Name text,
   Image integer,
+  Type integer,
   Gender text,
   HisHer text,
   HeShe text,
@@ -24,7 +25,10 @@ CREATE TABLE Characters (
   /* Foreign keys */
   CONSTRAINT FK_AccountID
     FOREIGN KEY (AccountID)
-    REFERENCES Accounts(ID), 
+    REFERENCES Accounts(ID),
+  CONSTRAINT FK_Type
+    FOREIGN KEY (Type)
+    REFERENCES CharacterType(ID), 
   CONSTRAINT FK_RoomID
     FOREIGN KEY (RoomID)
     REFERENCES Rooms(ID)
