@@ -1,16 +1,17 @@
 ﻿using Phoenix.Common;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
 
 namespace Phoenix.Client
 {
-    public partial class frmLauncher : Form
+    public partial class FrmLauncher : Form
     {
         public bool authMode = false;
-        
-        public frmLauncher()
+
+        public FrmLauncher()
         {
             InitializeComponent();
 
@@ -18,6 +19,15 @@ namespace Phoenix.Client
             this.client.OnActivity += Client_OnActivity;
             this.client.IsConnected += Client_IsConnected;
             this.client.IsClosed += Client_IsClosed;
+            this.dgvCharacter.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCharacter.MultiSelect = false;
+
+            frmClient gameWindow = new(this);
+
+            foreach (string keys in iAvatar.Images.Keys)
+            {
+                cboImage.Items.Add(keys);
+            }
 
             // Setup UI Display
             pnlSide.Height = btnAccount.Height;
@@ -27,8 +37,8 @@ namespace Phoenix.Client
         }
 
         #region -- Network Controllers --
-        
-        private Client client;
+
+        private readonly Client client;
 
         #endregion
 
@@ -46,7 +56,7 @@ namespace Phoenix.Client
 
         #endregion
 
-        #region -- Client Controllers --
+        #region -- Client Events --
 
         /// <summary>
         /// Handles closed client connection.
@@ -58,12 +68,9 @@ namespace Phoenix.Client
             switch (remote)
             {
                 case true:
-                    MessageBox.Show("The connection was closed by the server. The client will now close.", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
+                    MessageBox.Show("The connection was closed by the server.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 default:
-                    MessageBox.Show("The connection was interrupted for unknown reasons. The client will now close.", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
                     return;
             }
         }
@@ -79,9 +86,11 @@ namespace Phoenix.Client
             {
                 this.pnlAuthenicate.Invoke((Action)delegate
                 {
-                    var authCommand = new AuthenticateCommand();
-                    authCommand.Username = txtAccountName.Text.Trim();
-                    authCommand.Password = txtPassword.Text.Trim();
+                    var authCommand = new AuthenticateCommand
+                    {
+                        Username = txtAccountName.Text,
+                        Password = Helper.RemoveBar(txtPassword.Text)
+                    };
                     SendCommand(authCommand);
                 });
             }
@@ -89,15 +98,17 @@ namespace Phoenix.Client
             {
                 this.pnlAccountCreate.Invoke((Action)delegate
                 {
-                    var command = new NewAccountCommand();
-                    command.CommandType = CommandType.NewAccount;
-                    command.Username = txtNAccount.Text;
-                    command.Email = txtEmail.Text;
-                    command.Password = txtNPassword.Text;
+                    var command = new NewAccountCommand
+                    {
+                        CommandType = CommandType.NewAccount,
+                        Username = txtNAccount.Text,
+                        Email = Helper.RemoveBar(txtEmail.Text),
+                        Password = Helper.RemoveBar(txtNPassword.Text)
+                    };
                     SendCommand(command);
                 });
             }
- 
+
         }
 
         /// <summary>
@@ -110,6 +121,8 @@ namespace Phoenix.Client
             var command = CommandFactory.ParseCommand(e);
             switch (command.CommandType)
             {
+                #region -- AuthResponse Command --
+
                 case CommandType.AuthenticateResponse:
                     var authResponseCmd = command as AuthenticateResponseCommand;
                     if (authResponseCmd.Success == 1)
@@ -126,7 +139,11 @@ namespace Phoenix.Client
                         {
                             pnlAuthenicate.Hide();
                             pnlAccountView.Show();
+
                         });
+                        var getCharacterListCmd = new GetCharacterListCommand();
+
+                        SendCommand(getCharacterListCmd);
                     }
                     else
                     {
@@ -136,12 +153,15 @@ namespace Phoenix.Client
                             btnCreate.Enabled = true;
                             btnAuthenticate.Enabled = true;
                         });
-                        MessageBox.Show("Account or Password incorrect!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Account or Password incorrect!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     return;
+                #endregion
+
+                #region -- NewAccountResponse Command --
 
                 case CommandType.NewAccountResponse:
-                   var accountResponseCmd = command as NewAccountResponseCommand;
+                    var accountResponseCmd = command as NewAccountResponseCommand;
                     if (accountResponseCmd.Success == 1)
                     {
                         this.Invoke((Action)delegate
@@ -159,25 +179,64 @@ namespace Phoenix.Client
                             btnCreate.Enabled = true;
                             btnNCreate.Enabled = true;
                         });
-                        MessageBox.Show("Accounts Already Exists!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Accounts Already Exists!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.client.Stop();
                     }
                     return;
+
+                #endregion
+
+                #region -- NewCharacterResponse --
+
                 case CommandType.NewChracterResponse:
                     var characterResponseCmd = command as NewCharacterResponseCommand;
-                    if(characterResponseCmd.Success == 1)
+                    if (characterResponseCmd.Success == 1)
                     {
                         this.Invoke((Action)delegate
                         {
                             // Update Character List
                             this.pnlCharacterCreation.Hide();
                             this.pnlAccountView.Show();
+                            this.dgvCharacter.Rows.Clear();
                         });
+                        var getCharacterListCmd = new GetCharacterListCommand();
+
+                        SendCommand(getCharacterListCmd);
                     }
                     else
                     {
-                        MessageBox.Show("Character Already Exists!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Character Already Exists!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.client.Stop();
                     }
                     return;
+
+                #endregion
+
+                #region -- CharacterListResponseCommand --
+
+                case CommandType.CharacterListResponse:
+                    var characterListResponseCmd = command as CharacterListResponseCommand;
+
+                    string[] s = characterListResponseCmd.characters.Split("~");
+
+
+
+                    foreach(string sCharacter in s)
+                    {
+                        string[] character = sCharacter.Split("`");
+                        this.Invoke((Action)delegate
+                        {
+                            int rowId = this.dgvCharacter.Rows.Add();
+                            DataGridViewRow row = this.dgvCharacter.Rows[rowId];
+                            row.Cells["dgvCharacterName"].Value = character[0];
+                            row.Cells["dgvCharacterCaste"].Value = Helper.ReturnCasteText(Int32.Parse(character[1]));
+                            row.Cells["dgvCharacterPhilosophy"].Value = Helper.ReturnPhilosophyText(Int32.Parse(character[2]));
+                        });
+                    }
+
+                    return;
+
+                #endregion
             }
         }
 
@@ -189,45 +248,47 @@ namespace Phoenix.Client
         public const int HT_CAPTION = 0x2;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-        
-        private void frmLauncher_MouseDown(object sender, MouseEventArgs e)
+        private static extern bool ReleaseCapture();
+
+        private void FrmLauncher_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        
+
         #endregion
 
         #region -- Button Controllers --
-       
-        private void btnAccount_Click(object sender, EventArgs e)
+
+        private void BtnNCreate_Click(object sender, EventArgs e)
         {
-            pnlSide.Height = btnAccount.Height;
-            pnlSide.Top = btnAccount.Top;
-            pnlSide.Left = btnAccount.Left;
-            btnAccount.BackColor = Color.FromArgb(57, 62, 70);
-            pnlAccountCreate.Visible = false;
-        }
-        
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            pnlSide.Height = btnCreate.Height;
-            pnlSide.Top = btnCreate.Top;
-            pnlSide.Left = btnCreate.Left;
-            btnCreate.BackColor = Color.FromArgb(57, 62, 70);
-            pnlAccountCreate.Visible = true;
-        }
-        
-        private void btnNCreate_Click(object sender, EventArgs e)
-        {
-            if(txtNPassword.Text == txtNVerifyPassword.Text)
+            if (txtNAccount.Text == "Account Name" || txtNAccount.Text.Contains(" ") || Helper.hasSpecialChar(txtNAccount.Text))
+            {
+                MessageBox.Show("Account Names cannot contain spaces or \\|!#$%&/()=?»«@£§€{}.-;'<>_,", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (txtEmail.Text == "E-mail Address" || !Helper.IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Please enter a valid e-mail address.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (!Helper.hasSpecialChar(txtNPassword.Text) || !Helper.hasSpecialChar(txtNVerifyPassword.Text) || txtNPassword.Text.Length <= 6 || txtNVerifyPassword.Text.Length <= 6 || !Helper.HasUpperLowerDigit(txtNVerifyPassword.Text) || !Helper.HasUpperLowerDigit(txtNPassword.Text) || txtNPassword.Text.Contains(" ") || txtNVerifyPassword.Text.Contains(" ")) 
+            {
+                MessageBox.Show("Passwords must be longer than 6 characters, cannot contain spaces, and must contain a number, upper character, lower character, and a special character '\\|!#$%&/()=?»«@£§€{}.-;'<>_,'", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (txtNVerifyPassword.Text != txtNVerifyPassword.Text)
+            {
+                MessageBox.Show("Passwords do not match!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
             {
                 btnNCreate.Enabled = false;
                 btnAccount.Enabled = false;
@@ -235,82 +296,133 @@ namespace Phoenix.Client
                 authMode = false;
                 this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
             }
+        }
+        
+        private void BtnAuthenticate_Click(object sender, EventArgs e)
+        {
+            if (txtAccountName.Text == "" || txtPassword.Text == "" || txtAccountName.Text == "Account Name" || txtPassword.Text == "Password" || Helper.hasSpecialChar(txtAccountName.Text))
+            {
+                MessageBox.Show("Please enter valid credentials and then attempt to authenticate.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             else
             {
-                MessageBox.Show("Passwords don't match!",Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnAuthenticate.Enabled = false;
+                authMode = true;
+                this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
             }
         }
-        
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
-        private void btnCharacterCreate_Click(object sender, EventArgs e)
-        {
-            pnlCharacterCreation.Show();
-            pnlAccountView.Hide();
-        }
-
-        private void btnCreate_Leave(object sender, EventArgs e)
-        {
-            btnCreate.BackColor = Color.FromArgb(34, 40, 49);
-        }
-        
-        private void btnAuthenticate_Click(object sender, EventArgs e)
-        {
-            btnAuthenticate.Enabled = false;
-            authMode = true;
-            this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
-        }
-
-        private void btnNCharacterCreate_Click(object sender, EventArgs e)
+        private void BtnNCharacterCreate_Click(object sender, EventArgs e)
         {
             if (txtCharacterName.Text == "" || txtCharacterName.Text == "Chracter Name")
             {
-                MessageBox.Show("Please choose a character name!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please choose a character name!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (cboGender.Text == "" || cboGender.Text == "Gender")
+            else if (Helper.hasSpecialChar(txtCharacterName.Text))
             {
-                MessageBox.Show("Please choose a gender!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Character names cannot contain special characters.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (cboPhilosophy.Text == "" || cboPhilosophy.Text == "Philosophy")
+            else if (cboGender.Text == "" || cboGender.Text == "Gender")
             {
-                MessageBox.Show("Please choose a philosophy!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please choose a gender!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            if (cboPhilosophy.Text == "War" || cboPhilosophy.Text == "Faith" || cboPhilosophy.Text == "Chaos" || cboPhilosophy.Text == "Subversion")
+            else if (cboPhilosophy.Text == "" || cboPhilosophy.Text == "Philosophy")
+            {
+                MessageBox.Show("Please choose a philosophy!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (!cboImage.Items.Contains(cboImage.Text))
+            {
+                MessageBox.Show("Chosen image does not exist. Please select an image!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (cboPhilosophy.Text == "War" || cboPhilosophy.Text == "Faith" || cboPhilosophy.Text == "Chaos" || cboPhilosophy.Text == "Subversion")
             {
                 if (cboGender.Text == "Male" || cboGender.Text == "Female")
                 {
                     btnNCharcterCreate.Enabled = false;
                     var createCharacterCommand = new NewCharacterCommand();
+                    if (cboPhilosophy.Text == "War")
+                    {
+                        createCharacterCommand.Philosophy = 0;
+                    }
+                    else if (cboPhilosophy.Text == "Faith")
+                    {
+                        createCharacterCommand.Philosophy = 1;
+                    }
+                    else if (cboPhilosophy.Text == "Chaos")
+                    {
+                        createCharacterCommand.Philosophy = 2;
+                    }
+                    else if (cboPhilosophy.Text == "Subversion")
+                    {
+                        createCharacterCommand.Philosophy = 3;
+                    }
                     createCharacterCommand.CharacterName = txtCharacterName.Text;
                     createCharacterCommand.Gender = cboGender.Text;
-                    createCharacterCommand.Philosophy = 0;
+                    createCharacterCommand.Image = cboImage.SelectedIndex;
                     SendCommand(createCharacterCommand);
                 }
             }
             else
             {
-                MessageBox.Show("Please check your entries. They must match availble entries in the drop down.", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please check your entries. They must match availble entries in the drop down.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
-        
-        private void btnAccount_Leave(object sender, EventArgs e)
-        {
-            btnAccount.BackColor = Color.FromArgb(34, 40, 49);
-        }
-        
+
         #endregion
 
         #region -- Form Design --
 
-        private void txtAccountName_Enter(object sender, EventArgs e)
+        private void CboImage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.pbCharacter.Image = iAvatar.Images[cboImage.SelectedIndex];
+        }
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void BtnAccount_Click(object sender, EventArgs e)
+        {
+            pnlSide.Height = btnAccount.Height;
+            pnlSide.Top = btnAccount.Top;
+            pnlSide.Left = btnAccount.Left;
+            btnAccount.BackColor = Color.FromArgb(57, 62, 70);
+            pnlAccountCreate.Visible = false;
+        }
+
+        private void BtnCreate_Click(object sender, EventArgs e)
+        {
+            pnlSide.Height = btnCreate.Height;
+            pnlSide.Top = btnCreate.Top;
+            pnlSide.Left = btnCreate.Left;
+            btnCreate.BackColor = Color.FromArgb(57, 62, 70);
+            pnlAccountCreate.Visible = true;
+        }
+
+        private void BtnCharacterCreate_Click(object sender, EventArgs e)
+        {
+            pnlCharacterCreation.Show();
+            pnlAccountView.Hide();
+        }
+
+        private void BtnCreate_Leave(object sender, EventArgs e)
+        {
+            btnCreate.BackColor = Color.FromArgb(34, 40, 49);
+        }
+
+        private void BtnAccount_Leave(object sender, EventArgs e)
+        {
+            btnAccount.BackColor = Color.FromArgb(34, 40, 49);
+        }
+
+        private void TxtAccountName_Enter(object sender, EventArgs e)
         {
            if (txtAccountName.Text == "Account Name")
             {
@@ -318,7 +430,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtPassword_Enter(object sender, EventArgs e)
+        private void TxtPassword_Enter(object sender, EventArgs e)
         {
             if (txtPassword.Text == "Password")
             {
@@ -327,7 +439,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtPassword_Leave(object sender, EventArgs e)
+        private void TxtPassword_Leave(object sender, EventArgs e)
         {
             if (txtPassword.Text.Trim() == "")
             {
@@ -336,7 +448,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtAccountName_Leave(object sender, EventArgs e)
+        private void TxtAccountName_Leave(object sender, EventArgs e)
         {
             if (txtAccountName.Text.Trim() == "")
             {
@@ -344,7 +456,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtNAccount_Enter(object sender, EventArgs e)
+        private void TxtNAccount_Enter(object sender, EventArgs e)
         {
             if (txtNAccount.Text == "Account Name")
             {
@@ -352,7 +464,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtEmail_Enter(object sender, EventArgs e)
+        private void TxtEmail_Enter(object sender, EventArgs e)
         {
             if (txtEmail.Text == "E-mail Address")
             {
@@ -360,7 +472,7 @@ namespace Phoenix.Client
             }
         }
 
-        private void txtNPassword_Enter(object sender, EventArgs e)
+        private void TxtNPassword_Enter(object sender, EventArgs e)
         {
             if (txtNPassword.Text == "Password")
             {
@@ -369,7 +481,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtNVerifyPassword_Enter(object sender, EventArgs e)
+        private void TxtNVerifyPassword_Enter(object sender, EventArgs e)
         {
             if (txtNVerifyPassword.Text == "Verify Password")
             {
@@ -378,7 +490,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtNAccount_Leave(object sender, EventArgs e)
+        private void TxtNAccount_Leave(object sender, EventArgs e)
         {
             if (txtNAccount.Text.Trim() == "")
             {
@@ -386,7 +498,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtEmail_Leave(object sender, EventArgs e)
+        private void TxtEmail_Leave(object sender, EventArgs e)
         {
             if (txtEmail.Text.Trim() == "")
             {
@@ -394,7 +506,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtNPassword_Leave(object sender, EventArgs e)
+        private void TxtNPassword_Leave(object sender, EventArgs e)
         {
             if (txtNPassword.Text.Trim() == "")
             {
@@ -403,7 +515,7 @@ namespace Phoenix.Client
             }
         }
         
-        private void txtNVerifyPassword_Leave(object sender, EventArgs e)
+        private void TxtNVerifyPassword_Leave(object sender, EventArgs e)
         {
             if (txtNVerifyPassword.Text.Trim() == "")
             {
@@ -412,7 +524,14 @@ namespace Phoenix.Client
             }
         }
 
+
+
+
         #endregion
 
+        private void BtnCharacterConnect_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Phoenix.Client
 {
     public partial class frmClient : Form
     {
-        public frmClient()
+        public frmClient(Form formCalling)
         {
             InitializeComponent();
             InitializeControl();
@@ -62,7 +62,7 @@ namespace Phoenix.Client
 
         private void InitializeControl()
         {
-            this.Text = Constants.GAME_NAME + " V" + Constants.GAME_VERSION; 
+            this.Text = Constants.GAME_NAME_DISPLAY; 
 
             pnlCharacter.ForeColor = Color.FromArgb(238, 238, 238);
             pnlCharacter.Font = new Font("Nirmala UI", 9, FontStyle.Bold);
