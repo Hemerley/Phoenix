@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Phoenix.Common
 {
-    class NewAccountCommand : Command
+    public class NewAccountCommand : Command
     {
         #region -- Properties --
 
@@ -21,6 +21,16 @@ namespace Phoenix.Common
         public NewAccountCommand()
         {
             this.CommandType = CommandType.NewAccount;
+        }
+
+        public override IEnumerable<string> GetCommandParts()
+        {
+            return new List<string>
+            {
+                this.Username,
+                this.Password,
+                this.Email
+            };
         }
     }
 }

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Phoenix.Server
+﻿namespace Phoenix.Server
 {
     public class Entity
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public int Type { get; set; }
-        public int Rank { get; set; }
+        public int Rarity { get; set; }
         public string Name { get; set; }
         public int Image { get; set; }
         public string HisHer { get; set; }
@@ -40,15 +34,16 @@ namespace Phoenix.Server
         {
 
         }
-        public Entity(int id, int type, string name, int image, string hisHer, string heShe, string bName, int level, int gold, int strength, int agility, int intellect, int stamina, int damage, double crit, double haste, double mastery, double versatility, int health, int mana, int taunt, int spawnTime, int spawnDelay, int vanishTime, string script)
+
+        public Entity(int id, int type, string name, int image, string hisHer, string heShe, string bName, int level, int gold, int strength, int agility, int intellect, int stamina, int damage, double crit, double haste, double mastery, double versatility, int health, int mana, int taunt, int spawnTime, int spawnDelay, int vanishTime, string script, int instanceid)
         {
-            this.Id = id;
+            this.ID = id;
             this.Type = type;
             this.Name = name;
             this.Image = image;
             this.HisHer = hisHer;
-            this.HeShe = HeShe;
-            this.BName = BName;
+            this.HeShe = heShe;
+            this.BName = bName;
             this.Level = level;
             this.Gold = gold;
             this.Strength = strength;
@@ -67,6 +62,7 @@ namespace Phoenix.Server
             this.SpawnDelay = spawnDelay;
             this.VanishTime = vanishTime;
             this.Script = script;
+            this.InstanceID = instanceid;
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Phoenix.Server
+﻿namespace Phoenix.Server
 {
     public class EntityItem
     {
@@ -13,6 +7,12 @@ namespace Phoenix.Server
         public int ItemId { get; set; }
         public double DropChance { get; set; }
         public int ItemAmount { get; set; }
+
+        public EntityItem()
+        {
+
+        }
+
         public EntityItem(int id, int entityid, int itemid, double dropchance, int itemamount)
         {
             this.Id = id;

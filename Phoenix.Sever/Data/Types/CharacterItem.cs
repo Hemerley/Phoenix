@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Phoenix.Server
+﻿namespace Phoenix.Server
 {
     public class CharacterItem
     {
@@ -14,6 +8,11 @@ namespace Phoenix.Server
         public int ItemAmount { get; set; }
         public int SlotIndex { get; set; }
         public int IsEquipped { get; set; }
+
+        public CharacterItem()
+        {
+
+        }
 
         public CharacterItem(int id, int characterid, int itemid, int itemamount, int slotindex, int isequipped)
         {

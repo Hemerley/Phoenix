@@ -39,12 +39,12 @@ namespace Phoenix.Common
 					if (commandParts.Length < 2)
 						return new UnknownCommand();
 
-					if (!int.TryParse(commandParts[1], out int success))
+					if (!int.TryParse(commandParts[1], out int authSuccess))
 						return new UnknownCommand();
 
 					return new AuthenticateResponseCommand
 					{
-						Success = success
+						Success = authSuccess
 					};
 				case CommandType.MessageRoom:
 					//get the message
@@ -55,7 +55,48 @@ namespace Phoenix.Common
 					{
 						Message = commandParts[1]
 					};
+				case CommandType.NewAccount:
+					if (commandParts.Length < 4)
+						return new UnknownCommand();
 
+					return new NewAccountCommand
+					{
+						Username = commandParts[1],
+						Email = commandParts[3],
+						Password = commandParts[2]
+					};
+				case CommandType.NewAccountResponse:
+					if (commandParts.Length < 2)
+						return new UnknownCommand();
+
+					if (!int.TryParse(commandParts[1], out int accountSuccess))
+						return new UnknownCommand();
+
+					return new NewAccountResponseCommand
+					{
+						Success = accountSuccess
+					};
+				case CommandType.NewCharacter:
+					if (commandParts.Length < 4)
+						return new UnknownCommand();
+
+					return new NewCharacterCommand
+					{
+						CharacterName = commandParts[1],
+						Philosophy = Int32.Parse(commandParts[3]),
+						Gender = commandParts[2]
+					};
+				case CommandType.NewChracterResponse:
+					if (commandParts.Length < 2)
+						return new UnknownCommand();
+
+					if (!int.TryParse(commandParts[1], out int characterSuccess))
+						return new UnknownCommand();
+
+					return new NewCharacterResponseCommand
+					{
+						Success = characterSuccess
+					};
 				default:
 					return new UnknownCommand();
 			}

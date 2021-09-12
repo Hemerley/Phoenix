@@ -37,10 +37,6 @@ namespace Phoenix.Server
 		/// </summary>
 		private readonly ConcurrentQueue<ClientCommand> queuedCommand = new();
 
-		// Templates
-
-
-		// Game as Lives
 		private List<Room> rooms = new();
 
 		public void Start()
@@ -122,19 +118,13 @@ namespace Phoenix.Server
 		{
 
 			Database.InitializeDatabse();
-			this.rooms = Database.LoadRooms("Live");
+			Logger.ConsoleLog("System", "Loading Rooms.");
+			this.rooms = Database.LoadRooms(Constants.GAME_MODE);
 
-			foreach(var room in this.rooms)
-            {
+			foreach (var room in this.rooms)
+			{
 				Logger.ConsoleLog("System", $"{room.Name}");
-            }
-
-			/*
-			 * Load Rooms
-			 * Rooms Request Entity Creation
-			 * Rooms 
-			 * 
-			 */
+			}
 
 			this.server = new Server();
 
@@ -144,7 +134,7 @@ namespace Phoenix.Server
 			this.server.OnServerStarted += Server_OnServerStarted;
 			this.server.OnServerStopped += Server_OnServerStopped;
 
-			this.server.Start(IPAddress.IPv6Any, 4444);
+			this.server.Start(IPAddress.IPv6Any, Constants.LIVE_PORT);
 
 			while (!this.stopGameWorkerThread)
 			{
@@ -157,20 +147,24 @@ namespace Phoenix.Server
 				var clientId = cmd.Id;
 				var command = cmd.Command;
 				var clientWhoSendCommand = GetClientById(clientId);
+				var accountConnected = GetConnectedAccount(clientId);
 
 				switch (command.CommandType)
 				{
 					case CommandType.Authenticate:
-						// Log Command
 						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 
 						var authCommand = command as AuthenticateCommand;
-						//authCommand.Username
+						var authenticated = false;
+						int id = -1;
+						int gold = -1;
+						if (Database.GetAccountField(Constants.GAME_MODE, "Password", "Name", authCommand.Username) == authCommand.Password)
+                        {
+							authenticated = true;
+							id = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "ID", "Name", authCommand.Username));
+							gold = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "Gold", "Name", authCommand.Username));
+						} 
 
-						//Do authenticate logic....
-						var authenticated = true;
-
-						//tell them if they connected 
 						var authResponseCmd = new AuthenticateResponseCommand
 						{
 							Success = authenticated ? 1 : 0
@@ -182,25 +176,61 @@ namespace Phoenix.Server
 						{
 							var connectedAccount = new ConnectedAccount
 							{
-								Client = clientWhoSendCommand
+								Client = clientWhoSendCommand,
+								Account = new Account
+								{
+									Id = id,
+									Gold = gold
+								}
 							};
-							//connectAccount.Account = this.database.LoadAcccount(authCommand.Username);
 							this.connectedAccounts.Add(connectedAccount);
 							this.connectedClients.Remove(clientId);
 						}
 
 						break;
 					case CommandType.NewAccount:
-						//TODO: Create New Account.
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+						var newAccountCommand = command as NewAccountCommand;
+
+						var newAccountResponseCmd = new NewAccountResponseCommand();
+
+						if (Database.GetAccountField(Constants.GAME_MODE, "Name", "Name", newAccountCommand.Username) == null)
+                        {
+							Database.InsertNewAccount(Constants.GAME_MODE, newAccountCommand.Username, newAccountCommand.Password, newAccountCommand.Email);
+							Logger.ConsoleLog("System", $"{clientId} has created a new account named: {newAccountCommand.Username}.");
+							newAccountResponseCmd.Success = 1;
+                        }
+                        else
+                        {
+							Logger.ConsoleLog("System", $"{clientId} has failed to create a new account named: {newAccountCommand.Username}. Reason: Account Exists.");
+							newAccountResponseCmd.Success = 0;
+                        }
+						SendCommandToClient(clientWhoSendCommand, newAccountResponseCmd);
+						break;
+					case CommandType.NewCharacter:
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+						var newCharacterCommand = command as NewCharacterCommand;
+
+						var newCharacterResponseCmd = new NewCharacterResponseCommand();
+
+						if (Database.GetCharacterField(Constants.GAME_MODE, "Name", "Name", newCharacterCommand.CharacterName) == null)
+                        {
+							Database.InsertNewCharacter(Constants.GAME_MODE, newCharacterCommand.CharacterName, newCharacterCommand.Gender, newCharacterCommand.Philosophy, accountConnected.Account.Id);
+							Logger.ConsoleLog("System", $"{clientId} has created a new character named: {newCharacterCommand.CharacterName}");
+							newCharacterResponseCmd.Success = 1;
+						}
+                        else
+                        {
+							Logger.ConsoleLog("System", $"{clientId} has failed to create new character named: {newCharacterCommand.CharacterName}. Reason: Character Exists.");
+							newCharacterResponseCmd.Success = 1;
+						}
+						SendCommandToClient(clientWhoSendCommand, newCharacterResponseCmd);
 						break;
 					case CommandType.MessageRoom:
-						//TODO: Send the message to everyone in the same room as e.ConnectedClient.Id
-						// Log Command
 						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 						break;
 					case CommandType.Unknown:
 					default:
-						// Log Command
 						Logger.ConsoleLog("Command", $"Unknown command from {clientId}.");
 						break;
 				}
@@ -222,5 +252,11 @@ namespace Phoenix.Server
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == id);
 			return connectedAccount.Client;
 		}
+
+		private ConnectedAccount GetConnectedAccount(string id)
+        {
+			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == id);
+			return connectedAccount;
+        }
 	}
 }

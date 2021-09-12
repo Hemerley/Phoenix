@@ -1,16 +1,16 @@
 ﻿namespace Phoenix.Server
 {
-    public class RoomType
+    public class CharacterType
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public RoomType()
+        public CharacterType()
         {
 
         }
 
-        public RoomType(int id, string name)
+        public CharacterType(int id, string name)
         {
             this.Id = id;
             this.Name = name;

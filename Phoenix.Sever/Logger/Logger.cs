@@ -8,6 +8,13 @@ namespace Phoenix.Server
         {
             switch (type)
             {
+                case "Debug":
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine($"[{DateTime.Now}][{type}]: {msg}");
+                    Console.ResetColor();
+                    return;
+
                 case "System":
 
                     Console.ForegroundColor = ConsoleColor.Green;

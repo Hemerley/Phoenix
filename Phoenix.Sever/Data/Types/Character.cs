@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Phoenix.Server
+﻿namespace Phoenix.Server
 {
     public class Character
     {
@@ -36,6 +30,11 @@ namespace Phoenix.Server
         public int Health { get; set; }
         public int Mana { get; set; }
         public int RoomID { get; set; }
+
+        public Character()
+        {
+
+        }
 
         public Character(int id, int accountId, string name, int type, int image, string gender, string hisHer, string heshe, int experience, string title, int caste, int rank, int philosophy, int alignment, int creation, int strength, int agility, int intellect, int stamina, int damage, int health, int mana, int roomID)
         {

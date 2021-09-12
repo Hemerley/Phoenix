@@ -8,8 +8,9 @@
 		Authenticate = 1,
 		AuthenticateResponse = 2,
 		NewAccount = 3,
-		NewCharacter = 4,
-		Connected = 5,
+		NewAccountResponse = 4,
+		NewCharacter = 5,
+		NewChracterResponse = 6,
 
 		#endregion
 

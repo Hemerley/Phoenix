@@ -77,14 +77,25 @@ namespace Phoenix.Client
         {
             if (authMode)
             {
-                var authCommand = new AuthenticateCommand();
-                authCommand.Username = txtAccountName.Text.Trim();
-                authCommand.Password = txtPassword.Text.Trim();
-                SendCommand(authCommand);
+                this.pnlAuthenicate.Invoke((Action)delegate
+                {
+                    var authCommand = new AuthenticateCommand();
+                    authCommand.Username = txtAccountName.Text.Trim();
+                    authCommand.Password = txtPassword.Text.Trim();
+                    SendCommand(authCommand);
+                });
             }
             else
             {
-                //TODO: Account Create
+                this.pnlAccountCreate.Invoke((Action)delegate
+                {
+                    var command = new NewAccountCommand();
+                    command.CommandType = CommandType.NewAccount;
+                    command.Username = txtNAccount.Text;
+                    command.Email = txtEmail.Text;
+                    command.Password = txtNPassword.Text;
+                    SendCommand(command);
+                });
             }
  
         }
@@ -100,16 +111,72 @@ namespace Phoenix.Client
             switch (command.CommandType)
             {
                 case CommandType.AuthenticateResponse:
-                    this.pnlAuthenicate.Invoke((Action)delegate
+                    var authResponseCmd = command as AuthenticateResponseCommand;
+                    if (authResponseCmd.Success == 1)
                     {
-                        btnAccount.Enabled = false;
-                        btnCreate.Enabled = false;
-                        lblAccount.Text = this.txtAccountName.Text;
-                        this.txtAccountName.Text = "";
-                        this.txtPassword.Text = "";
-                        pnlAuthenicate.Hide();
-                        pnlAccountView.Show();
-                    });
+                        this.pnlAuthenicate.Invoke((Action)delegate
+                        {
+                            btnAccount.Enabled = false;
+                            btnCreate.Enabled = false;
+                            lblAccount.Text = this.txtAccountName.Text;
+                            this.txtAccountName.Text = "";
+                            this.txtPassword.Text = "";
+                        });
+                        this.Invoke((Action)delegate
+                        {
+                            pnlAuthenicate.Hide();
+                            pnlAccountView.Show();
+                        });
+                    }
+                    else
+                    {
+                        this.pnlAuthenicate.Invoke((Action)delegate
+                        {
+                            btnAccount.Enabled = true;
+                            btnCreate.Enabled = true;
+                            btnAuthenticate.Enabled = true;
+                        });
+                        MessageBox.Show("Account or Password incorrect!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    return;
+
+                case CommandType.NewAccountResponse:
+                   var accountResponseCmd = command as NewAccountResponseCommand;
+                    if (accountResponseCmd.Success == 1)
+                    {
+                        this.Invoke((Action)delegate
+                        {
+                            pnlAccountCreate.Hide();
+                            pnlAccountView.Show();
+                            this.lblAccount.Text = this.txtNAccount.Text;
+                        });
+                    }
+                    else
+                    {
+                        this.pnlAuthenicate.Invoke((Action)delegate
+                        {
+                            btnAccount.Enabled = true;
+                            btnCreate.Enabled = true;
+                            btnNCreate.Enabled = true;
+                        });
+                        MessageBox.Show("Accounts Already Exists!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    return;
+                case CommandType.NewChracterResponse:
+                    var characterResponseCmd = command as NewCharacterResponseCommand;
+                    if(characterResponseCmd.Success == 1)
+                    {
+                        this.Invoke((Action)delegate
+                        {
+                            // Update Character List
+                            this.pnlCharacterCreation.Hide();
+                            this.pnlAccountView.Show();
+                        });
+                    }
+                    else
+                    {
+                        MessageBox.Show("Character Already Exists!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     return;
             }
         }
@@ -160,11 +227,18 @@ namespace Phoenix.Client
         
         private void btnNCreate_Click(object sender, EventArgs e)
         {
-            btnNCreate.Enabled = false;
-            btnAccount.Enabled = false;
-            btnCreate.Enabled = false;
-            authMode = false;
-            this.client.Start(IPAddress.Loopback, 4444);
+            if(txtNPassword.Text == txtNVerifyPassword.Text)
+            {
+                btnNCreate.Enabled = false;
+                btnAccount.Enabled = false;
+                btnCreate.Enabled = false;
+                authMode = false;
+                this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
+            }
+            else
+            {
+                MessageBox.Show("Passwords don't match!",Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         
         private void btnExit_Click(object sender, EventArgs e)
@@ -187,12 +261,44 @@ namespace Phoenix.Client
         {
             btnAuthenticate.Enabled = false;
             authMode = true;
-            this.client.Start(IPAddress.Loopback, 4444);
+            this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
         }
-        
-        private void btnCharcterCreate_Click(object sender, EventArgs e)
+
+        private void btnNCharacterCreate_Click(object sender, EventArgs e)
         {
-            btnNCharcterCreate.Enabled = false;
+            if (txtCharacterName.Text == "" || txtCharacterName.Text == "Chracter Name")
+            {
+                MessageBox.Show("Please choose a character name!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cboGender.Text == "" || cboGender.Text == "Gender")
+            {
+                MessageBox.Show("Please choose a gender!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cboPhilosophy.Text == "" || cboPhilosophy.Text == "Philosophy")
+            {
+                MessageBox.Show("Please choose a philosophy!", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cboPhilosophy.Text == "War" || cboPhilosophy.Text == "Faith" || cboPhilosophy.Text == "Chaos" || cboPhilosophy.Text == "Subversion")
+            {
+                if (cboGender.Text == "Male" || cboGender.Text == "Female")
+                {
+                    btnNCharcterCreate.Enabled = false;
+                    var createCharacterCommand = new NewCharacterCommand();
+                    createCharacterCommand.CharacterName = txtCharacterName.Text;
+                    createCharacterCommand.Gender = cboGender.Text;
+                    createCharacterCommand.Philosophy = 0;
+                    SendCommand(createCharacterCommand);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please check your entries. They must match availble entries in the drop down.", Constants.GAME_NAME + " V" + Constants.GAME_VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
         
         private void btnAccount_Leave(object sender, EventArgs e)
@@ -253,7 +359,7 @@ namespace Phoenix.Client
                 txtEmail.Text = "";
             }
         }
-        
+
         private void txtNPassword_Enter(object sender, EventArgs e)
         {
             if (txtNPassword.Text == "Password")

@@ -48,14 +48,6 @@ namespace Phoenix.Client
             this.txtAccountName = new System.Windows.Forms.TextBox();
             this.ptbDiscord = new System.Windows.Forms.PictureBox();
             this.ptbPhoenix1 = new System.Windows.Forms.PictureBox();
-            this.pnlAccountCreate = new System.Windows.Forms.Panel();
-            this.txtNVerifyPassword = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblHeader2 = new System.Windows.Forms.Label();
-            this.btnNCreate = new System.Windows.Forms.Button();
-            this.txtNPassword = new System.Windows.Forms.TextBox();
-            this.txtNAccount = new System.Windows.Forms.TextBox();
-            this.ptbPhoenix2 = new System.Windows.Forms.PictureBox();
             this.pnlAccountView = new System.Windows.Forms.Panel();
             this.dgvCharacter = new System.Windows.Forms.DataGridView();
             this.dgvCharacterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +59,14 @@ namespace Phoenix.Client
             this.lblHeader3 = new System.Windows.Forms.Label();
             this.btnCharacterConnect = new System.Windows.Forms.Button();
             this.ptbPhoenix3 = new System.Windows.Forms.PictureBox();
+            this.pnlAccountCreate = new System.Windows.Forms.Panel();
+            this.txtNVerifyPassword = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblHeader2 = new System.Windows.Forms.Label();
+            this.btnNCreate = new System.Windows.Forms.Button();
+            this.txtNPassword = new System.Windows.Forms.TextBox();
+            this.txtNAccount = new System.Windows.Forms.TextBox();
+            this.ptbPhoenix2 = new System.Windows.Forms.PictureBox();
             this.pnlCharacterCreation = new System.Windows.Forms.Panel();
             this.txtClassInformation = new System.Windows.Forms.TextBox();
             this.cboPhilosophy = new System.Windows.Forms.ComboBox();
@@ -81,11 +81,11 @@ namespace Phoenix.Client
             this.pnlAuthenicate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbDiscord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix1)).BeginInit();
-            this.pnlAccountCreate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix2)).BeginInit();
             this.pnlAccountView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix3)).BeginInit();
+            this.pnlAccountCreate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix2)).BeginInit();
             this.pnlCharacterCreation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix4)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +101,7 @@ namespace Phoenix.Client
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSide.Location = new System.Drawing.Point(0, 0);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(200, 570);
+            this.pnlSide.Size = new System.Drawing.Size(200, 573);
             this.pnlSide.TabIndex = 0;
             // 
             // btnStore
@@ -127,7 +127,7 @@ namespace Phoenix.Client
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnExit.Location = new System.Drawing.Point(0, 529);
+            this.btnExit.Location = new System.Drawing.Point(0, 532);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(200, 41);
             this.btnExit.TabIndex = 3;
@@ -237,7 +237,7 @@ namespace Phoenix.Client
             this.btnAuthenticate.Location = new System.Drawing.Point(254, 289);
             this.btnAuthenticate.Name = "btnAuthenticate";
             this.btnAuthenticate.Size = new System.Drawing.Size(237, 35);
-            this.btnAuthenticate.TabIndex = 35;
+            this.btnAuthenticate.TabIndex = 2;
             this.btnAuthenticate.Text = "Authenticate";
             this.btnAuthenticate.UseVisualStyleBackColor = false;
             this.btnAuthenticate.Click += new System.EventHandler(this.btnAuthenticate_Click);
@@ -250,7 +250,7 @@ namespace Phoenix.Client
             this.txtPassword.Location = new System.Drawing.Point(254, 254);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(237, 29);
-            this.txtPassword.TabIndex = 34;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "Password";
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
@@ -263,7 +263,7 @@ namespace Phoenix.Client
             this.txtAccountName.Location = new System.Drawing.Point(254, 210);
             this.txtAccountName.Name = "txtAccountName";
             this.txtAccountName.Size = new System.Drawing.Size(237, 29);
-            this.txtAccountName.TabIndex = 33;
+            this.txtAccountName.TabIndex = 0;
             this.txtAccountName.Text = "Account Name";
             this.txtAccountName.Enter += new System.EventHandler(this.txtAccountName_Enter);
             this.txtAccountName.Leave += new System.EventHandler(this.txtAccountName_Leave);
@@ -288,112 +288,6 @@ namespace Phoenix.Client
             this.ptbPhoenix1.TabIndex = 30;
             this.ptbPhoenix1.TabStop = false;
             // 
-            // pnlAccountCreate
-            // 
-            this.pnlAccountCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
-            this.pnlAccountCreate.Controls.Add(this.txtNVerifyPassword);
-            this.pnlAccountCreate.Controls.Add(this.txtEmail);
-            this.pnlAccountCreate.Controls.Add(this.lblHeader2);
-            this.pnlAccountCreate.Controls.Add(this.btnNCreate);
-            this.pnlAccountCreate.Controls.Add(this.txtNPassword);
-            this.pnlAccountCreate.Controls.Add(this.txtNAccount);
-            this.pnlAccountCreate.Controls.Add(this.ptbPhoenix2);
-            this.pnlAccountCreate.Location = new System.Drawing.Point(222, 22);
-            this.pnlAccountCreate.Name = "pnlAccountCreate";
-            this.pnlAccountCreate.Size = new System.Drawing.Size(727, 529);
-            this.pnlAccountCreate.TabIndex = 38;
-            this.pnlAccountCreate.Visible = false;
-            // 
-            // txtNVerifyPassword
-            // 
-            this.txtNVerifyPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtNVerifyPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNVerifyPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.txtNVerifyPassword.Location = new System.Drawing.Point(254, 315);
-            this.txtNVerifyPassword.Name = "txtNVerifyPassword";
-            this.txtNVerifyPassword.Size = new System.Drawing.Size(237, 29);
-            this.txtNVerifyPassword.TabIndex = 37;
-            this.txtNVerifyPassword.Text = "Verify Password";
-            this.txtNVerifyPassword.Enter += new System.EventHandler(this.txtNVerifyPassword_Enter);
-            this.txtNVerifyPassword.Leave += new System.EventHandler(this.txtNVerifyPassword_Leave);
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtEmail.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.txtEmail.Location = new System.Drawing.Point(254, 245);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(237, 29);
-            this.txtEmail.TabIndex = 36;
-            this.txtEmail.Text = "E-mail Address";
-            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
-            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
-            // 
-            // lblHeader2
-            // 
-            this.lblHeader2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.lblHeader2.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblHeader2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lblHeader2.Location = new System.Drawing.Point(0, 0);
-            this.lblHeader2.Name = "lblHeader2";
-            this.lblHeader2.Size = new System.Drawing.Size(727, 34);
-            this.lblHeader2.TabIndex = 31;
-            this.lblHeader2.Text = "Project: Phoenix";
-            this.lblHeader2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnNCreate
-            // 
-            this.btnNCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.btnNCreate.FlatAppearance.BorderSize = 0;
-            this.btnNCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.btnNCreate.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnNCreate.Location = new System.Drawing.Point(254, 350);
-            this.btnNCreate.Name = "btnNCreate";
-            this.btnNCreate.Size = new System.Drawing.Size(237, 35);
-            this.btnNCreate.TabIndex = 35;
-            this.btnNCreate.Text = "Create Account";
-            this.btnNCreate.UseVisualStyleBackColor = false;
-            this.btnNCreate.Click += new System.EventHandler(this.btnNCreate_Click);
-            // 
-            // txtNPassword
-            // 
-            this.txtNPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtNPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.txtNPassword.Location = new System.Drawing.Point(254, 280);
-            this.txtNPassword.Name = "txtNPassword";
-            this.txtNPassword.Size = new System.Drawing.Size(237, 29);
-            this.txtNPassword.TabIndex = 34;
-            this.txtNPassword.Text = "Password";
-            this.txtNPassword.Enter += new System.EventHandler(this.txtNPassword_Enter);
-            this.txtNPassword.Leave += new System.EventHandler(this.txtNPassword_Leave);
-            // 
-            // txtNAccount
-            // 
-            this.txtNAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.txtNAccount.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.txtNAccount.Location = new System.Drawing.Point(254, 210);
-            this.txtNAccount.Name = "txtNAccount";
-            this.txtNAccount.Size = new System.Drawing.Size(237, 29);
-            this.txtNAccount.TabIndex = 33;
-            this.txtNAccount.Text = "Account Name";
-            this.txtNAccount.Enter += new System.EventHandler(this.txtNAccount_Enter);
-            this.txtNAccount.Leave += new System.EventHandler(this.txtNAccount_Leave);
-            // 
-            // ptbPhoenix2
-            // 
-            this.ptbPhoenix2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.ptbPhoenix2.Location = new System.Drawing.Point(0, 37);
-            this.ptbPhoenix2.Name = "ptbPhoenix2";
-            this.ptbPhoenix2.Size = new System.Drawing.Size(724, 489);
-            this.ptbPhoenix2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptbPhoenix2.TabIndex = 30;
-            this.ptbPhoenix2.TabStop = false;
-            // 
             // pnlAccountView
             // 
             this.pnlAccountView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
@@ -407,7 +301,7 @@ namespace Phoenix.Client
             this.pnlAccountView.Location = new System.Drawing.Point(222, 22);
             this.pnlAccountView.Name = "pnlAccountView";
             this.pnlAccountView.Size = new System.Drawing.Size(727, 529);
-            this.pnlAccountView.TabIndex = 40;
+            this.pnlAccountView.TabIndex = 41;
             this.pnlAccountView.Visible = false;
             // 
             // dgvCharacter
@@ -471,7 +365,7 @@ namespace Phoenix.Client
             this.btnDeleteCharacter.Location = new System.Drawing.Point(3, 160);
             this.btnDeleteCharacter.Name = "btnDeleteCharacter";
             this.btnDeleteCharacter.Size = new System.Drawing.Size(111, 35);
-            this.btnDeleteCharacter.TabIndex = 38;
+            this.btnDeleteCharacter.TabIndex = 11;
             this.btnDeleteCharacter.Text = "Delete";
             this.btnDeleteCharacter.UseVisualStyleBackColor = false;
             // 
@@ -486,7 +380,7 @@ namespace Phoenix.Client
             this.btnTransferCharacter.Location = new System.Drawing.Point(3, 119);
             this.btnTransferCharacter.Name = "btnTransferCharacter";
             this.btnTransferCharacter.Size = new System.Drawing.Size(111, 35);
-            this.btnTransferCharacter.TabIndex = 37;
+            this.btnTransferCharacter.TabIndex = 10;
             this.btnTransferCharacter.Text = "Transfer";
             this.btnTransferCharacter.UseVisualStyleBackColor = false;
             // 
@@ -501,7 +395,7 @@ namespace Phoenix.Client
             this.btnCharacterCreate.Location = new System.Drawing.Point(3, 78);
             this.btnCharacterCreate.Name = "btnCharacterCreate";
             this.btnCharacterCreate.Size = new System.Drawing.Size(111, 35);
-            this.btnCharacterCreate.TabIndex = 36;
+            this.btnCharacterCreate.TabIndex = 9;
             this.btnCharacterCreate.Text = "Create";
             this.btnCharacterCreate.UseVisualStyleBackColor = false;
             this.btnCharacterCreate.Click += new System.EventHandler(this.btnCharacterCreate_Click);
@@ -529,7 +423,7 @@ namespace Phoenix.Client
             this.btnCharacterConnect.Location = new System.Drawing.Point(3, 37);
             this.btnCharacterConnect.Name = "btnCharacterConnect";
             this.btnCharacterConnect.Size = new System.Drawing.Size(111, 35);
-            this.btnCharacterConnect.TabIndex = 35;
+            this.btnCharacterConnect.TabIndex = 8;
             this.btnCharacterConnect.Text = "Connect";
             this.btnCharacterConnect.UseVisualStyleBackColor = false;
             // 
@@ -542,6 +436,112 @@ namespace Phoenix.Client
             this.ptbPhoenix3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix3.TabIndex = 30;
             this.ptbPhoenix3.TabStop = false;
+            // 
+            // pnlAccountCreate
+            // 
+            this.pnlAccountCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
+            this.pnlAccountCreate.Controls.Add(this.txtNVerifyPassword);
+            this.pnlAccountCreate.Controls.Add(this.txtEmail);
+            this.pnlAccountCreate.Controls.Add(this.lblHeader2);
+            this.pnlAccountCreate.Controls.Add(this.btnNCreate);
+            this.pnlAccountCreate.Controls.Add(this.txtNPassword);
+            this.pnlAccountCreate.Controls.Add(this.txtNAccount);
+            this.pnlAccountCreate.Controls.Add(this.ptbPhoenix2);
+            this.pnlAccountCreate.Location = new System.Drawing.Point(222, 22);
+            this.pnlAccountCreate.Name = "pnlAccountCreate";
+            this.pnlAccountCreate.Size = new System.Drawing.Size(727, 529);
+            this.pnlAccountCreate.TabIndex = 40;
+            this.pnlAccountCreate.Visible = false;
+            // 
+            // txtNVerifyPassword
+            // 
+            this.txtNVerifyPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.txtNVerifyPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNVerifyPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.txtNVerifyPassword.Location = new System.Drawing.Point(254, 315);
+            this.txtNVerifyPassword.Name = "txtNVerifyPassword";
+            this.txtNVerifyPassword.Size = new System.Drawing.Size(237, 29);
+            this.txtNVerifyPassword.TabIndex = 6;
+            this.txtNVerifyPassword.Text = "Verify Password";
+            this.txtNVerifyPassword.Enter += new System.EventHandler(this.txtNVerifyPassword_Enter);
+            this.txtNVerifyPassword.Leave += new System.EventHandler(this.txtNVerifyPassword_Leave);
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.txtEmail.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.txtEmail.Location = new System.Drawing.Point(254, 245);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(237, 29);
+            this.txtEmail.TabIndex = 4;
+            this.txtEmail.Text = "E-mail Address";
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
+            // 
+            // lblHeader2
+            // 
+            this.lblHeader2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lblHeader2.Font = new System.Drawing.Font("Viner Hand ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblHeader2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lblHeader2.Location = new System.Drawing.Point(0, 0);
+            this.lblHeader2.Name = "lblHeader2";
+            this.lblHeader2.Size = new System.Drawing.Size(727, 34);
+            this.lblHeader2.TabIndex = 31;
+            this.lblHeader2.Text = "Project: Phoenix";
+            this.lblHeader2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnNCreate
+            // 
+            this.btnNCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.btnNCreate.FlatAppearance.BorderSize = 0;
+            this.btnNCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNCreate.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnNCreate.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnNCreate.Location = new System.Drawing.Point(254, 350);
+            this.btnNCreate.Name = "btnNCreate";
+            this.btnNCreate.Size = new System.Drawing.Size(237, 35);
+            this.btnNCreate.TabIndex = 7;
+            this.btnNCreate.Text = "Create Account";
+            this.btnNCreate.UseVisualStyleBackColor = false;
+            this.btnNCreate.Click += new System.EventHandler(this.btnNCreate_Click);
+            // 
+            // txtNPassword
+            // 
+            this.txtNPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.txtNPassword.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.txtNPassword.Location = new System.Drawing.Point(254, 280);
+            this.txtNPassword.Name = "txtNPassword";
+            this.txtNPassword.Size = new System.Drawing.Size(237, 29);
+            this.txtNPassword.TabIndex = 5;
+            this.txtNPassword.Text = "Password";
+            this.txtNPassword.Enter += new System.EventHandler(this.txtNPassword_Enter);
+            this.txtNPassword.Leave += new System.EventHandler(this.txtNPassword_Leave);
+            // 
+            // txtNAccount
+            // 
+            this.txtNAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.txtNAccount.Font = new System.Drawing.Font("Nirmala UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.txtNAccount.Location = new System.Drawing.Point(254, 210);
+            this.txtNAccount.Name = "txtNAccount";
+            this.txtNAccount.Size = new System.Drawing.Size(237, 29);
+            this.txtNAccount.TabIndex = 3;
+            this.txtNAccount.Text = "Account Name";
+            this.txtNAccount.Enter += new System.EventHandler(this.txtNAccount_Enter);
+            this.txtNAccount.Leave += new System.EventHandler(this.txtNAccount_Leave);
+            // 
+            // ptbPhoenix2
+            // 
+            this.ptbPhoenix2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.ptbPhoenix2.Location = new System.Drawing.Point(0, 37);
+            this.ptbPhoenix2.Name = "ptbPhoenix2";
+            this.ptbPhoenix2.Size = new System.Drawing.Size(724, 489);
+            this.ptbPhoenix2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptbPhoenix2.TabIndex = 30;
+            this.ptbPhoenix2.TabStop = false;
             // 
             // pnlCharacterCreation
             // 
@@ -576,10 +576,15 @@ namespace Phoenix.Client
             this.cboPhilosophy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.cboPhilosophy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cboPhilosophy.FormattingEnabled = true;
+            this.cboPhilosophy.Items.AddRange(new object[] {
+            "War",
+            "Faith",
+            "Chaos",
+            "Subversion"});
             this.cboPhilosophy.Location = new System.Drawing.Point(58, 164);
             this.cboPhilosophy.Name = "cboPhilosophy";
             this.cboPhilosophy.Size = new System.Drawing.Size(237, 29);
-            this.cboPhilosophy.TabIndex = 37;
+            this.cboPhilosophy.TabIndex = 14;
             this.cboPhilosophy.Text = "School of Philosophy";
             // 
             // cboGender
@@ -587,10 +592,13 @@ namespace Phoenix.Client
             this.cboGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.cboGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cboGender.FormattingEnabled = true;
+            this.cboGender.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
             this.cboGender.Location = new System.Drawing.Point(58, 129);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(237, 29);
-            this.cboGender.TabIndex = 36;
+            this.cboGender.TabIndex = 13;
             this.cboGender.Text = "Gender";
             // 
             // lblHeader4
@@ -616,10 +624,10 @@ namespace Phoenix.Client
             this.btnNCharcterCreate.Location = new System.Drawing.Point(58, 199);
             this.btnNCharcterCreate.Name = "btnNCharcterCreate";
             this.btnNCharcterCreate.Size = new System.Drawing.Size(237, 35);
-            this.btnNCharcterCreate.TabIndex = 35;
+            this.btnNCharcterCreate.TabIndex = 15;
             this.btnNCharcterCreate.Text = "Create Character";
             this.btnNCharcterCreate.UseVisualStyleBackColor = false;
-            this.btnNCharcterCreate.Click += new System.EventHandler(this.btnCharcterCreate_Click);
+            this.btnNCharcterCreate.Click += new System.EventHandler(this.btnNCharacterCreate_Click);
             // 
             // txtCharacterName
             // 
@@ -629,7 +637,7 @@ namespace Phoenix.Client
             this.txtCharacterName.Location = new System.Drawing.Point(58, 94);
             this.txtCharacterName.Name = "txtCharacterName";
             this.txtCharacterName.Size = new System.Drawing.Size(237, 29);
-            this.txtCharacterName.TabIndex = 33;
+            this.txtCharacterName.TabIndex = 12;
             this.txtCharacterName.Text = "Name";
             // 
             // ptbPhoenix4
@@ -647,10 +655,10 @@ namespace Phoenix.Client
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(974, 570);
-            this.Controls.Add(this.pnlCharacterCreation);
-            this.Controls.Add(this.pnlAccountView);
+            this.ClientSize = new System.Drawing.Size(970, 573);
             this.Controls.Add(this.pnlAccountCreate);
+            this.Controls.Add(this.pnlAccountView);
+            this.Controls.Add(this.pnlCharacterCreation);
             this.Controls.Add(this.pnlAuthenicate);
             this.Controls.Add(this.pnlSide);
             this.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -667,12 +675,12 @@ namespace Phoenix.Client
             this.pnlAuthenicate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbDiscord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix1)).EndInit();
-            this.pnlAccountCreate.ResumeLayout(false);
-            this.pnlAccountCreate.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix2)).EndInit();
             this.pnlAccountView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix3)).EndInit();
+            this.pnlAccountCreate.ResumeLayout(false);
+            this.pnlAccountCreate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix2)).EndInit();
             this.pnlCharacterCreation.ResumeLayout(false);
             this.pnlCharacterCreation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix4)).EndInit();
@@ -697,14 +705,14 @@ namespace Phoenix.Client
         private System.Windows.Forms.TextBox txtAccountName;
         private System.Windows.Forms.PictureBox ptbDiscord;
         private System.Windows.Forms.PictureBox ptbPhoenix1;
-        private System.Windows.Forms.Panel pnlAccountCreate;
-        private System.Windows.Forms.TextBox txtNVerifyPassword;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label lblHeader2;
-        private System.Windows.Forms.Button btnNCreate;
-        private System.Windows.Forms.TextBox txtNPassword;
-        private System.Windows.Forms.TextBox txtNAccount;
-        private System.Windows.Forms.PictureBox ptbPhoenix2;
+        private System.Windows.Forms.Panel pnlCharacterCreation;
+        private System.Windows.Forms.TextBox txtClassInformation;
+        private System.Windows.Forms.ComboBox cboPhilosophy;
+        private System.Windows.Forms.ComboBox cboGender;
+        private System.Windows.Forms.Label lblHeader4;
+        private System.Windows.Forms.Button btnNCharcterCreate;
+        private System.Windows.Forms.TextBox txtCharacterName;
+        private System.Windows.Forms.PictureBox ptbPhoenix4;
         private System.Windows.Forms.Panel pnlAccountView;
         private System.Windows.Forms.DataGridView dgvCharacter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCharacterName;
@@ -716,13 +724,13 @@ namespace Phoenix.Client
         private System.Windows.Forms.Label lblHeader3;
         private System.Windows.Forms.Button btnCharacterConnect;
         private System.Windows.Forms.PictureBox ptbPhoenix3;
-        private System.Windows.Forms.Panel pnlCharacterCreation;
-        private System.Windows.Forms.TextBox txtClassInformation;
-        private System.Windows.Forms.ComboBox cboPhilosophy;
-        private System.Windows.Forms.ComboBox cboGender;
-        private System.Windows.Forms.Label lblHeader4;
-        private System.Windows.Forms.Button btnNCharcterCreate;
-        private System.Windows.Forms.TextBox txtCharacterName;
-        private System.Windows.Forms.PictureBox ptbPhoenix4;
+        private System.Windows.Forms.Panel pnlAccountCreate;
+        private System.Windows.Forms.TextBox txtNVerifyPassword;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblHeader2;
+        private System.Windows.Forms.Button btnNCreate;
+        private System.Windows.Forms.TextBox txtNPassword;
+        private System.Windows.Forms.TextBox txtNAccount;
+        private System.Windows.Forms.PictureBox ptbPhoenix2;
     }
 }

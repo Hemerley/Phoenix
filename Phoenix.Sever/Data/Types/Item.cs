@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Phoenix.Server
+﻿namespace Phoenix.Server
 {
     public class Item
     {
@@ -32,6 +26,11 @@ namespace Phoenix.Server
         public int StaminaReq { get; set; }
         public int AlignmentReq { get; set; }
         public string Script { get; set; }
+
+        public Item()
+        {
+
+        }
 
         public Item(int id, string name, int image, int type, int slot, int value, int rarity, int weight, int damage, int strength, int agility, int intellect, int stamina, double crit, double haste, double mastery, double versatility, int philosopherReq, int strengthReq, int agilityReq, int intellectReq, int staminaReq, int alignmentReq, string script)
         {

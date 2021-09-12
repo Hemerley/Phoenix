@@ -1,45 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Phoenix.Server
 {
     public class Room
     {
-        public int Id { get; set; }
+        public int? ID { get; set; }
         public string Name { get; set; }
         public string Area { get; set; }
-        public int Status { get; set; }
-        public int Type { get; set; }
+        public int? Status { get; set; }
+        public int? Type { get; set; }
         public string Description { get; set; }
         public string Exits { get; set; }
-        public int Tile { get; set; }
-        public int North { get; set; }
-        public int South { get; set; }
-        public int West { get; set; }
-        public int East { get; set; }
-        public int Up { get; set; }
-        public int Down { get; set; }
-        public int KeyModeNorth { get; set; }
-        public int KeyModeSouth { get; set; }
-        public int KeyModeWest { get; set; }
-        public int KeyModeEast { get; set; }
-        public int KeyModeUp { get; set; }
-        public int KeyModeDown { get; set; }
+        public int? Tile { get; set; }
+        public int? North { get; set; }
+        public int? South { get; set; }
+        public int? West { get; set; }
+        public int? East { get; set; }
+        public int? Up { get; set; }
+        public int? Down { get; set; }
+        public int? KeyModeNorth { get; set; }
+        public int? KeyModeSouth { get; set; }
+        public int? KeyModeWest { get; set; }
+        public int? KeyModeEast { get; set; }
+        public int? KeyModeUp { get; set; }
+        public int? KeyModeDown { get; set; }
         public string KeyNameNorth { get; set; }
         public string KeyNameSouth { get; set; }
         public string KeyNameWest { get; set; }
         public string KeyNameEast { get; set; }
         public string KeyNameUp { get; set; }
         public string KeyNameDown { get; set; }
-        public int KeyTypeNorth { get; set; }
-        public int KeyTypeSouth { get; set; }
-        public int KeyTypeWest { get; set; }
-        public int KeyTypeEast { get; set; }
-        public int KeyTypeUp { get; set; }
-        public int KeyTypeDown { get; set; }
+        public int? KeyTypeNorth { get; set; }
+        public int? KeyTypeSouth { get; set; }
+        public int? KeyTypeWest { get; set; }
+        public int? KeyTypeEast { get; set; }
+        public int? KeyTypeUp { get; set; }
+        public int? KeyTypeDown { get; set; }
         public string KeyPassNorth { get; set; }
         public string KeyPassSouth { get; set; }
         public string KeyPassWest { get; set; }
@@ -54,18 +50,18 @@ namespace Phoenix.Server
         public string KeyFailDown { get; set; }
         public string Script { get; set; }
         public List<Entity> Entities { get; set; } = new();
-
-        // Live Instances
-        public List<Character> Characters { get; set; } = new();
-        public List<Entity> currentEntities { get; set; } = new();
+        public List<Character> RoomCharacters { get; set; } = new();
+        public List<Entity> RoomEntities { get; set; } = new();
+        public List<Item> RoomItems { get; set; } = new();
 
         public Room()
         {
 
         }
+
         public Room(int id, string name, string area, int status, int type, string description, string exits, int tile, int north, int south, int west, int east, int up, int down, int keymodenorth, int keymodesouth, int keymodewest, int keymodeeast, int keymodeup, int keymodedown, string keynamenorth, string keynamesouth, string keynamewest, string keynameeast, string keynameup, string keynamedown, int keytypenorth, int keytypesouth, int keytypewest, int keytypeeast, int keytypeup, int keytypedown, string keypassnorth, string keypasssouth, string keypasswest, string keypasseast, string keypassup, string keypassdown, string keyfailnorth, string keyfailsouth, string keyfailwest, string keyfaileast, string keyfailup, string keyfaildown, string script)
         {
-            this.Id = id;
+            this.ID = id;
             this.Name = name;
             this.Area = area;
             this.Status = status;

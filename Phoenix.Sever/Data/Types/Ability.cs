@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Phoenix.Server
+﻿namespace Phoenix.Server
 {
     class Ability
     {
@@ -14,6 +8,11 @@ namespace Phoenix.Server
         public int Type { get; set; }
         public int Rank { get; set; }
         public string Script { get; set; }
+
+        public Ability()
+        {
+
+        }
 
         public Ability(int id, string name, int philosophy, int type, int rank, string script)
         {

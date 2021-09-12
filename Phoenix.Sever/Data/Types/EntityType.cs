@@ -8,14 +8,9 @@ namespace Phoenix.Server
 {
     public class EntityType
     {
-        public int Id
-        {
-            get; set;
-        }
-        public string Name
-        {
-            get; set;
-        }
+        public int Id { get; set; }
+        public string Name {  get; set; }
+
         public EntityType(int id, string name)
         {
             this.Id = id;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Phoenix.Common
 {
-    public class ConnectedCommand : Command
+    public class NewCharacterResponseCommand : Command
     {
 		#region -- Properties --
 
@@ -18,9 +18,9 @@ namespace Phoenix.Common
 
 		#endregion
 
-		public ConnectedCommand()
+		public NewCharacterResponseCommand()
 		{
-			this.CommandType = CommandType.Connected;
+			this.CommandType = CommandType.NewChracterResponse;
 		}
 
 		public override IEnumerable<string> GetCommandParts()
