@@ -9,7 +9,8 @@ namespace Phoenix.Client
 {
     public partial class FrmLauncher : Form
     {
-        public bool authMode = false;
+        private bool authMode = false;
+        private readonly frmClient gameWindow = null;
 
         public FrmLauncher()
         {
@@ -22,7 +23,7 @@ namespace Phoenix.Client
             this.dgvCharacter.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dgvCharacter.MultiSelect = false;
 
-            frmClient gameWindow = new(this);
+            gameWindow = new();
 
             foreach (string keys in iAvatar.Images.Keys)
             {
@@ -237,6 +238,31 @@ namespace Phoenix.Client
                     return;
 
                 #endregion
+
+                #region -- CharacterConnectResponseCommmand --
+
+                case CommandType.CharacterLoginResponse:
+                    var charConnectResponseCommand = command as CharacterConnectResponseCommand;
+                    if (charConnectResponseCommand.Success == 1)
+                    {
+                        this.Invoke((Action)delegate
+                        {
+                            this.client.OnActivity -= Client_OnActivity;
+                            this.client.IsConnected -= Client_IsConnected;
+                            this.client.IsClosed -= Client_IsClosed;
+
+                            this.gameWindow.Initialize(this.client);
+                            this.gameWindow.Show();
+                            this.gameWindow.Update = charConnectResponseCommand.Character;
+                            this.Hide();
+                        });
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something Went Wrong!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    return;
+                #endregion
             }
         }
 
@@ -265,6 +291,19 @@ namespace Phoenix.Client
         #endregion
 
         #region -- Button Controllers --
+
+        private void BtnCharacterConnect_Click(object sender, EventArgs e)
+        {
+            if (dgvCharacter.SelectedRows.Count > 0)
+            {
+                string name = dgvCharacter.SelectedRows[0].Cells["dgvCharacterName"].Value.ToString();
+                var newCharacterConnectCmd = new CharacterConnectCommand
+                {
+                    Name = name
+                };
+                SendCommand(newCharacterConnectCmd);
+            }
+        }
 
         private void BtnNCreate_Click(object sender, EventArgs e)
         {
@@ -529,9 +568,5 @@ namespace Phoenix.Client
 
         #endregion
 
-        private void BtnCharacterConnect_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

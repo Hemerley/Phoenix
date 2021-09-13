@@ -2,6 +2,7 @@
 {
 	public enum CommandType
 	{
+
 		#region ---Account & Creation (0-99)---
 
 		Unknown = 0,
@@ -13,6 +14,8 @@
 		NewChracterResponse = 6,
 		CharacterList = 7,
 		CharacterListResponse = 8,
+		CharacterLogin = 9,
+		CharacterLoginResponse = 10,
 
 		#endregion
 
@@ -24,5 +27,6 @@
 		MessageGuild = 104
         
 		#endregion
-    }
+    
+	}
 }

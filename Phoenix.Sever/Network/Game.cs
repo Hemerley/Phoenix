@@ -216,11 +216,11 @@ namespace Phoenix.Server
 						string[] s;
 						foreach (Character character in characters)
                         {
-							List<string> list = new();
-							list.Add(character.Name);
-							list.Add(character.Caste.ToString());
-							list.Add(character.Philosophy.ToString());
-							s = list.ToArray();
+							List<string> cList = new();
+							cList.Add(character.Name);
+							cList.Add(character.Caste.ToString());
+							cList.Add(character.Philosophy.ToString());
+							s = cList.ToArray();
 							characterString.Add(string.Join("`", s));
                         }
 
@@ -235,6 +235,57 @@ namespace Phoenix.Server
                             SendCommandToClient(clientWhoSendCommand, newCharacterListResponseCmd);
 						}
 
+						break;
+					#endregion
+
+					#region -- CharacterConnectCommand --
+					case CommandType.CharacterLogin:
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+						var newCharacterLogin = command as CharacterConnectCommand;
+						Character loginCharacter = Database.GetCharacter(Constants.GAME_MODE, accountConnected.Account.Id, newCharacterLogin.Name);
+						List<string> list = new();
+
+						if (loginCharacter != null)
+                        {
+							list.Add(loginCharacter.Name);
+							list.Add(loginCharacter.Type.ToString());
+							list.Add(loginCharacter.Image.ToString());
+							list.Add(loginCharacter.Gender.ToString());
+							list.Add(loginCharacter.Experience.ToString());
+							list.Add(loginCharacter.Title.ToString());
+							list.Add(loginCharacter.Caste.ToString());
+							list.Add(loginCharacter.Rank.ToString());
+							list.Add(loginCharacter.Philosophy.ToString());
+							list.Add(loginCharacter.Alignment.ToString());
+							list.Add(loginCharacter.Strength.ToString());
+							list.Add(loginCharacter.Agility.ToString());
+							list.Add(loginCharacter.Intellect.ToString());
+							list.Add(loginCharacter.Stamina.ToString());
+							list.Add(loginCharacter.Damage.ToString());
+							list.Add(loginCharacter.Crit.ToString());
+							list.Add(loginCharacter.Haste.ToString());
+							list.Add(loginCharacter.Mastery.ToString());
+							list.Add(loginCharacter.Versatility.ToString());
+							list.Add(loginCharacter.Health.ToString());
+							list.Add(loginCharacter.Mana.ToString());
+
+							var newCharacterConnectResponseCommand = new CharacterConnectResponseCommand
+							{
+								Success = 1,
+								Character = string.Join("`", list.ToArray())
+							};
+
+							SendCommandToClient(clientWhoSendCommand, newCharacterConnectResponseCommand);
+						}
+                        else
+                        {
+							var newCharacterConnectResponseCommand = new CharacterConnectResponseCommand
+							{
+								Success = 0,
+								Character = "null"
+							};
+							SendCommandToClient(clientWhoSendCommand, newCharacterConnectResponseCommand);
+                        }
 						break;
                     #endregion
 

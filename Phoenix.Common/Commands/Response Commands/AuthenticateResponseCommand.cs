@@ -4,6 +4,8 @@ namespace Phoenix.Common
 {
 	public class AuthenticateResponseCommand : Command
 	{
+
+		// Setup To Bool
 		#region -- Properties --
 
 		/// <summary>

@@ -6203,7 +6203,7 @@ namespace Phoenix.Client
             this.equipToolStripMenuItem.Name = "equipToolStripMenuItem";
             this.equipToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.equipToolStripMenuItem.Text = "Equip";
-            this.equipToolStripMenuItem.Click += new System.EventHandler(this.equipToolStripMenuItem_Click);
+            this.equipToolStripMenuItem.Click += new System.EventHandler(this.EquipToolStripMenuItem_Click);
             // 
             // unEquipToolStripMenuItem
             // 
@@ -6249,7 +6249,7 @@ namespace Phoenix.Client
             this.dropToolStripMenuItem.Name = "dropToolStripMenuItem";
             this.dropToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.dropToolStripMenuItem.Text = "Drop";
-            this.dropToolStripMenuItem.Click += new System.EventHandler(this.dropToolStripMenuItem_Click);
+            this.dropToolStripMenuItem.Click += new System.EventHandler(this.DropToolStripMenuItem_Click);
             // 
             // cToolStripMenuItem
             // 

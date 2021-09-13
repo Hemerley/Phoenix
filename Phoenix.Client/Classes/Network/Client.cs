@@ -7,7 +7,7 @@ using Unclassified.Net;
 
 namespace Phoenix.Client
 {
-    class Client
+    public class Client
     {
 		#region -- Fields --
 

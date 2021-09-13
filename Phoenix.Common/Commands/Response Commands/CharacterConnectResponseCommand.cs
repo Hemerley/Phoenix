@@ -1,12 +1,25 @@
-﻿using System;
+﻿using Phoenix.Common;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Phoenix.Common
 {
-    class CharacterConnectResponseCommand
+    public class CharacterConnectResponseCommand : Command
     {
+        public int Success { get; set; }
+        public Data.Types.Character Character { get; set; }
+
+        public CharacterConnectResponseCommand()
+        {
+            this.CommandType = CommandType.CharacterLoginResponse;
+        }
+
+        public override IEnumerable<string> GetCommandParts()
+        {
+            return new List<string> {
+                this.Success.ToString(),
+                this.Character.ToString()
+            };
+        }
     }
 }

@@ -372,6 +372,53 @@ namespace Phoenix.Server
             return characters;
         }
 
+        public static Character GetCharacter (string connectionType, int accountID, string name)
+        {
+            using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
+            connection.Open();
+            string query = $"SELECT ID, AccountID, Name, Type, Image, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID FROM Characters WHERE AccountID = '{accountID}' AND Name = '{name}';";
+            using var command = new SQLiteCommand(query, connection);
+            using SQLiteDataReader reader = command.ExecuteReader();
+
+            Character character;
+
+            while (reader.Read())
+            {
+                character = new()
+                {
+                    Id = Int32.Parse(reader[0].ToString()),
+                    AccountId = Int32.Parse(reader[1].ToString()),
+                    Name = reader[2].ToString(),
+                    Type = Int32.Parse(reader[3].ToString()),
+                    Image = Int32.Parse(reader[4].ToString()),
+                    Gender = reader[5].ToString(),
+                    HisHer = reader[6].ToString(),
+                    HeShe = reader[7].ToString(),
+                    Experience = Int32.Parse(reader[8].ToString()),
+                    Title = reader[9].ToString(),
+                    Caste = Int32.Parse(reader[10].ToString()),
+                    Rank = Int32.Parse(reader[11].ToString()),
+                    Philosophy = Int32.Parse(reader[12].ToString()),
+                    Alignment = Int32.Parse(reader[13].ToString()),
+                    Creation = Int32.Parse(reader[14].ToString()),
+                    Strength = Int32.Parse(reader[15].ToString()),
+                    Agility = Int32.Parse(reader[16].ToString()),
+                    Intellect = Int32.Parse(reader[17].ToString()),
+                    Stamina = Int32.Parse(reader[18].ToString()),
+                    Damage = Int32.Parse(reader[19].ToString()),
+                    Health = Int32.Parse(reader[20].ToString()),
+                    Mana = Int32.Parse(reader[21].ToString()),
+                    RoomID = Int32.Parse(reader[22].ToString()),
+                    Crit = 0,
+                    Mastery = 0,
+                    Haste = 0,
+                    Versatility = 0
+                };
+                return character;
+            }
+            return null;
+        }
+
         #endregion
     }
 }

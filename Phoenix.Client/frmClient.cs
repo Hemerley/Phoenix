@@ -7,56 +7,39 @@ namespace Phoenix.Client
 {
     public partial class frmClient : Form
     {
-        public frmClient(Form formCalling)
-        {
-            InitializeComponent();
-            InitializeControl();
 
-            //Remove Me
-            TestClient();
-            pictureBox1.Image = ilAvatar.Images[0];
+        public string Update { get; set; }
+        private Client client;
+
+        public frmClient()
+        {
 
         }
 
-        private void TestClient(bool imgShow = true)
+        public void Initialize(Client client)
         {
-            UpdateRoom(1, "Zombeh", "character (2).png", "(God)", imgShow);
-            UpdateRoom(1, "TravyDale", "character (1).png", "(Demi-God)", imgShow);
-            UpdateRoom(1, "Texan", "character (3).png", "(Immortal)", imgShow);
-            UpdateRoom(1, "StevOh", "character (4).png", "(Hero)", imgShow);
-            UpdateRoom(1, "Kev", "character (5).png", "(Player)", imgShow);
-            UpdateRoom(1, "Kev's Horse", "character (7).png", "(Spawned)", imgShow);
-            UpdateRoom(1, "Inn Keeper", "character (6).png", "(Friendly)", imgShow);
-            UpdateRoom(1, "Townsfolk", "character (86).png", "(Neutral)", imgShow);
-            UpdateRoom(1, "Goblin", "character (81).png", "(Hostile)", imgShow);
-            UpdateRoom(1, "Goblin", "character (81).png", "(Hostile)", imgShow);
-            UpdateRoom(1, "Goblin", "character (81).png", "(Hostile)", imgShow);
-            UpdateRoom(1, "Goblin", "character (81).png", "(Hostile)", imgShow);
-            UpdateRoom(1, "Goblin", "character (81).png", "(Hostile)", imgShow);
-            UpdateRoom(1, "Goblin", "character (81).png", "(Hostile)", imgShow);
-
-            UpdateDrop(1, "Dagger", "item (1014).png", "(Junk)", imgShow);
-            UpdateDrop(1, "Dagger", "item (1014).png", "(Common)", imgShow);
-            UpdateDrop(1, "Dagger", "item (1014).png", "(Uncommon)", imgShow);
-            UpdateDrop(1, "Dagger", "item (1014).png", "(Rare)", imgShow);
-            UpdateDrop(1, "Dagger", "item (1014).png", "(Epic)", imgShow);
-            UpdateDrop(1, "Dagger", "item (1014).png", "(Legendary)", imgShow);
-            UpdateDrop(1, "Dagger", "item (1014).png", "(Ancient)", imgShow);
-
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
-            UpdateInventory(1, "Godly Ring", "item (1437).png", "(Ancient)", "Ring", imgShow);
+            this.client = client;
+            this.client.OnActivity += Client_OnActivity;
+            this.client.IsConnected += Client_IsConnected;
+            this.client.IsClosed += Client_IsClosed;
         }
+
+        private void Client_OnActivity(object sender, string e)
+        {
+
+        }
+
+        private void Client_IsConnected(object sender, bool isReconnected)
+        {
+
+        }
+
+        private void Client_IsClosed(object sender, bool remote)
+        {
+
+        }
+
+
 
         #region ---Initialize Controls---
 
@@ -129,17 +112,17 @@ namespace Phoenix.Client
         public const int HT_CAPTION = 0x2;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-        
-        private void pnlTaskBar_MouseDown(object sender, MouseEventArgs e)
+        private static extern bool ReleaseCapture();
+
+        private void PnlTaskBar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
 
@@ -636,39 +619,31 @@ namespace Phoenix.Client
 
         #region ---Client Menu Code---
 
-        private void dropToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DropToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string itemName = "";
-            string itemImage = "";
-            string itemType = "";
-            string slotType = "";
             foreach (ListViewItem item in lstvInventory.Items)
             {
                 if (item.Selected)
                 {
-                    itemName = item.Text;
-                    itemImage = item.ImageKey;
-                    itemType = item.SubItems[2].Text;
-                    slotType = item.SubItems[1].Text;
+                    _ = item.Text;
+                    _ = item.ImageKey;
+                    _ = item.SubItems[2].Text;
+                    _ = item.SubItems[1].Text;
                     // TODO: Send Update Request Pack
                 }
             }
         }
         
-        private void equipToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EquipToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string itemName = "";
-            string itemImage = "";
-            string itemType = "";
-            string slotType = "";
             foreach (ListViewItem item in lstvInventory.Items)
             {
                 if (item.Selected)
                 {
-                    itemName = item.Text;
-                    itemImage = item.ImageKey;
-                    itemType = item.SubItems[2].Text;
-                    slotType = item.SubItems[1].Text;
+                    _ = item.Text;
+                    _ = item.ImageKey;
+                    _ = item.SubItems[2].Text;
+                    _ = item.SubItems[1].Text;
                     // TODO: Send Update Request Pack
                 }
             }

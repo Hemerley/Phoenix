@@ -112,6 +112,22 @@ namespace Phoenix.Common
 					{ 
 						characters = commandParts[1]
 					};
+				case CommandType.CharacterLogin:
+					if (commandParts.Length < 1)
+						return new UnknownCommand();
+					return new CharacterConnectCommand
+					{
+						Name = commandParts[1]
+                    };
+				case CommandType.CharacterLoginResponse:
+					if (commandParts.Length < 1)
+					return new UnknownCommand();
+					return new CharacterConnectResponseCommand
+					{
+						// Structure Character
+						Success = Int32.Parse(commandParts[1]),
+						Character = commandParts[2]
+					};
 				default:
 					return new UnknownCommand();
 			}

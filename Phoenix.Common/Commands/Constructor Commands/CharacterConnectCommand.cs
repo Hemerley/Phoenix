@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace Phoenix.Common
 {
-    class CharacterConnectCommand
+    public class CharacterConnectCommand : Command
     {
+
+        public string Name { get; set; }
+
+        public CharacterConnectCommand()
+        {
+            this.CommandType = CommandType.CharacterLogin;
+        }
+
+        public override IEnumerable<string> GetCommandParts()
+        {
+            return new List<string> { this.Name.ToString() };
+        }
+
     }
 }
