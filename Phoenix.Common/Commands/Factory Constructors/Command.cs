@@ -7,6 +7,6 @@ namespace Phoenix.Common
 	{
 		public CommandType CommandType { get; set; }
 
-		public virtual IEnumerable<string> GetCommandParts() { return Enumerable.Empty<string>(); }
+		public virtual IEnumerable<IEnumerable<string>> GetCommandParts() { return Enumerable.Empty<IEnumerable<string>>(); }
 	}
 }

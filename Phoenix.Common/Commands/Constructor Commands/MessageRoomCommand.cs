@@ -15,11 +15,14 @@ namespace Phoenix.Common
 			this.CommandType = CommandType.MessageRoom;
 		}
 
-		public override IEnumerable<string> GetCommandParts()
+		public override IEnumerable<IEnumerable<string>> GetCommandParts()
 		{
-			return new List<string>
+			return new List<List<string>>
 			{
-				this.Message
+				new List<string>
+				{
+					this.Message
+				}
 			};
 		}
 	}

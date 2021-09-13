@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Phoenix.Common.Data.Types;
+using System.Collections.Generic;
 
 namespace Phoenix.Common
 {
@@ -6,7 +7,7 @@ namespace Phoenix.Common
     {
 		#region -- Properties --
 
-		public string characters { get; set; }
+		public List<Character> Characters { get; set; } = new();
 
 		#endregion
 
@@ -15,9 +16,19 @@ namespace Phoenix.Common
 			this.CommandType = CommandType.CharacterListResponse;
 		}
 
-		public override IEnumerable<string> GetCommandParts()
+		public override IEnumerable<IEnumerable<string>> GetCommandParts()
 		{
-			return new List<string> { characters };
+			var characters = new List<List<string>>();
+            foreach (var character in this.Characters)
+            {
+				characters.Add(new List<string>
+				{
+					character.Name,
+					character.Caste,
+					character.Philosophy
+				});
+            }
+			return characters;
 		}
 	}
 }

@@ -25,14 +25,17 @@ namespace Phoenix.Common
             this.CommandType = CommandType.NewCharacter;
         }
 
-        public override IEnumerable<string> GetCommandParts()
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
         {
-            return new List<string>
+            return new List<List<string>>
             {
-                this.CharacterName,
-                this.Gender,
-                this.Philosophy.ToString(),
-                this.Image.ToString()
+                new List<string>
+                {
+                    this.CharacterName,
+                    this.Gender,
+                    this.Philosophy.ToString(),
+                    this.Image.ToString()
+                }
             };
         }
     }

@@ -23,13 +23,16 @@ namespace Phoenix.Common
             this.CommandType = CommandType.NewAccount;
         }
 
-        public override IEnumerable<string> GetCommandParts()
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
         {
-            return new List<string>
+            return new List<List<string>>
             {
-                this.Username,
-                this.Password,
-                this.Email
+                new List<string>
+                {
+                    this.Username,
+                    this.Password,
+                    this.Email
+                }
             };
         }
     }

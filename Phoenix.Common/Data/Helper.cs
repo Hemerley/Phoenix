@@ -62,14 +62,24 @@ namespace Phoenix.Common
             }
         }
 
-        public static string RemoveBar(string input)
+        public static string RemovePipe(string input)
         {
-            return input.Replace("|", "&bar&");
+            return input.Replace("|", "&pipe&");
         }
 
-        public static string ReturnBar(string input)
+        public static string ReturnPipe(string input)
         {
-            return input.Replace("&bar&", "|");
+            return input.Replace("&pipe&", "|");
+        }
+
+        public static string RemoveTilda(string input)
+        {
+            return input.Replace("~", "&tilda&");
+        }
+
+        public static string ReturnTilda(string input)
+        {
+            return input.Replace("&tilda&", "~");
         }
 
         public static bool HasUpperLowerDigit(string text)

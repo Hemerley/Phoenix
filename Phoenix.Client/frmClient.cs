@@ -1,4 +1,5 @@
 ﻿using Phoenix.Common;
+using Phoenix.Common.Data.Types;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -7,18 +8,18 @@ namespace Phoenix.Client
 {
     public partial class frmClient : Form
     {
-
-        public string Update { get; set; }
         private Client client;
+        private Character character;
 
         public frmClient()
         {
-
+            InitializeComponent();
         }
 
-        public void Initialize(Client client)
+        public void Initialize(Client client, Character character)
         {
             this.client = client;
+            this.character = character;
             this.client.OnActivity += Client_OnActivity;
             this.client.IsConnected += Client_IsConnected;
             this.client.IsClosed += Client_IsClosed;

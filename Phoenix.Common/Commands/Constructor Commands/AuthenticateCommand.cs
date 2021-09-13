@@ -17,12 +17,15 @@ namespace Phoenix.Common
 			this.CommandType = CommandType.Authenticate;
 		}
 
-		public override IEnumerable<string> GetCommandParts()
+		public override IEnumerable<IEnumerable<string>> GetCommandParts()
 		{
-			return new List<string>
+			return new List<List<string>>
 			{
-				this.Username,
-				this.Password
+				new List<string>
+				{
+					this.Username,
+					this.Password
+				}
 			};
 		}
 	}

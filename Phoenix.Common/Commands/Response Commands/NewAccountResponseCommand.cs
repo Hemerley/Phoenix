@@ -19,9 +19,15 @@ namespace Phoenix.Common
 			this.CommandType = CommandType.NewAccountResponse;
 		}
 
-		public override IEnumerable<string> GetCommandParts()
+		public override IEnumerable<IEnumerable<string>> GetCommandParts()
 		{
-			return new List<string> { this.Success.ToString() };
+			return new List<List<string>>
+			{
+				new List<string>
+				{
+					this.Success.ToString()
+				}
+			};
 		}
 	}
 }

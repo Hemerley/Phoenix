@@ -1,4 +1,5 @@
 ﻿using Phoenix.Common;
+using Phoenix.Common.Data.Types;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,7 +11,7 @@ namespace Phoenix.Client
     public partial class FrmLauncher : Form
     {
         private bool authMode = false;
-        private readonly frmClient gameWindow = null;
+        public frmClient gameWindow = null;
 
         public FrmLauncher()
         {
@@ -90,7 +91,7 @@ namespace Phoenix.Client
                     var authCommand = new AuthenticateCommand
                     {
                         Username = txtAccountName.Text,
-                        Password = Helper.RemoveBar(txtPassword.Text)
+                        Password = txtPassword.Text
                     };
                     SendCommand(authCommand);
                 });
@@ -103,8 +104,8 @@ namespace Phoenix.Client
                     {
                         CommandType = CommandType.NewAccount,
                         Username = txtNAccount.Text,
-                        Email = Helper.RemoveBar(txtEmail.Text),
-                        Password = Helper.RemoveBar(txtNPassword.Text)
+                        Email = txtEmail.Text,
+                        Password = txtNPassword.Text
                     };
                     SendCommand(command);
                 });
@@ -218,20 +219,15 @@ namespace Phoenix.Client
                 case CommandType.CharacterListResponse:
                     var characterListResponseCmd = command as CharacterListResponseCommand;
 
-                    string[] s = characterListResponseCmd.characters.Split("~");
-
-
-
-                    foreach(string sCharacter in s)
+                    foreach(Character character in characterListResponseCmd.Characters)
                     {
-                        string[] character = sCharacter.Split("`");
                         this.Invoke((Action)delegate
                         {
                             int rowId = this.dgvCharacter.Rows.Add();
                             DataGridViewRow row = this.dgvCharacter.Rows[rowId];
-                            row.Cells["dgvCharacterName"].Value = character[0];
-                            row.Cells["dgvCharacterCaste"].Value = Helper.ReturnCasteText(Int32.Parse(character[1]));
-                            row.Cells["dgvCharacterPhilosophy"].Value = Helper.ReturnPhilosophyText(Int32.Parse(character[2]));
+                            row.Cells["dgvCharacterName"].Value = character.Name;
+                            row.Cells["dgvCharacterCaste"].Value = character.Caste;
+                            row.Cells["dgvCharacterPhilosophy"].Value = character.Philosophy;
                         });
                     }
 
@@ -243,6 +239,7 @@ namespace Phoenix.Client
 
                 case CommandType.CharacterLoginResponse:
                     var charConnectResponseCommand = command as CharacterConnectResponseCommand;
+
                     if (charConnectResponseCommand.Success == 1)
                     {
                         this.Invoke((Action)delegate
@@ -251,9 +248,8 @@ namespace Phoenix.Client
                             this.client.IsConnected -= Client_IsConnected;
                             this.client.IsClosed -= Client_IsClosed;
 
-                            this.gameWindow.Initialize(this.client);
+                            this.gameWindow.Initialize(this.client, charConnectResponseCommand.Character);
                             this.gameWindow.Show();
-                            this.gameWindow.Update = charConnectResponseCommand.Character;
                             this.Hide();
                         });
                     }

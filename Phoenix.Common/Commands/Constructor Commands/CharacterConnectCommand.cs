@@ -16,10 +16,16 @@ namespace Phoenix.Common
             this.CommandType = CommandType.CharacterLogin;
         }
 
-        public override IEnumerable<string> GetCommandParts()
-        {
-            return new List<string> { this.Name.ToString() };
-        }
+		public override IEnumerable<IEnumerable<string>> GetCommandParts()
+		{
+			return new List<List<string>>
+			{
+				new List<string>
+				{
+					this.Name
+				}
+			};
+		}
 
-    }
+	}
 }

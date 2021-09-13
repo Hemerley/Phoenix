@@ -13,9 +13,9 @@
         public string HeShe { get; set; }
         public int Experience { get; set; }
         public string Title { get; set; }
-        public int Caste { get; set; }
+        public string Caste { get; set; }
         public int  Rank { get; set; }
-        public int Philosophy { get; set; }
+        public string Philosophy { get; set; }
         public int Alignment { get; set; }
         public int Creation { get; set; }
         public int Strength { get; set; }
@@ -36,7 +36,7 @@
 
         }
 
-        public Character(int id, int accountId, string name, int type, int image, string gender, string hisHer, string heshe, int experience, string title, int caste, int rank, int philosophy, int alignment, int creation, int strength, int agility, int intellect, int stamina, int damage, int health, int mana, int roomID)
+        public Character(int id, int accountId, string name, int type, int image, string gender, string hisHer, string heshe, int experience, string title, string caste, int rank, string philosophy, int alignment, int creation, int strength, int agility, int intellect, int stamina, int damage, int health, int mana, int roomID)
         {
 
             this.Id = id;
