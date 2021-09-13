@@ -2,10 +2,9 @@
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Unclassified.Net;
 
-namespace Phoenix.Client
+namespace Phoenix.Client.Classes.Network
 {
     public class Client
     {

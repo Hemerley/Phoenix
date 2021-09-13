@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace Phoenix.Client
+namespace Phoenix.Client.Classes.Extensions
 {
     class MoveControls
     {

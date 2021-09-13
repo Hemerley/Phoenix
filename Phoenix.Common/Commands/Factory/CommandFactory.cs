@@ -1,9 +1,11 @@
-﻿using Phoenix.Common.Data.Types;
+﻿using Phoenix.Common.Commands.Request;
+using Phoenix.Common.Commands.Response;
+using Phoenix.Common.Data.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Phoenix.Common
+namespace Phoenix.Common.Commands.Factory
 {
 	public class CommandFactory
 	{

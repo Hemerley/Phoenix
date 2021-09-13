@@ -1,4 +1,5 @@
-﻿namespace Phoenix.Common
+﻿using Phoenix.Common.Commands.Factory;
+namespace Phoenix.Common.Commands.Request
 {
 	public class UnknownCommand : Command
 	{

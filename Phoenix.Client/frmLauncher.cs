@@ -1,7 +1,9 @@
-﻿using Phoenix.Common;
+﻿using Phoenix.Common.Commands.Factory;
+using Phoenix.Common.Commands.Request;
+using Phoenix.Common.Commands.Response;
+using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
@@ -11,13 +13,13 @@ namespace Phoenix.Client
     public partial class FrmLauncher : Form
     {
         private bool authMode = false;
-        public frmClient gameWindow = null;
+        public FrmClient gameWindow = null;
 
         public FrmLauncher()
         {
             InitializeComponent();
 
-            this.client = new Client();
+            this.client = new Classes.Network.Client();
             this.client.OnActivity += Client_OnActivity;
             this.client.IsConnected += Client_IsConnected;
             this.client.IsClosed += Client_IsClosed;
@@ -40,7 +42,7 @@ namespace Phoenix.Client
 
         #region -- Network Controllers --
 
-        private readonly Client client;
+        private readonly Classes.Network.Client client;
 
         #endregion
 

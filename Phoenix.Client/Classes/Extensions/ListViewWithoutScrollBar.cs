@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Phoenix.Client
+namespace Phoenix.Client.Classes.Extensions
 {
     public class ListViewWithoutScrollBar : ListView
     {

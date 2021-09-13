@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Phoenix.Common.Commands.Factory;
+using System.Collections.Generic;
 
-namespace Phoenix.Common
+namespace Phoenix.Common.Commands.Response
 {
-    public class NewAccountResponseCommand : Command
+    public class NewCharacterResponseCommand : Command
     {
 		#region -- Properties --
 
@@ -14,9 +15,9 @@ namespace Phoenix.Common
 
 		#endregion
 
-		public NewAccountResponseCommand()
+		public NewCharacterResponseCommand()
 		{
-			this.CommandType = CommandType.NewAccountResponse;
+			this.CommandType = CommandType.NewChracterResponse;
 		}
 
 		public override IEnumerable<IEnumerable<string>> GetCommandParts()

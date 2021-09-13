@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Phoenix.Common.Commands.Factory;
+using System.Collections.Generic;
 
-namespace Phoenix.Common
+namespace Phoenix.Common.Commands.Request
 {
 	public class MessageRoomCommand : Command
 	{

@@ -1,4 +1,5 @@
-﻿using Phoenix.Common;
+﻿using Phoenix.Client.Classes.Extensions;
+using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using System;
 using System.Drawing;
@@ -6,17 +7,17 @@ using System.Windows.Forms;
 
 namespace Phoenix.Client
 {
-    public partial class frmClient : Form
+    public partial class FrmClient : Form
     {
-        private Client client;
+        private Classes.Network.Client client;
         private Character character;
 
-        public frmClient()
+        public FrmClient()
         {
             InitializeComponent();
         }
 
-        public void Initialize(Client client, Character character)
+        public void Initialize(Classes.Network.Client client, Character character)
         {
             this.client = client;
             this.character = character;

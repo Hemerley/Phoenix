@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Phoenix.Common.Commands.Factory;
 
-namespace Phoenix.Common
+namespace Phoenix.Common.Commands.Request
 {
     public class GetCharacterListCommand : Command
     {

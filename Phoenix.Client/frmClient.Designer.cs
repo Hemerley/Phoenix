@@ -1,7 +1,7 @@
-﻿
+﻿using Phoenix.Client.Classes.Extensions;
 namespace Phoenix.Client
 {
-    partial class frmClient
+    partial class FrmClient
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Phoenix.Client
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClient));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClient));
             this.pnlDrawMap = new System.Windows.Forms.Panel();
             this.pnlMap = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.lblName = new System.Windows.Forms.Label();
@@ -146,24 +146,24 @@ namespace Phoenix.Client
             this.pnlSecondaryWindow = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.rtbSecondary = new System.Windows.Forms.RichTextBox();
             this.pnlRoom = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.lstvRoom = new Phoenix.Client.ListViewWithoutScrollBar();
+            this.lstvRoom = new ListViewWithoutScrollBar();
             this.lstvRoomCName = new System.Windows.Forms.ColumnHeader();
             this.lstvRoomCType = new System.Windows.Forms.ColumnHeader();
             this.ilAvatar = new System.Windows.Forms.ImageList(this.components);
             this.pnlDrops = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.lstvDrops = new Phoenix.Client.ListViewWithoutScrollBar();
+            this.lstvDrops = new ListViewWithoutScrollBar();
             this.lstvDropsCName = new System.Windows.Forms.ColumnHeader();
             this.lstvDropsCType = new System.Windows.Forms.ColumnHeader();
             this.ilItems = new System.Windows.Forms.ImageList(this.components);
             this.pnlEquipped = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
-            this.lstvEquipped = new Phoenix.Client.ListViewWithoutScrollBar();
+            this.lstvEquipped = new ListViewWithoutScrollBar();
             this.lstvEquippedCName = new System.Windows.Forms.ColumnHeader();
             this.lstvEquippedCSlot = new System.Windows.Forms.ColumnHeader();
             this.lstvEquippedCType = new System.Windows.Forms.ColumnHeader();
             this.pnlInventory = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lstvInventory = new Phoenix.Client.ListViewWithoutScrollBar();
+            this.lstvInventory = new ListViewWithoutScrollBar();
             this.lsvtInventoryCName = new System.Windows.Forms.ColumnHeader();
             this.lstvInventoryCType = new System.Windows.Forms.ColumnHeader();
             this.cmsInventory = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -8129,18 +8129,18 @@ namespace Phoenix.Client
         private System.Windows.Forms.ColumnHeader lstvRoomCName;
         private System.Windows.Forms.ColumnHeader lstvRoomCType;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel pnlDrops;
-        private Phoenix.Client.ListViewWithoutScrollBar lstvDrops;
+        private Phoenix.Client.Classes.Extensions.ListViewWithoutScrollBar lstvDrops;
         private System.Windows.Forms.ColumnHeader lstvDropsCName;
         private System.Windows.Forms.ColumnHeader lstvDropsCType;
-        private Phoenix.Client.ListViewWithoutScrollBar lstvRoom;
+        private Phoenix.Client.Classes.Extensions.ListViewWithoutScrollBar lstvRoom;
         private System.Windows.Forms.Label label23;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel pnlEquipped;
-        private Phoenix.Client.ListViewWithoutScrollBar lstvEquipped;
+        private Phoenix.Client.Classes.Extensions.ListViewWithoutScrollBar lstvEquipped;
         private System.Windows.Forms.ColumnHeader lstvEquippedCName;
         private System.Windows.Forms.ColumnHeader lstvEquippedCSlot;
         private System.Windows.Forms.ColumnHeader lstvEquippedCType;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel pnlInventory;
-        private Phoenix.Client.ListViewWithoutScrollBar lstvInventory;
+        private ListViewWithoutScrollBar lstvInventory;
         private System.Windows.Forms.ColumnHeader lsvtInventoryCName;
         private System.Windows.Forms.ColumnHeader lstvInventoryCType;
         private System.Windows.Forms.ToolStripMenuItem cToolStripMenuItem;

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace Phoenix.Common
+namespace Phoenix.Common.Data
 {
     public class Helper
     {
@@ -80,6 +76,16 @@ namespace Phoenix.Common
         public static string ReturnTilda(string input)
         {
             return input.Replace("&tilda&", "~");
+        }
+
+        public static string RemoveCaret(string input)
+        {
+            return input.Replace("^", "&caret&");
+        }
+
+        public static string ReturnCaret(string input)
+        {
+            return input.Replace("&caret&", "^");
         }
 
         public static bool HasUpperLowerDigit(string text)

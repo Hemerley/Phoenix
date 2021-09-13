@@ -1,7 +1,8 @@
-﻿using Phoenix.Common.Data.Types;
+﻿using Phoenix.Common.Commands.Factory;
+using Phoenix.Common.Data.Types;
 using System.Collections.Generic;
 
-namespace Phoenix.Common
+namespace Phoenix.Common.Commands.Response
 {
     public class CharacterListResponseCommand : Command
     {

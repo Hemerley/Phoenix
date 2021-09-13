@@ -1,4 +1,4 @@
-﻿namespace Phoenix.Common
+﻿namespace Phoenix.Common.Data
 {
     public class Constants
     {

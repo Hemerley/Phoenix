@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Phoenix.Common.Commands.Factory;
+using System.Collections.Generic;
 
-namespace Phoenix.Common
+namespace Phoenix.Common.Commands.Response
 {
-	public class AuthenticateResponseCommand : Command
-	{
-
-		// Setup To Bool
+    public class NewAccountResponseCommand : Command
+    {
 		#region -- Properties --
 
 		/// <summary>
@@ -16,9 +15,9 @@ namespace Phoenix.Common
 
 		#endregion
 
-		public AuthenticateResponseCommand()
+		public NewAccountResponseCommand()
 		{
-			this.CommandType = CommandType.AuthenticateResponse;
+			this.CommandType = CommandType.NewAccountResponse;
 		}
 
 		public override IEnumerable<IEnumerable<string>> GetCommandParts()
