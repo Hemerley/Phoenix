@@ -6,14 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "MakarovDev.ExpandCollapsePanel/1.0.0": {
-        "runtime": {
-          "lib/net40/MakarovDev.ExpandCollapsePanel.dll": {
-            "assemblyVersion": "1.0.7197.27666",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "Serilog/2.10.0": {
         "runtime": {
           "lib/netstandard2.1/Serilog.dll": {
@@ -33,13 +25,6 @@
     }
   },
   "libraries": {
-    "MakarovDev.ExpandCollapsePanel/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-d5S55nPqnRrG7pc3mzfA6x0AhycsW5n+X2TczQ7kMR4gkGx9prvvK+fUtwp9U/kdCh1DFldBw93OaI0bG6qFWw==",
-      "path": "makarovdev.expandcollapsepanel/1.0.0",
-      "hashPath": "makarovdev.expandcollapsepanel.1.0.0.nupkg.sha512"
-    },
     "Serilog/2.10.0": {
       "type": "package",
       "serviceable": true,

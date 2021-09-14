@@ -1,4 +1,4 @@
-﻿namespace Phoenix.Server
+﻿namespace Phoenix.Server.Connections
 {
 	public class ConnectedClientMessage
 	{

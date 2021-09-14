@@ -1,4 +1,5 @@
-﻿namespace Phoenix.Server
+﻿using Phoenix.Common.Data.Types;
+namespace Phoenix.Server.Connections
 {
 	public class ConnectedAccount
 	{
@@ -8,7 +9,7 @@
 		/// </summary>
 		public ConnectedClient Client { get; set; }
 		
-		public Common.Data.Types.Account Account { get; set; }
+		public Account Account { get; set; }
 
     }
 }

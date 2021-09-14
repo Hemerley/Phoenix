@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Phoenix.Server.Connections;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using Unclassified.Net;
 
-namespace Phoenix.Server
+namespace Phoenix.Server.Network
 {
 	public class Server
 	{

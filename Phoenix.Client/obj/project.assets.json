@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
-      "MakarovDev.ExpandCollapsePanel/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/MakarovDev.ExpandCollapsePanel.dll": {}
-        },
-        "runtime": {
-          "lib/net40/MakarovDev.ExpandCollapsePanel.dll": {}
-        }
-      },
       "Serilog/2.10.0": {
         "type": "package",
         "compile": {
@@ -42,18 +33,6 @@
     }
   },
   "libraries": {
-    "MakarovDev.ExpandCollapsePanel/1.0.0": {
-      "sha512": "d5S55nPqnRrG7pc3mzfA6x0AhycsW5n+X2TczQ7kMR4gkGx9prvvK+fUtwp9U/kdCh1DFldBw93OaI0bG6qFWw==",
-      "type": "package",
-      "path": "makarovdev.expandcollapsepanel/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/MakarovDev.ExpandCollapsePanel.dll",
-        "makarovdev.expandcollapsepanel.1.0.0.nupkg.sha512",
-        "makarovdev.expandcollapsepanel.nuspec"
-      ]
-    },
     "Serilog/2.10.0": {
       "sha512": "+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
       "type": "package",
@@ -99,7 +78,6 @@
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "MakarovDev.ExpandCollapsePanel >= 1.0.0",
       "Phoenix.Common >= 1.0.0",
       "Serilog >= 2.10.0",
       "Unclassified.AsyncTcpClient >= 1.0.2"
@@ -148,10 +126,6 @@
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
         "dependencies": {
-          "MakarovDev.ExpandCollapsePanel": {
-            "target": "Package",
-            "version": "[1.0.0, )"
-          },
           "Serilog": {
             "target": "Package",
             "version": "[2.10.0, )"
@@ -182,17 +156,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'MakarovDev.ExpandCollapsePanel 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "MakarovDev.ExpandCollapsePanel",
-      "targetGraphs": [
-        "net5.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }

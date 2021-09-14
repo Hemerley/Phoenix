@@ -15,6 +15,7 @@ namespace Phoenix.Client
         public FrmClient()
         {
             InitializeComponent();
+            InitializeControl();
         }
 
         public void Initialize(Classes.Network.Client client, Character character)

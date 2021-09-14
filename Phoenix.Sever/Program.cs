@@ -1,6 +1,6 @@
-﻿using Phoenix.Common;
+﻿using Phoenix.Common.Data;
+using Phoenix.Server.Network;
 using System;
-using System.Net;
 
 namespace Phoenix.Server
 {

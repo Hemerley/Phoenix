@@ -1,17 +1,23 @@
-﻿using Phoenix.Common;
+﻿using Phoenix.Common.Commands.Factory;
+using Phoenix.Common.Commands.Request;
+using Phoenix.Common.Commands.Response;
+using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
+using Phoenix.Server.Connections;
+using Phoenix.Server.Data;
+using Phoenix.Server.Logs;
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading;
 
-namespace Phoenix.Server
+namespace Phoenix.Server.Network
 {
 	public class Game
 	{
+
         #region -- Game Initialization --
 
         private Server server;
@@ -41,7 +47,7 @@ namespace Phoenix.Server
 		/// </summary>
 		private readonly ConcurrentQueue<ClientCommand> queuedCommand = new();
 
-		private List<Common.Data.Types.Room> rooms = new();
+		private List<Room> rooms = new();
 
 		public void Start()
 		{
@@ -103,6 +109,7 @@ namespace Phoenix.Server
 		}
 
         #endregion
+
         #region -- Send Commands --
 
         private static void SendCommandToClient(ConnectedClient client, Command command)
@@ -126,11 +133,6 @@ namespace Phoenix.Server
 			Logger.ConsoleLog("System", "Loading Rooms.");
 			this.rooms = Database.LoadRooms(Constants.GAME_MODE);
 
-			foreach (var room in this.rooms)
-			{
-				Logger.ConsoleLog("System", $"{room.Name}");
-			}
-
 			this.server = new Server();
 
 			this.server.OnClientConnected += Server_OnClientConnected;
@@ -146,7 +148,7 @@ namespace Phoenix.Server
             while (!this.stopGameWorkerThread)
 			{
 
-                #region -- Queue Handling
+                #region -- Queue Handling --
 
                 if (!this.queuedCommand.TryDequeue(out ClientCommand cmd))
 				{
@@ -183,7 +185,7 @@ namespace Phoenix.Server
 
 						var authResponseCmd = new AuthenticateResponseCommand
 						{
-							Success = authenticated ? 1 : 0
+							Success = authenticated
 						};
 
                         SendCommandToClient(clientWhoSendCommand, authResponseCmd);
@@ -193,7 +195,7 @@ namespace Phoenix.Server
 							var connectedAccount = new ConnectedAccount
 							{
 								Client = clientWhoSendCommand,
-								Account = new Common.Data.Types.Account
+								Account = new Account
 								{
 									Id = id,
 									Gold = gold
@@ -208,14 +210,16 @@ namespace Phoenix.Server
 					#endregion
 
 					#region -- GetCharacterList Command --
+
 					case CommandType.CharacterList:
 						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 						var newCharacterList = command as GetCharacterListCommand;
 
-						List<Common.Data.Types.Character> characters = Database.GetCharacterList(Constants.GAME_MODE, accountConnected.Account.Id);
+						List<Character> characters = Database.GetCharacterList(Constants.GAME_MODE, accountConnected.Account.Id);
 
-							var newCharacterListResponseCmd = new CharacterListResponseCommand
-							{
+						var newCharacterListResponseCmd = new CharacterListResponseCommand
+						{
+							Success = characters.Count > 0 ? true:false,
 								Characters = characters
 							};
                             SendCommandToClient(clientWhoSendCommand, newCharacterListResponseCmd);
@@ -224,6 +228,7 @@ namespace Phoenix.Server
 					#endregion
 
 					#region -- CharacterConnectCommand --
+
 					case CommandType.CharacterLogin:
 						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 						var newCharacterLogin = command as CharacterConnectCommand;
@@ -232,7 +237,7 @@ namespace Phoenix.Server
 
 						var newCharacterConnectResponseCommand = new CharacterConnectResponseCommand
 						{
-							Success = loginCharacter == null ? 0:1 ,
+							Success = loginCharacter != null ? true:false,
 							Character = loginCharacter
 						};
 
@@ -251,12 +256,12 @@ namespace Phoenix.Server
                         {
 							Database.InsertNewAccount(Constants.GAME_MODE, newAccountCommand.Username, newAccountCommand.Password, newAccountCommand.Email);
 							Logger.ConsoleLog("System", $"{clientId} has created a new account named: {newAccountCommand.Username}.");
-							newAccountResponseCmd.Success = 1;
+							newAccountResponseCmd.Success = true;
                         }
                         else
                         {
 							Logger.ConsoleLog("System", $"{clientId} has failed to create a new account named: {newAccountCommand.Username}. Reason: Account Exists.");
-							newAccountResponseCmd.Success = 0;
+							newAccountResponseCmd.Success = false;
                         }
                         SendCommandToClient(clientWhoSendCommand, newAccountResponseCmd);
 						break;
@@ -275,12 +280,12 @@ namespace Phoenix.Server
                         {
 							Database.InsertNewCharacter(Constants.GAME_MODE, newCharacterCommand.CharacterName, newCharacterCommand.Gender, newCharacterCommand.Philosophy, newCharacterCommand.Image, accountConnected.Account.Id);
 							Logger.ConsoleLog("System", $"{clientId} has created a new character named: {newCharacterCommand.CharacterName}");
-							newCharacterResponseCmd.Success = 1;
+							newCharacterResponseCmd.Success = true;
 						}
                         else
                         {
 							Logger.ConsoleLog("System", $"{clientId} has failed to create new character named: {newCharacterCommand.CharacterName}. Reason: Character Exists.");
-							newCharacterResponseCmd.Success = 1;
+							newCharacterResponseCmd.Success = false;
 						}
                         SendCommandToClient(clientWhoSendCommand, newCharacterResponseCmd);
 						break;

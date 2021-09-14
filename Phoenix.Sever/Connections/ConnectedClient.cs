@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Unclassified.Net;
 
-namespace Phoenix.Server
+namespace Phoenix.Server.Connections
 {
 	public class ConnectedClient
 	{
@@ -12,11 +12,11 @@ namespace Phoenix.Server
 
 		private readonly AsyncTcpClient tcpClient;
 
-		private readonly Server server;
+		private readonly Network.Server server;
 
 		public string Id { get; private set; }
 
-		public ConnectedClient(TcpClient tcpClient, Server server)
+		public ConnectedClient(TcpClient tcpClient, Network.Server server)
 		{
 			this.Id = Guid.NewGuid().ToString();
 

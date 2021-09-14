@@ -25,7 +25,10 @@ namespace Phoenix.Common.Commands.Factory
 
 			switch (commandType)
 			{
-				case CommandType.Authenticate:
+
+                #region -- Authenticate --
+
+                case CommandType.Authenticate:
 					
 					/// <summary>
 					/// Validate Incoming Command is Proper Format.
@@ -41,20 +44,26 @@ namespace Phoenix.Common.Commands.Factory
 						Username = commandDataParts[0],
 						Password = commandDataParts[1]
 					};
-				case CommandType.AuthenticateResponse:
-					//get the message
-					if (commandDataParts.Length < 1)
-						return new UnknownCommand();
 
-					if (!int.TryParse(commandDataParts[0], out int authSuccess))
+                #endregion
+
+                #region -- Authenticate Response --
+
+                case CommandType.AuthenticateResponse:
+					if (commandDataParts.Length < 1)
 						return new UnknownCommand();
 
 					return new AuthenticateResponseCommand
 					{
-						Success = authSuccess
+						Success = bool.Parse(commandDataParts[0])
 					};
-				case CommandType.MessageRoom:
-					//get the message
+
+                #endregion
+
+                #region -- Message Room --
+
+                case CommandType.MessageRoom:
+
 					if (commandDataParts.Length < 2)
 						return new UnknownCommand();
 
@@ -62,29 +71,41 @@ namespace Phoenix.Common.Commands.Factory
 					{
 						Message = commandDataParts[1]
 					};
-				case CommandType.NewAccount:
-					if (commandDataParts.Length < 2)
+
+                #endregion
+
+                #region -- New Account --
+
+                case CommandType.NewAccount:
+					if (commandDataParts.Length < 3)
 						return new UnknownCommand();
 
 					return new NewAccountCommand
 					{
 						Username = commandDataParts[0],
-						Email = commandDataParts[2],
-						Password = commandDataParts[1]
+						Password = commandDataParts[1],
+						Email = commandDataParts[2]
 					};
-				case CommandType.NewAccountResponse:
-					if (commandDataParts.Length < 1)
-						return new UnknownCommand();
 
-					if (!int.TryParse(commandDataParts[0], out int accountSuccess))
+                #endregion
+
+                #region -- New Account Response --
+
+                case CommandType.NewAccountResponse:
+					if (commandDataParts.Length < 1)
 						return new UnknownCommand();
 
 					return new NewAccountResponseCommand
 					{
-						Success = accountSuccess
+						Success = bool.Parse(commandDataParts[0])
 					};
-				case CommandType.NewCharacter:
-					if (commandDataParts.Length < 2)
+
+                #endregion
+
+                #region -- New Character --
+
+                case CommandType.NewCharacter:
+					if (commandDataParts.Length < 4)
 						return new UnknownCommand();
 
 					return new NewCharacterCommand
@@ -94,22 +115,33 @@ namespace Phoenix.Common.Commands.Factory
 						Gender = commandDataParts[1],
 						Image = Int32.Parse(commandDataParts[3])
 					};
-				case CommandType.NewChracterResponse:
-					if (commandDataParts.Length < 1)
-						return new UnknownCommand();
 
-					if (!int.TryParse(commandDataParts[0], out int characterSuccess))
+                #endregion
+
+                #region -- New Character Response --
+
+                case CommandType.NewChracterResponse:
+					if (commandDataParts.Length < 1)
 						return new UnknownCommand();
 
 					return new NewCharacterResponseCommand
 					{
-						Success = characterSuccess
+						Success = bool.Parse(commandDataParts[0])
 					};
 
-				case CommandType.CharacterList:
+                #endregion
+
+                #region -- Character List --
+
+                case CommandType.CharacterList:
 					return new GetCharacterListCommand();
-				case CommandType.CharacterListResponse:
-					if (commandDataParts.Length < 0)
+
+                #endregion
+
+                #region -- Character List Response --
+
+                case CommandType.CharacterListResponse:
+					if (commandDataParts.Length < 2)
 						return new UnknownCommand();
 
 					string[] s = commandParts[1].Split("~");
@@ -117,7 +149,7 @@ namespace Phoenix.Common.Commands.Factory
 					List<Character> characters = new();
 
 					foreach (string cString in s)
-                    {
+					{
 						string[] c = cString.Split("|");
 						characters.Add(new Character
 						{
@@ -125,13 +157,18 @@ namespace Phoenix.Common.Commands.Factory
 							Caste = c[1],
 							Philosophy = c[2]
 						});
-                    }
+					}
 
 					return new CharacterListResponseCommand
-					{ 
-
+					{
+						//Success = bool.Parse(commandDataParts[0]),
 						Characters = characters
 					};
+
+				#endregion
+
+				#region -- Character Login --
+
 				case CommandType.CharacterLogin:
 					if (commandDataParts.Length < 1)
 						return new UnknownCommand();
@@ -139,48 +176,57 @@ namespace Phoenix.Common.Commands.Factory
 					{
 						Name = commandDataParts[0]
                     };
-				case CommandType.CharacterLoginResponse:
-					if (commandDataParts.Length < 1)
+
+                #endregion
+
+                #region -- Character Login Response --
+
+                case CommandType.CharacterLoginResponse:
+					if (commandDataParts.Length < 2)
 					return new UnknownCommand();
 
-					var character =  new Character
+					Character character = new();
+
+					character = new Character
 					{
-						Id = Int32.Parse(commandDataParts[0]),
-						AccountId = Int32.Parse(commandDataParts[1]),
-						Name = commandDataParts[2],
-						Type = Int32.Parse(commandDataParts[3]),
-						Image = Int32.Parse(commandDataParts[4]),
-						Gender = commandDataParts[5],
-						HisHer = commandDataParts[6],
-						HeShe = commandDataParts[7],
-						Experience = Int32.Parse(commandDataParts[8]),
-						Title = commandDataParts[9],
-						Caste = commandDataParts[10],
-						Rank = Int32.Parse(commandDataParts[11]),
-						Philosophy = commandDataParts[12],
-						Alignment = Int32.Parse(commandDataParts[13]),
-						Creation = Int32.Parse(commandDataParts[14]),
-						Strength = Int32.Parse(commandDataParts[15]),
-						Agility = Int32.Parse(commandDataParts[16]),
-						Intellect = Int32.Parse(commandDataParts[17]),
-						Stamina = Int32.Parse(commandDataParts[18]),
-						Damage = Int32.Parse(commandDataParts[19]),
-						Health = Int32.Parse(commandDataParts[20]),
-						Mana = Int32.Parse(commandDataParts[21]),
-						RoomID = Int32.Parse(commandDataParts[22]),
-						Crit = Int32.Parse(commandDataParts[23]),
-						Mastery = Int32.Parse(commandDataParts[24]),
-						Haste = Int32.Parse(commandDataParts[25]),
-						Versatility = Int32.Parse(commandDataParts[26])
+						Id = Int32.Parse(commandDataParts[1]),
+						AccountId = Int32.Parse(commandDataParts[2]),
+						Name = commandDataParts[3],
+						Type = Int32.Parse(commandDataParts[4]),
+						Image = Int32.Parse(commandDataParts[5]),
+						Gender = commandDataParts[6],
+						HisHer = commandDataParts[7],
+						HeShe = commandDataParts[8],
+						Experience = Int32.Parse(commandDataParts[9]),
+						Title = commandDataParts[10],
+						Caste = commandDataParts[11],
+						Rank = Int32.Parse(commandDataParts[12]),
+						Philosophy = commandDataParts[13],
+						Alignment = Int32.Parse(commandDataParts[14]),
+						Creation = Int32.Parse(commandDataParts[15]),
+						Strength = Int32.Parse(commandDataParts[16]),
+						Agility = Int32.Parse(commandDataParts[17]),
+						Intellect = Int32.Parse(commandDataParts[18]),
+						Stamina = Int32.Parse(commandDataParts[19]),
+						Damage = Int32.Parse(commandDataParts[20]),
+						Health = Int32.Parse(commandDataParts[21]),
+						Mana = Int32.Parse(commandDataParts[22]),
+						RoomID = Int32.Parse(commandDataParts[23]),
+						Crit = Int32.Parse(commandDataParts[24]),
+						Mastery = Int32.Parse(commandDataParts[25]),
+						Haste = Int32.Parse(commandDataParts[26]),
+						Versatility = Int32.Parse(commandDataParts[27])
 					};
 
 					return new CharacterConnectResponseCommand
 					{
-						// Structure Character
-						Success = Int32.Parse(commandDataParts[0]),
+						//Success = bool.Parse(commandDataParts[0]),
 						Character = character
 					};
-				default:
+
+                #endregion
+
+                default:
 					return new UnknownCommand();
 			}
 		}

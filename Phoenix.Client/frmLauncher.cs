@@ -125,11 +125,12 @@ namespace Phoenix.Client
             var command = CommandFactory.ParseCommand(e);
             switch (command.CommandType)
             {
+
                 #region -- AuthResponse Command --
 
                 case CommandType.AuthenticateResponse:
                     var authResponseCmd = command as AuthenticateResponseCommand;
-                    if (authResponseCmd.Success == 1)
+                    if (authResponseCmd.Success)
                     {
                         this.pnlAuthenicate.Invoke((Action)delegate
                         {
@@ -166,7 +167,7 @@ namespace Phoenix.Client
 
                 case CommandType.NewAccountResponse:
                     var accountResponseCmd = command as NewAccountResponseCommand;
-                    if (accountResponseCmd.Success == 1)
+                    if (accountResponseCmd.Success)
                     {
                         this.Invoke((Action)delegate
                         {
@@ -194,7 +195,7 @@ namespace Phoenix.Client
 
                 case CommandType.NewChracterResponse:
                     var characterResponseCmd = command as NewCharacterResponseCommand;
-                    if (characterResponseCmd.Success == 1)
+                    if (characterResponseCmd.Success)
                     {
                         this.Invoke((Action)delegate
                         {
@@ -221,16 +222,19 @@ namespace Phoenix.Client
                 case CommandType.CharacterListResponse:
                     var characterListResponseCmd = command as CharacterListResponseCommand;
 
-                    foreach(Character character in characterListResponseCmd.Characters)
+                    if (characterListResponseCmd.Success)
                     {
-                        this.Invoke((Action)delegate
+                        foreach (Character character in characterListResponseCmd.Characters)
                         {
-                            int rowId = this.dgvCharacter.Rows.Add();
-                            DataGridViewRow row = this.dgvCharacter.Rows[rowId];
-                            row.Cells["dgvCharacterName"].Value = character.Name;
-                            row.Cells["dgvCharacterCaste"].Value = character.Caste;
-                            row.Cells["dgvCharacterPhilosophy"].Value = character.Philosophy;
-                        });
+                            this.Invoke((Action)delegate
+                            {
+                                int rowId = this.dgvCharacter.Rows.Add();
+                                DataGridViewRow row = this.dgvCharacter.Rows[rowId];
+                                row.Cells["dgvCharacterName"].Value = character.Name;
+                                row.Cells["dgvCharacterCaste"].Value = character.Caste;
+                                row.Cells["dgvCharacterPhilosophy"].Value = character.Philosophy;
+                            });
+                        }
                     }
 
                     return;
@@ -242,7 +246,7 @@ namespace Phoenix.Client
                 case CommandType.CharacterLoginResponse:
                     var charConnectResponseCommand = command as CharacterConnectResponseCommand;
 
-                    if (charConnectResponseCommand.Success == 1)
+                    if (charConnectResponseCommand.Success)
                     {
                         this.Invoke((Action)delegate
                         {
@@ -261,6 +265,7 @@ namespace Phoenix.Client
                     }
                     return;
                 #endregion
+            
             }
         }
 

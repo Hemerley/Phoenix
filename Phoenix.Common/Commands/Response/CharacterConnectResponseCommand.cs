@@ -7,7 +7,8 @@ namespace Phoenix.Common.Commands.Response
 {
     public class CharacterConnectResponseCommand : Command
     {
-        public int Success { get; set; }
+        public bool Success { get; set; }
+
         public Character Character { get; set; }
 
         public CharacterConnectResponseCommand()

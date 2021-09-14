@@ -6,9 +6,11 @@ namespace Phoenix.Common.Commands.Response
 {
     public class CharacterListResponseCommand : Command
     {
-		#region -- Properties --
+        #region -- Properties --
 
-		public List<Character> Characters { get; set; } = new();
+        public bool Success { get; set; }
+
+        public List<Character> Characters { get; set; } = new();
 
 		#endregion
 
@@ -19,8 +21,10 @@ namespace Phoenix.Common.Commands.Response
 
 		public override IEnumerable<IEnumerable<string>> GetCommandParts()
 		{
+			var response = new List<string>();
 			var characters = new List<List<string>>();
-            foreach (var character in this.Characters)
+			response.Add(this.Success.ToString());
+			foreach (var character in this.Characters)
             {
 				characters.Add(new List<string>
 				{

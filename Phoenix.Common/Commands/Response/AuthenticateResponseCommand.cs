@@ -13,7 +13,7 @@ namespace Phoenix.Common.Commands.Response
 		/// 0 - Fail
 		/// 1 - Success
 		/// </summary>
-		public int Success { get; set; }
+		public bool Success { get; set; }
 
 		#endregion
 

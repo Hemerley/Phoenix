@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Phoenix.Common.Data;
+using Phoenix.Common.Data.Types;
+using Phoenix.Server.Logs;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Data.SQLite;
 using System.IO;
 using System;
-using Phoenix.Common;
 
-namespace Phoenix.Server
+namespace Phoenix.Server.Data
 {
     public class Database
     {
@@ -83,6 +85,7 @@ namespace Phoenix.Server
         }
 
         #endregion
+
         #region -- Dynamic Loaders --
 
         #endregion
@@ -94,17 +97,17 @@ namespace Phoenix.Server
         /// </summary>
         /// <param name="connectionType"></param>
         /// <returns></returns>
-        public static List<Common.Data.Types.Room> LoadRooms(string connectionType)
+        public static List<Room> LoadRooms(string connectionType)
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
             string query = $"SELECT r.ID as RoomID, r.Name as RoomName, r.Area as RoomArea, r.Status as RoomStatus, r.Type as RoomType, r.Description as RoomDescription, r.Exits as RoomExits, r.Tile as RoomTile, r.North as RoomNorth, r.South as RoomSouth, r.West as RoomWest, r.East as RoomEast, r.Up as RoomUp, r.Down as RoomDown, r.KeyModeNorth as RoomKeyModeNorth, r.KeyModeSouth as RoomKeyModeSouth, r.KeyModeWest as RoomKeyModeWest, r.KeyModeEast as RoomKeyModeEast, r.KeyModeUp as RoomKeyModeUp, r.KeyModeDown as RoomKeyModeDown, r.KeyNameNorth as RoomKeyNameNorth, r.KeyNameSouth as RoomKeyNameSouth, r.KeyNameWest as RoomKeyNameWest, r.KeyNameEast as RoomKeyNameEast, r.KeyNameUp as RoomKeyNameUp, r.KeyNameDown as RoomKeyNameDown, r.KeyTypeNorth as RoomKeyTypeNorth, r.KeyTypeSouth as RoomKeyTypeSouth, r.KeyTypeWest as RoomKeyTypeWest, r.KeyTypeEast as RoomKeyTypeEast, r.KeyTypeUp as RoomKeyTypeUp, r.KeyTypeDown as RoomKeyTypeDown, r.KeyPassNorth as RoomKeyPassNorth, r.KeyPassSouth as RoomKeyPassSouth, r.KeyPassWest as RoomKeyPassWest, r.KeyPassEast as RoomKeyPassEast, r.KeyPassUp as RoomKeyPassUp, r.KeyPassDown as RoomKeyPassDown, r.KeyFailNorth as RoomKeyFailNorth, r.KeyFailSouth as RoomKeyFailSouth, r.KeyFailWest as RoomKeyFailWest, r.KeyFailEast as RoomKeyFailEast, r.KeyFailUp as RoomKeyFailUp, r.KeyFailDown as RoomKeyFailDown, r.Script as RoomScript, e.ID as EntityID, e.Type as EntityType, e.Rarity as EntityRarity, e.Name as EntityName, e.Image as EntityImage, e.HisHer as EntityHisHer, e.HeShe as EntityHeShe, e.BName as EntityBName, e.Level as EntityLevel, e.Gold as EntityGold, e.Strength as EntityStrength, e.Agility as EntityAgility, e.Intellect as EntityIntellect, e.Stamina as EntityStamina, e.Damage as EntityDamage, e.Haste as EntityHaste, e.Crit as EntityCrit, e.Mastery as EntityMastery, e.Versatility as EntityVersatility, e.Health as EntityHealth, e.Mana as EntityMana, e.Taunt as EntityTaunt, e.SpawnTime as EntitySpawnTime, e.SpawnDelay as EntitySpawnDelay, e.VanishTime as EntityVanishTime, e.Script as EntityScript FROM Rooms r LEFT OUTER JOIN RoomEntities re ON re.RoomID = r.ID LEFT OUTER JOIN Entities e ON e.ID = re.EntityID; ";
             using var command = new SQLiteCommand(query, connection);
             using SQLiteDataReader reader = command.ExecuteReader();
-            List<Common.Data.Types.RoomEntityDto> rawData = new();
+            List<RoomEntityDto> rawData = new();
             while (reader.Read())
             {
-                var roomEntityDto = new Common.Data.Types.RoomEntityDto
+                var roomEntityDto = new RoomEntityDto
                 {
                     RoomID = int.TryParse(reader["RoomID"]?.ToString(), out int roomID) ? roomID : (int?)null,
                     RoomName = reader["RoomName"].ToString(),
@@ -182,7 +185,7 @@ namespace Phoenix.Server
             }
             return (from data in rawData
                     group data by new { data.RoomID, data.RoomName, data.RoomArea, data.RoomStatus, data.RoomType, data.RoomDescription, data.RoomExits, data.RoomTile, data.RoomNorth, data.RoomSouth, data.RoomWest, data.RoomEast, data.RoomUp, data.RoomDown, data.RoomKeyModeNorth, data.RoomKeyModeSouth, data.RoomKeyModeWest, data.RoomKeyModeEast, data.RoomKeyModeUp, data.RoomKeyModeDown, data.RoomKeyNameNorth, data.RoomKeyNameSouth, data.RoomKeyNameWest, data.RoomKeyNameEast, data.RoomKeyNameUp, data.RoomKeyNameDown, data.RoomKeyTypeNorth, data.RoomKeyTypeSouth, data.RoomKeyTypeWest, data.RoomKeyTypeEast, data.RoomKeyTypeUp, data.RoomKeyTypeDown, data.RoomKeyPassNorth, data.RoomKeyPassSouth, data.RoomKeyPassWest, data.RoomKeyPassEast, data.RoomKeyPassUp, data.RoomKeyPassDown, data.RoomKeyFailNorth, data.RoomKeyFailSouth, data.RoomKeyFailWest, data.RoomKeyFailEast, data.RoomKeyFailUp, data.RoomKeyFailDown, data.RoomScript } into g
-                    select new Common.Data.Types.Room
+                    select new Room
                     {
                         ID = g.Key.RoomID,
                         Name = g.Key.RoomName,
@@ -229,7 +232,7 @@ namespace Phoenix.Server
                         KeyFailUp = g.Key.RoomKeyFailUp,
                         KeyFailDown = g.Key.RoomKeyFailDown,
                         Script = g.Key.RoomScript,
-                        Entities = g.Where(e => e.EntityID.HasValue).ToList().Select(e => new Common.Data.Types.Entity
+                        Entities = g.Where(e => e.EntityID.HasValue).ToList().Select(e => new Entity
                         {
                             ID = e.EntityID.Value,
                             Type = e.EntityType.Value,
@@ -350,18 +353,18 @@ namespace Phoenix.Server
             command.ExecuteNonQuery();
         }
 
-        public static List<Common.Data.Types.Character> GetCharacterList (string connectionType, int accountID)
+        public static List<Character> GetCharacterList (string connectionType, int accountID)
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
             string query = $"SELECT Name, Caste, Philosophy FROM Characters WHERE AccountID = '{accountID}';";
             using var command = new SQLiteCommand(query, connection);
             using SQLiteDataReader reader = command.ExecuteReader();
-            List<Common.Data.Types.Character> characters = new();
+            List<Character> characters = new();
 
             while (reader.Read())
             {
-                Common.Data.Types.Character character = new()
+                Character character = new()
                 {
                     Name = reader[0].ToString(),
                     Caste = Helper.ReturnCasteText(Int32.Parse(reader[1].ToString())),
@@ -373,7 +376,7 @@ namespace Phoenix.Server
             return characters;
         }
 
-        public static Common.Data.Types.Character GetCharacter (string connectionType, int accountID, string name)
+        public static Character GetCharacter (string connectionType, int accountID, string name)
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
@@ -381,7 +384,7 @@ namespace Phoenix.Server
             using var command = new SQLiteCommand(query, connection);
             using SQLiteDataReader reader = command.ExecuteReader();
 
-            Common.Data.Types.Character character;
+            Character character;
 
             while (reader.Read())
             {
@@ -421,5 +424,6 @@ namespace Phoenix.Server
         }
 
         #endregion
+
     }
 }

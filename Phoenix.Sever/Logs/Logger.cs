@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phoenix.Server
+namespace Phoenix.Server.Logs
 {
     public class Logger
     {
