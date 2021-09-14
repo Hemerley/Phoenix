@@ -24,6 +24,7 @@ namespace Phoenix.Common.Commands.Response
 			var response = new List<string>();
 			var characters = new List<List<string>>();
 			response.Add(this.Success.ToString());
+			characters.Add(response);
 			foreach (var character in this.Characters)
             {
 				characters.Add(new List<string>

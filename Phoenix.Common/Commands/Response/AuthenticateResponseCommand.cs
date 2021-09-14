@@ -9,6 +9,9 @@ namespace Phoenix.Common.Commands.Response
 		// Setup To Bool
 		#region -- Properties --
 
+		//<CommandID>^<Payload>
+		//<CommandID>^<Status><Payload>
+
 		/// <summary>
 		/// 0 - Fail
 		/// 1 - Success

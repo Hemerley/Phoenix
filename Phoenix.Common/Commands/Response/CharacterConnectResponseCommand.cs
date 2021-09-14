@@ -21,11 +21,11 @@ namespace Phoenix.Common.Commands.Response
             var response = new List<string>();
             var character = new List<List<string>>();
             response.Add(this.Success.ToString());
+            character.Add(response);
             if (this.Character == null)
             {
                 return character;
             }
-
             character.Add(new List<string>{
             this.Character.Id.ToString(),
             this.Character.AccountId.ToString(),

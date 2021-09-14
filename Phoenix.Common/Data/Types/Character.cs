@@ -6,7 +6,7 @@
         public int Id { get; set; }
         public int AccountId { get; set; }
         public string Name { get; set; }
-        public int Type { get; set; }
+        public int Type { get; set; } 
         public int Image { get; set; }
         public string Gender { get; set; }
         public string HisHer { get; set; }
@@ -14,8 +14,10 @@
         public int Experience { get; set; }
         public string Title { get; set; }
         public string Caste { get; set; }
-        public int  Rank { get; set; }
+        public int CasteID { get; set; }
+        public int Rank { get; set; }
         public string Philosophy { get; set; }
+        public int PhilosophyID { get; set; }
         public int Alignment { get; set; }
         public int Creation { get; set; }
         public int Strength { get; set; }

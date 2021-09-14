@@ -141,30 +141,31 @@ namespace Phoenix.Common.Commands.Factory
                 #region -- Character List Response --
 
                 case CommandType.CharacterListResponse:
-					if (commandDataParts.Length < 2)
-						return new UnknownCommand();
-
-					string[] s = commandParts[1].Split("~");
-
-					List<Character> characters = new();
-
-					foreach (string cString in s)
 					{
-						string[] c = cString.Split("|");
-						characters.Add(new Character
+						if (commandDataParts.Length < 2)
+							return new UnknownCommand();
+
+						string[] s = commandParts[1].Split("~");
+
+						List<Character> characters = new();
+
+						for (int i = 1; i < s.Length; i++)
 						{
-							Name = c[0],
-							Caste = c[1],
-							Philosophy = c[2]
-						});
+							string[] c = s[i].Split("|");
+							characters.Add(new Character
+							{
+								Name = c[0],
+								Caste = c[1],
+								Philosophy = c[2]
+							});
+						}
+
+						return new CharacterListResponseCommand
+						{
+							Success = bool.Parse(s[0]),
+							Characters = characters
+						};
 					}
-
-					return new CharacterListResponseCommand
-					{
-						//Success = bool.Parse(commandDataParts[0]),
-						Characters = characters
-					};
-
 				#endregion
 
 				#region -- Character Login --
@@ -182,48 +183,55 @@ namespace Phoenix.Common.Commands.Factory
                 #region -- Character Login Response --
 
                 case CommandType.CharacterLoginResponse:
-					if (commandDataParts.Length < 2)
-					return new UnknownCommand();
-
-					Character character = new();
-
-					character = new Character
 					{
-						Id = Int32.Parse(commandDataParts[1]),
-						AccountId = Int32.Parse(commandDataParts[2]),
-						Name = commandDataParts[3],
-						Type = Int32.Parse(commandDataParts[4]),
-						Image = Int32.Parse(commandDataParts[5]),
-						Gender = commandDataParts[6],
-						HisHer = commandDataParts[7],
-						HeShe = commandDataParts[8],
-						Experience = Int32.Parse(commandDataParts[9]),
-						Title = commandDataParts[10],
-						Caste = commandDataParts[11],
-						Rank = Int32.Parse(commandDataParts[12]),
-						Philosophy = commandDataParts[13],
-						Alignment = Int32.Parse(commandDataParts[14]),
-						Creation = Int32.Parse(commandDataParts[15]),
-						Strength = Int32.Parse(commandDataParts[16]),
-						Agility = Int32.Parse(commandDataParts[17]),
-						Intellect = Int32.Parse(commandDataParts[18]),
-						Stamina = Int32.Parse(commandDataParts[19]),
-						Damage = Int32.Parse(commandDataParts[20]),
-						Health = Int32.Parse(commandDataParts[21]),
-						Mana = Int32.Parse(commandDataParts[22]),
-						RoomID = Int32.Parse(commandDataParts[23]),
-						Crit = Int32.Parse(commandDataParts[24]),
-						Mastery = Int32.Parse(commandDataParts[25]),
-						Haste = Int32.Parse(commandDataParts[26]),
-						Versatility = Int32.Parse(commandDataParts[27])
-					};
+						if (commandDataParts.Length < 2)
+							return new UnknownCommand();
 
-					return new CharacterConnectResponseCommand
-					{
-						//Success = bool.Parse(commandDataParts[0]),
-						Character = character
-					};
+						string[] s = commandParts[1].Split("~");
 
+						Character character = new();
+
+						string[] c = s[1].Split("|");
+
+						// Add Index Based Increment i= 0 [i++]
+
+						character = new Character
+						{
+							Id = Int32.Parse(c[0]),
+							AccountId = Int32.Parse(c[1]),
+							Name = c[2],
+							Type = Int32.Parse(c[3]),
+							Image = Int32.Parse(c[4]),
+							Gender = c[5],
+							HisHer = c[6],
+							HeShe = c[7],
+							Experience = Int32.Parse(c[8]),
+							Title = c[9],
+							Caste = c[10],
+							Rank = Int32.Parse(c[11]),
+							Philosophy = c[12],
+							Alignment = Int32.Parse(c[13]),
+							Creation = Int32.Parse(c[14]),
+							Strength = Int32.Parse(c[15]),
+							Agility = Int32.Parse(c[16]),
+							Intellect = Int32.Parse(c[17]),
+							Stamina = Int32.Parse(c[18]),
+							Damage = Int32.Parse(c[19]),
+							Health = Int32.Parse(c[20]),
+							Mana = Int32.Parse(c[21]),
+							RoomID = Int32.Parse(c[22]),
+							Crit = Int32.Parse(c[23]),
+							Mastery = Int32.Parse(c[24]),
+							Haste = Int32.Parse(c[25]),
+							Versatility = Int32.Parse(c[26])
+						};
+
+						return new CharacterConnectResponseCommand
+						{
+							Success = bool.Parse(s[0]),
+							Character = character
+						};
+					}
                 #endregion
 
                 default:
