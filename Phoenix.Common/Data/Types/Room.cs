@@ -53,59 +53,5 @@ namespace Phoenix.Common.Data.Types
         public List<Character> RoomCharacters { get; set; } = new();
         public List<Entity> RoomEntities { get; set; } = new();
         public List<Item> RoomItems { get; set; } = new();
-
-        public Room()
-        {
-
-        }
-
-        public Room(int id, string name, string area, int status, int type, string description, string exits, int tile, int north, int south, int west, int east, int up, int down, int keymodenorth, int keymodesouth, int keymodewest, int keymodeeast, int keymodeup, int keymodedown, string keynamenorth, string keynamesouth, string keynamewest, string keynameeast, string keynameup, string keynamedown, int keytypenorth, int keytypesouth, int keytypewest, int keytypeeast, int keytypeup, int keytypedown, string keypassnorth, string keypasssouth, string keypasswest, string keypasseast, string keypassup, string keypassdown, string keyfailnorth, string keyfailsouth, string keyfailwest, string keyfaileast, string keyfailup, string keyfaildown, string script)
-        {
-            this.ID = id;
-            this.Name = name;
-            this.Area = area;
-            this.Status = status;
-            this.Type = type;
-            this.Description = description;
-            this.Exits = exits;
-            this.Tile = tile;
-            this.North = north;
-            this.South = south;
-            this.West = west;
-            this.East = east;
-            this.Down = down;
-            this.Up = up;
-            this.KeyModeNorth = keymodenorth;
-            this.KeyModeSouth = keymodesouth;
-            this.KeyModeWest = keymodewest;
-            this.KeyModeEast = keymodeeast;
-            this.KeyModeDown = keymodedown;
-            this.KeyModeUp = keymodeup;
-            this.KeyNameNorth = keynamenorth;
-            this.KeyNameSouth = keynamesouth;
-            this.KeyNameWest = keynamewest;
-            this.KeyNameEast = keynameeast;
-            this.KeyNameDown = keynamedown;
-            this.KeyNameUp = keynameup;
-            this.KeyTypeNorth = keytypenorth;
-            this.KeyTypeSouth = keytypesouth;
-            this.KeyTypeWest = keytypewest;
-            this.KeyTypeEast = keytypeeast;
-            this.KeyTypeDown = keytypedown;
-            this.KeyTypeUp = keytypeup;
-            this.KeyPassNorth = keypassnorth;
-            this.KeyPassSouth = keypasssouth;
-            this.KeyPassWest = keypasswest;
-            this.KeyPassEast = keypasseast;
-            this.KeyPassDown = keypassdown;
-            this.KeyPassUp = keypassup;
-            this.KeyFailNorth = keyfailnorth;
-            this.KeyFailSouth = keyfailsouth;
-            this.KeyFailWest = keyfailwest;
-            this.KeyFailEast = keyfaileast;
-            this.KeyFailDown = keyfaildown;
-            this.KeyFailUp = keyfailup;
-            this.Script = script;
-        }
     }
 }

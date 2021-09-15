@@ -158,7 +158,7 @@ namespace Phoenix.Server.Data
                     EntityType = int.TryParse(reader["EntityType"]?.ToString(), out int entityType) ? entityType : (int?)null,
                     EntityRarity = int.TryParse(reader["EntityRarity"]?.ToString(), out int entityRarity) ? entityRarity : (int?)null,
                     EntityName = reader["EntityName"].ToString(),
-                    EntityImage = int.TryParse(reader["EntityImage"]?.ToString(), out int entityImage) ? entityImage : (int?)null,
+                    EntityImage = reader["EntityImage"].ToString(),
                     EntityHisHer = reader["EntityHisHer"].ToString(),
                     EntityHeShe = reader["EntityHeShe"].ToString(),
                     EntityBName = reader["EntityBName"].ToString(),
@@ -235,10 +235,12 @@ namespace Phoenix.Server.Data
                         Entities = g.Where(e => e.EntityID.HasValue).ToList().Select(e => new Entity
                         {
                             ID = e.EntityID.Value,
-                            Type = e.EntityType.Value,
-                            Rarity = e.EntityRarity.Value,
+                            Type = Helper.ReturnEntityTypeText(e.EntityType.Value),
+                            TypeID = e.EntityType.Value,
+                            Rarity = Helper.ReturnRarityText(e.EntityRarity.Value),
+                            RarityID = e.EntityRarity.Value,
                             Name = e.EntityName,
-                            Image = e.EntityImage.Value,
+                            Image = e.EntityImage,
                             HisHer = e.EntityHisHer,
                             HeShe = e.EntityHeShe,
                             BName = e.EntityBName,
@@ -337,7 +339,7 @@ namespace Phoenix.Server.Data
         /// <param name="AccountName"></param>
         /// <param name="Password"></param>
         /// <param name="Email"></param>
-        public static void InsertNewCharacter(string connectionType, string CharacterName, string Gender, int Philosophy, int Image, int accountID)
+        public static void InsertNewCharacter(string connectionType, string CharacterName, string Gender, int Philosophy, string Image, int accountID)
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
@@ -348,7 +350,7 @@ namespace Phoenix.Server.Data
                 heShe = "He";
                 hisHer = "His";
             }
-            string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID) VALUES ('{accountID}', '{CharacterName}', {Image}, 0, '{Gender}', '{hisHer}', '{heShe}', 0, 0, 0, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 0);";
+            string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID) VALUES ('{accountID}', '{CharacterName}', '{Image}', 0, '{Gender}', '{hisHer}', '{heShe}', 0, 'Initiate', 0, 0, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 0);";
             using var command = new SQLiteCommand(query, connection);
             command.ExecuteNonQuery();
         }
@@ -393,16 +395,20 @@ namespace Phoenix.Server.Data
                     Id = Int32.Parse(reader[0].ToString()),
                     AccountId = Int32.Parse(reader[1].ToString()),
                     Name = reader[2].ToString(),
-                    Type = Int32.Parse(reader[3].ToString()),
-                    Image = Int32.Parse(reader[4].ToString()),
+                    Type = Helper.ReturnCharacterTypeText(Int32.Parse(reader[3].ToString())),
+                    TypeID = Int32.Parse(reader[3].ToString()),
+                    Image = reader[4].ToString(),
                     Gender = reader[5].ToString(),
                     HisHer = reader[6].ToString(),
                     HeShe = reader[7].ToString(),
                     Experience = Int32.Parse(reader[8].ToString()),
                     Title = reader[9].ToString(),
                     Caste = Helper.ReturnCasteText(Int32.Parse(reader[10].ToString())),
-                    Rank = Int32.Parse(reader[11].ToString()),
-                    Philosophy = Helper.ReturnCasteText(Int32.Parse(reader[12].ToString())),
+                    CasteID = Int32.Parse(reader[10].ToString()),
+                    Rank = Helper.ReturnCharacterRankText(Int32.Parse(reader[11].ToString())),
+                    RankID = Int32.Parse(reader[11].ToString()),
+                    Philosophy = Helper.ReturnPhilosophyText(Int32.Parse(reader[12].ToString())),
+                    PhilosophyID = Int32.Parse(reader[12].ToString()),
                     Alignment = Int32.Parse(reader[13].ToString()),
                     Creation = Int32.Parse(reader[14].ToString()),
                     Strength = Int32.Parse(reader[15].ToString()),

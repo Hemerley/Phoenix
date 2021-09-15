@@ -11,6 +11,7 @@ namespace Phoenix.Client
     {
         private Classes.Network.Client client;
         private Character character;
+        private FrmLauncher launcherForm;
 
         public FrmClient()
         {
@@ -18,13 +19,16 @@ namespace Phoenix.Client
             InitializeControl();
         }
 
-        public void Initialize(Classes.Network.Client client, Character character)
+        public void Initialize(Classes.Network.Client client, Character character, FrmLauncher parent)
         {
             this.client = client;
             this.character = character;
+            this.launcherForm = parent;
             this.client.OnActivity += Client_OnActivity;
             this.client.IsConnected += Client_IsConnected;
             this.client.IsClosed += Client_IsClosed;
+            this.CharacterLoad();
+            this.UpdateRoom(1, this.character.Name, this.character.Image, this.character.Type, true);
         }
 
         private void Client_OnActivity(object sender, string e)
@@ -132,6 +136,28 @@ namespace Phoenix.Client
         #endregion
 
         #region ---Client Updaters---
+
+        private void CharacterLoad()
+        {
+
+            this.lblName.Text = "Name: " + this.character.Name.ToString();
+            this.ilAvatar.Images.Add(this.character.Image, Image.FromFile("./Images/Avatar/" + this.character.Image));
+            this.pictureBox1.Image = Image.FromFile("./Images/Avatar/" + this.character.Image);
+            this.lblCaste.Text = "Caste: " + this.character.Caste;
+            this.lblRank.Text = "Rank: " + this.character.Rank;
+            this.lblPhilsophy.Text = "Philosophy: " + this.character.Philosophy;
+            this.lblBaseStr.Text = this.character.Strength.ToString();
+            this.lblBaseAgi.Text = this.character.Agility.ToString();
+            this.lblBaseInt.Text = this.character.Intellect.ToString();
+            this.lblBaseStam.Text = this.character.Stamina.ToString();
+            this.lblBaseDamage.Text = this.character.Damage.ToString();
+            this.lblBaseCrit.Text = this.character.Crit.ToString() + "%";
+            this.lblBaseMastery.Text = this.character.Mastery.ToString() + "%";
+            this.lblBaseHaste.Text = this.character.Haste.ToString() + "%";
+            this.lblBaseVers.Text = this.character.Versatility.ToString() + "%";
+            this.lblWeight.Text = "Weight: 0 / " + (this.character.Strength * 2);
+
+        }
 
         // Window Updaters
         private void UpdateRoom(int mode, string entityName = "", string entityImage = "", string entityType = "", bool imageShow = true)
@@ -651,8 +677,13 @@ namespace Phoenix.Client
                 }
             }
         }
-        
+
         #endregion
 
+        private void FrmClient_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+            this.client.Stop();
+        }
     }
 }

@@ -52,7 +52,7 @@
         public int? EntityRarity { get; set; }
         public int? EntityRank { get; set; }
         public string EntityName { get; set; }
-        public int? EntityImage { get; set; }
+        public string EntityImage { get; set; }
         public string EntityHisHer { get; set; }
         public string EntityHeShe { get; set; }
         public string EntityBName { get; set; }

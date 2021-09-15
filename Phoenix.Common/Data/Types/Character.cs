@@ -6,8 +6,9 @@
         public int Id { get; set; }
         public int AccountId { get; set; }
         public string Name { get; set; }
-        public int Type { get; set; } 
-        public int Image { get; set; }
+        public string Type { get; set; }
+        public int TypeID { get; set; }
+        public string Image { get; set; }
         public string Gender { get; set; }
         public string HisHer { get; set; }
         public string HeShe { get; set; }
@@ -15,7 +16,8 @@
         public string Title { get; set; }
         public string Caste { get; set; }
         public int CasteID { get; set; }
-        public int Rank { get; set; }
+        public string Rank { get; set; }
+        public int RankID { get; set; }
         public string Philosophy { get; set; }
         public int PhilosophyID { get; set; }
         public int Alignment { get; set; }
@@ -32,39 +34,5 @@
         public int Health { get; set; }
         public int Mana { get; set; }
         public int RoomID { get; set; }
-
-        public Character()
-        {
-
-        }
-
-        public Character(int id, int accountId, string name, int type, int image, string gender, string hisHer, string heshe, int experience, string title, string caste, int rank, string philosophy, int alignment, int creation, int strength, int agility, int intellect, int stamina, int damage, int health, int mana, int roomID)
-        {
-
-            this.Id = id;
-            this.AccountId = accountId;
-            this.Name = name;
-            this.Type = type;
-            this.Image = image;
-            this.Gender = gender;
-            this.HisHer = hisHer;
-            this.HeShe = heshe;
-            this.Experience = experience;
-            this.Title = title;
-            this.Caste = caste;
-            this.Rank = rank;
-            this.Philosophy = philosophy;
-            this.Alignment = alignment;
-            this.Creation = creation;
-            this.Strength = strength;
-            this.Agility = agility;
-            this.Intellect = intellect;
-            this.Stamina = stamina;
-            this.Damage = damage;
-            this.Health = health;
-            this.Mana = mana;
-            this.RoomID = roomID;
-
-        }
     }
 }

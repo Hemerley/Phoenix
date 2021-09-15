@@ -103,58 +103,109 @@ namespace Phoenix.Common.Data
 
         public static string ReturnCasteText(int caste)
         {
-            string casteString = "";
-
-            /*Vagabond
-Peasant
-Farmer/Merchant/Craftsmen
-Knight/Vassal Initiate, 
-Baron/Baroness
-Viscount/Viscountess
-Earl/Countess
-Duke/Duchess
-Prince/Princess
-King/Queen*/
-
             switch (caste)
             {
                 case 0:
-
-                    return casteString = "Vagabond";
+                    return "(Vagabond)";
                 case 1:
-
-                    return casteString = "Peasant";
+                    return "(Peasant)";
                 case 2:
-
-                    return casteString = "Farmer";
+                    return "(Farmer)";
                 case 3:
-
-                    return casteString = "Knight";
+                    return "(Knight)";
                 default:
-                    return casteString;
+                    return "(None)";
             }
         }
 
         public static string ReturnPhilosophyText(int philosophy)
         {
-            string philosophyString = "";
-
             switch (philosophy)
             {
                 case 0:
-
-                    return philosophyString = "War";
+                    return "(War)";
                 case 1:
-
-                    return philosophyString = "Faith";
+                    return "(Arcane)";
                 case 2:
-
-                    return philosophyString = "Chaos";
+                    return "(Faith)";
                 case 3:
-
-                    return philosophyString = "Subversion";
+                    return "(Subversion)";
                 default:
-                    return philosophyString;
+                    return "(None)";
+            }
+        }
+
+        public static string ReturnCharacterTypeText(int type)
+        {
+            switch (type)
+            {
+                case 0:
+                    return "(Player)";
+                case 1:
+                    return "(Hero)";
+                case 2:
+                    return "(Immortal)";
+                case 3:
+                    return "(Demi-God)";
+                case 4:
+                    return "(God)";
+                default:
+                    return "(None)";
+            }
+        }
+
+        public static string ReturnCharacterRankText(int rank)
+        {
+            switch (rank)
+            {
+                case 0:
+                    return "(Initiate)";
+                default:
+                    return "(None)";
+            }
+        }
+
+        public static string ReturnEntityTypeText(int type)
+        {
+            switch (type)
+            {
+                case 0:
+                    return "(Friendly)";
+                case 1:
+                    return "(Spawned)";
+                case 2:
+                    return "(Neutral)";
+                case 3:
+                    return "(Hostile)";
+                default:
+                    return "(None)";
+            }
+        }
+
+        public static string ReturnRarityText(int rarity)
+        {
+            switch (rarity)
+            {
+                case 0:
+                    return "(Junk)";
+                case 1:
+                    return "(Common)";
+                case 2:
+                    return "(Uncommon)";
+                case 3:
+                    return "(Rare)";
+                case 4:
+                    return "(Epic)";
+                case 5:
+                    return "(Legendary)";
+                case 6:
+                    return "(Ancient)";
+                case 7:
+                    return "(Ethyreal)";
+                case 8:
+                    return "(Godly)";
+                default:
+                    return "(None)";
             }
         }
 

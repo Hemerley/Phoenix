@@ -14,7 +14,7 @@ namespace Phoenix.Common.Commands.Request
 
         public int Philosophy { get; set; }
 
-        public int Image { get; set; }
+        public string Image { get; set; }
 
         #endregion
 

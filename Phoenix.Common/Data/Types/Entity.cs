@@ -3,10 +3,12 @@
     public class Entity
     {
         public int ID { get; set; }
-        public int Type { get; set; }
-        public int Rarity { get; set; }
+        public string Type { get; set; }
+        public int TypeID { get; set; }
+        public string Rarity { get; set; }
+        public int RarityID { get; set; }
         public string Name { get; set; }
-        public int Image { get; set; }
+        public string Image { get; set; }
         public string HisHer { get; set; }
         public string HeShe { get; set; }
         public string BName { get; set; }
@@ -29,40 +31,5 @@
         public int VanishTime { get; set; }
         public string Script { get; set; }
         public int InstanceID { get; set; }
-
-        public Entity()
-        {
-
-        }
-
-        public Entity(int id, int type, string name, int image, string hisHer, string heShe, string bName, int level, int gold, int strength, int agility, int intellect, int stamina, int damage, double crit, double haste, double mastery, double versatility, int health, int mana, int taunt, int spawnTime, int spawnDelay, int vanishTime, string script, int instanceid)
-        {
-            this.ID = id;
-            this.Type = type;
-            this.Name = name;
-            this.Image = image;
-            this.HisHer = hisHer;
-            this.HeShe = heShe;
-            this.BName = bName;
-            this.Level = level;
-            this.Gold = gold;
-            this.Strength = strength;
-            this.Agility = agility;
-            this.Intellect = intellect;
-            this.Stamina = stamina;
-            this.Damage = damage;
-            this.Crit = crit;
-            this.Haste = haste;
-            this.Mastery = mastery;
-            this.Versatility = versatility;
-            this.Health = health;
-            this.Mana = mana;
-            this.Taunt = taunt;
-            this.SpawnTime = spawnTime;
-            this.SpawnDelay = spawnDelay;
-            this.VanishTime = vanishTime;
-            this.Script = script;
-            this.InstanceID = instanceid;
-        }
     }
 }

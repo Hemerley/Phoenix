@@ -4,25 +4,12 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Philosophy { get; set; }
-        public int Type { get; set; }
-        public int Rank { get; set; }
+        public string Philosophy { get; set; }
+        public int PhilosophyID { get; set; }
+        public string Type { get; set; }
+        public int TypeID { get; set; }
+        public string Rank { get; set; }
+        public int RankID { get; set; }
         public string Script { get; set; }
-
-        public Ability()
-        {
-
-        }
-
-        public Ability(int id, string name, int philosophy, int type, int rank, string script)
-        {
-            this.Id = id;
-            this.Name = name;
-            this.Philosophy = philosophy;
-            this.Type = type;
-            this.Rank = rank;
-            this.Script = script;
-        }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
+using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using System;
 using System.Collections.Generic;
@@ -113,7 +114,7 @@ namespace Phoenix.Common.Commands.Factory
 						CharacterName = commandDataParts[0],
 						Philosophy = Int32.Parse(commandDataParts[2]),
 						Gender = commandDataParts[1],
-						Image = Int32.Parse(commandDataParts[3])
+						Image = commandDataParts[3]
 					};
 
                 #endregion
@@ -192,7 +193,7 @@ namespace Phoenix.Common.Commands.Factory
 						Character character = new();
 
 						string[] c = s[1].Split("|");
-
+						int i = 0;
 						// Add Index Based Increment i= 0 [i++]
 
 						character = new Character
@@ -200,30 +201,34 @@ namespace Phoenix.Common.Commands.Factory
 							Id = Int32.Parse(c[0]),
 							AccountId = Int32.Parse(c[1]),
 							Name = c[2],
-							Type = Int32.Parse(c[3]),
-							Image = Int32.Parse(c[4]),
-							Gender = c[5],
-							HisHer = c[6],
-							HeShe = c[7],
-							Experience = Int32.Parse(c[8]),
-							Title = c[9],
-							Caste = c[10],
-							Rank = Int32.Parse(c[11]),
-							Philosophy = c[12],
-							Alignment = Int32.Parse(c[13]),
-							Creation = Int32.Parse(c[14]),
-							Strength = Int32.Parse(c[15]),
-							Agility = Int32.Parse(c[16]),
-							Intellect = Int32.Parse(c[17]),
-							Stamina = Int32.Parse(c[18]),
-							Damage = Int32.Parse(c[19]),
-							Health = Int32.Parse(c[20]),
-							Mana = Int32.Parse(c[21]),
-							RoomID = Int32.Parse(c[22]),
-							Crit = Int32.Parse(c[23]),
-							Mastery = Int32.Parse(c[24]),
-							Haste = Int32.Parse(c[25]),
-							Versatility = Int32.Parse(c[26])
+							Type = c[3],
+							TypeID = Int32.Parse(c[4]),
+							Image = c[5],
+							Gender = c[6],
+							HisHer = c[7],
+							HeShe = c[8],
+							Experience = Int32.Parse(c[9]),
+							Title = c[10],
+							Caste = c[11],
+							CasteID = Int32.Parse(c[12]),
+							Rank = c[13],
+							RankID = Int32.Parse(c[14]),
+							Philosophy = c[15],
+							PhilosophyID = Int32.Parse(c[16]),
+							Alignment = Int32.Parse(c[17]),
+							Creation = Int32.Parse(c[18]),
+							Strength = Int32.Parse(c[19]),
+							Agility = Int32.Parse(c[20]),
+							Intellect = Int32.Parse(c[21]),
+							Stamina = Int32.Parse(c[22]),
+							Damage = Int32.Parse(c[23]),
+							Health = Int32.Parse(c[24]),
+							Mana = Int32.Parse(c[25]),
+							RoomID = Int32.Parse(c[26]),
+							Crit = Int32.Parse(c[27]),
+							Mastery = Int32.Parse(c[28]),
+							Haste = Int32.Parse(c[29]),
+							Versatility = Int32.Parse(c[30])
 						};
 
 						return new CharacterConnectResponseCommand

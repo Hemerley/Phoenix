@@ -8,20 +8,5 @@
         public int ItemAmount { get; set; }
         public int SlotIndex { get; set; }
         public int IsEquipped { get; set; }
-
-        public CharacterItem()
-        {
-
-        }
-
-        public CharacterItem(int id, int characterid, int itemid, int itemamount, int slotindex, int isequipped)
-        {
-            this.Id = id;
-            this.CharacterId = characterid;
-            this.ItemId = itemid;
-            this.ItemAmount = itemamount;
-            this.SlotIndex = slotindex;
-            this.IsEquipped = isequipped;
-        }
     }
 }
