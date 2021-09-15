@@ -20,6 +20,9 @@ namespace Phoenix.Server.Network
 
         #region -- Game Initialization --
 
+		/// <summary>
+		/// Declaration of the Server.
+		/// </summary>
         private Server server;
 
 		/// <summary>
@@ -47,12 +50,26 @@ namespace Phoenix.Server.Network
 		/// </summary>
 		private readonly ConcurrentQueue<ClientCommand> queuedCommand = new();
 
+		/// <summary>
+		/// Declaration of Loaded Rooms.
+		/// </summary>
 		private List<Room> rooms = new();
+		
+		/// <summary>
+		/// Declaration of Connected Characters.
+		/// </summary>
+		private List<Character> connectedCharacters = new();
 
+		/// <summary>
+		/// Declaration of Total Connections This Reboot.
+		/// </summary>
+		private int totalConnections = 0;
+
+		/// <summary>
+		/// Start Server.
+		/// </summary>
 		public void Start()
 		{
-
-			//Setup your Game thread
 			this.gameWorkerThread = new Thread(new ThreadStart(GameWorkerThread));
 			this.gameWorkerThread.Start();
 		}
@@ -124,11 +141,13 @@ namespace Phoenix.Server.Network
         #region -- Game Loop --
 
         /// <summary>
-        /// Game Loop.
+        /// Game Loop Thread.
         /// </summary>
         private void GameWorkerThread()
 		{
-            #region --  Initialize Thread --
+
+            #region --  Initialize Thread & Turn Server On --
+
             Database.InitializeDatabse();
 			Logger.ConsoleLog("System", "Loading Rooms.");
 			this.rooms = Database.LoadRooms(Constants.GAME_MODE);
@@ -209,42 +228,6 @@ namespace Phoenix.Server.Network
 
 					#endregion
 
-					#region -- GetCharacterList Command --
-
-					case CommandType.CharacterList:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						var newCharacterList = command as GetCharacterListCommand;
-
-						List<Character> characters = Database.GetCharacterList(Constants.GAME_MODE, accountConnected.Account.Id);
-
-						var newCharacterListResponseCmd = new CharacterListResponseCommand
-						{
-							Success = characters.Count > 0 ? true:false,
-								Characters = characters
-							};
-                            SendCommandToClient(clientWhoSendCommand, newCharacterListResponseCmd);
-
-						break;
-					#endregion
-
-					#region -- CharacterConnectCommand --
-
-					case CommandType.CharacterLogin:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						var newCharacterLogin = command as CharacterConnectCommand;
-
-						Character loginCharacter = Database.GetCharacter(Constants.GAME_MODE, accountConnected.Account.Id, newCharacterLogin.Name);
-
-						var newCharacterConnectResponseCommand = new CharacterConnectResponseCommand
-						{
-							Success = loginCharacter != null ? true:false,
-							Character = loginCharacter
-						};
-
-						SendCommandToClient(clientWhoSendCommand, newCharacterConnectResponseCommand);
-						break;
-                    #endregion
-
                     #region -- NewAccount Command --
 
                     case CommandType.NewAccount:
@@ -292,9 +275,57 @@ namespace Phoenix.Server.Network
 
 					#endregion
 
-					#region -- MessageRoom Command --
+					#region -- GetCharacterList Command --
 
-					case CommandType.MessageRoom:
+					case CommandType.CharacterList:
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+						var newCharacterList = command as GetCharacterListCommand;
+
+						List<Character> characters = Database.GetCharacterList(Constants.GAME_MODE, accountConnected.Account.Id);
+
+						var newCharacterListResponseCmd = new CharacterListResponseCommand
+						{
+							Success = characters.Count > 0 ? true : false,
+							Characters = characters
+						};
+						SendCommandToClient(clientWhoSendCommand, newCharacterListResponseCmd);
+
+						break;
+					#endregion
+
+					#region -- CharacterConnectCommand --
+
+					case CommandType.CharacterLogin:
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+						var newCharacterLogin = command as CharacterConnectCommand;
+
+						Character loginCharacter = Database.GetCharacter(Constants.GAME_MODE, accountConnected.Account.Id, newCharacterLogin.Name);
+
+						var newCharacterConnectResponseCommand = new CharacterConnectResponseCommand
+						{
+							Success = loginCharacter != null ? true : false,
+							Character = loginCharacter
+						};
+
+						SendCommandToClient(clientWhoSendCommand, newCharacterConnectResponseCommand);
+						break;
+					#endregion
+
+					#region -- ClientConnect Command --
+					case CommandType.ClientConnect:
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+						break;
+					#endregion
+
+					#region -- ClientRoom Command --
+					case CommandType.ClientRoom:
+						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+						break;
+                    #endregion
+
+                    #region -- MessageRoom Command --
+
+                    case CommandType.MessageRoom:
 						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 						break;
 

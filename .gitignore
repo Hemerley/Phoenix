@@ -1,5 +1,6 @@
-
+.vs/
 *.png
 *.db
-*.db
 *.dll
+*.v2
+.vs/Phoenix/v16/.suo

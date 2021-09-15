@@ -3,7 +3,7 @@
 	public enum CommandType
 	{
 
-		#region ---Account & Creation (0-99)---
+		#region -- Account & Creation (0-99) --
 
 		Unknown = 0,
 		Authenticate = 1,
@@ -17,16 +17,25 @@
 		CharacterLogin = 9,
 		CharacterLoginResponse = 10,
 
-		#endregion
+        #endregion
 
-		#region ---Messages (100-199)---
+        #region -- Messages (100-199) --
 
-		MessageRoom = 100,
+        MessageRoom = 100,
 		MessagePlayer = 101,
 		MessageParty = 103,
 		MessageGuild = 104
-        
+
 		#endregion
-    
+
+		#region -- Client Updates --
+
+		ClientConnect = 200,
+		ClientConnectResponse = 201,
+		ClientRoom = 202,
+		ClientRoomResponse = 203
+
+		#endregion
+
 	}
 }
