@@ -15,6 +15,7 @@ namespace Phoenix.Client
     {
         private bool authMode = false;
         public FrmClient gameWindow;
+        private bool liveMode = false;
 
         public FrmLauncher()
         {
@@ -455,7 +456,15 @@ namespace Phoenix.Client
                 this.btnAccount.Enabled = false;
                 this.btnCreate.Enabled = false;
                 this.authMode = false;
-                this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
+                if (liveMode)
+                {
+                    this.client.Start(IPAddress.Parse(Constants.SERVER_IP), Constants.LIVE_PORT);
+                }
+                else
+                {
+                    this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
+                }
+
             }
         }
         
@@ -470,7 +479,14 @@ namespace Phoenix.Client
             {
                 this.btnAuthenticate.Enabled = false;
                 this.authMode = true;
-                this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
+                if (liveMode)
+                {
+                    this.client.Start(IPAddress.Parse(Constants.SERVER_IP), Constants.LIVE_PORT);
+                }
+                else
+                {
+                    this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
+                }
             }
         }
 

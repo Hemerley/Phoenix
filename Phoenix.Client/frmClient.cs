@@ -279,8 +279,8 @@ namespace Phoenix.Client
             this.lblBaseHaste.Text = this.character.Haste.ToString() + "%";
             this.lblBaseVers.Text = this.character.Versatility.ToString() + "%";
             this.lblWeight.Text = "Weight: 0 / " + (this.character.Strength * 2);
-            this.rtbChat.SelectionColor = Color.Magenta;
-            this.rtbChat.AppendText($"[{DateTime.Now}] Connecting to server...\n");
+            this.rtbChat.SelectionColor = Color.AliceBlue;
+            this.rtbChat.AppendText($"[{DateTime.Now.ToShortDateString()}] Connecting to server...\n");
             this.rtbChat.SelectionColor = Color.White;
         }
         #endregion
@@ -303,7 +303,7 @@ namespace Phoenix.Client
             {
                 foreach (ListViewItem item in lstvRoom.Items)
                 {
-                    if (item.Selected)
+                    if (item.Text == entityName)
                     {
                         lstvRoom.Items.Remove(item);
                     }
@@ -795,6 +795,8 @@ namespace Phoenix.Client
             this.rtbChat.AppendText(": ");
             this.rtbChat.SelectionColor = Color.White;
             this.rtbChat.AppendText($"{message} \n");
+            this.rtbChat.SelectionStart = this.rtbChat.Text.Length;
+            this.rtbChat.ScrollToCaret();
         }
 
         #endregion

@@ -103,20 +103,14 @@ namespace Phoenix.Server.Network
 		private void Server_OnClientDisconnected(object sender, ConnectedClient e)
 		{
 			//Remove from EITHER connected clients OR connected accounts (it could be in either)
-			if (this.connectedClients.ContainsKey(e.Id))
-				this.connectedClients.Remove(e.Id);
-
-			//coding it this way to be safe, just in case we have a different instance of the same connection
-			//I DOUBT we do though
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == e.Id);
-			if (connectedAccount != null)
-            {
-				this.connectedAccounts.Remove(connectedAccount);
-				this.connectedCharacters.Remove(connectedAccount.Account.Character);
-				foreach (Room room in rooms)
+			if (this.connectedClients.ContainsKey(e.Id))
+			{
+				foreach (Room room in this.rooms)
 				{
 					if (connectedAccount.Account.Character.RoomID == room.ID)
 					{
+						room.RoomCharacters.Remove(connectedAccount.Account.Character);
 						foreach (Character character in room.RoomCharacters)
 						{
 							foreach (ConnectedAccount cAccount in connectedAccounts)
@@ -133,6 +127,38 @@ namespace Phoenix.Server.Network
 							}
 						}
 					}
+					this.connectedCharacters.Remove(connectedAccount.Account.Character);
+					this.connectedClients.Remove(e.Id);
+				}
+			}
+
+			//coding it this way to be safe, just in case we have a different instance of the same connection
+			//I DOUBT we do though
+			if (connectedAccount != null)
+            {
+				foreach (Room room in this.rooms)
+				{
+					if (connectedAccount.Account.Character.RoomID == room.ID)
+					{
+						room.RoomCharacters.Remove(connectedAccount.Account.Character);
+						foreach (Character character in room.RoomCharacters)
+						{
+							foreach (ConnectedAccount cAccount in connectedAccounts)
+							{
+								if (cAccount.Account.Character.Id == character.Id)
+								{
+									var roomPlayerUpdateCommand = new RoomPlayerUpdateCommand
+									{
+										Mode = 2,
+										Character = connectedAccount.Account.Character
+									};
+									SendCommandToClient(cAccount.Client, roomPlayerUpdateCommand);
+								}
+							}
+						}
+					}
+					this.connectedCharacters.Remove(connectedAccount.Account.Character);
+					this.connectedAccounts.Remove(connectedAccount);
 				}
 			}
 
@@ -364,7 +390,7 @@ namespace Phoenix.Server.Network
 								accountConnected.Account.Character = loginCharacter;
 								this.connectedCharacters.Add(loginCharacter);
 
-								foreach (Room room in rooms)
+								foreach (Room room in this.rooms)
                                 {
 									if (loginCharacter.RoomID == room.ID)
                                     {

@@ -6,7 +6,7 @@ namespace Phoenix.Client.Classes.Extensions
 {
     public class ListViewWithoutScrollBar : ListView
     {
-        protected override void WndProc(ref Message m)
+       /* protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
             {
@@ -20,7 +20,7 @@ namespace Phoenix.Client.Classes.Extensions
                     base.WndProc(ref m);
                     break;
             }
-        }
+        }*/
         const int GWL_STYLE = -16;
         const int WS_VSCROLL = 0x00100000;
 
