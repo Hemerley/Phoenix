@@ -1,6 +1,7 @@
 ﻿using Phoenix.Common.Commands.Factory;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
+using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using Phoenix.Server.Connections;
@@ -65,6 +66,8 @@ namespace Phoenix.Server.Network
 		/// </summary>
 		private int totalConnections = 0;
 
+		private int maximumPlayers = 0;
+
 		/// <summary>
 		/// Start Server.
 		/// </summary>
@@ -107,7 +110,31 @@ namespace Phoenix.Server.Network
 			//I DOUBT we do though
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == e.Id);
 			if (connectedAccount != null)
+            {
 				this.connectedAccounts.Remove(connectedAccount);
+				this.connectedCharacters.Remove(connectedAccount.Account.Character);
+				foreach (Room room in rooms)
+				{
+					if (connectedAccount.Account.Character.RoomID == room.ID)
+					{
+						foreach (Character character in room.RoomCharacters)
+						{
+							foreach (ConnectedAccount cAccount in connectedAccounts)
+							{
+								if (cAccount.Account.Character.Id == character.Id)
+								{
+									var roomPlayerUpdateCommand = new RoomPlayerUpdateCommand
+									{
+										Mode = 2,
+										Character = connectedAccount.Account.Character
+									};
+									SendCommandToClient(cAccount.Client, roomPlayerUpdateCommand);
+								}
+							}
+						}
+					}
+				}
+			}
 
 			// Log Command
 			Logger.ConsoleLog("Connection", $"{e.Id} has disconnected.");
@@ -152,6 +179,14 @@ namespace Phoenix.Server.Network
 			Logger.ConsoleLog("System", "Loading Rooms.");
 			this.rooms = Database.LoadRooms(Constants.GAME_MODE);
 
+			foreach (Room room in rooms)
+            {
+				foreach (Entity entity in room.RoomEntities)
+                {
+					Logger.ConsoleLog("Debug", entity.Name);
+                }
+            }
+
 			this.server = new Server();
 
 			this.server.OnClientConnected += Server_OnClientConnected;
@@ -188,156 +223,297 @@ namespace Phoenix.Server.Network
                     #region -- Auth Command --
 
                     case CommandType.Authenticate:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-
-						var authCommand = command as AuthenticateCommand;
-						var authenticated = false;
-						int id = -1;
-						int gold = -1;
-
-						if (Database.GetAccountField(Constants.GAME_MODE, "Password", "Name", authCommand.Username) == authCommand.Password)
-                        {
-							authenticated = true;
-							id = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "ID", "Name", authCommand.Username));
-							gold = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "Gold", "Name", authCommand.Username));
-						} 
-
-						var authResponseCmd = new AuthenticateResponseCommand
 						{
-							Success = authenticated
-						};
+							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 
-                        SendCommandToClient(clientWhoSendCommand, authResponseCmd);
+							var authCommand = command as AuthenticateCommand;
+							var authenticated = false;
+							int id = -1;
+							int gold = -1;
 
-						if (authenticated)
-						{
-							var connectedAccount = new ConnectedAccount
+							if (Database.GetAccountField(Constants.GAME_MODE, "Password", "Name", authCommand.Username) == authCommand.Password)
 							{
-								Client = clientWhoSendCommand,
-								Account = new Account
-								{
-									Id = id,
-									Gold = gold
-								}
+								authenticated = true;
+								id = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "ID", "Name", authCommand.Username));
+								gold = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "Gold", "Name", authCommand.Username));
+							}
+
+							var authResponseCmd = new AuthenticateResponseCommand
+							{
+								Success = authenticated
 							};
-							this.connectedAccounts.Add(connectedAccount);
-							this.connectedClients.Remove(clientId);
+
+							SendCommandToClient(clientWhoSendCommand, authResponseCmd);
+
+							if (authenticated)
+							{
+								var connectedAccount = new ConnectedAccount
+								{
+									Client = clientWhoSendCommand,
+									Account = new Account
+									{
+										Id = id,
+										Gold = gold
+									}
+								};
+								this.connectedAccounts.Add(connectedAccount);
+								this.connectedClients.Remove(clientId);
+							}
+
+							break;
 						}
-
-						break;
-
 					#endregion
 
                     #region -- NewAccount Command --
 
                     case CommandType.NewAccount:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						var newAccountCommand = command as NewAccountCommand;
-						var newAccountResponseCmd = new NewAccountResponseCommand();
+						{
+							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+							var newAccountCommand = command as NewAccountCommand;
+							var newAccountResponseCommand = new NewAccountResponseCommand();
 
-						if (Database.GetAccountField(Constants.GAME_MODE, "Name", "Name", newAccountCommand.Username) == null)
-                        {
-							Database.InsertNewAccount(Constants.GAME_MODE, newAccountCommand.Username, newAccountCommand.Password, newAccountCommand.Email);
-							Logger.ConsoleLog("System", $"{clientId} has created a new account named: {newAccountCommand.Username}.");
-							newAccountResponseCmd.Success = true;
-                        }
-                        else
-                        {
-							Logger.ConsoleLog("System", $"{clientId} has failed to create a new account named: {newAccountCommand.Username}. Reason: Account Exists.");
-							newAccountResponseCmd.Success = false;
-                        }
-                        SendCommandToClient(clientWhoSendCommand, newAccountResponseCmd);
-						break;
-
+							if (Database.GetAccountField(Constants.GAME_MODE, "Name", "Name", newAccountCommand.Username) == null)
+							{
+								Database.InsertNewAccount(Constants.GAME_MODE, newAccountCommand.Username, newAccountCommand.Password, newAccountCommand.Email);
+								Logger.ConsoleLog("System", $"{clientId} has created a new account named: {newAccountCommand.Username}.");
+								newAccountResponseCommand.Success = true;
+								var connectedAccount = new ConnectedAccount
+								{
+									Client = clientWhoSendCommand,
+									Account = new Account
+									{
+										Id = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "ID", "Name", newAccountCommand.Username)),
+										Gold = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "Gold", "Name", newAccountCommand.Username))
+									}
+								};
+								this.connectedAccounts.Add(connectedAccount);
+								this.connectedClients.Remove(clientId);
+							}
+							else
+							{
+								Logger.ConsoleLog("System", $"{clientId} has failed to create a new account named: {newAccountCommand.Username}. Reason: Account Exists.");
+								newAccountResponseCommand.Success = false;
+							}
+							SendCommandToClient(clientWhoSendCommand, newAccountResponseCommand);
+							break;
+						}
 					#endregion
 
 					#region -- NewCharacter Command --
 
 					case CommandType.NewCharacter:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						var newCharacterCommand = command as NewCharacterCommand;
+						{
+							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+							var newCharacterCommand = command as NewCharacterCommand;
 
-						var newCharacterResponseCmd = new NewCharacterResponseCommand();
+							var newCharacterResponseCmd = new NewCharacterResponseCommand();
 
-						if (Database.GetCharacterField(Constants.GAME_MODE, "Name", "Name", newCharacterCommand.CharacterName) == null)
-                        {
-							Database.InsertNewCharacter(Constants.GAME_MODE, newCharacterCommand.CharacterName, newCharacterCommand.Gender, newCharacterCommand.Philosophy, newCharacterCommand.Image, accountConnected.Account.Id);
-							Logger.ConsoleLog("System", $"{clientId} has created a new character named: {newCharacterCommand.CharacterName}");
-							newCharacterResponseCmd.Success = true;
+							if (Database.GetCharacterField(Constants.GAME_MODE, "Name", "Name", newCharacterCommand.CharacterName) == null)
+							{
+								Database.InsertNewCharacter(Constants.GAME_MODE, newCharacterCommand.CharacterName, newCharacterCommand.Gender, newCharacterCommand.Philosophy, newCharacterCommand.Image, accountConnected.Account.Id);
+								Logger.ConsoleLog("System", $"{clientId} has created a new character named: {newCharacterCommand.CharacterName}");
+								newCharacterResponseCmd.Success = true;
+							}
+							else
+							{
+								Logger.ConsoleLog("System", $"{clientId} has failed to create new character named: {newCharacterCommand.CharacterName}. Reason: Character Exists.");
+								newCharacterResponseCmd.Success = false;
+							}
+							SendCommandToClient(clientWhoSendCommand, newCharacterResponseCmd);
+							break;
 						}
-                        else
-                        {
-							Logger.ConsoleLog("System", $"{clientId} has failed to create new character named: {newCharacterCommand.CharacterName}. Reason: Character Exists.");
-							newCharacterResponseCmd.Success = false;
-						}
-                        SendCommandToClient(clientWhoSendCommand, newCharacterResponseCmd);
-						break;
-
 					#endregion
 
 					#region -- GetCharacterList Command --
 
 					case CommandType.CharacterList:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						var newCharacterList = command as GetCharacterListCommand;
-
-						List<Character> characters = Database.GetCharacterList(Constants.GAME_MODE, accountConnected.Account.Id);
-
-						var newCharacterListResponseCmd = new CharacterListResponseCommand
 						{
-							Success = characters.Count > 0 ? true : false,
-							Characters = characters
-						};
-						SendCommandToClient(clientWhoSendCommand, newCharacterListResponseCmd);
+							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+							var newCharacterList = command as GetCharacterListCommand;
 
-						break;
+							List<Character> characters = Database.GetCharacterList(Constants.GAME_MODE, accountConnected.Account.Id);
+
+							var newCharacterListResponseCmd = new CharacterListResponseCommand
+							{
+								Success = characters.Count > 0,
+								Characters = characters
+							};
+							SendCommandToClient(clientWhoSendCommand, newCharacterListResponseCmd);
+
+							break;
+						}
 					#endregion
 
 					#region -- CharacterConnectCommand --
 
 					case CommandType.CharacterLogin:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						var newCharacterLogin = command as CharacterConnectCommand;
-
-						Character loginCharacter = Database.GetCharacter(Constants.GAME_MODE, accountConnected.Account.Id, newCharacterLogin.Name);
-
-						var newCharacterConnectResponseCommand = new CharacterConnectResponseCommand
 						{
-							Success = loginCharacter != null ? true : false,
-							Character = loginCharacter
-						};
+							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+							var characterConnectionCommand = command as CharacterConnectCommand;
 
-						SendCommandToClient(clientWhoSendCommand, newCharacterConnectResponseCommand);
-						break;
+							Character loginCharacter = Database.GetCharacter(Constants.GAME_MODE, accountConnected.Account.Id, characterConnectionCommand.Name);
+
+							var newCharacterConnectResponseCommand = new CharacterConnectResponseCommand
+							{
+								Success = loginCharacter != null,
+								Character = loginCharacter
+							};
+							SendCommandToClient(clientWhoSendCommand, newCharacterConnectResponseCommand);
+							if (loginCharacter != null)
+                            {
+								accountConnected.Account.Character = loginCharacter;
+								this.connectedCharacters.Add(loginCharacter);
+
+								foreach (Room room in rooms)
+                                {
+									if (loginCharacter.RoomID == room.ID)
+                                    {
+										foreach(Character character in room.RoomCharacters)
+                                        {
+											foreach (ConnectedAccount cAccount in connectedAccounts)
+                                            {
+												if(cAccount.Account.Character.Id == character.Id)
+                                                {
+													var roomPlayerUpdateCommand = new RoomPlayerUpdateCommand
+													{
+														Mode = 1,
+														Character = loginCharacter		
+													};
+													SendCommandToClient(cAccount.Client, roomPlayerUpdateCommand);
+                                                }
+                                            }
+                                        }
+										room.RoomCharacters.Add(loginCharacter);
+										break;
+									}
+                                }
+
+								totalConnections++;
+								if (maximumPlayers < connectedCharacters.Count) maximumPlayers++;
+							}
+							break;
+						}
 					#endregion
 
 					#region -- ClientConnect Command --
 					case CommandType.ClientConnect:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						break;
+						{
+							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+							var clientConnectCommand = command as ClientConnectCommand;
+
+							var clientConnectResponseCommand = new ClientConnectResponseCommand();
+
+							clientConnectResponseCommand.Success = false;
+							clientConnectResponseCommand.Message = "";
+
+							foreach (Character character in connectedCharacters)
+                            {
+								if (character.Id == clientConnectCommand.Id)
+                                {
+
+									clientConnectResponseCommand.Success = true;
+									clientConnectResponseCommand.Message = $"Welcome to {Constants.GAME_NAME}, {character.Name}! There are {connectedCharacters.Count} players online. We have had {totalConnections} total connections and a maximum of {maximumPlayers} players online this reboot. The current time is {DateTime.Now.ToShortTimeString()}.";
+
+									SendCommandToClient(clientWhoSendCommand, clientConnectResponseCommand);
+									break;
+                                }
+                            }
+							if (!clientConnectResponseCommand.Success)
+                            {
+								SendCommandToClient(clientWhoSendCommand, clientConnectResponseCommand);
+							}
+							break;
+						}
 					#endregion
 
 					#region -- ClientRoom Command --
 					case CommandType.ClientRoom:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						break;
+						{
+							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+							var clientRoomCommand = command as ClientRoomCommand;
+							var clientRoomResponseCommand = new ClientRoomResponseCommand();
+
+							foreach (Room room in rooms)
+                            {
+								if (room.ID == clientRoomCommand.RoomID)
+                                {
+									clientRoomResponseCommand.Success = true;
+									clientRoomResponseCommand.Room.Name = room.Name;
+									clientRoomResponseCommand.Room.Description = room.Description;
+									clientRoomResponseCommand.Room.Exits = room.Exits;
+									clientRoomResponseCommand.Room.Type = room.Type;
+									
+									foreach (Character character in room.RoomCharacters) 
+									{
+										Character newCharacter = new();
+										newCharacter.Name = character.Name;
+										newCharacter.Image = character.Image;
+										newCharacter.Type = character.Type;
+										clientRoomResponseCommand.Room.RoomCharacters.Add(newCharacter);
+									}
+
+									foreach (Entity entity in room.RoomEntities)
+									{
+										Entity newEntity = new();
+										newEntity.Name = entity.Name;
+										newEntity.Image = entity.Image;
+										newEntity.Type = entity.Type;
+										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
+									}
+
+									foreach (Item item in room.RoomItems)
+                                    {
+										Item newItem = new();
+										newItem.Name = item.Name;
+										newItem.Image = item.Image;
+										newItem.Type = item.Type;
+										newItem.Amount = item.Amount;
+                                    }
+
+									SendCommandToClient(clientWhoSendCommand, clientRoomResponseCommand);
+									break;
+								}
+							}
+							if (!clientRoomResponseCommand.Success)
+							{
+								clientRoomResponseCommand.Success = false;
+								clientRoomResponseCommand.Room = new Room();
+								SendCommandToClient(clientWhoSendCommand, clientRoomResponseCommand);
+							}
+							break;
+						}
                     #endregion
 
                     #region -- MessageRoom Command --
-
                     case CommandType.MessageRoom:
-						Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
-						break;
+						{
+							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+							var messageRoomCommand = command as MessageRoomCommand;
 
+							foreach (ConnectedAccount connectedAccount in connectedAccounts)
+                            {
+								if(connectedAccount.Account.Character.RoomID == accountConnected.Account.Character.RoomID)
+                                {
+									var nMessageRoomCommand = new MessageRoomCommand
+									{
+										Character = accountConnected.Account.Character,
+										Message = messageRoomCommand.Message
+									};
+									SendCommandToClient(connectedAccount.Client, nMessageRoomCommand);
+                                }
+                            }
+							break;
+						}
 					#endregion
 
 					#region -- Unknown Command --
 
 					case CommandType.Unknown:
 					default:
-						Logger.ConsoleLog("Command", $"Unknown command from {clientId}.");
-						break;
-
+						{
+							Logger.ConsoleLog("Command", $"Unknown command from {clientId}.");
+							break;
+						}
                     #endregion
 
                 }

@@ -1,9 +1,11 @@
 ﻿using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
+using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Phoenix.Common.Commands.Factory
@@ -30,113 +32,124 @@ namespace Phoenix.Common.Commands.Factory
                 #region -- Authenticate --
 
                 case CommandType.Authenticate:
-					
-					/// <summary>
-					/// Validate Incoming Command is Proper Format.
-					/// </summary>
-					if (commandDataParts.Length < 1)
-						return new UnknownCommand();
-
-					/// <summary>
-					/// Return Authenticate Command.
-					/// </summary>
-					return new AuthenticateCommand
 					{
-						Username = commandDataParts[0],
-						Password = commandDataParts[1]
-					};
+						/// <summary>
+						/// Validate Incoming Command is Proper Format.
+						/// </summary>
+						if (commandDataParts.Length < 1)
+							return new UnknownCommand();
 
+						/// <summary>
+						/// Return Authenticate Command.
+						/// </summary>
+						return new AuthenticateCommand
+						{
+							Username = commandDataParts[0],
+							Password = commandDataParts[1]
+						};
+					}
                 #endregion
 
                 #region -- Authenticate Response --
 
                 case CommandType.AuthenticateResponse:
-					if (commandDataParts.Length < 1)
-						return new UnknownCommand();
-
-					return new AuthenticateResponseCommand
 					{
-						Success = bool.Parse(commandDataParts[0])
-					};
+						if (commandDataParts.Length < 1)
+							return new UnknownCommand();
 
+						return new AuthenticateResponseCommand
+						{
+							Success = bool.Parse(commandDataParts[0])
+						};
+					}
                 #endregion
 
                 #region -- Message Room --
 
                 case CommandType.MessageRoom:
-
-					if (commandDataParts.Length < 2)
-						return new UnknownCommand();
-
-					return new MessageRoomCommand
 					{
-						Message = commandDataParts[1]
-					};
 
+						if (commandDataParts.Length < 2)
+							return new UnknownCommand();
+
+						Character character = new();
+						character.Name = commandDataParts[0];
+
+						return new MessageRoomCommand
+						{
+							Character = character,
+							Message = commandDataParts[1]
+						};
+					}
                 #endregion
 
                 #region -- New Account --
 
                 case CommandType.NewAccount:
-					if (commandDataParts.Length < 3)
-						return new UnknownCommand();
-
-					return new NewAccountCommand
 					{
-						Username = commandDataParts[0],
-						Password = commandDataParts[1],
-						Email = commandDataParts[2]
-					};
+						if (commandDataParts.Length < 3)
+							return new UnknownCommand();
 
+						return new NewAccountCommand
+						{
+							Username = commandDataParts[0],
+							Password = commandDataParts[1],
+							Email = commandDataParts[2]
+						};
+					}
                 #endregion
 
                 #region -- New Account Response --
 
                 case CommandType.NewAccountResponse:
-					if (commandDataParts.Length < 1)
-						return new UnknownCommand();
-
-					return new NewAccountResponseCommand
 					{
-						Success = bool.Parse(commandDataParts[0])
-					};
+						if (commandDataParts.Length < 1)
+							return new UnknownCommand();
 
+						return new NewAccountResponseCommand
+						{
+							Success = bool.Parse(commandDataParts[0])
+						};
+					}
                 #endregion
 
                 #region -- New Character --
 
                 case CommandType.NewCharacter:
-					if (commandDataParts.Length < 4)
-						return new UnknownCommand();
-
-					return new NewCharacterCommand
 					{
-						CharacterName = commandDataParts[0],
-						Philosophy = Int32.Parse(commandDataParts[2]),
-						Gender = commandDataParts[1],
-						Image = commandDataParts[3]
-					};
+						if (commandDataParts.Length < 4)
+							return new UnknownCommand();
 
+						return new NewCharacterCommand
+						{
+							CharacterName = commandDataParts[0],
+							Philosophy = Int32.Parse(commandDataParts[2]),
+							Gender = commandDataParts[1],
+							Image = commandDataParts[3]
+						};
+					}
                 #endregion
 
                 #region -- New Character Response --
 
                 case CommandType.NewChracterResponse:
-					if (commandDataParts.Length < 1)
-						return new UnknownCommand();
-
-					return new NewCharacterResponseCommand
 					{
-						Success = bool.Parse(commandDataParts[0])
-					};
+						if (commandDataParts.Length < 1)
+							return new UnknownCommand();
 
+						return new NewCharacterResponseCommand
+						{
+							Success = bool.Parse(commandDataParts[0])
+						};
+					}
                 #endregion
 
                 #region -- Character List --
 
                 case CommandType.CharacterList:
-					return new GetCharacterListCommand();
-
+					{
+						return new GetCharacterListCommand();
+					}
                 #endregion
 
                 #region -- Character List Response --
@@ -172,13 +185,14 @@ namespace Phoenix.Common.Commands.Factory
 				#region -- Character Login --
 
 				case CommandType.CharacterLogin:
-					if (commandDataParts.Length < 1)
-						return new UnknownCommand();
-					return new CharacterConnectCommand
 					{
-						Name = commandDataParts[0]
-                    };
-
+						if (commandDataParts.Length < 1)
+							return new UnknownCommand();
+						return new CharacterConnectCommand
+						{
+							Name = commandDataParts[0]
+						};
+					}
                 #endregion
 
                 #region -- Character Login Response --
@@ -239,13 +253,137 @@ namespace Phoenix.Common.Commands.Factory
 					}
                 #endregion
 
+                #region -- Client Connect --
+                case CommandType.ClientConnect:
+                    {
+						if (commandDataParts.Length < 1)
+							return new UnknownCommand();
+						return new ClientConnectCommand
+						{
+							Id = Int32.Parse(commandDataParts[0])
+						};
+                    }
+				#endregion
+
+				#region -- Client Connect Response --
+
+				case CommandType.ClientConnectResponse:
+                    {
+						if (commandDataParts.Length < 2)
+							return new UnknownCommand();
+						return new ClientConnectResponseCommand
+						{
+							Success = bool.Parse(commandDataParts[0]),
+							Message = commandDataParts[1]
+						};
+                    }
+
+                #endregion
+
+                #region -- Client Room --
+
+                case CommandType.ClientRoom:
+                    {
+						if (commandDataParts.Length < 1)
+							return new UnknownCommand();
+						return new ClientRoomCommand
+						{
+							RoomID = Int32.Parse(commandDataParts[0])
+						};
+                    }
+
+				#endregion
+
+				#region -- Client Room Response --
+
+				case CommandType.ClientRoomResponse:
+					{
+						if (commandDataParts.Length < 2)
+							return new UnknownCommand();
+
+						string[] s = commandParts[1].Split("~");
+                        string[] r = s[1].Split("|");
+
+                        Room room = new();
+						
+						room.Name = r[0];
+						room.Description = r[1];
+						room.Exits = r[2];
+						room.Type = Int32.Parse(r[3]);
+
+						for (int i = 2; i < s.Length; i++)
+						{
+							string[] c = s[i].Split("|");
+							if (c[0] == "Character")
+                            {
+								room.RoomCharacters.Add(new Character
+								{
+									Name = c[1],
+									Image = c[2],
+									Type = c[3]
+								});
+							}
+							else if (c[0] == "Entity")
+							{
+								room.RoomEntities.Add(new Entity
+								{
+									Name = c[1],
+									Image = c[2],
+									Type = c[3]
+								});
+							}
+							else if (c[0] == "Item")
+							{
+								room.RoomItems.Add(new Item
+								{
+									Name = c[1],
+									Image = c[2],
+									Type = c[3],
+									Amount = Int32.Parse(c[4])
+								});
+							}
+						}
+
+						return new ClientRoomResponseCommand
+						{
+							Success = bool.Parse(s[0]),
+							Room = room
+						};
+					}
+
+				#endregion
+
+				#region -- Room Player Update --
+				case CommandType.RoomPlayerUpdate:
+					{
+						if (commandParts.Length < 1)
+							return new UnknownCommand();
+						
+						Character character = new();
+
+						character.Name = commandDataParts[1];
+						character.Image = commandDataParts[2];
+						character.Type = commandDataParts[3];
+
+						return new RoomPlayerUpdateCommand
+						{
+							Mode = Int32.Parse(commandDataParts[0]),
+							Character = character
+						};
+					}
+                #endregion
+
+                #region -- Default --
                 default:
 					return new UnknownCommand();
+				#endregion
+
 			}
 		}
 
 		public static string FormatCommand(Command command)
 		{
+			Debug.WriteLine($"{(int)command.CommandType}^{string.Join("~", command.GetCommandParts().Select(x => string.Join("|", x)))}");
 			return $"{(int)command.CommandType}^{string.Join("~", command.GetCommandParts().Select(x => string.Join("|", x)))}";
 		}
 	}

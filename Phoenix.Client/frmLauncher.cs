@@ -125,142 +125,148 @@ namespace Phoenix.Client
                 #region -- AuthResponse Command --
 
                 case CommandType.AuthenticateResponse:
-                    var authResponseCmd = command as AuthenticateResponseCommand;
-                    if (authResponseCmd.Success)
                     {
-                        this.pnlAuthenicate.Invoke((Action)delegate
+                        var authResponseCommand = command as AuthenticateResponseCommand;
+                        if (authResponseCommand.Success)
                         {
-                            this.btnAccount.Enabled = false;
-                            this.btnCreate.Enabled = false;
-                            this.lblAccount.Text = this.txtAccountName.Text;
-                            this.txtAccountName.Text = "";
-                            this.txtPassword.Text = "";
-                        });
-                        this.Invoke((Action)delegate
-                        {
-                            this.pnlAuthenicate.Hide();
-                            this.pnlAccountView.Show();
+                            this.pnlAuthenicate.Invoke((Action)delegate
+                            {
+                                this.btnAccount.Enabled = false;
+                                this.btnCreate.Enabled = false;
+                                this.lblAccount.Text = this.txtAccountName.Text;
+                                this.txtAccountName.Text = "";
+                                this.txtPassword.Text = "";
+                            });
+                            this.Invoke((Action)delegate
+                            {
+                                this.pnlAuthenicate.Hide();
+                                this.pnlAccountView.Show();
 
-                        });
-                        var getCharacterListCmd = new GetCharacterListCommand();
+                            });
+                            var getCharacterListCmd = new GetCharacterListCommand();
 
-                        SendCommand(getCharacterListCmd);
-                    }
-                    else
-                    {
-                        this.pnlAuthenicate.Invoke((Action)delegate
+                            SendCommand(getCharacterListCmd);
+                        }
+                        else
                         {
-                            this.client.Stop();
-                            this.btnAccount.Enabled = true;
-                            this.btnCreate.Enabled = true;
-                            this.btnAuthenticate.Enabled = true;
-                        });
-                        MessageBox.Show("Account or Password incorrect!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.pnlAuthenicate.Invoke((Action)delegate
+                            {
+                                this.client.Stop();
+                                this.btnAccount.Enabled = true;
+                                this.btnCreate.Enabled = true;
+                                this.btnAuthenticate.Enabled = true;
+                            });
+                            MessageBox.Show("Account or Password incorrect!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        return;
                     }
-                    return;
                 #endregion
 
                 #region -- NewAccountResponse Command --
 
                 case CommandType.NewAccountResponse:
-                    var accountResponseCmd = command as NewAccountResponseCommand;
-                    if (accountResponseCmd.Success)
                     {
-                        this.Invoke((Action)delegate
+                        var accountResponseCommand = command as NewAccountResponseCommand;
+                        if (accountResponseCommand.Success)
                         {
-                            this.pnlAccountCreate.Hide();
-                            this.pnlAccountView.Show();
-                            this.lblAccount.Text = this.txtNAccount.Text;
-                        });
-                    }
-                    else
-                    {
-                        this.pnlAuthenicate.Invoke((Action)delegate
+                            this.Invoke((Action)delegate
+                            {
+                                this.pnlAccountCreate.Hide();
+                                this.pnlAccountView.Show();
+                                this.lblAccount.Text = this.txtNAccount.Text;
+                            });
+                        }
+                        else
                         {
-                            this.btnAccount.Enabled = true;
-                            this.btnCreate.Enabled = true;
-                            this.btnNCreate.Enabled = true;
-                        });
-                        MessageBox.Show("Accounts Already Exists!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.client.Stop();
+                            this.pnlAuthenicate.Invoke((Action)delegate
+                            {
+                                this.btnAccount.Enabled = true;
+                                this.btnCreate.Enabled = true;
+                                this.btnNCreate.Enabled = true;
+                            });
+                            MessageBox.Show("Accounts Already Exists!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.client.Stop();
+                        }
+                        return;
                     }
-                    return;
-
                 #endregion
 
                 #region -- NewCharacterResponse --
 
                 case CommandType.NewChracterResponse:
-                    var characterResponseCmd = command as NewCharacterResponseCommand;
-                    if (characterResponseCmd.Success)
+                    var characterResponseCommand = command as NewCharacterResponseCommand;
                     {
-                        this.Invoke((Action)delegate
-                        {
-                            // Update Character List
-                            this.pnlCharacterCreation.Hide();
-                            this.pnlAccountView.Show();
-                            this.dgvCharacter.Rows.Clear();
-                        });
-                        var getCharacterListCmd = new GetCharacterListCommand();
-
-                        SendCommand(getCharacterListCmd);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Character Already Exists!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.client.Stop();
-                    }
-                    return;
-
-                #endregion
-
-                #region -- CharacterListResponseCommand --
-
-                case CommandType.CharacterListResponse:
-                    var characterListResponseCmd = command as CharacterListResponseCommand;
-
-                    if (characterListResponseCmd.Success)
-                    {
-                        foreach (Character character in characterListResponseCmd.Characters)
+                        if (characterResponseCommand.Success)
                         {
                             this.Invoke((Action)delegate
                             {
-                                int rowId = this.dgvCharacter.Rows.Add();
-                                DataGridViewRow row = this.dgvCharacter.Rows[rowId];
-                                row.Cells["dgvCharacterName"].Value = character.Name;
-                                row.Cells["dgvCharacterCaste"].Value = character.Caste;
-                                row.Cells["dgvCharacterPhilosophy"].Value = character.Philosophy;
+                            // Update Character List
+                            this.pnlCharacterCreation.Hide();
+                                this.pnlAccountView.Show();
+                                this.dgvCharacter.Rows.Clear();
                             });
+                            var getCharacterListCmd = new GetCharacterListCommand();
+
+                            SendCommand(getCharacterListCmd);
                         }
+                        else
+                        {
+                            MessageBox.Show("Character Already Exists!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.client.Stop();
+                        }
+                        return;
                     }
+                #endregion
 
-                    return;
+                #region -- CharacterListResponseCommand --
+                
+                case CommandType.CharacterListResponse:
+                    {
+                        var characterListResponseCmd = command as CharacterListResponseCommand;
 
+                        if (characterListResponseCmd.Success)
+                        {
+                            foreach (Character character in characterListResponseCmd.Characters)
+                            {
+                                this.Invoke((Action)delegate
+                                {
+                                    int rowId = this.dgvCharacter.Rows.Add();
+                                    DataGridViewRow row = this.dgvCharacter.Rows[rowId];
+                                    row.Cells["dgvCharacterName"].Value = character.Name;
+                                    row.Cells["dgvCharacterCaste"].Value = character.Caste;
+                                    row.Cells["dgvCharacterPhilosophy"].Value = character.Philosophy;
+                                });
+                            }
+                        }
+
+                        return;
+                    }
                 #endregion
 
                 #region -- CharacterConnectResponseCommmand --
 
                 case CommandType.CharacterLoginResponse:
-                    var charConnectResponseCommand = command as CharacterConnectResponseCommand;
-
-                    if (charConnectResponseCommand.Success)
                     {
-                        this.Invoke((Action)delegate
+                        var charConnectResponseCommand = command as CharacterConnectResponseCommand;
+
+                        if (charConnectResponseCommand.Success)
                         {
-                            this.client.OnActivity -= Client_OnActivity;
-                            this.client.IsConnected -= Client_IsConnected;
-                            this.client.IsClosed -= Client_IsClosed;
-
-                            this.gameWindow.Initialize(this.client, charConnectResponseCommand.Character, this);
-                            this.gameWindow.Show();
-                            this.Hide();
-                        });
+                            this.Invoke((Action)delegate
+                            {
+                                this.client.OnActivity -= Client_OnActivity;
+                                this.client.IsConnected -= Client_IsConnected;
+                                this.client.IsClosed -= Client_IsClosed;
+                                this.gameWindow.Initialize(this.client, charConnectResponseCommand.Character, this);
+                                this.gameWindow.Show();
+                                this.Hide();
+                            });
+                        }
+                        else
+                        {
+                            MessageBox.Show("Something Went Wrong!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        return;
                     }
-                    else
-                    {
-                        MessageBox.Show("Something Went Wrong!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    return;
                 #endregion
             
             }

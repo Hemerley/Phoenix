@@ -2,21 +2,19 @@
 using Phoenix.Common.Data.Types;
 using System.Collections.Generic;
 
-namespace Phoenix.Common.Commands.Request
+namespace Phoenix.Common.Commands.Updates
 {
-	public class MessageRoomCommand : Command
-	{
+    public class RoomPlayerUpdateCommand : Command
+    {
         #region -- Properties --
-
+        public int Mode { get; set; }
         public Character Character { get; set; }
-        public string Message { get; set; }
+        #endregion
 
-		#endregion
-
-		public MessageRoomCommand()
-		{
-			this.CommandType = CommandType.MessageRoom;
-		}
+		public RoomPlayerUpdateCommand()
+        {
+			this.CommandType = CommandType.RoomPlayerUpdate;
+        }
 
 		public override IEnumerable<IEnumerable<string>> GetCommandParts()
 		{
@@ -24,8 +22,10 @@ namespace Phoenix.Common.Commands.Request
 			{
 				new List<string>
 				{
+					this.Mode.ToString(),
 					this.Character.Name,
-					this.Message
+					this.Character.Image,
+					this.Character.Type
 				}
 			};
 		}

@@ -1,16 +1,32 @@
 ﻿using Phoenix.Common.Commands.Factory;
+using Phoenix.Common.Data.Types;
+using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Request
 {
-    class ClientConnectCommand : Command
+    public class ClientConnectCommand : Command
     {
-		#region -- Properties --
+        #region -- Properties --
 
-		#endregion
+        public int Id { get; set; } = new();
 
-		public ClientConnectCommand()
+        #endregion
+
+        public ClientConnectCommand()
 		{
 			this.CommandType = CommandType.ClientConnect;
+		}
+
+		public override IEnumerable<IEnumerable<string>> GetCommandParts()
+		{
+
+			return new List<List<string>>
+			{
+				new List<string>
+				{
+					this.Id.ToString()
+                }
+			};
 		}
 	}
 }

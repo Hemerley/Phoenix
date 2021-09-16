@@ -26,30 +26,30 @@ namespace Phoenix.Client.Classes.Extensions
 
         public static int GetWindowLong(IntPtr hWnd, int nIndex)
         {
-            if (IntPtr.Size == 4)
+          //  if (IntPtr.Size == 4)
                 return (int)GetWindowLong32(hWnd, nIndex);
-            else
-                return (int)(long)GetWindowLongPtr64(hWnd, nIndex);
+          //  else
+          //      return (int)(long)GetWindowLongPtr64(hWnd, nIndex);
         }
 
         public static int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong)
         {
-            if (IntPtr.Size == 4)
+           // if (IntPtr.Size == 4)
                 return (int)SetWindowLongPtr32(hWnd, nIndex, dwNewLong);
-            else
-                return (int)(long)SetWindowLongPtr64(hWnd, nIndex, dwNewLong);
+           // else
+           //     return (int)(long)SetWindowLongPtr64(hWnd, nIndex, dwNewLong);
         }
 
         [DllImport("user32.dll", EntryPoint = "GetWindowLong", CharSet = CharSet.Auto)]
         public static extern IntPtr GetWindowLong32(IntPtr hWnd, int nIndex);
 
-        [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr", CharSet = CharSet.Auto)]
+/*        [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr", CharSet = CharSet.Auto)]
         public static extern IntPtr GetWindowLongPtr64(IntPtr hWnd, int nIndex);
-
+*/
         [DllImport("user32.dll", EntryPoint = "SetWindowLong", CharSet = CharSet.Auto)]
         public static extern IntPtr SetWindowLongPtr32(IntPtr hWnd, int nIndex, int dwNewLong);
-
+/*
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr", CharSet = CharSet.Auto)]
         public static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, int nIndex, int dwNewLong);
-    }
+  */  }
 }

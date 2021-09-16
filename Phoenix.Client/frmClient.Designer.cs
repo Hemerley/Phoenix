@@ -1352,6 +1352,7 @@ namespace Phoenix.Client
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(695, 23);
             this.txtInput.TabIndex = 1;
+            this.txtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtInput_KeyDown);
             // 
             // pnlBuff
             // 
@@ -2396,15 +2397,16 @@ namespace Phoenix.Client
             // 
             this.rtbChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.rtbChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbChat.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rtbChat.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rtbChat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.rtbChat.Location = new System.Drawing.Point(3, 55);
             this.rtbChat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbChat.Name = "rtbChat";
+            this.rtbChat.ReadOnly = true;
             this.rtbChat.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.rtbChat.Size = new System.Drawing.Size(689, 221);
             this.rtbChat.TabIndex = 20;
-            this.rtbChat.Text = "*Connecting to server...";
+            this.rtbChat.Text = "";
             // 
             // pnlSecondaryWindow
             // 
@@ -2426,15 +2428,16 @@ namespace Phoenix.Client
             // 
             this.rtbSecondary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.rtbSecondary.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbSecondary.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rtbSecondary.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rtbSecondary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.rtbSecondary.Location = new System.Drawing.Point(3, 55);
             this.rtbSecondary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbSecondary.Name = "rtbSecondary";
+            this.rtbSecondary.ReadOnly = true;
             this.rtbSecondary.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.rtbSecondary.Size = new System.Drawing.Size(687, 125);
             this.rtbSecondary.TabIndex = 25;
-            this.rtbSecondary.Text = "*Connecting to server...";
+            this.rtbSecondary.Text = "";
             // 
             // pnlRoom
             // 
@@ -2899,13 +2902,13 @@ namespace Phoenix.Client
         private System.Windows.Forms.ColumnHeader lstvRoomCName;
         private System.Windows.Forms.ColumnHeader lstvRoomCType;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel pnlDrops;
-        private Phoenix.Client.Classes.Extensions.ListViewWithoutScrollBar lstvDrops;
+        private ListViewWithoutScrollBar lstvDrops;
         private System.Windows.Forms.ColumnHeader lstvDropsCName;
         private System.Windows.Forms.ColumnHeader lstvDropsCType;
-        private Phoenix.Client.Classes.Extensions.ListViewWithoutScrollBar lstvRoom;
+        private ListViewWithoutScrollBar lstvRoom;
         private System.Windows.Forms.Label label23;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel pnlEquipped;
-        private Phoenix.Client.Classes.Extensions.ListViewWithoutScrollBar lstvEquipped;
+        private ListViewWithoutScrollBar lstvEquipped;
         private System.Windows.Forms.ColumnHeader lstvEquippedCName;
         private System.Windows.Forms.ColumnHeader lstvEquippedCSlot;
         private System.Windows.Forms.ColumnHeader lstvEquippedCType;

@@ -7,6 +7,10 @@
     <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Unclassified.AsyncTcpClient" Version="1.0.2" />

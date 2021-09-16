@@ -1,4 +1,8 @@
 ﻿using Phoenix.Client.Classes.Extensions;
+using Phoenix.Common.Commands.Factory;
+using Phoenix.Common.Commands.Request;
+using Phoenix.Common.Commands.Response;
+using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using System;
@@ -19,21 +23,93 @@ namespace Phoenix.Client
             InitializeControl();
         }
 
-        public void Initialize(Classes.Network.Client client, Character character, FrmLauncher parent)
-        {
-            this.client = client;
-            this.character = character;
-            this.launcherForm = parent;
-            this.client.OnActivity += Client_OnActivity;
-            this.client.IsConnected += Client_IsConnected;
-            this.client.IsClosed += Client_IsClosed;
-            this.CharacterLoad();
-            this.UpdateRoom(1, this.character.Name, this.character.Image, this.character.Type, true);
-        }
+        #region -- Client Events --
 
         private void Client_OnActivity(object sender, string e)
         {
+            var command = CommandFactory.ParseCommand(e);
+            switch (command.CommandType)
+            {
+                #region -- Client Connect Response --
+                case CommandType.ClientConnectResponse:
+                    {
+                        var clientConnectResponseCommand = command as ClientConnectResponseCommand;
 
+                        if (clientConnectResponseCommand.Success)
+                        {
+                            LoginMessage(clientConnectResponseCommand.Message);
+                            var clientRoomCommand = new ClientRoomCommand
+                            {
+                                RoomID = this.character.RoomID
+                            };
+                            SendCommand(clientRoomCommand);
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Server Response Failed on Connection Handshake. Please restart your client and try again.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            this.client.Stop();
+                        }
+
+                        return;
+                    }
+                #endregion
+
+                #region -- Client Room Response --
+                case CommandType.ClientRoomResponse:
+                    {
+                        var clientRooomResponseCommand = command as ClientRoomResponseCommand;
+
+                        if (clientRooomResponseCommand.Success)
+                        {
+                            this.Invoke((Action)delegate
+                            {
+                                RoomUpdateMessage(clientRooomResponseCommand.Room.Name, clientRooomResponseCommand.Room.Description, clientRooomResponseCommand.Room.Exits);
+                                foreach (Character character in clientRooomResponseCommand.Room.RoomCharacters)
+                                {
+                                    UpdateRoom(1, character.Name, character.Image, character.Type);
+                                }
+                                foreach (Entity entity in clientRooomResponseCommand.Room.RoomEntities)
+                                {
+                                    UpdateRoom(1, entity.Name, entity.Image, entity.Type);
+                                }
+                                foreach (Item item in clientRooomResponseCommand.Room.RoomItems)
+                                {
+                                    UpdateDrop(1, item.Name, item.Image, item.Type);
+                                }    
+                            });
+                        }
+
+                        return;
+                    }
+                #endregion
+
+                #region -- Room Player Update --
+                case CommandType.RoomPlayerUpdate:
+                    {
+                        var roomPlayerUpdateCommand = command as RoomPlayerUpdateCommand;
+
+                        this.Invoke((Action)delegate
+                        {
+                            UpdateRoom(roomPlayerUpdateCommand.Mode, roomPlayerUpdateCommand.Character.Name, roomPlayerUpdateCommand.Character.Image, roomPlayerUpdateCommand.Character.Type);
+                        });
+
+                        return;
+                    }
+                #endregion
+
+                #region -- Message Room --
+                case CommandType.MessageRoom:
+                    {
+                        this.Invoke((Action)delegate
+                        {
+                            var messageRoomCommand = command as MessageRoomCommand;
+                            RoomMessage(messageRoomCommand.Character.Name, messageRoomCommand.Message);
+                        });
+                        return;
+                    }
+               #endregion
+            }
         }
 
         private void Client_IsConnected(object sender, bool isReconnected)
@@ -43,12 +119,33 @@ namespace Phoenix.Client
 
         private void Client_IsClosed(object sender, bool remote)
         {
-
+            switch (remote)
+            {
+                case true:
+                    MessageBox.Show("The connection was closed by the server.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                default:
+                    return;
+            }
         }
 
+        #endregion
 
+        #region -- Data Controllers --
 
-        #region ---Initialize Controls---
+        /// <summary>
+        /// Sends command to server.
+        /// </summary>
+        /// <param name="command"></param>
+        private void SendCommand(Command command)
+        {
+            var message = CommandFactory.FormatCommand(command);
+            this.client.Send(message);
+        }
+
+        #endregion
+
+        #region -- Controls --
 
         private void InitializeControl()
         {
@@ -110,10 +207,32 @@ namespace Phoenix.Client
             UpdateEquipped(1, "None", "", "(Junk)", "Slot: Left Ring");
             UpdateEquipped(1, "None", "", "(Junk)", "Slot: Right Ring");
         }
-        
+
+        private void FrmClient_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        public void Initialize(Classes.Network.Client client, Character character, FrmLauncher parent)
+        {
+            this.client = client;
+            this.character = character;
+            this.launcherForm = parent;
+            this.client.OnActivity += Client_OnActivity;
+            this.client.IsConnected += Client_IsConnected;
+            this.client.IsClosed += Client_IsClosed;
+            var clientConnectCommand = new ClientConnectCommand
+            {
+                Id = this.character.Id
+            };
+
+            SendCommand(clientConnectCommand);
+            this.CharacterLoad();
+        }
+
         #endregion
 
-        #region ---Move Window---
+        #region -- Move Window --
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -135,13 +254,17 @@ namespace Phoenix.Client
 
         #endregion
 
-        #region ---Client Updaters---
+        #region -- Client Updaters --
 
+        #region -- Client Start Updates --
         private void CharacterLoad()
         {
 
             this.lblName.Text = "Name: " + this.character.Name.ToString();
-            this.ilAvatar.Images.Add(this.character.Image, Image.FromFile("./Images/Avatar/" + this.character.Image));
+            if (!this.ilAvatar.Images.Keys.Contains(this.character.Image))
+            {
+                this.ilAvatar.Images.Add(this.character.Image, Image.FromFile("./Images/Avatar/" + this.character.Image));
+            }
             this.pictureBox1.Image = Image.FromFile("./Images/Avatar/" + this.character.Image);
             this.lblCaste.Text = "Caste: " + this.character.Caste;
             this.lblRank.Text = "Rank: " + this.character.Rank;
@@ -156,27 +279,25 @@ namespace Phoenix.Client
             this.lblBaseHaste.Text = this.character.Haste.ToString() + "%";
             this.lblBaseVers.Text = this.character.Versatility.ToString() + "%";
             this.lblWeight.Text = "Weight: 0 / " + (this.character.Strength * 2);
-
+            this.rtbChat.SelectionColor = Color.Magenta;
+            this.rtbChat.AppendText($"[{DateTime.Now}] Connecting to server...\n");
+            this.rtbChat.SelectionColor = Color.White;
         }
+        #endregion
 
-        // Window Updaters
-        private void UpdateRoom(int mode, string entityName = "", string entityImage = "", string entityType = "", bool imageShow = true)
+        #region -- Client UI Updates --
+        private void UpdateRoom(int mode, string entityName = "", string entityImage = "", string entityType = "")
         {
             // Mode 1 = Add, Mode 2 = Remove
             if (mode == 1)
             {
-                if (imageShow)
+                if (!this.ilAvatar.Images.Keys.Contains(entityImage))
                 {
-                    lstvRoom.Items.Add(entityName, entityImage).SubItems.Add(entityType);
-                    int entityIndex = lstvRoom.Items.Count - 1;
-                    UpdateEntityColor(entityIndex, entityType);
+                    this.ilAvatar.Images.Add(entityImage, Image.FromFile("./Images/Avatar/" + entityImage));
                 }
-                else
-                {
-                    lstvRoom.Items.Add(entityName).SubItems.Add(entityType);
-                    int entityIndex = lstvRoom.Items.Count - 1;
-                    UpdateEntityColor(entityIndex, entityType);
-                }
+                lstvRoom.Items.Add(entityName, entityImage).SubItems.Add(entityType);
+                int entityIndex = lstvRoom.Items.Count - 1;
+                UpdateEntityColor(entityIndex, entityType);
             }
             else if (mode == 2)
             {
@@ -190,23 +311,18 @@ namespace Phoenix.Client
             }
         }
 
-        private void UpdateDrop(int mode, string itemName = "", string itemImage = "", string itemType = "", bool imageShow = true)
+        private void UpdateDrop(int mode, string itemName = "", string itemImage = "", string itemType = "")
         {
             // Mode 1 = Add, Mode 2 = Remove
             if (mode == 1)
             {
-                if (imageShow)
+                if (!this.ilItems.Images.Keys.Contains(itemImage))
                 {
-                    lstvDrops.Items.Add(itemName, itemImage).SubItems.Add(itemType);
-                    int entityIndex = lstvDrops.Items.Count - 1;
-                    UpdateDropColor(entityIndex, itemType);
+                    this.ilItems.Images.Add(itemImage, Image.FromFile("./Images/Items/" + itemImage));
                 }
-                else
-                {
-                    lstvDrops.Items.Add(itemName).SubItems.Add(itemType);
-                    int entityIndex = lstvDrops.Items.Count - 1;
-                    UpdateDropColor(entityIndex, itemType);
-                }
+                lstvDrops.Items.Add(itemName, itemImage).SubItems.Add(itemType);
+                int entityIndex = lstvDrops.Items.Count - 1;
+                UpdateDropColor(entityIndex, itemType);
             }
             else if (mode == 2)
             {
@@ -502,11 +618,9 @@ namespace Phoenix.Client
                 }
             }
         }
+        #endregion
 
-        // Client Options
-        
-
-        // Color Formatting
+        #region -- Client Color Formatting --
         private void UpdateEquipColor(int entityIndex, string itemType)
         {
             switch (itemType)
@@ -636,17 +750,58 @@ namespace Phoenix.Client
                     return;
             }
         }
+        #endregion
 
-        // Server Requests
+        #region -- Server Incoming Messages --
         private void UpdateEquipItem(string itemName, string itemImage, string itemType, string slotType, int updateSlot)
         {
             UpdateEquipped(3, itemName, itemImage, itemType, slotType, 12);
             UpdateInventory(2);
         }
 
+        private void LoginMessage(string message)
+        {
+            this.Invoke((Action)delegate
+            {
+                this.rtbChat.SelectionColor = Color.Magenta;
+                this.rtbChat.AppendText($"[{DateTime.Now.ToShortTimeString()}] {message}\n");
+                this.rtbChat.SelectionColor = Color.White;
+            });
+        }
+
+        private void RoomUpdateMessage(string name, string description, string exits)
+        {
+            this.rtbChat.SelectionColor = Color.Magenta;
+            this.rtbChat.AppendText($"[{DateTime.Now.ToShortTimeString()}] ");
+            this.rtbChat.SelectionColor = Color.Green;
+            this.rtbChat.AppendText("<");
+            this.rtbChat.SelectionColor = Color.White;
+            this.rtbChat.AppendText(name);
+            this.rtbChat.SelectionColor = Color.Green;
+            this.rtbChat.AppendText("> ");
+            this.rtbChat.SelectionColor = Color.White;
+            this.rtbChat.AppendText($"{description} {exits} \n");
+        }
+
+        private void RoomMessage (string name, string message)
+        {
+            this.rtbChat.SelectionColor = Color.Magenta;
+            this.rtbChat.AppendText($"[{DateTime.Now.ToShortTimeString()}] ");
+            this.rtbChat.SelectionColor = Color.Green;
+            this.rtbChat.AppendText("From ");
+            this.rtbChat.SelectionColor = Color.White;
+            this.rtbChat.AppendText(name);
+            this.rtbChat.SelectionColor = Color.Green;
+            this.rtbChat.AppendText(": ");
+            this.rtbChat.SelectionColor = Color.White;
+            this.rtbChat.AppendText($"{message} \n");
+        }
+
         #endregion
 
-        #region ---Client Menu Code---
+        #endregion
+
+        #region -- Client Menu Code --
 
         private void DropToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -680,10 +835,18 @@ namespace Phoenix.Client
 
         #endregion
 
-        private void FrmClient_FormClosed(object sender, FormClosedEventArgs e)
+        private void TxtInput_KeyDown(object sender, KeyEventArgs e)
         {
-            Application.Exit();
-            this.client.Stop();
+            if (e.KeyCode == Keys.Enter)
+            {
+                var messageRoomCommand = new MessageRoomCommand
+                {
+                    Character = this.character,
+                    Message = txtInput.Text
+                };
+                txtInput.Text = "";
+                SendCommand(messageRoomCommand);
+            }
         }
     }
 }

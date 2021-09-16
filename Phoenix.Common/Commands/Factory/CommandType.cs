@@ -24,16 +24,19 @@
         MessageRoom = 100,
 		MessagePlayer = 101,
 		MessageParty = 103,
-		MessageGuild = 104
+		MessageGuild = 104,
 
 		#endregion
 
-		#region -- Client Updates --
+		#region -- Client Updates  (200 - 299) --
 
 		ClientConnect = 200,
 		ClientConnectResponse = 201,
 		ClientRoom = 202,
-		ClientRoomResponse = 203
+		ClientRoomResponse = 203,
+		MapRequest = 204,
+		MapResponse = 205,
+		RoomPlayerUpdate = 206
 
 		#endregion
 
