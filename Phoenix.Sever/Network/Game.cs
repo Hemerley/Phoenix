@@ -508,7 +508,7 @@ namespace Phoenix.Server.Network
 										newItem.Amount = item.Amount;
                                     }
 
-									List<Room> roomArray = FindRooms(rooms[clientRoomCommand.RoomID]);
+									List<Room> roomArray = FindRooms2(rooms[clientRoomCommand.RoomID]);
 
 									var roomMapResponseCommand = new RoomMapResponseCommand
 									{
@@ -751,6 +751,83 @@ namespace Phoenix.Server.Network
 
 			return roomsList;
 
+		}
+
+		private List<Room> FindRooms2 (Room room)
+        {
+			List<Room> roomList = new();
+			int[,] grid = new int[5, 5];
+			grid[2, 2] = room.ID;
+			for (int x = 2; x < 5; x++)
+            {
+				for (int y = 2; y < 5; y++)
+                {
+					if (rooms[grid[x, y]].CanGoNorth)
+                    {
+						grid[x - 1, y] = rooms[grid[x,y]].North;
+						if (rooms[grid[x - 1, y]].CanGoNorth)
+							grid[x - 2, y] = rooms[grid[x - 1, y]].North;
+					}
+					if (rooms[grid[x, y]].CanGoSouth)
+                    {
+						grid[x + 1, y] = rooms[grid[x, y]].South;
+						if (rooms[grid[x + 1, y]].CanGoSouth)
+							grid[x + 2, y] = rooms[grid[x + 1, y]].South;
+
+					}
+					if (rooms[grid[x, y]].CanGoWest)
+                    {
+						grid[x, y - 1] = rooms[grid[x, y]].West;
+						if (rooms[grid[x, y - 1]].CanGoWest)
+							grid[x, y - 2] = rooms[grid[x, y - 1]].West;
+
+					}
+					if (rooms[grid[x, y]].CanGoEast)
+                    {
+						grid[x, y + 1] = rooms[grid[x, y]].East;
+						if (rooms[grid[x, y + 1]].CanGoEast)
+							grid[x, y + 2] = rooms[grid[x, y + 1]].East;
+					}
+				}
+            }
+			for (int x = 2; x > -1; x--)
+            {
+				for (int y = 2; y > -1; y--)
+                {
+					if (rooms[grid[x, y]].CanGoNorth)
+					{
+						grid[x - 1, y] = rooms[grid[x, y]].North;
+						if (rooms[grid[x - 1, y]].CanGoNorth)
+							grid[x - 2, y] = rooms[grid[x - 1, y]].North;
+					}
+					if (rooms[grid[x, y]].CanGoSouth)
+					{
+						grid[x + 1, y] = rooms[grid[x, y]].South;
+						if (rooms[grid[x + 1, y]].CanGoSouth)
+							grid[x + 2, y] = rooms[grid[x + 1, y]].South;
+
+					}
+					if (rooms[grid[x, y]].CanGoWest)
+					{
+						grid[x, y - 1] = rooms[grid[x, y]].West;
+						if (rooms[grid[x, y - 1]].CanGoWest)
+							grid[x, y - 2] = rooms[grid[x, y - 1]].West;
+
+					}
+					if (rooms[grid[x, y]].CanGoEast)
+					{
+						grid[x, y + 1] = rooms[grid[x, y]].East;
+						if (rooms[grid[x, y + 1]].CanGoEast)
+							grid[x, y + 2] = rooms[grid[x, y + 1]].East;
+					}
+				}
+            }
+			foreach (int gridLoc in grid)
+			{
+				roomList.Add(rooms[gridLoc]);
+			}
+
+			return roomList;
 		}
 
 		/// <summary>
