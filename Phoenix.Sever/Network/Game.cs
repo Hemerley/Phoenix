@@ -105,33 +105,8 @@ namespace Phoenix.Server.Network
 			//Remove from EITHER connected clients OR connected accounts (it could be in either)
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == e.Id);
 			if (this.connectedClients.ContainsKey(e.Id))
-			{
-				foreach (Room room in this.rooms)
-				{
-					if (connectedAccount.Account.Character.RoomID == room.ID)
-					{
-						room.RoomCharacters.Remove(connectedAccount.Account.Character);
-						foreach (Character character in room.RoomCharacters)
-						{
-							foreach (ConnectedAccount cAccount in connectedAccounts)
-							{
-								if (cAccount.Account.Character.Id == character.Id)
-								{
-									var roomPlayerUpdateCommand = new RoomPlayerUpdateCommand
-									{
-										Mode = 2,
-										Character = connectedAccount.Account.Character
-									};
-									SendCommandToClient(cAccount.Client, roomPlayerUpdateCommand);
-								}
-							}
-						}
-					}
-					this.connectedCharacters.Remove(connectedAccount.Account.Character);
-					this.connectedClients.Remove(e.Id);
-				}
-			}
-
+				this.connectedClients.Remove(e.Id);
+	
 			//coding it this way to be safe, just in case we have a different instance of the same connection
 			//I DOUBT we do though
 			if (connectedAccount != null)
@@ -207,9 +182,10 @@ namespace Phoenix.Server.Network
 
 			foreach (Room room in rooms)
             {
-				foreach (Entity entity in room.RoomEntities)
+				Logger.ConsoleLog("Debug", $"Room Name: {room.Name}");
+				foreach (Entity entity in room.Entities)
                 {
-					Logger.ConsoleLog("Debug", entity.Name);
+					Logger.ConsoleLog("Debug", $"Entity Name: {entity.Name}");
                 }
             }
 
@@ -496,7 +472,18 @@ namespace Phoenix.Server.Network
 										newItem.Amount = item.Amount;
                                     }
 
+									List<Room> roomArray = FindRooms(rooms[clientRoomCommand.RoomID]);
+
+									var roomMapResponseCommand = new RoomMapResponseCommand
+									{
+										Success = true,
+										RoomsHigh = 5,
+										RoomsWide = 5,
+										Rooms = roomArray
+									};
+
 									SendCommandToClient(clientWhoSendCommand, clientRoomResponseCommand);
+									SendCommandToClient(clientWhoSendCommand, roomMapResponseCommand);
 									break;
 								}
 							}
@@ -518,15 +505,18 @@ namespace Phoenix.Server.Network
 
 							foreach (ConnectedAccount connectedAccount in connectedAccounts)
                             {
-								if(connectedAccount.Account.Character.RoomID == accountConnected.Account.Character.RoomID)
+								if (connectedAccount.Account.Character != null)
                                 {
-									var nMessageRoomCommand = new MessageRoomCommand
+									if (connectedAccount.Account.Character.RoomID == accountConnected.Account.Character.RoomID)
 									{
-										Character = accountConnected.Account.Character,
-										Message = messageRoomCommand.Message
-									};
-									SendCommandToClient(connectedAccount.Client, nMessageRoomCommand);
-                                }
+										var nMessageRoomCommand = new MessageRoomCommand
+										{
+											Character = accountConnected.Account.Character,
+											Message = messageRoomCommand.Message
+										};
+										SendCommandToClient(connectedAccount.Client, nMessageRoomCommand);
+									}
+								}
                             }
 							break;
 						}
@@ -571,6 +561,151 @@ namespace Phoenix.Server.Network
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == id);
 			return connectedAccount;
         }
+
+		private List<Room> FindRooms(Room room)
+        {
+			List<Room> roomsList = new ();
+			int[,] grid = new int[5, 5];
+			grid[2, 2] = room.ID;
+
+            #region -- Basic --
+            // North
+            if (room.CanGoNorth)
+				grid[1, 2] = room.North;
+			if (rooms[grid[1, 2]].CanGoNorth)
+				grid[0, 2] = room.North;
+
+			// South
+			if (room.CanGoSouth)
+				grid[3, 2] = room.South;
+			if (rooms[grid[3, 2]].CanGoSouth)
+				grid[4, 2] = room.South;
+
+			// West
+			if (room.CanGoWest)
+				grid[2, 1] = room.West;
+			if (rooms[grid[2, 1]].CanGoWest)
+				grid[2, 0] = room.West;
+		
+			// east
+			if (room.CanGoEast)
+				grid[2, 3] = room.East;
+			if (rooms[grid[2, 3]].CanGoEast)
+				grid[2, 4] = room.East;
+			#endregion
+
+			#region -- North Path --
+			// Northest-West
+			if (rooms[grid[0, 2]].CanGoWest)
+				grid[0, 1] = rooms[grid[0, 2]].West;
+			if (rooms[grid[0, 1]].CanGoWest)
+				grid[0, 0] = rooms[grid[0, 1]].West;
+
+			// Northless-West
+			if (rooms[grid[1, 2]].CanGoWest)
+				grid[1, 1] = rooms[grid[1, 2]].West;
+			if (rooms[grid[1, 1]].CanGoWest)
+				grid[1, 0] = rooms[grid[1, 1]].West;
+
+			// Northest-East
+			if (rooms[grid[0, 2]].CanGoEast)
+				grid[0, 3] = rooms[grid[0, 2]].East;
+			if (rooms[grid[0, 3]].CanGoWest)
+				grid[0, 4] = rooms[grid[0, 3]].East;
+
+			// Northless-East
+			if (rooms[grid[1, 2]].CanGoEast)
+				grid[1, 3] = rooms[grid[1, 2]].East;
+			if (rooms[grid[1, 3]].CanGoEast)
+				grid[1, 4] = rooms[grid[1, 3]].East;
+            #endregion
+
+            #region -- South Path --
+            // Southest-West
+            if (rooms[grid[4, 2]].CanGoWest)
+				grid[4, 1] = rooms[grid[4, 2]].West;
+			if (rooms[grid[4, 1]].CanGoWest)
+				grid[4, 0] = rooms[grid[4, 1]].West;
+
+			// Southest-West
+			if (rooms[grid[3, 2]].CanGoWest)
+				grid[3, 1] = rooms[grid[3, 2]].West;
+			if (rooms[grid[3, 1]].CanGoWest)
+				grid[3, 0] = rooms[grid[3, 1]].West;
+
+			// Southest-East
+			if (rooms[grid[4, 2]].CanGoEast)
+				grid[4, 3] = rooms[grid[4, 2]].East;
+			if (rooms[grid[4, 3]].CanGoWest)
+				grid[4, 4] = rooms[grid[4, 3]].East;
+
+			// Southess-East
+			if (rooms[grid[3, 2]].CanGoEast)
+				grid[3, 3] = rooms[grid[3, 2]].East;
+			if (rooms[grid[3, 3]].CanGoEast)
+				grid[3, 4] = rooms[grid[3, 3]].East;
+			#endregion
+
+			#region -- West Path --
+			// Westest-North
+			if (rooms[grid[2, 0]].CanGoNorth)
+				grid[1, 0] = rooms[grid[2, 0]].North;
+			if (rooms[grid[1, 0]].CanGoNorth)
+				grid[0, 0] = rooms[grid[1, 0]].North;
+
+			// Westest-North
+			if (rooms[grid[2, 1]].CanGoNorth)
+				grid[1, 1] = rooms[grid[2, 1]].North;
+			if (rooms[grid[1, 1]].CanGoNorth)
+				grid[0, 1] = rooms[grid[1, 1]].North;
+
+			// Westest-South
+			if (rooms[grid[2, 0]].CanGoSouth)
+				grid[3, 0] = rooms[grid[2, 0]].South;
+			if (rooms[grid[3, 0]].CanGoSouth)
+				grid[4, 0] = rooms[grid[3, 0]].South;
+
+			// Westess-West
+			if (rooms[grid[2, 1]].CanGoSouth)
+				grid[3, 1] = rooms[grid[2, 1]].South;
+			if (rooms[grid[3, 1]].CanGoSouth)
+				grid[4, 1] = rooms[grid[3, 1]].South;
+			#endregion
+
+			#region -- East Path --
+			// Eastest-North
+			if (rooms[grid[2, 4]].CanGoNorth)
+				grid[1, 4] = rooms[grid[2, 4]].North;
+			if (rooms[grid[1, 4]].CanGoNorth)
+				grid[0, 4] = rooms[grid[1, 4]].North;
+
+			// Eastest-North
+			if (rooms[grid[2, 3]].CanGoNorth)
+				grid[1, 3] = rooms[grid[2, 3]].North;
+			if (rooms[grid[1, 3]].CanGoNorth)
+				grid[0, 3] = rooms[grid[1, 3]].North;
+
+			// Eastest-South
+			if (rooms[grid[2, 4]].CanGoSouth)
+				grid[3, 4] = rooms[grid[2, 4]].South;
+			if (rooms[grid[3, 4]].CanGoSouth)
+				grid[4, 4] = rooms[grid[3, 4]].South;
+
+			// Eastess-West
+			if (rooms[grid[2, 3]].CanGoSouth)
+				grid[3, 3] = rooms[grid[2, 3]].South;
+			if (rooms[grid[3, 3]].CanGoSouth)
+				grid[3, 4] = rooms[grid[3, 3]].South;
+			#endregion
+
+			foreach (int gridLoc in grid)
+            {
+				roomsList.Add(rooms[gridLoc]);
+            }
+
+			return roomsList;
+
+		}
 
         #endregion
 

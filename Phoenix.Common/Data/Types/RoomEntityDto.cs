@@ -2,38 +2,38 @@
 {
     public class RoomEntityDto
     {
-        public int? RoomID { get; set; }
+        public int RoomID { get; set; }
         public string RoomName { get; set; }
         public string RoomArea { get; set; }
-        public int? RoomStatus { get; set; }
-        public int? RoomType { get; set; }
+        public int RoomStatus { get; set; }
+        public int RoomType { get; set; }
         public string RoomDescription { get; set; }
         public string RoomExits { get; set; }
-        public int? RoomTile { get; set; }
-        public int? RoomNorth { get; set; }
-        public int? RoomSouth { get; set; }
-        public int? RoomWest { get; set; }
-        public int? RoomEast { get; set; }
-        public int? RoomUp { get; set; }
-        public int? RoomDown { get; set; }
-        public int? RoomKeyModeNorth { get; set; }
-        public int? RoomKeyModeSouth { get; set; }
-        public int? RoomKeyModeWest { get; set; }
-        public int? RoomKeyModeEast { get; set; }
-        public int? RoomKeyModeUp { get; set; }
-        public int? RoomKeyModeDown { get; set; }
+        public int RoomTile { get; set; }
+        public int RoomNorth { get; set; }
+        public int RoomSouth { get; set; }
+        public int RoomWest { get; set; }
+        public int RoomEast { get; set; }
+        public int RoomUp { get; set; }
+        public int RoomDown { get; set; }
+        public int RoomKeyModeNorth { get; set; }
+        public int RoomKeyModeSouth { get; set; }
+        public int RoomKeyModeWest { get; set; }
+        public int RoomKeyModeEast { get; set; }
+        public int RoomKeyModeUp { get; set; }
+        public int RoomKeyModeDown { get; set; }
         public string RoomKeyNameNorth { get; set; }
         public string RoomKeyNameSouth { get; set; }
         public string RoomKeyNameWest { get; set; }
         public string RoomKeyNameEast { get; set; }
         public string RoomKeyNameUp { get; set; }
         public string RoomKeyNameDown { get; set; }
-        public int? RoomKeyTypeNorth { get; set; }
-        public int? RoomKeyTypeSouth { get; set; }
-        public int? RoomKeyTypeWest { get; set; }
-        public int? RoomKeyTypeEast { get; set; }
-        public int? RoomKeyTypeUp { get; set; }
-        public int? RoomKeyTypeDown { get; set; }
+        public int RoomKeyTypeNorth { get; set; }
+        public int RoomKeyTypeSouth { get; set; }
+        public int RoomKeyTypeWest { get; set; }
+        public int RoomKeyTypeEast { get; set; }
+        public int RoomKeyTypeUp { get; set; }
+        public int RoomKeyTypeDown { get; set; }
         public string RoomKeyPassNorth { get; set; }
         public string RoomKeyPassSouth { get; set; }
         public string RoomKeyPassWest { get; set; }

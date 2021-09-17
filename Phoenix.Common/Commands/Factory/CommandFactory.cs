@@ -68,7 +68,6 @@ namespace Phoenix.Common.Commands.Factory
 
                 case CommandType.MessageRoom:
 					{
-
 						if (commandDataParts.Length < 2)
 							return new UnknownCommand();
 
@@ -371,10 +370,56 @@ namespace Phoenix.Common.Commands.Factory
 							Character = character
 						};
 					}
-                #endregion
+				#endregion
 
-                #region -- Default --
-                default:
+				#region -- Room Map --
+				case CommandType.MapRequest:
+                    {
+						if (commandParts.Length < 1)
+							return new UnknownCommand();
+						return new RoomMapCommand
+						{
+							RoomID = Int32.Parse(commandDataParts[1])
+						};
+                    }
+				#endregion
+
+				#region -- Room Map Response --
+				case CommandType.MapResponse:
+					{
+						if (commandParts.Length < 1)
+							return new UnknownCommand();
+
+						string[] s = commandParts[1].Split("~");
+						string[] roomSpecs = s[1].Split("|");  
+
+						List<Room> rooms = new();
+
+						for (int i = 2; i < s.Length; i++)
+						{
+							string[] c = s[i].Split("|");
+							rooms.Add(new Room
+							{
+								Type = Int32.Parse(c[0]),
+								CanGoNorth = c[1] == "1",
+								CanGoEast = c[2] == "1",
+								CanGoSouth = c[3] == "1",
+								CanGoWest = c[4] == "1",
+							});
+						}
+
+						return new RoomMapResponseCommand
+						{
+							Success = s[0] == "1",
+							RoomsWide = Int32.Parse(roomSpecs[0]),
+							RoomsHigh = Int32.Parse(roomSpecs[1]),
+							Rooms = rooms
+						};
+					}
+				#endregion
+
+				#region -- Default --
+				default:
 					return new UnknownCommand();
 				#endregion
 

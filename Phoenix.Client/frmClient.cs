@@ -108,6 +108,18 @@ namespace Phoenix.Client
                         });
                         return;
                     }
+                case CommandType.MapResponse:
+                    {
+                        var roomMapResponse = command as RoomMapResponseCommand;
+                        if (roomMapResponse.Success)
+                        {
+                            this.Invoke((Action)delegate
+                            {
+                                this.pbMap.DrawMap(roomMapResponse.To2DArray());
+                            });
+                        }
+                        return;
+                    }
                #endregion
             }
         }
@@ -181,16 +193,17 @@ namespace Phoenix.Client
             pnlInventory.ForeColor = Color.FromArgb(238, 238, 238);
             pnlInventory.Font = new Font("Nirmala UI", 9, FontStyle.Bold);
 
-            MoveControls.Init(pnlCharacter);
-            MoveControls.Init(pnlMap);
-            MoveControls.Init(pnlHotBar);
-            MoveControls.Init(pnlSecondaryWindow);
-            MoveControls.Init(pnlGameChat);
-            MoveControls.Init(pnlBuff);
-            MoveControls.Init(pnlRoom);
-            MoveControls.Init(pnlDrops);
-            MoveControls.Init(pnlEquipped);
-            MoveControls.Init(pnlInventory);
+            MoveControls.Init(this.pnlCharacter);
+            MoveControls.Init(this.pnlMap);
+            MoveControls.Init(this.pnlHotBar);
+            MoveControls.Init(this.pnlSecondaryWindow);
+            MoveControls.Init(this.pnlGameChat);
+            MoveControls.Init(this.pnlBuff);
+            MoveControls.Init(this.pnlRoom);
+            MoveControls.Init(this.pnlDrops);
+            MoveControls.Init(this.pnlEquipped);
+            MoveControls.Init(this.pnlInventory);
+            MoveControls.Init(this.pnlInput);
 
             UpdateEquipped(1, "None", "", "(Junk)", "Slot: Helmet");
             UpdateEquipped(1, "None", "", "(Junk)", "Slot: Shoulder");
@@ -230,6 +243,20 @@ namespace Phoenix.Client
             this.CharacterLoad();
         }
 
+        private void TxtInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var messageRoomCommand = new MessageRoomCommand
+                {
+                    Character = this.character,
+                    Message = txtInput.Text
+                };
+                txtInput.Text = "";
+                SendCommand(messageRoomCommand);
+            }
+        }
+
         #endregion
 
         #region -- Move Window --
@@ -265,7 +292,7 @@ namespace Phoenix.Client
             {
                 this.ilAvatar.Images.Add(this.character.Image, Image.FromFile("./Images/Avatar/" + this.character.Image));
             }
-            this.pictureBox1.Image = Image.FromFile("./Images/Avatar/" + this.character.Image);
+            this.pbPlayer.Image = Image.FromFile("./Images/Avatar/" + this.character.Image);
             this.lblCaste.Text = "Caste: " + this.character.Caste;
             this.lblRank.Text = "Rank: " + this.character.Rank;
             this.lblPhilsophy.Text = "Philosophy: " + this.character.Philosophy;
@@ -837,18 +864,5 @@ namespace Phoenix.Client
 
         #endregion
 
-        private void TxtInput_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var messageRoomCommand = new MessageRoomCommand
-                {
-                    Character = this.character,
-                    Message = txtInput.Text
-                };
-                txtInput.Text = "";
-                SendCommand(messageRoomCommand);
-            }
-        }
     }
 }

@@ -109,38 +109,38 @@ namespace Phoenix.Server.Data
             {
                 var roomEntityDto = new RoomEntityDto
                 {
-                    RoomID = int.TryParse(reader["RoomID"]?.ToString(), out int roomID) ? roomID : (int?)null,
+                    RoomID = Int32.Parse(reader["RoomID"]?.ToString()),
                     RoomName = reader["RoomName"].ToString(),
                     RoomArea = reader["RoomArea"].ToString(),
-                    RoomStatus = int.TryParse(reader["RoomStatus"]?.ToString(), out int roomStatus) ? roomStatus : (int?)null,
-                    RoomType = int.TryParse(reader["RoomType"]?.ToString(), out int roomType) ? roomType : (int?)null,
+                    RoomStatus = Int32.Parse(reader["RoomStatus"]?.ToString()), 
+                    RoomType = Int32.Parse(reader["RoomType"]?.ToString()),
                     RoomDescription = reader["RoomDescription"].ToString(),
                     RoomExits = reader["RoomExits"].ToString(),
-                    RoomTile = int.TryParse(reader["RoomTile"]?.ToString(), out int roomTile) ? roomTile : (int?)null,
-                    RoomNorth = int.TryParse(reader["RoomNorth"]?.ToString(), out int roomNorth) ? roomNorth : (int?)null,
-                    RoomSouth = int.TryParse(reader["RoomSouth"]?.ToString(), out int roomSouth) ? roomSouth : (int?)null,
-                    RoomWest = int.TryParse(reader["RoomWest"]?.ToString(), out int roomWest) ? roomWest : (int?)null,
-                    RoomEast = int.TryParse(reader["RoomEast"]?.ToString(), out int roomEast) ? roomEast : (int?)null,
-                    RoomUp = int.TryParse(reader["RoomUp"]?.ToString(), out int roomUp) ? roomUp : (int?)null,
-                    RoomDown = int.TryParse(reader["RoomDown"]?.ToString(), out int roomDown) ? roomDown : (int?)null,
-                    RoomKeyModeNorth = int.TryParse(reader["RoomKeyModeNorth"]?.ToString(), out int roomKeyModeNorth) ? roomKeyModeNorth : (int?)null,
-                    RoomKeyModeSouth = int.TryParse(reader["RoomKeyModeSouth"]?.ToString(), out int roomKeyModeSouth) ? roomKeyModeSouth : (int?)null,
-                    RoomKeyModeWest = int.TryParse(reader["RoomKeyModeWest"]?.ToString(), out int roomKeyModeWest) ? roomKeyModeWest : (int?)null,
-                    RoomKeyModeEast = int.TryParse(reader["RoomKeyModeEast"]?.ToString(), out int roomKeyModeEast) ? roomKeyModeEast : (int?)null,
-                    RoomKeyModeUp = int.TryParse(reader["RoomKeyModeUp"]?.ToString(), out int roomKeyModeUp) ? roomKeyModeUp : (int?)null,
-                    RoomKeyModeDown = int.TryParse(reader["RoomKeyModeDown"]?.ToString(), out int roomKeyModeDown) ? roomKeyModeDown : (int?)null,
+                    RoomTile = Int32.Parse(reader["RoomTile"]?.ToString()),
+                    RoomNorth = Int32.Parse(reader["RoomNorth"]?.ToString()),
+                    RoomSouth = Int32.Parse(reader["RoomSouth"]?.ToString()),
+                    RoomWest = Int32.Parse(reader["RoomWest"]?.ToString()),
+                    RoomEast = Int32.Parse(reader["RoomEast"]?.ToString()),
+                    RoomUp = Int32.Parse(reader["RoomUp"]?.ToString()),
+                    RoomDown = Int32.Parse(reader["RoomDown"]?.ToString()),
+                    RoomKeyModeNorth = Int32.Parse(reader["RoomKeyModeNorth"]?.ToString()), 
+                    RoomKeyModeSouth = Int32.Parse(reader["RoomKeyModeSouth"]?.ToString()),
+                    RoomKeyModeWest = Int32.Parse(reader["RoomKeyModeWest"]?.ToString()),
+                    RoomKeyModeEast = Int32.Parse(reader["RoomKeyModeEast"]?.ToString()),
+                    RoomKeyModeUp = Int32.Parse(reader["RoomKeyModeUp"]?.ToString()),
+                    RoomKeyModeDown = Int32.Parse(reader["RoomKeyModeDown"]?.ToString()),
                     RoomKeyNameNorth = reader["RoomKeyNameNorth"].ToString(),
                     RoomKeyNameSouth = reader["RoomKeyNameSouth"].ToString(),
                     RoomKeyNameWest = reader["RoomKeyNameWest"].ToString(),
                     RoomKeyNameEast = reader["RoomKeyNameEast"].ToString(),
                     RoomKeyNameUp = reader["RoomKeyNameUp"].ToString(),
                     RoomKeyNameDown = reader["RoomKeyNameDown"].ToString(),
-                    RoomKeyTypeNorth = int.TryParse(reader["RoomKeyTypeNorth"]?.ToString(), out int roomKeyTypeNorth) ? roomKeyTypeNorth : (int?)null,
-                    RoomKeyTypeSouth = int.TryParse(reader["RoomKeyTypeSouth"]?.ToString(), out int roomKeyTypeSouth) ? roomKeyTypeSouth : (int?)null,
-                    RoomKeyTypeWest = int.TryParse(reader["RoomKeyTypeWest"]?.ToString(), out int roomKeyTypeWest) ? roomKeyTypeWest : (int?)null,
-                    RoomKeyTypeEast = int.TryParse(reader["RoomKeyTypeEast"]?.ToString(), out int roomKeyTypeEast) ? roomKeyTypeEast : (int?)null,
-                    RoomKeyTypeUp = int.TryParse(reader["RoomKeyTypeUp"]?.ToString(), out int roomKeyTypeUp) ? roomKeyTypeUp : (int?)null,
-                    RoomKeyTypeDown = int.TryParse(reader["RoomKeyTypeDown"]?.ToString(), out int roomKeyTypeDown) ? roomKeyTypeDown : (int?)null,
+                    RoomKeyTypeNorth = Int32.Parse(reader["RoomKeyTypeNorth"]?.ToString()),
+                    RoomKeyTypeSouth = Int32.Parse(reader["RoomKeyTypeSouth"]?.ToString()),
+                    RoomKeyTypeWest = Int32.Parse(reader["RoomKeyTypeWest"]?.ToString()),
+                    RoomKeyTypeEast = Int32.Parse(reader["RoomKeyTypeEast"]?.ToString()),
+                    RoomKeyTypeUp = Int32.Parse(reader["RoomKeyTypeUp"]?.ToString()),
+                    RoomKeyTypeDown = Int32.Parse(reader["RoomKeyTypeDown"]?.ToString()),
                     RoomKeyPassNorth = reader["RoomKeyPassNorth"].ToString(),
                     RoomKeyPassSouth = reader["RoomKeyPassSouth"].ToString(),
                     RoomKeyPassWest = reader["RoomKeyPassWest"].ToString(),
@@ -183,8 +183,9 @@ namespace Phoenix.Server.Data
                 };
                 rawData.Add(roomEntityDto);
             }
+
             return (from data in rawData
-                    group data by new { data.RoomID, data.RoomName, data.RoomArea, data.RoomStatus, data.RoomType, data.RoomDescription, data.RoomExits, data.RoomTile, data.RoomNorth, data.RoomSouth, data.RoomWest, data.RoomEast, data.RoomUp, data.RoomDown, data.RoomKeyModeNorth, data.RoomKeyModeSouth, data.RoomKeyModeWest, data.RoomKeyModeEast, data.RoomKeyModeUp, data.RoomKeyModeDown, data.RoomKeyNameNorth, data.RoomKeyNameSouth, data.RoomKeyNameWest, data.RoomKeyNameEast, data.RoomKeyNameUp, data.RoomKeyNameDown, data.RoomKeyTypeNorth, data.RoomKeyTypeSouth, data.RoomKeyTypeWest, data.RoomKeyTypeEast, data.RoomKeyTypeUp, data.RoomKeyTypeDown, data.RoomKeyPassNorth, data.RoomKeyPassSouth, data.RoomKeyPassWest, data.RoomKeyPassEast, data.RoomKeyPassUp, data.RoomKeyPassDown, data.RoomKeyFailNorth, data.RoomKeyFailSouth, data.RoomKeyFailWest, data.RoomKeyFailEast, data.RoomKeyFailUp, data.RoomKeyFailDown, data.RoomScript } into g
+                    group data by new { data.RoomID, data.RoomName, data.RoomArea, data.RoomStatus, data.RoomType, data.RoomDescription, data.RoomExits, data.RoomTile, data.RoomNorth, data.RoomSouth, data.RoomWest, data.RoomEast, data.RoomUp, data.RoomDown, data.RoomKeyModeNorth, data.RoomKeyModeSouth, data.RoomKeyModeWest, data.RoomKeyModeEast, data.RoomKeyModeUp, data.RoomKeyModeDown, data.RoomKeyNameNorth, data.RoomKeyNameSouth, data.RoomKeyNameWest, data.RoomKeyNameEast, data.RoomKeyNameUp, data.RoomKeyNameDown, data.RoomKeyTypeNorth, data.RoomKeyTypeSouth, data.RoomKeyTypeWest, data.RoomKeyTypeEast, data.RoomKeyTypeUp, data.RoomKeyTypeDown, data.RoomKeyPassNorth, data.RoomKeyPassSouth, data.RoomKeyPassWest, data.RoomKeyPassEast, data.RoomKeyPassUp, data.RoomKeyPassDown, data.RoomKeyFailNorth, data.RoomKeyFailSouth, data.RoomKeyFailWest, data.RoomKeyFailEast, data.RoomKeyFailUp, data.RoomKeyFailDown, data.RoomScript} into g
                     select new Room
                     {
                         ID = g.Key.RoomID,
@@ -232,6 +233,12 @@ namespace Phoenix.Server.Data
                         KeyFailUp = g.Key.RoomKeyFailUp,
                         KeyFailDown = g.Key.RoomKeyFailDown,
                         Script = g.Key.RoomScript,
+                        CanGoNorth = g.Key.RoomNorth is -1 ? false : true,
+                        CanGoSouth = g.Key.RoomSouth is -1 ? false : true,
+                        CanGoWest = g.Key.RoomWest is -1 ? false : true,
+                        CanGoEast = g.Key.RoomEast is -1 ? false : true,
+                        CanGoUp = g.Key.RoomUp is -1 ? false : true,
+                        CanGoDown = g.Key.RoomDown is -1 ? false : true,
                         Entities = g.Where(e => e.EntityID.HasValue).ToList().Select(e => new Entity
                         {
                             ID = e.EntityID.Value,

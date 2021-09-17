@@ -23,6 +23,5 @@ namespace Phoenix.Common.Commands.Request
 				}
 			};
 		}
-
 	}
 }

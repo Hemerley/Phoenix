@@ -4,10 +4,13 @@
     <Compile Update="Classes\Extensions\ListViewWithoutScrollBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="FrmClient.cs">
+    <Compile Update="Classes\Extensions\Map.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="frmClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmLauncher.cs">
+    <Compile Update="frmLauncher.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

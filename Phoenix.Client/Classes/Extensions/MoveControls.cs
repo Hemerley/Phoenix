@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Phoenix.Client.Classes.Extensions
 {
-    class MoveControls
+    public class MoveControls
     {
         public enum direction
         {
