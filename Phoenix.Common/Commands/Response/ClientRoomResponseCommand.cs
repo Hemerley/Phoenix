@@ -19,23 +19,24 @@ namespace Phoenix.Common.Commands.Response
 		public override IEnumerable<IEnumerable<string>> GetCommandParts()
 		{
 
-			var response = new List<List<string>>();
+            var response = new List<List<string>>
+            {
+                new List<string>
+            {
+                this.Success.ToString()
+            },
 
-            response.Add(new List<string>
-			{
-				this.Success.ToString()
-            });
+                new List<string>
+            {
+                this.Room.Name,
+                this.Room.Description,
+                this.Room.Exits,
+                this.Room.Type.ToString()
 
-			response.Add(new List<string>
-			{
-				this.Room.Name,
-				this.Room.Description,
-				this.Room.Exits,
-				this.Room.Type.ToString()
+            }
+            };
 
-			});
-
-			foreach (Character character in Room.RoomCharacters)
+            foreach (Character character in Room.RoomCharacters)
             {
 				response.Add(new List<string>
 				{

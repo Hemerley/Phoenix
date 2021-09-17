@@ -38,7 +38,10 @@ namespace Phoenix.Client
 
                         if (clientConnectResponseCommand.Success)
                         {
-                            LoginMessage(clientConnectResponseCommand.Message);
+                            this.Invoke((Action)delegate
+                            {
+                                UpdateChat(clientConnectResponseCommand.Message);
+                            });
                             var clientRoomCommand = new ClientRoomCommand
                             {
                                 RoomID = this.character.RoomID
@@ -65,7 +68,8 @@ namespace Phoenix.Client
                         {
                             this.Invoke((Action)delegate
                             {
-                                RoomUpdateMessage(clientRooomResponseCommand.Room.Name, clientRooomResponseCommand.Room.Description, clientRooomResponseCommand.Room.Exits);
+                                var message = $"~g<~w{clientRooomResponseCommand.Room.Name}~g>~w {clientRooomResponseCommand.Room.Description} {clientRooomResponseCommand.Room.Exits}\n";
+                                UpdateChat(message);
                                 foreach (Character character in clientRooomResponseCommand.Room.RoomCharacters)
                                 {
                                     UpdateRoom(1, character.Name, character.Image, character.Type);
@@ -119,7 +123,8 @@ namespace Phoenix.Client
                         this.Invoke((Action)delegate
                         {
                             var messageRoomCommand = command as MessageRoomCommand;
-                            RoomMessage(messageRoomCommand.Character.Name, messageRoomCommand.Message);
+                            var message = $"~yFrom ~w{messageRoomCommand.Character.Name}~y: {messageRoomCommand.Message}\n";
+                            UpdateChat(message);
                         });
                         return;
                     }
@@ -271,10 +276,13 @@ namespace Phoenix.Client
                 if (txtInput.Text == "")
                     return;
 
+                string message = Helper.RemoveCaret(txtInput.Text);
+                message = Helper.RemovePipe(message);
+                message = Helper.RemoveTilda(message);
                 var messageRoomCommand = new MessageRoomCommand
                 {
                     Character = this.character,
-                    Message = txtInput.Text
+                    Message = message
                 };
                 txtInput.Text = "";
                 SendCommand(messageRoomCommand);
@@ -301,6 +309,18 @@ namespace Phoenix.Client
             {
                 ReleaseCapture();
                 _ = SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        protected override void OnMaximizedBoundsChanged(EventArgs e)
+        {
+            base.OnMaximizedBoundsChanged(e);
+            foreach (Screen screen in Screen.AllScreens)
+            {
+                if (screen.Primary)
+                {
+                    this.Bounds = screen.Bounds;
+                }
             }
         }
 
@@ -331,9 +351,8 @@ namespace Phoenix.Client
             this.lblBaseHaste.Text = this.character.Haste.ToString() + "%";
             this.lblBaseVers.Text = this.character.Versatility.ToString() + "%";
             this.lblWeight.Text = "Weight: 0 / " + (this.character.Strength * 2);
-            this.rtbChat.SelectionColor = Color.AliceBlue;
-            this.rtbChat.AppendText($"[{DateTime.Now.ToShortDateString()}] Connecting to server...\n");
-            this.rtbChat.SelectionColor = Color.White;
+            this.rtbChat.SelectionColor = Color.LawnGreen;
+            this.rtbChat.AppendText("Connecting to server...\n");
         }
         #endregion
 
@@ -811,42 +830,19 @@ namespace Phoenix.Client
             UpdateInventory(2);
         }
 
-        private void LoginMessage(string message)
+        private void UpdateChat (string message)
         {
-            this.Invoke((Action)delegate
+            message = Helper.ReturnPipe(message);
+            message = Helper.ReturnTilda(message);
+            message = Helper.ReturnCaret(message);
+            string[] displayMessage = message.Split("~");
+            foreach (string s in displayMessage)
             {
-                this.rtbChat.SelectionColor = Color.Magenta;
-                this.rtbChat.AppendText($"[{DateTime.Now.ToShortTimeString()}] {message}\n");
-                this.rtbChat.SelectionColor = Color.White;
-            });
-        }
-
-        private void RoomUpdateMessage(string name, string description, string exits)
-        {
-            this.rtbChat.SelectionColor = Color.Magenta;
-            this.rtbChat.AppendText($"[{DateTime.Now.ToShortTimeString()}] ");
-            this.rtbChat.SelectionColor = Color.Green;
-            this.rtbChat.AppendText("<");
-            this.rtbChat.SelectionColor = Color.White;
-            this.rtbChat.AppendText(name);
-            this.rtbChat.SelectionColor = Color.Green;
-            this.rtbChat.AppendText("> ");
-            this.rtbChat.SelectionColor = Color.White;
-            this.rtbChat.AppendText($"{description} {exits} \n");
-        }
-
-        private void RoomMessage (string name, string message)
-        {
-            this.rtbChat.SelectionColor = Color.Magenta;
-            this.rtbChat.AppendText($"[{DateTime.Now.ToShortTimeString()}] ");
-            this.rtbChat.SelectionColor = Color.Green;
-            this.rtbChat.AppendText("From ");
-            this.rtbChat.SelectionColor = Color.White;
-            this.rtbChat.AppendText(name);
-            this.rtbChat.SelectionColor = Color.Green;
-            this.rtbChat.AppendText(": ");
-            this.rtbChat.SelectionColor = Color.White;
-            this.rtbChat.AppendText($"{message} \n");
+                if (s == "")
+                    continue;
+                this.rtbChat.SelectionColor = Helper.ReturnColor(s.ToCharArray()[0]);
+                this.rtbChat.AppendText(s.Remove(0, 1));
+            }
             this.rtbChat.SelectionStart = this.rtbChat.Text.Length;
             this.rtbChat.ScrollToCaret();
         }

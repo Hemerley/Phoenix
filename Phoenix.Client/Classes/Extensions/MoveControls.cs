@@ -6,7 +6,7 @@ namespace Phoenix.Client.Classes.Extensions
 {
     public class MoveControls
     {
-        public enum direction
+        public enum Direction
         {
             Any,  
             Horizontal,  
@@ -14,14 +14,14 @@ namespace Phoenix.Client.Classes.Extensions
         }
         public static void Init(Control control)
         {
-            Init(control, direction.Any);
+            Init(control, Direction.Any);
         }
 
-        public static void Init(Control control, direction direction)
+        public static void Init(Control control, Direction direction)
         {
             Init(control, control, direction);
         }
-        public static void Init(Control control, Control container, direction direction)
+        public static void Init(Control control, Control container, Direction direction)
         {
             bool Dragging = false;
             Point DragStart = Point.Empty;
@@ -37,8 +37,8 @@ namespace Phoenix.Client.Classes.Extensions
             control.MouseMove += delegate (object sender, MouseEventArgs e) {
                 if (Dragging)
                 {
-                    if (direction != direction.Vertical) container.Left = Math.Max(0, e.X + container.Left - DragStart.X);
-                    if (direction != direction.Horizontal) container.Top = Math.Max(0, e.Y + container.Top - DragStart.Y);
+                    if (direction != Direction.Vertical) container.Left = Math.Max(0, e.X + container.Left - DragStart.X);
+                    if (direction != Direction.Horizontal) container.Top = Math.Max(0, e.Y + container.Top - DragStart.Y);
                 }
             };
         }

@@ -1,4 +1,5 @@
 ﻿
+using Phoenix.Common.Data;
 using System.Drawing;
 
 namespace Phoenix.Client
@@ -229,7 +230,7 @@ namespace Phoenix.Client
             this.lblHeader1.Name = "lblHeader1";
             this.lblHeader1.Size = new System.Drawing.Size(724, 34);
             this.lblHeader1.TabIndex = 31;
-            this.lblHeader1.Text = "Project: Phoenix";
+            this.lblHeader1.Text = Constants.GAME_NAME;
             this.lblHeader1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAuthenticate
@@ -416,7 +417,7 @@ namespace Phoenix.Client
             this.lblHeader3.Name = "lblHeader3";
             this.lblHeader3.Size = new System.Drawing.Size(727, 34);
             this.lblHeader3.TabIndex = 31;
-            this.lblHeader3.Text = "Project: Phoenix";
+            this.lblHeader3.Text = Constants.GAME_NAME;
             this.lblHeader3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCharacterConnect
@@ -497,7 +498,7 @@ namespace Phoenix.Client
             this.lblHeader2.Name = "lblHeader2";
             this.lblHeader2.Size = new System.Drawing.Size(727, 34);
             this.lblHeader2.TabIndex = 31;
-            this.lblHeader2.Text = "Project: Phoenix";
+            this.lblHeader2.Text = Constants.GAME_NAME;
             this.lblHeader2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNCreate
@@ -672,7 +673,7 @@ namespace Phoenix.Client
             this.lblHeader4.Name = "lblHeader4";
             this.lblHeader4.Size = new System.Drawing.Size(724, 34);
             this.lblHeader4.TabIndex = 31;
-            this.lblHeader4.Text = "Project: Phoenix";
+            this.lblHeader4.Text = Constants.GAME_NAME;
             this.lblHeader4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNCharcterCreate

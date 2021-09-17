@@ -26,14 +26,15 @@ namespace Phoenix.Common.Commands.Response
 
 		public override IEnumerable<IEnumerable<string>> GetCommandParts()
 		{
-			var payload = new List<List<string>>();
+            var payload = new List<List<string>>
+            {
+                new List<string> { (this.Success ? 1 : 0).ToString() },
 
-			payload.Add(new List<string> { (this.Success ? 1 : 0).ToString() });
+                //This is just extra metadata JUST IN CASE you'd need it on the client
+                new List<string> { this.RoomsWide.ToString(), this.RoomsHigh.ToString() } //5x5 map - TODO Make configurable if you want it to be
+            };
 
-			//This is just extra metadata JUST IN CASE you'd need it on the client
-			payload.Add(new List<string> { this.RoomsWide.ToString(), this.RoomsHigh.ToString() }); //5x5 map - TODO Make configurable if you want it to be
-
-			foreach (var room in this.Rooms)
+            foreach (var room in this.Rooms)
 			{
 				payload.Add(new List<string>
 			{

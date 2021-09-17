@@ -20,7 +20,7 @@ namespace Phoenix.Server.Network
 		/// <summary>
 		/// The list of currently connected clients.
 		/// </summary>
-		private List<ConnectedClient> clients = new List<ConnectedClient>();
+		private readonly List<ConnectedClient> clients = new();
 
 		#endregion
 
@@ -122,11 +122,12 @@ namespace Phoenix.Server.Network
 		/// <returns>Async Task.</returns>
 		private Task ClientConnected(TcpClient tcpClient)
 		{
-			var client = new ConnectedClient(tcpClient, this);
+            var client = new ConnectedClient(tcpClient, this)
+            {
+                Disconnected = ClientClosed
+            };
 
-			client.Disconnected = ClientClosed;
-
-			this.clients.Add(client);
+            this.clients.Add(client);
 
 			this.OnClientConnected?.Invoke(this, client);
 

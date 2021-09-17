@@ -233,12 +233,12 @@ namespace Phoenix.Server.Data
                         KeyFailUp = g.Key.RoomKeyFailUp,
                         KeyFailDown = g.Key.RoomKeyFailDown,
                         Script = g.Key.RoomScript,
-                        CanGoNorth = g.Key.RoomNorth is -1 ? false : true,
-                        CanGoSouth = g.Key.RoomSouth is -1 ? false : true,
-                        CanGoWest = g.Key.RoomWest is -1 ? false : true,
-                        CanGoEast = g.Key.RoomEast is -1 ? false : true,
-                        CanGoUp = g.Key.RoomUp is -1 ? false : true,
-                        CanGoDown = g.Key.RoomDown is -1 ? false : true,
+                        CanGoNorth = g.Key.RoomNorth is not -1,
+                        CanGoSouth = g.Key.RoomSouth is not -1,
+                        CanGoWest = g.Key.RoomWest is not -1,
+                        CanGoEast = g.Key.RoomEast is not -1,
+                        CanGoUp = g.Key.RoomUp is not -1,
+                        CanGoDown = g.Key.RoomDown is not -1,
                         Entities = g.Where(e => e.EntityID.HasValue).ToList().Select(e => new Entity
                         {
                             ID = e.EntityID.Value,

@@ -6,14 +6,14 @@ namespace Phoenix.Server
 {
 	class Program
 	{
-		static void Main(string[] args)
+        static void Main()
 		{
 			Console.Title = Constants.GAME_NAME + " Server - V" + Constants.GAME_VERSION;
 			
 			new Game().Start();
 
-			// Get Under Input
-			string input = Console.ReadLine();
-		}
+            // Get Under Input
+            Console.ReadLine();
+        }
 	}
 }

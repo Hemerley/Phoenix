@@ -214,6 +214,7 @@ namespace Phoenix.Client
             // pbMap
             // 
             this.pbMap.BackColor = System.Drawing.Color.Black;
+            this.pbMap.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbMap.Location = new System.Drawing.Point(3, 3);
             this.pbMap.Name = "pbMap";
             this.pbMap.Size = new System.Drawing.Size(222, 213);
@@ -2327,9 +2328,8 @@ namespace Phoenix.Client
             // 
             // rtbChat
             // 
-            this.rtbChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.rtbChat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbChat.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtbChat.BackColor = System.Drawing.Color.Black;
+            this.rtbChat.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rtbChat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.rtbChat.Location = new System.Drawing.Point(8, 55);
             this.rtbChat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2358,9 +2358,8 @@ namespace Phoenix.Client
             // 
             // rtbSecondary
             // 
-            this.rtbSecondary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.rtbSecondary.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbSecondary.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtbSecondary.BackColor = System.Drawing.Color.Black;
+            this.rtbSecondary.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rtbSecondary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.rtbSecondary.Location = new System.Drawing.Point(8, 55);
             this.rtbSecondary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2390,7 +2389,7 @@ namespace Phoenix.Client
             // 
             // lstvRoom
             // 
-            this.lstvRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lstvRoom.BackColor = System.Drawing.Color.Black;
             this.lstvRoom.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lstvRoomCName,
             this.lstvRoomCType});
@@ -2438,7 +2437,7 @@ namespace Phoenix.Client
             // 
             // lstvDrops
             // 
-            this.lstvDrops.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lstvDrops.BackColor = System.Drawing.Color.Black;
             this.lstvDrops.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lstvDropsCName,
             this.lstvDropsCType});
@@ -2486,7 +2485,7 @@ namespace Phoenix.Client
             // 
             // lstvEquipped
             // 
-            this.lstvEquipped.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lstvEquipped.BackColor = System.Drawing.Color.Black;
             this.lstvEquipped.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lstvEquippedCName,
             this.lstvEquippedCSlot,
@@ -2553,7 +2552,7 @@ namespace Phoenix.Client
             // 
             // lstvInventory
             // 
-            this.lstvInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.lstvInventory.BackColor = System.Drawing.Color.Black;
             this.lstvInventory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lsvtInventoryCName,
             this.lstvInventoryCType});
@@ -2684,7 +2683,7 @@ namespace Phoenix.Client
             // 
             // txtInput
             // 
-            this.txtInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.txtInput.BackColor = System.Drawing.Color.Black;
             this.txtInput.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtInput.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
@@ -2692,7 +2691,7 @@ namespace Phoenix.Client
             this.txtInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(697, 23);
-            this.txtInput.TabIndex = 223;
+            this.txtInput.TabIndex = 0;
             this.txtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtInput_KeyDown);
             // 
             // label23

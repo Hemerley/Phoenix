@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -176,6 +177,22 @@ namespace Phoenix.Common.Data
             };
         }
 
+        public static Color ReturnColor(char code)
+        {
+            return code switch
+            {
+                'b' => Color.Blue,
+                'w' => Color.White,
+                'g' => Color.LawnGreen,
+                'r' => Color.Red,
+                'o' => Color.Orange,
+                'y' => Color.Yellow,
+                'q' => Color.BlueViolet,
+                'm' => Color.Magenta,
+                'p' => Color.Pink,
+                _ => Color.White,
+            };
+        }
     }
 
 }
