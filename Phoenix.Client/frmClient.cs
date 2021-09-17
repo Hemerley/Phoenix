@@ -247,6 +247,11 @@ namespace Phoenix.Client
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
+
+                if (txtInput.Text == "")
+                    return;
+
                 var messageRoomCommand = new MessageRoomCommand
                 {
                     Character = this.character,
@@ -254,6 +259,7 @@ namespace Phoenix.Client
                 };
                 txtInput.Text = "";
                 SendCommand(messageRoomCommand);
+                return;
             }
         }
 

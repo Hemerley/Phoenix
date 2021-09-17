@@ -15,7 +15,7 @@ namespace Phoenix.Client
     {
         private bool authMode = false;
         public FrmClient gameWindow;
-        private bool liveMode = false;
+        private readonly bool liveMode = false;
 
         public FrmLauncher()
         {
