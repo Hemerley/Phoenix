@@ -36,9 +36,14 @@
 		ClientRoomResponse = 203,
 		MapRequest = 204,
 		MapResponse = 205,
-		RoomPlayerUpdate = 206
+		RoomPlayerUpdate = 206,
+		RoomEntityUpdate = 207
 
-		#endregion
+        #endregion
 
-	}
+        #region -- Server (300-499) --
+
+        #endregion
+
+    }
 }

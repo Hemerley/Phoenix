@@ -6,7 +6,7 @@ namespace Phoenix.Common.Data
 {
     public class Helper
     {
-        public static bool hasSpecialChar(string input)
+        public static bool HasSpecialChar(string input)
         {
             string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
             foreach (var item in specialChar)
@@ -28,7 +28,7 @@ namespace Phoenix.Common.Data
                 email = Regex.Replace(email, @"(@)(.+)$", DomainMapper, RegexOptions.None, TimeSpan.FromMilliseconds(200));
 
                 // Examines the domain part of the email and normalizes it.
-                string DomainMapper(Match match)
+                static string DomainMapper(Match match)
                 {
                     // Use IdnMapping class to convert Unicode domain names.
                     var idn = new IdnMapping();
@@ -103,110 +103,77 @@ namespace Phoenix.Common.Data
 
         public static string ReturnCasteText(int caste)
         {
-            switch (caste)
+            return caste switch
             {
-                case 0:
-                    return "(Vagabond)";
-                case 1:
-                    return "(Peasant)";
-                case 2:
-                    return "(Farmer)";
-                case 3:
-                    return "(Knight)";
-                default:
-                    return "(None)";
-            }
+                0 => "(Vagabond)",
+                1 => "(Peasant)",
+                2 => "(Farmer)",
+                3 => "(Knight)",
+                _ => "(None)",
+            };
         }
 
         public static string ReturnPhilosophyText(int philosophy)
         {
-            switch (philosophy)
+            return philosophy switch
             {
-                case 0:
-                    return "(War)";
-                case 1:
-                    return "(Arcane)";
-                case 2:
-                    return "(Faith)";
-                case 3:
-                    return "(Subversion)";
-                default:
-                    return "(None)";
-            }
+                0 => "(War)",
+                1 => "(Arcane)",
+                2 => "(Faith)",
+                3 => "(Subversion)",
+                _ => "(None)",
+            };
         }
 
         public static string ReturnCharacterTypeText(int type)
         {
-            switch (type)
+            return type switch
             {
-                case 0:
-                    return "(Player)";
-                case 1:
-                    return "(Hero)";
-                case 2:
-                    return "(Immortal)";
-                case 3:
-                    return "(Demi-God)";
-                case 4:
-                    return "(God)";
-                default:
-                    return "(None)";
-            }
+                0 => "(Player)",
+                1 => "(Hero)",
+                2 => "(Immortal)",
+                3 => "(Demi-God)",
+                4 => "(God)",
+                _ => "(None)",
+            };
         }
 
         public static string ReturnCharacterRankText(int rank)
         {
-            switch (rank)
+            return rank switch
             {
-                case 0:
-                    return "(Initiate)";
-                default:
-                    return "(None)";
-            }
+                0 => "(Initiate)",
+                _ => "(None)",
+            };
         }
 
         public static string ReturnEntityTypeText(int type)
         {
-            switch (type)
+            return type switch
             {
-                case 0:
-                    return "(Friendly)";
-                case 1:
-                    return "(Spawned)";
-                case 2:
-                    return "(Neutral)";
-                case 3:
-                    return "(Hostile)";
-                default:
-                    return "(None)";
-            }
+                0 => "(Friendly)",
+                1 => "(Spawned)",
+                2 => "(Neutral)",
+                3 => "(Hostile)",
+                _ => "(None)",
+            };
         }
 
         public static string ReturnRarityText(int rarity)
         {
-            switch (rarity)
+            return rarity switch
             {
-                case 0:
-                    return "(Junk)";
-                case 1:
-                    return "(Common)";
-                case 2:
-                    return "(Uncommon)";
-                case 3:
-                    return "(Rare)";
-                case 4:
-                    return "(Epic)";
-                case 5:
-                    return "(Legendary)";
-                case 6:
-                    return "(Ancient)";
-                case 7:
-                    return "(Ethyreal)";
-                case 8:
-                    return "(Godly)";
-                default:
-                    return "(None)";
-            }
+                0 => "(Junk)",
+                1 => "(Common)",
+                2 => "(Uncommon)",
+                3 => "(Rare)",
+                4 => "(Epic)",
+                5 => "(Legendary)",
+                6 => "(Ancient)",
+                7 => "(Ethyreal)",
+                8 => "(Godly)",
+                _ => "(None)",
+            };
         }
 
     }

@@ -59,5 +59,6 @@ namespace Phoenix.Common.Data.Types
         public bool CanGoEast { get; set; }
         public bool CanGoUp { get; set; }
         public bool CanGoDown { get; set; }
+        public double TimeStamp { get; set; }
     }
 }

@@ -17,10 +17,11 @@ namespace Phoenix.Client
         private Character character;
         private FrmLauncher launcherForm;
 
-        public FrmClient()
+        public FrmClient(FrmLauncher frmLauncher)
         {
             InitializeComponent();
             InitializeControl();
+            this.launcherForm = frmLauncher;
         }
 
         #region -- Client Events --
@@ -98,6 +99,20 @@ namespace Phoenix.Client
                     }
                 #endregion
 
+                #region -- Room Entity Update --
+                case CommandType.RoomEntityUpdate:
+                    {
+                        var roomEntityUpdateCommand = command as RoomEntityUpdateCommand;
+
+                        this.Invoke((Action)delegate
+                        {
+                            UpdateRoom(roomEntityUpdateCommand.Mode, roomEntityUpdateCommand.Entity.Name, roomEntityUpdateCommand.Entity.Image, roomEntityUpdateCommand.Entity.Type);
+                        });
+
+                        return;
+                    }
+                #endregion
+
                 #region -- Message Room --
                 case CommandType.MessageRoom:
                     {
@@ -135,6 +150,10 @@ namespace Phoenix.Client
             {
                 case true:
                     MessageBox.Show("The connection was closed by the server.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.launcherForm.Invoke((Action)delegate 
+                    {
+                        
+                    });
                     return;
                 default:
                     return;

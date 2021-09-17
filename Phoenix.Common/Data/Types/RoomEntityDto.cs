@@ -1,4 +1,6 @@
-﻿namespace Phoenix.Common.Data.Types
+﻿using System;
+
+namespace Phoenix.Common.Data.Types
 {
     public class RoomEntityDto
     {

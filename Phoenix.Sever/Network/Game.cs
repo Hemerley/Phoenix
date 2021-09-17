@@ -37,6 +37,11 @@ namespace Phoenix.Server.Network
 		private readonly List<ConnectedAccount> connectedAccounts = new();
 
 		/// <summary>
+		/// Queue Command Library.
+		/// </summary>
+		private readonly SortedDictionary<double, List<ClientCommand>> actionQueue = new();
+
+		/// <summary>
 		/// Boolean for Game Thread.
 		/// </summary>
 		private readonly bool stopGameWorkerThread = false;
@@ -59,13 +64,16 @@ namespace Phoenix.Server.Network
 		/// <summary>
 		/// Declaration of Connected Characters.
 		/// </summary>
-		private List<Character> connectedCharacters = new();
+		private readonly List<Character> connectedCharacters = new();
 
 		/// <summary>
 		/// Declaration of Total Connections This Reboot.
 		/// </summary>
 		private int totalConnections = 0;
 
+		/// <summary>
+		/// Declaration of Maximum Players.
+		/// </summary>
 		private int maximumPlayers = 0;
 
 		/// <summary>
@@ -81,6 +89,11 @@ namespace Phoenix.Server.Network
 
         #region -- Events --
 
+		/// <summary>
+		/// Handles Client Connection.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
         private void Server_OnClientConnected(object sender, ConnectedClient e)
 		{
 			//store the connected client
@@ -90,16 +103,23 @@ namespace Phoenix.Server.Network
 			Logger.ConsoleLog("Connection", $"{e.Id} has connected.");
 		}
 
+		/// <summary>
+		/// Handles Incoming Client Commands.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void Server_OnClientMessage(object sender, ConnectedClientMessage e)
 		{
 			var command = CommandFactory.ParseCommand(e.Message);
-			this.queuedCommand.Enqueue(new ClientCommand
-			{
-				Id = e.ConnectedClient.Id,
-				Command = command
-			});
+			double currentTimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+			AddToQueue(false, currentTimeStamp, command, e.ConnectedClient.Id);
 		}
 
+		/// <summary>
+		/// Handles Client Disconnection.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void Server_OnClientDisconnected(object sender, ConnectedClient e)
 		{
 			//Remove from EITHER connected clients OR connected accounts (it could be in either)
@@ -113,27 +133,28 @@ namespace Phoenix.Server.Network
             {
 				foreach (Room room in this.rooms)
 				{
-					if (connectedAccount.Account.Character.RoomID == room.ID)
-					{
-						room.RoomCharacters.Remove(connectedAccount.Account.Character);
-						foreach (Character character in room.RoomCharacters)
+					if(connectedAccount.Account.Character != null)
+						if (connectedAccount.Account.Character.RoomID == room.ID)
 						{
-							foreach (ConnectedAccount cAccount in connectedAccounts)
+							room.RoomCharacters.Remove(connectedAccount.Account.Character);
+							foreach (Character character in room.RoomCharacters)
 							{
-								if (cAccount.Account.Character.Id == character.Id)
+								foreach (ConnectedAccount cAccount in connectedAccounts)
 								{
-									var roomPlayerUpdateCommand = new RoomPlayerUpdateCommand
+									if (cAccount.Account.Character.Id == character.Id)
 									{
-										Mode = 2,
-										Character = connectedAccount.Account.Character
-									};
-									SendCommandToClient(cAccount.Client, roomPlayerUpdateCommand);
+										var roomPlayerUpdateCommand = new RoomPlayerUpdateCommand
+										{
+											Mode = 2,
+											Character = connectedAccount.Account.Character
+										};
+										SendCommandToClient(cAccount.Client, roomPlayerUpdateCommand);
+									}
 								}
 							}
 						}
-					}
-					this.connectedCharacters.Remove(connectedAccount.Account.Character);
-					this.connectedAccounts.Remove(connectedAccount);
+						this.connectedCharacters.Remove(connectedAccount.Account.Character);
+						this.connectedAccounts.Remove(connectedAccount);
 				}
 			}
 
@@ -141,12 +162,22 @@ namespace Phoenix.Server.Network
 			Logger.ConsoleLog("Connection", $"{e.Id} has disconnected.");
 		}
 
+		/// <summary>
+		/// Handled Server Boot.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void Server_OnServerStarted(object sender, EventArgs e)
 		{
 			// Log Command
 			Logger.ConsoleLog("System", "Server Started.");
 		}
 
+		/// <summary>
+		/// Handles Server Shutdown.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void Server_OnServerStopped(object sender, EventArgs e)
 		{
 			// Log Command
@@ -204,9 +235,13 @@ namespace Phoenix.Server.Network
             while (!this.stopGameWorkerThread)
 			{
 
-                #region -- Queue Handling --
+				#region -- Queue Handling --
 
-                if (!this.queuedCommand.TryDequeue(out ClientCommand cmd))
+				var currentTimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+				AddToQueue(true, currentTimeStamp);
+				actionQueue.Remove(currentTimeStamp);
+
+				if (!this.queuedCommand.TryDequeue(out ClientCommand cmd))
 				{
 					Thread.Sleep(10);
 					continue;
@@ -403,12 +438,13 @@ namespace Phoenix.Server.Network
 							Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 							var clientConnectCommand = command as ClientConnectCommand;
 
-							var clientConnectResponseCommand = new ClientConnectResponseCommand();
+                            var clientConnectResponseCommand = new ClientConnectResponseCommand
+                            {
+                                Success = false,
+                                Message = ""
+                            };
 
-							clientConnectResponseCommand.Success = false;
-							clientConnectResponseCommand.Message = "";
-
-							foreach (Character character in connectedCharacters)
+                            foreach (Character character in connectedCharacters)
                             {
 								if (character.Id == clientConnectCommand.Id)
                                 {
@@ -481,7 +517,7 @@ namespace Phoenix.Server.Network
 										RoomsWide = 5,
 										Rooms = roomArray
 									};
-
+									room.TimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds() + 300;
 									SendCommandToClient(clientWhoSendCommand, clientRoomResponseCommand);
 									SendCommandToClient(clientWhoSendCommand, roomMapResponseCommand);
 									break;
@@ -555,13 +591,23 @@ namespace Phoenix.Server.Network
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == id);
 			return connectedAccount.Client;
 		}
-
+		
+		/// <summary>
+		/// Returns an Account ID.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		private ConnectedAccount GetConnectedAccount(string id)
         {
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == id);
 			return connectedAccount;
         }
-
+		
+		/// <summary>
+		/// Returns Connect Rooms for Map Draw.
+		/// </summary>
+		/// <param name="room"></param>
+		/// <returns></returns>
 		private List<Room> FindRooms(Room room)
         {
 			List<Room> roomsList = new ();
@@ -707,7 +753,53 @@ namespace Phoenix.Server.Network
 
 		}
 
+		/// <summary>
+		/// Added Queues to the Queue Library & ConcurrentQueue.
+		/// </summary>
+		/// <param name="queue"></param>
+		/// <param name="currentTimeStamp"></param>
+		/// <param name="command"></param>
+		/// <param name="uid"></param>
+		public void AddToQueue(bool queue, double currentTimeStamp, Command command = null, string uid = "")
+		{
+			if (queue)
+			{
+				if (actionQueue.ContainsKey(currentTimeStamp))
+				{
+					foreach (ClientCommand clientCommand in actionQueue[currentTimeStamp])
+					{
+						queuedCommand.Enqueue(clientCommand);
+					}
+				}
+			}
+			else
+			{
+				if (actionQueue.ContainsKey(currentTimeStamp))
+				{
+					actionQueue[currentTimeStamp].Add(new ClientCommand
+					{
+						Id = uid,
+						Command = command
+					});
+				}
+				else
+				{
+					actionQueue.Add(currentTimeStamp, new List<ClientCommand>
+					{
+						new ClientCommand
+						{
+							Id = uid,
+							Command = command
+						}
+					});
+				}
+			}
+		}
+
         #endregion
 
+        #region -- Server Update Requests --
+        
+		#endregion
     }
 }

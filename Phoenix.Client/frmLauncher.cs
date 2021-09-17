@@ -28,7 +28,7 @@ namespace Phoenix.Client
             this.dgvCharacter.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dgvCharacter.MultiSelect = false;
 
-            this.gameWindow = new();
+            this.gameWindow = new(this);
 
             // Setup UI Display
             this.pnlSide.Height = btnAccount.Height;
@@ -430,7 +430,7 @@ namespace Phoenix.Client
 
         private void BtnNCreate_Click(object sender, EventArgs e)
         {
-            if (this.txtNAccount.Text == "Account Name" || this.txtNAccount.Text.Contains(" ") || Helper.hasSpecialChar(this.txtNAccount.Text))
+            if (this.txtNAccount.Text == "Account Name" || this.txtNAccount.Text.Contains(" ") || Helper.HasSpecialChar(this.txtNAccount.Text))
             {
                 MessageBox.Show("Account Names cannot contain spaces or \\|!#$%&/()=?»«@£§€{}.-;'<>_,", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -440,7 +440,7 @@ namespace Phoenix.Client
                 MessageBox.Show("Please enter a valid e-mail address.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (!Helper.hasSpecialChar(this.txtNPassword.Text) || !Helper.hasSpecialChar(this.txtNVerifyPassword.Text) || this.txtNPassword.Text.Length <= 6 || this.txtNVerifyPassword.Text.Length <= 6 || !Helper.HasUpperLowerDigit(this.txtNVerifyPassword.Text) || !Helper.HasUpperLowerDigit(this.txtNPassword.Text) || this.txtNPassword.Text.Contains(" ") || this.txtNVerifyPassword.Text.Contains(" ")) 
+            else if (!Helper.HasSpecialChar(this.txtNPassword.Text) || !Helper.HasSpecialChar(this.txtNVerifyPassword.Text) || this.txtNPassword.Text.Length <= 6 || this.txtNVerifyPassword.Text.Length <= 6 || !Helper.HasUpperLowerDigit(this.txtNVerifyPassword.Text) || !Helper.HasUpperLowerDigit(this.txtNPassword.Text) || this.txtNPassword.Text.Contains(" ") || this.txtNVerifyPassword.Text.Contains(" ")) 
             {
                 MessageBox.Show("Passwords must be longer than 6 characters, cannot contain spaces, and must contain a number, upper character, lower character, and a special character '\\|!#$%&/()=?»«@£§€{}.-;'<>_,'", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -470,7 +470,7 @@ namespace Phoenix.Client
         
         private void BtnAuthenticate_Click(object sender, EventArgs e)
         {
-            if (this.txtAccountName.Text == "" || this.txtPassword.Text == "" || this.txtAccountName.Text == "Account Name" || this.txtPassword.Text == "Password" || Helper.hasSpecialChar(this.txtAccountName.Text))
+            if (this.txtAccountName.Text == "" || this.txtPassword.Text == "" || this.txtAccountName.Text == "Account Name" || this.txtPassword.Text == "Password" || Helper.HasSpecialChar(this.txtAccountName.Text))
             {
                 MessageBox.Show("Please enter valid credentials and then attempt to authenticate.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -497,7 +497,7 @@ namespace Phoenix.Client
                 MessageBox.Show("Please choose a character name!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (Helper.hasSpecialChar(this.txtCharacterName.Text))
+            else if (Helper.HasSpecialChar(this.txtCharacterName.Text))
             {
                 MessageBox.Show("Character names cannot contain special characters.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

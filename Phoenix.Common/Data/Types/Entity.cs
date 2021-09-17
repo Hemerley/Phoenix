@@ -1,4 +1,6 @@
-﻿namespace Phoenix.Common.Data.Types
+﻿using System;
+
+namespace Phoenix.Common.Data.Types
 {
     public class Entity
     {
@@ -30,6 +32,6 @@
         public int SpawnDelay { get; set; }
         public int VanishTime { get; set; }
         public string Script { get; set; }
-        public int InstanceID { get; set; }
+        public Guid InstanceID { get; set; }
     }
 }

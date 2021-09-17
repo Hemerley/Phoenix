@@ -1,7 +1,6 @@
 ﻿using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
 using Phoenix.Common.Commands.Updates;
-using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using System;
 using System.Collections.Generic;
@@ -22,7 +21,7 @@ namespace Phoenix.Common.Commands.Factory
 			if (!Enum.TryParse<CommandType>(commandParts[0], out CommandType commandType))
 				return new UnknownCommand();
 
-			string[] commandDataParts = new string[] { };
+			string[] commandDataParts = Array.Empty<string>();
 			if (commandParts.Length > 1)
 				commandDataParts = commandParts[1].Split("|", StringSplitOptions.RemoveEmptyEntries);
 
@@ -203,14 +202,10 @@ namespace Phoenix.Common.Commands.Factory
 
 						string[] s = commandParts[1].Split("~");
 
-						Character character = new();
-
 						string[] c = s[1].Split("|");
-						int i = 0;
-						// Add Index Based Increment i= 0 [i++]
 
-						character = new Character
-						{
+						Character character = new()
+                        {
 							Id = Int32.Parse(c[0]),
 							AccountId = Int32.Parse(c[1]),
 							Name = c[2],
@@ -372,6 +367,26 @@ namespace Phoenix.Common.Commands.Factory
 					}
 				#endregion
 
+				#region -- Room Entity Update --
+				case CommandType.RoomEntityUpdate:
+					{
+						if (commandParts.Length < 1)
+							return new UnknownCommand();
+
+						Entity entity = new();
+
+						entity.Name = commandDataParts[1];
+						entity.Image = commandDataParts[2];
+						entity.Type = commandDataParts[3];
+
+						return new RoomEntityUpdateCommand
+						{
+							Mode = Int32.Parse(commandDataParts[0]),
+							Entity = entity
+						};
+					}
+				#endregion
+
 				#region -- Room Map --
 				case CommandType.MapRequest:
                     {
@@ -417,6 +432,8 @@ namespace Phoenix.Common.Commands.Factory
 						};
 					}
 				#endregion
+
+
 
 				#region -- Default --
 				default:

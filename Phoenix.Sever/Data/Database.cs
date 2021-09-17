@@ -269,6 +269,7 @@ namespace Phoenix.Server.Data
                             SpawnDelay = e.EntitySpawnDelay.Value,
                             VanishTime = e.EntityVanishTime.Value,
                             Script = e.EntityScript,
+                            InstanceID = Guid.NewGuid()
                         }).ToList()
                     }).ToList();
         }

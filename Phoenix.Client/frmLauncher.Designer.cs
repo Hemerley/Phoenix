@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace Phoenix.Client
 {
     partial class FrmLauncher
@@ -287,6 +289,7 @@ namespace Phoenix.Client
             this.ptbPhoenix1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.ptbPhoenix1.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix1.Name = "ptbPhoenix1";
+            this.ptbPhoenix1.Image = Image.FromFile("./Images/UI/Logo.png");
             this.ptbPhoenix1.Size = new System.Drawing.Size(724, 489);
             this.ptbPhoenix1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix1.TabIndex = 30;
@@ -437,6 +440,7 @@ namespace Phoenix.Client
             this.ptbPhoenix3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.ptbPhoenix3.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix3.Name = "ptbPhoenix3";
+            this.ptbPhoenix3.Image = Image.FromFile("./Images/UI/Logo.png");
             this.ptbPhoenix3.Size = new System.Drawing.Size(724, 489);
             this.ptbPhoenix3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix3.TabIndex = 30;
@@ -543,6 +547,7 @@ namespace Phoenix.Client
             this.ptbPhoenix2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.ptbPhoenix2.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix2.Name = "ptbPhoenix2";
+            this.ptbPhoenix2.Image = Image.FromFile("./Images/UI/Logo.png");
             this.ptbPhoenix2.Size = new System.Drawing.Size(724, 489);
             this.ptbPhoenix2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix2.TabIndex = 30;
@@ -705,6 +710,7 @@ namespace Phoenix.Client
             this.ptbPhoenix4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.ptbPhoenix4.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix4.Name = "ptbPhoenix4";
+            this.ptbPhoenix4.Image = Image.FromFile("./Images/UI/Logo.png");
             this.ptbPhoenix4.Size = new System.Drawing.Size(724, 489);
             this.ptbPhoenix4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix4.TabIndex = 30;
