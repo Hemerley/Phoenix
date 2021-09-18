@@ -22,11 +22,11 @@ namespace GameLauncher
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string rootPath;
-        private string versionFile;
-        private string patchZip;
-        private string installZip;
-        private string gameExe;
+        private readonly string rootPath;
+        private readonly string versionFile;
+        private readonly string patchZip;
+        private readonly string installZip;
+        private readonly string gameExe;
 
         private LauncherStatus _status;
         internal LauncherStatus Status
@@ -70,13 +70,13 @@ namespace GameLauncher
         {
             if (File.Exists(versionFile))
             {
-                Version localVersion = new Version(File.ReadAllText(versionFile));
+                Version localVersion = new(File.ReadAllText(versionFile));
                 VersionText.Text = localVersion.ToString();
 
                 try
                 {
-                    WebClient webClient = new WebClient();
-                    Version onlineVersion = new Version(webClient.DownloadString("https://drive.google.com/uc?export=download&id=1KC9l7SKXHHhvpAzSRHnk9cUi8jY2V44m"));
+                    WebClient webClient = new();
+                    Version onlineVersion = new(webClient.DownloadString("https://drive.google.com/uc?export=download&id=1KC9l7SKXHHhvpAzSRHnk9cUi8jY2V44m"));
 
                     if (onlineVersion.IsDifferentThan(localVersion))
                     {
@@ -103,7 +103,7 @@ namespace GameLauncher
         {
             try
             {
-                WebClient webClient = new WebClient();
+                WebClient webClient = new();
                 if (_isUpdate)
                 {
                     Status = LauncherStatus.downloadingUpdate;
@@ -113,6 +113,7 @@ namespace GameLauncher
                     Status = LauncherStatus.downloadingGame;
                     _onlineVersion = new Version("0.0.1");
                 }
+                DownloadBar.Value = 0;
                 DownloadBar.Visibility = Visibility.Visible;
                 webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadGameCompletedCallback);
                 webClient.DownloadProgressChanged += (s, e) =>
@@ -131,7 +132,7 @@ namespace GameLauncher
         {
             try
             {
-                WebClient webClient = new WebClient();
+                WebClient webClient = new();
                 if (_isUpdate)
                 {
                     Status = LauncherStatus.downloadingUpdate;
@@ -201,7 +202,7 @@ namespace GameLauncher
         {
             if (File.Exists(gameExe) && Status == LauncherStatus.ready)
             {
-                ProcessStartInfo startInfo = new ProcessStartInfo(gameExe);
+                ProcessStartInfo startInfo = new(gameExe);
                 startInfo.WorkingDirectory = Path.Combine(rootPath);
                 Process.Start(startInfo);
 
@@ -216,11 +217,11 @@ namespace GameLauncher
 
     struct Version
     {
-        internal static Version zero = new Version(0, 0, 0);
+        internal static Version zero = new(0, 0, 0);
 
-        private short major;
-        private short minor;
-        private short subMinor;
+        private readonly short major;
+        private readonly short minor;
+        private readonly short subMinor;
 
         internal Version(short _major, short _minor, short _subMinor)
         {

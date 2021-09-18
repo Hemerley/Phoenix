@@ -2,6 +2,7 @@
 using Phoenix.Common.Commands.Factory;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
+using Phoenix.Common.Commands.Server;
 using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
@@ -16,131 +17,167 @@ namespace Phoenix.Client
         private Classes.Network.Client client;
         private Character character;
         private FrmLauncher launcherForm;
+        private readonly FrmDebug debugForm;
+        public event EventHandler<string> NewPacket;
 
         public FrmClient(FrmLauncher frmLauncher)
         {
             InitializeComponent();
             InitializeControl();
+            this.debugForm = new(this);
             this.launcherForm = frmLauncher;
+            if (Constants.DEBUG_SHOW)
+                debugForm.Show();
         }
 
         #region -- Client Events --
-
         private void Client_OnActivity(object sender, string e)
         {
-            var command = CommandFactory.ParseCommand(e);
-            switch (command.CommandType)
+            this.Invoke((Action)delegate
             {
-                #region -- Client Connect Response --
-                case CommandType.ClientConnectResponse:
-                    {
-                        var clientConnectResponseCommand = command as ClientConnectResponseCommand;
-
-                        if (clientConnectResponseCommand.Success)
+                this.NewPacket?.Invoke(this, e);
+            });
+            string[] commands = e.Split("%", StringSplitOptions.RemoveEmptyEntries);
+            foreach (string c in commands)
+            {
+                var command = CommandFactory.ParseCommand(c);
+                switch (command.CommandType)
+                {
+                    #region -- Client Connect Response --
+                    case CommandType.ClientConnectResponse:
                         {
-                            this.Invoke((Action)delegate
-                            {
-                                UpdateChat(clientConnectResponseCommand.Message);
-                            });
-                            var clientRoomCommand = new ClientRoomCommand
-                            {
-                                RoomID = this.character.RoomID
-                            };
-                            SendCommand(clientRoomCommand);
-                            return;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Server Response Failed on Connection Handshake. Please restart your client and try again.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            this.client.Stop();
-                        }
+                            var clientConnectResponseCommand = command as ClientConnectResponse;
 
-                        return;
-                    }
-                #endregion
-
-                #region -- Client Room Response --
-                case CommandType.ClientRoomResponse:
-                    {
-                        var clientRooomResponseCommand = command as ClientRoomResponseCommand;
-
-                        if (clientRooomResponseCommand.Success)
-                        {
-                            this.Invoke((Action)delegate
+                            if (clientConnectResponseCommand.Success)
                             {
-                                var message = $"~g<~w{clientRooomResponseCommand.Room.Name}~g>~w {clientRooomResponseCommand.Room.Description} {clientRooomResponseCommand.Room.Exits}\n";
-                                UpdateChat(message);
-                                foreach (Character character in clientRooomResponseCommand.Room.RoomCharacters)
+                                this.Invoke((Action)delegate
                                 {
-                                    UpdateRoom(1, character.Name, character.Image, character.Type);
+                                    UpdateChat(clientConnectResponseCommand.Message);
+                                });
+                                var clientRoomCommand = new ClientRoomRequest
+                                {
+                                    RoomID = this.character.RoomID
+                                };
+                                SendCommand(clientRoomCommand);
+                                continue;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Server Response Failed on Connection Handshake. Please restart your client and try again.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                this.client.Stop();
+                            }
+
+                            continue;
+                        }
+                    #endregion
+
+                    #region -- Client Room Response --
+                    case CommandType.ClientRoomResponse:
+                        {
+                            var clientRooomResponseCommand = command as ClientRoomResponse;
+
+                            if (clientRooomResponseCommand.Success)
+                            {
+                                this.Invoke((Action)delegate
+                                {
+                                    this.lstvRoom.Items.Clear();
+                                    var message = $"~g<~w{clientRooomResponseCommand.Room.Name}~g>~w {clientRooomResponseCommand.Room.Description} {clientRooomResponseCommand.Room.Exits}\n";
+                                    UpdateChat(message);
+                                    foreach (Character character in clientRooomResponseCommand.Room.RoomCharacters)
+                                    {
+                                        UpdateRoom(1, character.Name, character.Image, character.Type);
+                                    }
+                                    foreach (Entity entity in clientRooomResponseCommand.Room.RoomEntities)
+                                    {
+                                        UpdateRoom(1, entity.Name, entity.Image, entity.Type);
+                                    }
+                                    foreach (Item item in clientRooomResponseCommand.Room.RoomItems)
+                                    {
+                                        UpdateDrop(1, item.Name, item.Image, item.Type);
+                                    }
+                                });
+                            }
+
+                            continue;
+                        }
+                    #endregion
+
+                    #region -- Room Player Update --
+                    case CommandType.RoomPlayerUpdate:
+                        {
+                            var roomPlayerUpdateCommand = command as RoomPlayerUpdate;
+
+                            this.Invoke((Action)delegate
+                            {
+                                UpdateRoom(roomPlayerUpdateCommand.Mode, roomPlayerUpdateCommand.Character.Name, roomPlayerUpdateCommand.Character.Image, roomPlayerUpdateCommand.Character.Type);
+                            });
+
+                            continue;
+                        }
+                    #endregion
+
+                    #region -- Room Entity Update --
+                    case CommandType.RoomEntityUpdate:
+                        {
+                            var roomEntityUpdateCommand = command as RoomEntityUpdate;
+
+                            this.Invoke((Action)delegate
+                            {
+                                UpdateRoom(roomEntityUpdateCommand.Mode, roomEntityUpdateCommand.Entity.Name, roomEntityUpdateCommand.Entity.Image, roomEntityUpdateCommand.Entity.Type);
+                            });
+
+                            continue;
+                        }
+                    #endregion
+
+                    #region -- Message Room --
+                    case CommandType.MessageRoom:
+                        {
+                            this.Invoke((Action)delegate
+                            {
+                                var messageRoomCommand = command as MessageRoomServer;
+                                if (messageRoomCommand.Character == null)
+                                {
+                                    UpdateChat($"{messageRoomCommand.Message}\n");
                                 }
-                                foreach (Entity entity in clientRooomResponseCommand.Room.RoomEntities)
+                                else
                                 {
-                                    UpdateRoom(1, entity.Name, entity.Image, entity.Type);
+                                    UpdateChat($"~yFrom ~w{messageRoomCommand.Character.Name}~y: {messageRoomCommand.Message}\n");
                                 }
-                                foreach (Item item in clientRooomResponseCommand.Room.RoomItems)
-                                {
-                                    UpdateDrop(1, item.Name, item.Image, item.Type);
-                                }    
                             });
+                            continue;
                         }
 
-                        return;
-                    }
-                #endregion
+                    #endregion
 
-                #region -- Room Player Update --
-                case CommandType.RoomPlayerUpdate:
-                    {
-                        var roomPlayerUpdateCommand = command as RoomPlayerUpdateCommand;
-
-                        this.Invoke((Action)delegate
-                        {
-                            UpdateRoom(roomPlayerUpdateCommand.Mode, roomPlayerUpdateCommand.Character.Name, roomPlayerUpdateCommand.Character.Image, roomPlayerUpdateCommand.Character.Type);
-                        });
-
-                        return;
-                    }
-                #endregion
-
-                #region -- Room Entity Update --
-                case CommandType.RoomEntityUpdate:
-                    {
-                        var roomEntityUpdateCommand = command as RoomEntityUpdateCommand;
-
-                        this.Invoke((Action)delegate
-                        {
-                            UpdateRoom(roomEntityUpdateCommand.Mode, roomEntityUpdateCommand.Entity.Name, roomEntityUpdateCommand.Entity.Image, roomEntityUpdateCommand.Entity.Type);
-                        });
-
-                        return;
-                    }
-                #endregion
-
-                #region -- Message Room --
-                case CommandType.MessageRoom:
-                    {
-                        this.Invoke((Action)delegate
-                        {
-                            var messageRoomCommand = command as MessageRoomCommand;
-                            var message = $"~yFrom ~w{messageRoomCommand.Character.Name}~y: {messageRoomCommand.Message}\n";
-                            UpdateChat(message);
-                        });
-                        return;
-                    }
-                case CommandType.MapResponse:
-                    {
-                        var roomMapResponse = command as RoomMapResponseCommand;
-                        if (roomMapResponse.Success)
+                    #region -- Message World --
+                    case CommandType.MessageWorld:
                         {
                             this.Invoke((Action)delegate
                             {
-                                this.pbMap.DrawMap(roomMapResponse.To2DArray());
+                                var messageWorldCommand = command as MessageWorldServer;
+                                UpdateChat($"~w*~qThe ancients rejoice chanting: ~w{messageWorldCommand.Message}\n");
                             });
+                            continue;
                         }
-                        return;
-                    }
-               #endregion
+
+                    #endregion
+
+                    #region -- Map Response --
+                    case CommandType.MapResponse:
+                        {
+                            var roomMapResponse = command as RoomMapResponse;
+                            if (roomMapResponse.Success)
+                            {
+                                this.Invoke((Action)delegate
+                                {
+                                    this.pbMap.DrawMap(roomMapResponse.To2DArray());
+                                });
+                            }
+                            continue;
+                        }
+                        #endregion
+                }
             }
         }
 
@@ -164,11 +201,9 @@ namespace Phoenix.Client
                     return;
             }
         }
-
         #endregion
 
         #region -- Data Controllers --
-
         /// <summary>
         /// Sends command to server.
         /// </summary>
@@ -178,11 +213,9 @@ namespace Phoenix.Client
             var message = CommandFactory.FormatCommand(command);
             this.client.Send(message);
         }
-
         #endregion
 
-        #region -- Controls --
-
+        #region -- Inits --
         private void InitializeControl()
         {
             this.Text = Constants.GAME_NAME_DISPLAY; 
@@ -258,7 +291,7 @@ namespace Phoenix.Client
             this.client.OnActivity += Client_OnActivity;
             this.client.IsConnected += Client_IsConnected;
             this.client.IsClosed += Client_IsClosed;
-            var clientConnectCommand = new ClientConnectCommand
+            var clientConnectCommand = new ClientConnectRequest
             {
                 Id = this.character.Id
             };
@@ -269,31 +302,47 @@ namespace Phoenix.Client
 
         private void TxtInput_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.Up)
+            {
+                e.SuppressKeyPress = true;
+                HandleCommands("n");
+                return;
+            }
+
+            if (e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.Right)
+            {
+                e.SuppressKeyPress = true;
+                HandleCommands("e");
+                return;
+            }
+            
+            if (e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.Down)
+            {
+                e.SuppressKeyPress = true;
+                HandleCommands("s");
+                return;
+            }
+            
+            if (e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.Left)
+            {
+                e.SuppressKeyPress = true;
+                HandleCommands("w");
+                return;
+            }
+
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
-
                 if (txtInput.Text == "")
                     return;
-
-                string message = Helper.RemoveCaret(txtInput.Text);
-                message = Helper.RemovePipe(message);
-                message = Helper.RemoveTilda(message);
-                var messageRoomCommand = new MessageRoomCommand
-                {
-                    Character = this.character,
-                    Message = message
-                };
+                HandleCommands(txtInput.Text.Trim());
                 txtInput.Text = "";
-                SendCommand(messageRoomCommand);
                 return;
             }
         }
-
         #endregion
 
         #region -- Move Window --
-
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -323,7 +372,6 @@ namespace Phoenix.Client
                 }
             }
         }
-
         #endregion
 
         #region -- Client Updaters --
@@ -823,6 +871,8 @@ namespace Phoenix.Client
         }
         #endregion
 
+        #endregion
+
         #region -- Server Incoming Messages --
         private void UpdateEquipItem(string itemName, string itemImage, string itemType, string slotType, int updateSlot)
         {
@@ -830,29 +880,102 @@ namespace Phoenix.Client
             UpdateInventory(2);
         }
 
-        private void UpdateChat (string message)
+        private void UpdateChat(string message)
         {
             message = Helper.ReturnPipe(message);
             message = Helper.ReturnTilda(message);
             message = Helper.ReturnCaret(message);
             string[] displayMessage = message.Split("~");
-            foreach (string s in displayMessage)
+            if (displayMessage[0] != "")
             {
-                if (s == "")
+                this.rtbChat.SelectionColor = Helper.ReturnColor(displayMessage[0].ToCharArray()[0]);
+                this.rtbChat.AppendText(displayMessage[0]);
+            }
+            for(int i = 1; i < displayMessage.Length; i++)
+            {
+                if (displayMessage[i] == "")
                     continue;
-                this.rtbChat.SelectionColor = Helper.ReturnColor(s.ToCharArray()[0]);
-                this.rtbChat.AppendText(s.Remove(0, 1));
+                this.rtbChat.SelectionColor = Helper.ReturnColor(displayMessage[i].ToCharArray()[0]);
+                this.rtbChat.AppendText(displayMessage[i].Remove(0, 1));
             }
             this.rtbChat.SelectionStart = this.rtbChat.Text.Length;
             this.rtbChat.ScrollToCaret();
         }
-
         #endregion
 
+        #region -- Server Outgoing Messages --
+        private void HandleCommands(string message)
+        {
+            message = Helper.RemoveCaret(message);
+            message = Helper.RemovePipe(message);
+            message = Helper.RemoveTilda(message);
+
+            string[] command = message.Split(" ");
+
+            switch (command[0].ToLower())
+            {
+                case "north":
+                case "n":
+                    {
+                        SendCommand(new PlayerMoveRequest
+                        {
+                            Direction = "north"
+                        });
+                        return;
+                    }
+                case "south":
+                case "s":
+                    {
+                        SendCommand(new PlayerMoveRequest
+                        {
+                            Direction = "south"
+                        });
+                        return;
+                    }
+                case "west":
+                case "w":
+                    {
+                        SendCommand(new PlayerMoveRequest
+                        {
+                            Direction = "west"
+                        });
+                        return;
+                    }
+                case "east":
+                case "e":
+                    {
+                        SendCommand(new PlayerMoveRequest
+                        {
+                            Direction = "east"
+                        });
+                        return;
+                    }
+                case "/wmsg":
+                case "/wm":
+                    {
+                        message = message.Replace("/wmsg ", "");
+                        message = message.Replace("/wm", "");
+                        SendCommand(new MessageWorldServer
+                        {
+                            ID = this.character.Id,
+                            Message = message
+                        });
+                        return;
+                    }
+                default:
+                    {
+                        SendCommand(new MessageRoomServer
+                        {
+                            Character = this.character,
+                            Message = message
+                        });
+                        return;
+                    }
+            }
+        }
         #endregion
 
         #region -- Client Menu Code --
-
         private void DropToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in lstvInventory.Items)
@@ -882,7 +1005,6 @@ namespace Phoenix.Client
                 }
             }
         }
-
         #endregion
 
     }

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoenix.Server", "Phoenix.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoenix.Common", "Phoenix.Common\Phoenix.Common.csproj", "{D8E83750-8E99-49ED-B20E-3D9D8B6BF8FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoenix.Patcher", "Phoenix.Patcher\Phoenix.Patcher.csproj", "{250376DA-C895-4F78-AE49-EE5A968699E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phoenix.Patcher", "Phoenix.Patcher\Phoenix.Patcher.csproj", "{250376DA-C895-4F78-AE49-EE5A968699E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

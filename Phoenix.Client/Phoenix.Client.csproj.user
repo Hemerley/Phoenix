@@ -10,6 +10,9 @@
     <Compile Update="frmClient.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmDebug.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmLauncher.cs">
       <SubType>Form</SubType>
     </Compile>

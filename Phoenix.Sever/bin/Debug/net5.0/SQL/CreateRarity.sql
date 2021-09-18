@@ -1,4 +1,0 @@
-CREATE TABLE Rarity (
-  ID    integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  Name  text
-);

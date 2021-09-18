@@ -1,0 +1,28 @@
+﻿using Phoenix.Common.Commands.Factory;
+using Phoenix.Common.Data.Types;
+using System.Collections.Generic;
+
+namespace Phoenix.Common.Commands.Request
+{
+    public class PlayerMoveRequest : Command
+    {
+        public string Direction { get; set; }
+
+        public PlayerMoveRequest()
+        {
+            this.CommandType = CommandType.PlayerMoveRequest;
+        }
+
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
+            return new List<List<string>>()
+            {
+                new List<string>()
+                {
+                    this.Direction
+                }
+            };
+        }
+
+    }
+}

@@ -6,7 +6,6 @@ CREATE TABLE Rooms (
   Type          integer,
   Description   text,
   Exits         text,
-  Tile          integer,
   North         integer,
   South         integer,
   West          integer,
@@ -68,10 +67,7 @@ CREATE TABLE Rooms (
     REFERENCES RoomTypes(ID), 
   CONSTRAINT FK_Status
     FOREIGN KEY (Status)
-    REFERENCES RoomStatuses(ID),
-  CONSTRAINT FK_Tile
-    FOREIGN KEY (Tile)
-    REFERENCES RoomTiles(ID),  
+    REFERENCES RoomStatuses(ID), 
   CONSTRAINT FK_KeyTypeNorth
     FOREIGN KEY (KeyTypeNorth)
     REFERENCES RoomKeyTypes(ID)

@@ -11,7 +11,7 @@
 		NewAccount = 3,
 		NewAccountResponse = 4,
 		NewCharacter = 5,
-		NewChracterResponse = 6,
+		NewCharacterResponse = 6,
 		CharacterList = 7,
 		CharacterListResponse = 8,
 		CharacterLogin = 9,
@@ -25,6 +25,8 @@
 		MessagePlayer = 101,
 		MessageParty = 103,
 		MessageGuild = 104,
+		MessageWorld = 105,
+		MessageBroadcast = 106,
 
 		#endregion
 
@@ -37,7 +39,8 @@
 		MapRequest = 204,
 		MapResponse = 205,
 		RoomPlayerUpdate = 206,
-		RoomEntityUpdate = 207
+		RoomEntityUpdate = 207,
+		PlayerMoveRequest = 208
 
         #endregion
 

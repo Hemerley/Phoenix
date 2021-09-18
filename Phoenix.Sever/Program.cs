@@ -12,8 +12,16 @@ namespace Phoenix.Server
 			
 			new Game().Start();
 
-            // Get Under Input
-            Console.ReadLine();
+			while (true)
+            {
+				string input = Console.ReadLine();
+
+                switch (input)
+                {
+					default:
+						return;
+                }
+			}
         }
 	}
 }
