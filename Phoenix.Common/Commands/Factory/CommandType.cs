@@ -22,7 +22,7 @@
         #region -- Messages (100-199) --
 
         MessageRoom = 100,
-		MessagePlayer = 101,
+		MessageDirect = 101,
 		MessageParty = 103,
 		MessageGuild = 104,
 		MessageWorld = 105,

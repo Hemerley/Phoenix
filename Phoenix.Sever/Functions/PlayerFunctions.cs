@@ -9,7 +9,7 @@ using Phoenix.Common.Data.Types;
 
 namespace Phoenix.Server.Functions
 {
-    public class Player
+    public class PlayerFunctions
     {
     }
 }

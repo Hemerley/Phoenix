@@ -26,7 +26,7 @@ namespace Phoenix.Common.Data
 
         public static bool EHasSpecialChar(string input)
         {
-            string specialChar = @"\|!#$%&/()=?»«£§€{}.-;'<>_,";
+            string specialChar = @"\|!#$%&/()=?»«£§€{};'<>,";
             foreach (var item in specialChar)
             {
                 if (input.Contains(item)) return true;

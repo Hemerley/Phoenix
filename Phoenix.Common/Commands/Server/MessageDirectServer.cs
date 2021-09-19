@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Server
 {
-    public class MessagePlayerServer : Command
+    public class MessageDirectServer : Command
     {
 
         public string SendingName { get; set; }
         public string ReceivingName { get; set; }
         public string Message { get; set; }
 
-        public MessagePlayerServer()
+        public MessageDirectServer()
         {
-            this.CommandType = CommandType.MessagePlayer;
+            this.CommandType = CommandType.MessageDirect;
         }
 
 		public override IEnumerable<IEnumerable<string>> GetCommandParts()

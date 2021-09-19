@@ -6,11 +6,13 @@ namespace Phoenix.Server
 {
 	class Program
 	{
+		public static Game game = new();
+
         static void Main()
 		{
 			Console.Title = Constants.GAME_NAME + " Server - V" + Constants.GAME_VERSION;
-			
-			new Game().Start();
+
+			game.Start();
 
 			while (true)
             {

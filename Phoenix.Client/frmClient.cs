@@ -144,7 +144,7 @@ namespace Phoenix.Client
                                 }
                                 else
                                 {
-                                    UpdateChat($"~yFrom ~w{messageRoomCommand.Character.Name}~y: {messageRoomCommand.Message}\n");
+                                    UpdateChat($"~yFrom ~w{messageRoomCommand.Character.Name.FirstCharToUpper()}~y: {messageRoomCommand.Message}\n");
                                 }
                             });
                             continue;
@@ -153,18 +153,18 @@ namespace Phoenix.Client
                     #endregion
 
                     #region -- Message Player --
-                    case CommandType.MessagePlayer:
+                    case CommandType.MessageDirect:
                         {
                             this.Invoke((Action)delegate
                             {
-                                var messagePlayerCommand = command as MessagePlayerServer;
+                                var messagePlayerCommand = command as MessageDirectServer;
                                 if(messagePlayerCommand.SendingName == this.character.Name)
                                 {
-                                    UpdateChat($"~mTell To ~w{messagePlayerCommand.ReceivingName}~m: {messagePlayerCommand.Message}\n");
+                                    UpdateChat($"~mTell To ~w{messagePlayerCommand.ReceivingName.FirstCharToUpper()}~m: {messagePlayerCommand.Message}\n");
                                 }
                                 else
                                 {
-                                    UpdateChat($"~mTell From ~w{messagePlayerCommand.SendingName}~m: {messagePlayerCommand.Message}\n");
+                                    UpdateChat($"~mTell From ~w{messagePlayerCommand.SendingName.FirstCharToUpper()}~m: {messagePlayerCommand.Message}\n");
                                 }
                             });
                             continue;
@@ -423,7 +423,7 @@ namespace Phoenix.Client
         private void CharacterLoad()
         {
 
-            this.lblName.Text = "Name: " + this.character.Name.ToString();
+            this.lblName.Text = "Name: " + this.character.Name.ToString().FirstCharToUpper();
             if (!this.ilAvatar.Images.Keys.Contains(this.character.Image))
             {
                 this.ilAvatar.Images.Add(this.character.Image, Image.FromFile("./Images/Avatar/" + this.character.Image));
@@ -457,7 +457,7 @@ namespace Phoenix.Client
                 {
                     this.ilAvatar.Images.Add(entityImage, Image.FromFile("./Images/Avatar/" + entityImage));
                 }
-                lstvRoom.Items.Add(entityName, entityImage).SubItems.Add(entityType);
+                lstvRoom.Items.Add(entityName.FirstCharToUpper(), entityImage).SubItems.Add(entityType);
                 int entityIndex = lstvRoom.Items.Count - 1;
                 UpdateEntityColor(entityIndex, entityType);
             }
@@ -959,7 +959,7 @@ namespace Phoenix.Client
 
             if (command[0].StartsWith("/"))
             {
-                switch (command[0].ToLower().Substring(1))
+                switch (command[0].ToLower()[1..])
                 {
                     case "wmsg":
                     case "wm":
@@ -989,7 +989,7 @@ namespace Phoenix.Client
                             message = message.Replace("/tell ", "");
                             message = message.Replace("/t ", "");
                             message = message.Replace(command[1], "");
-                            SendCommand(new MessagePlayerServer
+                            SendCommand(new MessageDirectServer
                             {
                                 SendingName = this.character.Name,
                                 ReceivingName = command[1],

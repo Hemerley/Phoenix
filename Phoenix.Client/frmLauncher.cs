@@ -232,7 +232,7 @@ namespace Phoenix.Client
                                     {
                                         int rowId = this.dgvCharacter.Rows.Add();
                                         DataGridViewRow row = this.dgvCharacter.Rows[rowId];
-                                        row.Cells["dgvCharacterName"].Value = character.Name;
+                                        row.Cells["dgvCharacterName"].Value = character.Name.FirstCharToUpper();
                                         row.Cells["dgvCharacterCaste"].Value = character.Caste;
                                         row.Cells["dgvCharacterPhilosophy"].Value = character.Philosophy;
                                     });
@@ -414,7 +414,7 @@ namespace Phoenix.Client
             }
             else if (Helper.EHasSpecialChar(this.txtEmail.Text) || this.txtEmail.Text.Contains(" "))
             {
-                MessageBox.Show("E-mail Addresses cannot contain spaces or \\|!#$%&/()=?»«£§€{}.-;'<>_,^", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("E-mail Addresses cannot contain spaces or \\|!#$%&/()=?»«£§€{};'<>,^", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (this.txtEmail.Text == "E-mail Address" || !Helper.IsValidEmail(this.txtEmail.Text))

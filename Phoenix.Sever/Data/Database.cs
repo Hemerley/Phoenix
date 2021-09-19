@@ -358,7 +358,7 @@ namespace Phoenix.Server.Data
                 heShe = "He";
                 hisHer = "His";
             }
-            string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID) VALUES ('{accountID}', '{CharacterName}', '{Image}', 0, '{Gender}', '{hisHer}', '{heShe}', 0, 'Initiate', 0, 0, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 0);";
+            string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID) VALUES ('{accountID}', '{CharacterName}', '{Image}', 0, '{Gender}', '{hisHer}', '{heShe}', 0, 'Initiate', 0, 0, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 1);";
             using var command = new SQLiteCommand(query, connection);
             command.ExecuteNonQuery();
         }

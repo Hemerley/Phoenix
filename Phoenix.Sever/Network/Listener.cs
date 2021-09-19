@@ -8,7 +8,7 @@ using Unclassified.Net;
 
 namespace Phoenix.Server.Network
 {
-	public class Server
+	public class Listener
 	{
 		#region -- Fields --
 

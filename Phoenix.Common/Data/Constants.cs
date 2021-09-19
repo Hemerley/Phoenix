@@ -3,7 +3,7 @@
     public class Constants
     {
         public const string GAME_NAME = "Phoenix Online";
-        public const string GAME_VERSION = "0.1.2";
+        public const string GAME_VERSION = "0.1.3";
         public const string GAME_NAME_DISPLAY = GAME_NAME + " V" + GAME_VERSION;
         public const int LIVE_PORT = 26950;
         public const int TEST_PORT = 4444;

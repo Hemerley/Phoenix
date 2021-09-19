@@ -12,11 +12,11 @@ namespace Phoenix.Server.Connections
 
 		private readonly AsyncTcpClient tcpClient;
 
-		private readonly Network.Server server;
+		private readonly Network.Listener server;
 
 		public string Id { get; private set; }
 
-		public ConnectedClient(TcpClient tcpClient, Network.Server server)
+		public ConnectedClient(TcpClient tcpClient, Network.Listener server)
 		{
 			this.Id = Guid.NewGuid().ToString();
 

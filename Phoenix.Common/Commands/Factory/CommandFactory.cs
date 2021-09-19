@@ -271,12 +271,12 @@ namespace Phoenix.Common.Commands.Factory
 				#endregion
 
 				#region -- Message Player --
-				case CommandType.MessagePlayer:
+				case CommandType.MessageDirect:
 					{
 						if (commandDataParts.Length < 2)
 							return new UnknownCommand();
 
-						return new MessagePlayerServer
+						return new MessageDirectServer
 						{
 							SendingName = commandDataParts[0],
 							ReceivingName = commandDataParts[1],
