@@ -40,13 +40,21 @@
 		MapResponse = 205,
 		RoomPlayerUpdate = 206,
 		RoomEntityUpdate = 207,
-		PlayerMoveRequest = 208
+		PlayerMoveRequest = 208,
 
-        #endregion
+		#endregion
 
-        #region -- Server (300-499) --
+		#region -- Server (300-499) --
 
-        #endregion
+		SpawnEntity = 300,
 
-    }
+		#endregion
+
+		#region -- Failure (900-999) --
+			NoCommand = 900,
+			NoPlayer = 901
+
+		#endregion
+
+	}
 }

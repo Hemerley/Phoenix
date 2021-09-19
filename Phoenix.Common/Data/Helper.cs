@@ -10,9 +10,23 @@ namespace Phoenix.Common.Data
 {
     public class Helper
     {
+
+        #region -- Validation --
+
         public static bool HasSpecialChar(string input)
         {
-            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,^";
+            foreach (var item in specialChar)
+            {
+                if (input.Contains(item)) return true;
+            }
+
+            return false;
+        }
+
+        public static bool EHasSpecialChar(string input)
+        {
+            string specialChar = @"\|!#$%&/()=?»«£§€{}.-;'<>_,";
             foreach (var item in specialChar)
             {
                 if (input.Contains(item)) return true;
@@ -62,6 +76,23 @@ namespace Phoenix.Common.Data
             }
         }
 
+        public static bool HasUpperLowerDigit(string text)
+        {
+            bool hasUpper = false; bool hasLower = false; bool hasDigit = false;
+            for (int i = 0; i < text.Length && !(hasUpper && hasLower && hasDigit); i++)
+            {
+                char c = text[i];
+                if (!hasUpper) hasUpper = char.IsUpper(c);
+                if (!hasLower) hasLower = char.IsLower(c);
+                if (!hasDigit) hasDigit = char.IsDigit(c);
+            }
+            return hasUpper && hasLower && hasDigit;
+        }
+
+        #endregion
+
+        #region -- Mark-Up --
+
         public static string RemovePipe(string input)
         {
             return input.Replace("|", "&pipe&");
@@ -92,18 +123,19 @@ namespace Phoenix.Common.Data
             return input.Replace("&caret&", "^");
         }
 
-        public static bool HasUpperLowerDigit(string text)
+        public static string RemovePercent(string input)
         {
-            bool hasUpper = false; bool hasLower = false; bool hasDigit = false;
-            for (int i = 0; i < text.Length && !(hasUpper && hasLower && hasDigit); i++)
-            {
-                char c = text[i];
-                if (!hasUpper) hasUpper = char.IsUpper(c);
-                if (!hasLower) hasLower = char.IsLower(c);
-                if (!hasDigit) hasDigit = char.IsDigit(c);
-            }
-            return hasUpper && hasLower && hasDigit;
+            return input.Replace("%", "&percent&");
         }
+
+        public static string ReturnPercent(string input)
+        {
+            return input.Replace("&percent&", "%");
+        }
+
+        #endregion
+
+        #region -- Returns --
 
         public static string ReturnCasteText(int caste)
         {
@@ -180,6 +212,9 @@ namespace Phoenix.Common.Data
             };
         }
 
+        #endregion
+
+        #region -- Color --
         public static Color ReturnColor(char code)
         {
             return code switch
@@ -193,10 +228,12 @@ namespace Phoenix.Common.Data
                 'q' => Color.BlueViolet,
                 'm' => Color.Magenta,
                 'p' => Color.Pink,
+                'l' => Color.DarkGray,
+                'c' => Color.Cyan,
                 _ => Color.White,
             };
         }
-
+        #endregion
     }
 
 }

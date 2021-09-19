@@ -230,7 +230,7 @@ namespace Phoenix.Client
             this.lblHeader1.Name = "lblHeader1";
             this.lblHeader1.Size = new System.Drawing.Size(724, 34);
             this.lblHeader1.TabIndex = 31;
-            this.lblHeader1.Text = Constants.GAME_NAME;
+            this.lblHeader1.Text = "Phoenix Online";
             this.lblHeader1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAuthenticate
@@ -288,9 +288,9 @@ namespace Phoenix.Client
             // ptbPhoenix1
             // 
             this.ptbPhoenix1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.ptbPhoenix1.Image = Phoenix.Client.Properties.Resources.Logo;
             this.ptbPhoenix1.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix1.Name = "ptbPhoenix1";
-            this.ptbPhoenix1.Image = Image.FromFile("./Images/UI/Logo.png");
             this.ptbPhoenix1.Size = new System.Drawing.Size(724, 489);
             this.ptbPhoenix1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix1.TabIndex = 30;
@@ -417,7 +417,7 @@ namespace Phoenix.Client
             this.lblHeader3.Name = "lblHeader3";
             this.lblHeader3.Size = new System.Drawing.Size(727, 34);
             this.lblHeader3.TabIndex = 31;
-            this.lblHeader3.Text = Constants.GAME_NAME;
+            this.lblHeader3.Text = "Phoenix Online";
             this.lblHeader3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCharacterConnect
@@ -439,9 +439,9 @@ namespace Phoenix.Client
             // ptbPhoenix3
             // 
             this.ptbPhoenix3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.ptbPhoenix3.Image = global::Phoenix.Client.Properties.Resources.Logo;
             this.ptbPhoenix3.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix3.Name = "ptbPhoenix3";
-            this.ptbPhoenix3.Image = Image.FromFile("./Images/UI/Logo.png");
             this.ptbPhoenix3.Size = new System.Drawing.Size(724, 489);
             this.ptbPhoenix3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix3.TabIndex = 30;
@@ -498,7 +498,7 @@ namespace Phoenix.Client
             this.lblHeader2.Name = "lblHeader2";
             this.lblHeader2.Size = new System.Drawing.Size(727, 34);
             this.lblHeader2.TabIndex = 31;
-            this.lblHeader2.Text = Constants.GAME_NAME;
+            this.lblHeader2.Text = "Phoenix Online";
             this.lblHeader2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNCreate
@@ -546,9 +546,9 @@ namespace Phoenix.Client
             // ptbPhoenix2
             // 
             this.ptbPhoenix2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.ptbPhoenix2.Image = global::Phoenix.Client.Properties.Resources.Logo;
             this.ptbPhoenix2.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix2.Name = "ptbPhoenix2";
-            this.ptbPhoenix2.Image = Image.FromFile("./Images/UI/Logo.png");
             this.ptbPhoenix2.Size = new System.Drawing.Size(724, 489);
             this.ptbPhoenix2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix2.TabIndex = 30;
@@ -592,7 +592,6 @@ namespace Phoenix.Client
             // cboImage
             // 
             this.cboImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.cboImage.Enabled = false;
             this.cboImage.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cboImage.FormattingEnabled = true;
@@ -631,7 +630,6 @@ namespace Phoenix.Client
             // cboPhilosophy
             // 
             this.cboPhilosophy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.cboPhilosophy.Enabled = false;
             this.cboPhilosophy.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboPhilosophy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cboPhilosophy.FormattingEnabled = true;
@@ -645,12 +643,10 @@ namespace Phoenix.Client
             this.cboPhilosophy.Size = new System.Drawing.Size(162, 25);
             this.cboPhilosophy.TabIndex = 14;
             this.cboPhilosophy.Text = "School of Philosophy";
-            this.cboPhilosophy.SelectedIndexChanged += new System.EventHandler(this.CboPhilosophy_SelectedIndexChanged);
             // 
             // cboGender
             // 
             this.cboGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.cboGender.Enabled = false;
             this.cboGender.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.cboGender.FormattingEnabled = true;
@@ -673,7 +669,7 @@ namespace Phoenix.Client
             this.lblHeader4.Name = "lblHeader4";
             this.lblHeader4.Size = new System.Drawing.Size(724, 34);
             this.lblHeader4.TabIndex = 31;
-            this.lblHeader4.Text = Constants.GAME_NAME;
+            this.lblHeader4.Text = "Phoenix Online";
             this.lblHeader4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNCharcterCreate
@@ -702,16 +698,15 @@ namespace Phoenix.Client
             this.txtCharacterName.Size = new System.Drawing.Size(162, 25);
             this.txtCharacterName.TabIndex = 12;
             this.txtCharacterName.Text = "Name";
-            this.txtCharacterName.TextChanged += new System.EventHandler(this.TxtCharacterName_TextChanged);
             this.txtCharacterName.Enter += new System.EventHandler(this.TxtCharacterName_Enter);
             this.txtCharacterName.Leave += new System.EventHandler(this.TxtCharacterName_Leave);
             // 
             // ptbPhoenix4
             // 
             this.ptbPhoenix4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.ptbPhoenix4.Image = global::Phoenix.Client.Properties.Resources.Logo;
             this.ptbPhoenix4.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix4.Name = "ptbPhoenix4";
-            this.ptbPhoenix4.Image = Image.FromFile("./Images/UI/Logo.png");
             this.ptbPhoenix4.Size = new System.Drawing.Size(724, 489);
             this.ptbPhoenix4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbPhoenix4.TabIndex = 30;

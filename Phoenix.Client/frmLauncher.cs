@@ -312,24 +312,15 @@ namespace Phoenix.Client
             if (this.txtCharacterName.Text.Trim() == "")
             {
                 this.txtCharacterName.Text = "Name";
-                this.cboGender.Enabled = false;
-                this.cboPhilosophy.Enabled = false;
-                this.cboImage.Enabled = false;
                 return;
-            }
-            else
-            {
-                this.cboGender.Enabled = true;
-                this.txtCharacterName.Enabled = false;
             }
         }
 
         private void CboGender_TextChanged(object sender, EventArgs e)
         {
+            this.cboImage.Items.Clear();
             if (this.cboGender.Text == "Male" || this.cboGender.Text == "Female")
             {
-                this.cboPhilosophy.Enabled = true;
-                this.cboGender.Enabled = false;
                 DirectoryInfo directory = new("./Images/Avatar/");
                 FileInfo[] Archives = directory.GetFiles("*.png");
 
@@ -351,20 +342,6 @@ namespace Phoenix.Client
                     }
                 }
             }
-        }
-
-        private void CboPhilosophy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.cboPhilosophy.Items.Contains(this.cboPhilosophy.Text))
-            {
-                this.cboPhilosophy.Enabled = false;
-                this.cboImage.Enabled = true;
-            }
-        }
-
-        private void TxtCharacterName_TextChanged(object sender, EventArgs e)
-        {
-            this.cboGender.Enabled = true;
         }
 
         private void CboImage_SelectedIndexChanged(object sender, EventArgs e)
@@ -432,7 +409,12 @@ namespace Phoenix.Client
         {
             if (this.txtNAccount.Text == "Account Name" || this.txtNAccount.Text.Contains(" ") || Helper.HasSpecialChar(this.txtNAccount.Text))
             {
-                MessageBox.Show("Account Names cannot contain spaces or \\|!#$%&/()=?»«@£§€{}.-;'<>_,", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Account Names cannot contain spaces or \\|!#$%&/()=?»«@£§€{}.-;'<>_,^", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (Helper.EHasSpecialChar(this.txtEmail.Text) || this.txtEmail.Text.Contains(" "))
+            {
+                MessageBox.Show("E-mail Addresses cannot contain spaces or \\|!#$%&/()=?»«£§€{}.-;'<>_,^", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (this.txtEmail.Text == "E-mail Address" || !Helper.IsValidEmail(this.txtEmail.Text))
@@ -505,6 +487,16 @@ namespace Phoenix.Client
             else if (this.cboGender.Text == "" || this.cboGender.Text == "Gender")
             {
                 MessageBox.Show("Please choose a gender!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (this.cboGender.Text == "Male" && this.cboImage.Text.StartsWith("f"))
+            {
+                MessageBox.Show("Male characters may only have male pictures!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (this.cboGender.Text == "Female" && this.cboImage.Text.StartsWith("m"))
+            {
+                MessageBox.Show("Female characters may only have female pictures!", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (this.cboPhilosophy.Text == "" || this.cboPhilosophy.Text == "Philosophy")

@@ -9,7 +9,7 @@ namespace Phoenix.Common.Commands.Response
 
 		public bool Success { get; set; }
 
-		public string Message { get; set; } = "None";
+		public string Message { get; set; } = "\0";
 		#endregion
 
 		public ClientConnectResponse()

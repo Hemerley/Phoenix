@@ -8,7 +8,7 @@ namespace Phoenix.Common.Commands.Response
 		#region -- Properties --
 
 		public bool Success { get; set; }
-        public string Message { get; set; } = "None";
+        public string Message { get; set; } = "\0";
 
 		#endregion
 

@@ -30,12 +30,12 @@ namespace Phoenix.Common.Commands.Server
 					}
 				};
 			return new List<List<string>>
+			{
+				new List<string>
 				{
-					new List<string>
-					{
-						this.Message
-					}
-				};
+					this.Message
+				}
+			};
 		}
 	}
 }

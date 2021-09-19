@@ -1,4 +1,5 @@
-﻿using Phoenix.Common.Commands.Request;
+﻿using Phoenix.Common.Commands.Failure;
+using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
 using Phoenix.Common.Commands.Server;
 using Phoenix.Common.Commands.Updates;
@@ -270,6 +271,18 @@ namespace Phoenix.Common.Commands.Factory
 				#endregion
 
 				#region -- Message Player --
+				case CommandType.MessagePlayer:
+					{
+						if (commandDataParts.Length < 2)
+							return new UnknownCommand();
+
+						return new MessagePlayerServer
+						{
+							SendingName = commandDataParts[0],
+							ReceivingName = commandDataParts[1],
+							Message = commandDataParts[2]
+						};						
+					}
 				#endregion
 
 				#region -- Message Party --
@@ -493,6 +506,30 @@ namespace Phoenix.Common.Commands.Factory
 							Direction = commandDataParts[0]
 						};
 					}
+				#endregion
+
+				#region -- Spawn Entity --
+				case CommandType.SpawnEntity:
+					{
+						if (commandDataParts.Length < 2)
+							return new UnknownCommand();
+
+						return new SpawnEntityServer
+						{
+							EntityName = commandDataParts[0],
+							CharacterName = commandDataParts[1]
+						};
+					}
+				#endregion
+
+				#region -- No Player --
+				case CommandType.NoPlayer:
+					return new NoPlayerFailure();
+				#endregion
+
+				#region -- No Command --
+				case CommandType.NoCommand:
+					return new NoCommandFailure();
 				#endregion
 
 				#region -- Default --

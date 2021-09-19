@@ -1,5 +1,6 @@
 ﻿using Phoenix.Client.Classes.Extensions;
 using Phoenix.Common.Commands.Factory;
+using Phoenix.Common.Commands.Failure;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
 using Phoenix.Common.Commands.Server;
@@ -43,6 +44,7 @@ namespace Phoenix.Client
                 var command = CommandFactory.ParseCommand(c);
                 switch (command.CommandType)
                 {
+
                     #region -- Client Connect Response --
                     case CommandType.ClientConnectResponse:
                         {
@@ -150,6 +152,26 @@ namespace Phoenix.Client
 
                     #endregion
 
+                    #region -- Message Player --
+                    case CommandType.MessagePlayer:
+                        {
+                            this.Invoke((Action)delegate
+                            {
+                                var messagePlayerCommand = command as MessagePlayerServer;
+                                if(messagePlayerCommand.SendingName == this.character.Name)
+                                {
+                                    UpdateChat($"~mTell To ~w{messagePlayerCommand.ReceivingName}~m: {messagePlayerCommand.Message}\n");
+                                }
+                                else
+                                {
+                                    UpdateChat($"~mTell From ~w{messagePlayerCommand.SendingName}~m: {messagePlayerCommand.Message}\n");
+                                }
+                            });
+                            continue;
+                        }
+
+                    #endregion
+
                     #region -- Message World --
                     case CommandType.MessageWorld:
                         {
@@ -176,7 +198,28 @@ namespace Phoenix.Client
                             }
                             continue;
                         }
-                        #endregion
+                    #endregion
+
+                    #region -- No Command --
+                    case CommandType.NoCommand:
+                        var noCommand = command as NoCommandFailure;
+                        this.Invoke((Action)delegate
+                        {
+                            UpdateChat($"{noCommand.Message}\n");
+                        });
+                        continue;
+                    #endregion
+
+                    #region -- No Player --
+                    case CommandType.NoPlayer:
+                        var noPlayer = command as NoPlayerFailure;
+                        this.Invoke((Action)delegate
+                        {
+                            UpdateChat($"{noPlayer.Message}\n");
+                        });
+                        continue;
+                    #endregion
+
                 }
             }
         }
@@ -215,7 +258,7 @@ namespace Phoenix.Client
         }
         #endregion
 
-        #region -- Inits --
+        #region -- Inits & Text Bar --
         private void InitializeControl()
         {
             this.Text = Constants.GAME_NAME_DISPLAY; 
@@ -885,6 +928,7 @@ namespace Phoenix.Client
             message = Helper.ReturnPipe(message);
             message = Helper.ReturnTilda(message);
             message = Helper.ReturnCaret(message);
+            message = Helper.ReturnPercent(message);
             string[] displayMessage = message.Split("~");
             if (displayMessage[0] != "")
             {
@@ -909,69 +953,107 @@ namespace Phoenix.Client
             message = Helper.RemoveCaret(message);
             message = Helper.RemovePipe(message);
             message = Helper.RemoveTilda(message);
+            message = Helper.RemovePercent(message);
 
-            string[] command = message.Split(" ");
+            string[] command = message.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-            switch (command[0].ToLower())
+            if (command[0].StartsWith("/"))
             {
-                case "north":
-                case "n":
-                    {
-                        SendCommand(new PlayerMoveRequest
+                switch (command[0].ToLower().Substring(1))
+                {
+                    case "wmsg":
+                    case "wm":
                         {
-                            Direction = "north"
-                        });
-                        return;
-                    }
-                case "south":
-                case "s":
-                    {
-                        SendCommand(new PlayerMoveRequest
+                            if (command.Length < 2)
+                            {
+                                UpdateChat("~rYou need to enter a message to send to the world!\n");
+                                return;
+                            }
+                            message = message.Replace("/wmsg ", "");
+                            message = message.Replace("/wm ", "");
+                            SendCommand(new MessageWorldServer
+                            {
+                                ID = this.character.Id,
+                                Message = message
+                            });
+                            return;
+                        }
+                    case "t":
+                    case "tell":
                         {
-                            Direction = "south"
-                        });
+                            if (command.Length < 3)
+                            {
+                                UpdateChat("~rPlease enter a message when sending a tell!\n");
+                                return;
+                            }
+                            message = message.Replace("/tell ", "");
+                            message = message.Replace("/t ", "");
+                            message = message.Replace(command[1], "");
+                            SendCommand(new MessagePlayerServer
+                            {
+                                SendingName = this.character.Name,
+                                ReceivingName = command[1],
+                                Message = message
+                            });
+                            return;
+                        }
+                    default:
+                        UpdateChat("~cCommand does not exist!\n");
                         return;
-                    }
-                case "west":
-                case "w":
-                    {
-                        SendCommand(new PlayerMoveRequest
-                        {
-                            Direction = "west"
-                        });
-                        return;
-                    }
-                case "east":
-                case "e":
-                    {
-                        SendCommand(new PlayerMoveRequest
-                        {
-                            Direction = "east"
-                        });
-                        return;
-                    }
-                case "/wmsg":
-                case "/wm":
-                    {
-                        message = message.Replace("/wmsg ", "");
-                        message = message.Replace("/wm", "");
-                        SendCommand(new MessageWorldServer
-                        {
-                            ID = this.character.Id,
-                            Message = message
-                        });
-                        return;
-                    }
-                default:
-                    {
-                        SendCommand(new MessageRoomServer
-                        {
-                            Character = this.character,
-                            Message = message
-                        });
-                        return;
-                    }
+                }
             }
+            else
+            {
+                switch (command[0].ToLower())
+                {
+                    case "north":
+                    case "n":
+                        {
+                            SendCommand(new PlayerMoveRequest
+                            {
+                                Direction = "north"
+                            });
+                            return;
+                        }
+                    case "south":
+                    case "s":
+                        {
+                            SendCommand(new PlayerMoveRequest
+                            {
+                                Direction = "south"
+                            });
+                            return;
+                        }
+                    case "west":
+                    case "w":
+                        {
+                            SendCommand(new PlayerMoveRequest
+                            {
+                                Direction = "west"
+                            });
+                            return;
+                        }
+                    case "east":
+                    case "e":
+                        {
+                            SendCommand(new PlayerMoveRequest
+                            {
+                                Direction = "east"
+                            });
+                            return;
+                        }
+                    default:
+                        {
+                            SendCommand(new MessageRoomServer
+                            {
+                                Character = this.character,
+                                Message = message
+                            });
+                            return;
+                        }
+                }
+            }
+
         }
         #endregion
 

@@ -13,7 +13,8 @@ namespace Phoenix.Client
     public partial class FrmDebug : Form
     {
         public string Packet { get; set; }
-        FrmClient formClient;
+
+        readonly FrmClient formClient;
 
         public FrmDebug(FrmClient client)
         {

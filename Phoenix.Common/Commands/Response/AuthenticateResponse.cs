@@ -9,7 +9,7 @@ namespace Phoenix.Common.Commands.Response
 		// Setup To Bool
 		#region -- Properties --
 
-		public string Message { get; set; } = "None";
+		public string Message { get; set; } = "\0";
         public bool Success { get; set; }
 
 		#endregion

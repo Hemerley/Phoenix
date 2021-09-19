@@ -1,4 +1,5 @@
 ﻿using Phoenix.Common.Commands.Factory;
+using Phoenix.Common.Commands.Failure;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
 using Phoenix.Common.Commands.Server;
@@ -26,6 +27,11 @@ namespace Phoenix.Server.Network
 		/// Declaration of the Server.
 		/// </summary>
         private Server server;
+
+		/// <summary>
+		/// Contains unique ID for server.
+		/// </summary>
+		private Guid serverID = Guid.NewGuid();
 
 		/// <summary>
 		/// Connected clients that are NOT authenticated yet.
@@ -66,6 +72,11 @@ namespace Phoenix.Server.Network
 		/// Declaration of Connected Characters.
 		/// </summary>
 		private readonly List<Character> connectedCharacters = new();
+
+		/// <summary>
+		/// Declaration of Current Entities Spawned.
+		/// </summary>
+		private readonly List<Entity> currentEntities = new();
 
 		/// <summary>
 		/// Declaration of Total Connections This Reboot.
@@ -238,9 +249,10 @@ namespace Phoenix.Server.Network
 			// Start Listening.
 			this.server.Start(IPAddress.IPv6Any, Constants.LIVE_PORT);
 
-            #endregion
+			AddToQueue(false, DateTimeOffset.Now.ToUnixTimeSeconds() + 30, new SpawnEntityServer(), serverID.ToString());
+			#endregion
 
-            while (!this.stopGameWorkerThread)
+			while (!this.stopGameWorkerThread)
 			{
 
 				#region -- Queue Handling --
@@ -266,12 +278,12 @@ namespace Phoenix.Server.Network
 				var command = cmd.Command;
 				var clientWhoSendCommand = GetClientById(clientId);
 				var accountConnected = GetConnectedAccount(clientId);
-
+				
 				// Log Command.
 				Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
 
 				// Check if player is connected.
-				if (clientWhoSendCommand == null && accountConnected == null)
+				if (clientWhoSendCommand == null && accountConnected == null && clientId != serverID.ToString())
 					continue;
 
                 #endregion
@@ -444,7 +456,7 @@ namespace Phoenix.Server.Network
 							SendCommandToClient(clientWhoSendCommand, new CharacterConnectResponse
 							{
 								Success = loginCharacter != null,
-								Message = loginCharacter != null ? "None": "Failed to locate character, please contact a God for further assistance!", 
+								Message = loginCharacter != null ? "\0": "Failed to locate character, please contact a God for further assistance!", 
 								Character = loginCharacter
 							});
 
@@ -510,6 +522,26 @@ namespace Phoenix.Server.Network
 					#endregion
 
 					#region  -- Message Player Response --
+					case CommandType.MessagePlayer:
+                        {
+							var messagePlayerCommand = command as MessagePlayerServer;
+							bool foundPlayer = false;
+							foreach (ConnectedAccount connectedAccount in connectedAccounts)
+                            {
+								if (connectedAccount.Account.Character != null)
+                                {
+									if (connectedAccount.Account.Character.Name.ToLower() == messagePlayerCommand.ReceivingName.ToLower())
+									{
+										SendCommandToClient(connectedAccount.Client, messagePlayerCommand);
+										SendCommandToClient(accountConnected.Client, messagePlayerCommand);
+										foundPlayer = true;
+									}
+								}
+                            }
+							if (!foundPlayer)
+								SendCommandToClient(accountConnected.Client, new NoPlayerFailure());
+                        }
+						break;
 					#endregion
 
 					#region  -- Message Party Response --
@@ -522,7 +554,6 @@ namespace Phoenix.Server.Network
 					case CommandType.MessageWorld:
 						{
 							var messageWorldCommand = command as MessageWorldServer;
-
 							if (accountConnected.Account.Character.Id == messageWorldCommand.ID)
 							{
 								if (accountConnected.Account.Character.TypeID > 2)
@@ -537,7 +568,10 @@ namespace Phoenix.Server.Network
 											});
 										}
 									}
-
+								}
+                                else
+                                {
+									SendCommandToClient(accountConnected.Client, new NoCommandFailure());
 								}
 							}
 							break;
@@ -636,19 +670,19 @@ namespace Phoenix.Server.Network
 							}
 							break;
 						}
-					#endregion
+                    #endregion
 
-					#region  -- Map Response --
-					#endregion
+                    #region  -- Map Response --
+                    #endregion
 
-					#region  -- Room Player Update --
-					#endregion
+                    #region  -- Room Player Update --
+                    #endregion
 
-					#region  -- Room Entity Update --
-					#endregion
+                    #region  -- Room Entity Update --
+                    #endregion
 
-					#region  -- Player Move Request --
-					case CommandType.PlayerMoveRequest:
+                    #region  -- Player Move Request --
+                    case CommandType.PlayerMoveRequest:
 						{
 							var playerMoveRequest = command as PlayerMoveRequest;
 
@@ -674,7 +708,7 @@ namespace Phoenix.Server.Network
 													{
 														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 														{
-															Message = $"&tilda&w{accountConnected.Account.Character.Name} has moved to the {playerMoveRequest.Direction}."
+															Message = $"&tilda&l{accountConnected.Account.Character.Name} has moved to the {playerMoveRequest.Direction}."
 														});
 													}
 												}
@@ -689,7 +723,7 @@ namespace Phoenix.Server.Network
 													{
 														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 														{
-															Message = $"&tilda&w{accountConnected.Account.Character.Name} has arrived from the south."
+															Message = $"&tilda&l{accountConnected.Account.Character.Name} has arrived from the south."
 														});
 													}
 												}
@@ -769,7 +803,7 @@ namespace Phoenix.Server.Network
 													{
 														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 														{
-															Message = $"&tilda&w{accountConnected.Account.Character.Name} has moved to the {playerMoveRequest.Direction}."
+															Message = $"&tilda&l{accountConnected.Account.Character.Name} has moved to the {playerMoveRequest.Direction}."
 														});
 													}
 												}
@@ -784,7 +818,7 @@ namespace Phoenix.Server.Network
 													{
 														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 														{
-															Message = $"&tilda&w{accountConnected.Account.Character.Name} has arrived from the north."
+															Message = $"&tilda&l{accountConnected.Account.Character.Name} has arrived from the north."
 														});
 													}
 												}
@@ -864,7 +898,7 @@ namespace Phoenix.Server.Network
 													{
 														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 														{
-															Message = $"&tilda&w{accountConnected.Account.Character.Name} has moved to the {playerMoveRequest.Direction}."
+															Message = $"&tilda&l{accountConnected.Account.Character.Name} has moved to the {playerMoveRequest.Direction}."
 														});
 													}
 												}
@@ -879,7 +913,7 @@ namespace Phoenix.Server.Network
 													{
 														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 														{
-															Message = $"&tilda&w{accountConnected.Account.Character.Name} has arrived from the east."
+															Message = $"&tilda&l{accountConnected.Account.Character.Name} has arrived from the east."
 														});
 													}
 												}
@@ -960,7 +994,7 @@ namespace Phoenix.Server.Network
 													{
 														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 														{
-															Message = $"&tilda&w{accountConnected.Account.Character.Name} has moved to the {playerMoveRequest.Direction}."
+															Message = $"&tilda&l{accountConnected.Account.Character.Name} has moved to the {playerMoveRequest.Direction}."
 														});
 													}
 												}
@@ -975,7 +1009,7 @@ namespace Phoenix.Server.Network
 													{
 														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 														{
-															Message = $"&tilda&w{accountConnected.Account.Character.Name} has arrived from the west."
+															Message = $"&tilda&l{accountConnected.Account.Character.Name} has arrived from the west."
 														});
 													}
 												}
@@ -1043,6 +1077,48 @@ namespace Phoenix.Server.Network
 						}
 					#endregion
 
+					#region  -- Spawn Entity --
+					case CommandType.SpawnEntity:
+						{
+							var spawnEntityCommand = command as SpawnEntityServer;
+
+							if (spawnEntityCommand.CharacterName == "\0" && spawnEntityCommand.EntityName == "\0")
+                            {
+								foreach (Room room in rooms)
+								{
+									foreach (Entity entity in room.Entities)
+                                    {
+										if (!currentEntities.Contains(entity))
+                                        {
+											currentEntities.Add(entity);
+											room.RoomEntities.Add(entity);
+											foreach (ConnectedAccount connectedAccount in connectedAccounts)
+                                            {
+												if (connectedAccount.Account.Character != null)
+                                                {
+													if (connectedAccount.Account.Character.RoomID == room.ID)
+													{
+														SendCommandToClient(connectedAccount.Client, new RoomEntityUpdate
+														{
+															Mode = 1,
+															Entity = entity
+														});
+														SendCommandToClient(connectedAccount.Client, new MessageRoomServer
+														{
+															Message = $"~l{entity.Name} wanders into view..."
+														});
+													}
+												}
+                                            }
+                                        }
+                                    }
+								}
+								AddToQueue(false, currentTimeStamp + 120, new SpawnEntityServer(), serverID.ToString());
+							}
+						}
+						break;
+					#endregion
+
 					#region -- Unknown Command --
 
 					case CommandType.Unknown:
@@ -1074,7 +1150,11 @@ namespace Phoenix.Server.Network
 				return this.connectedClients[id];
 
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == id);
-			return connectedAccount.Client;
+			if (connectedAccount == null)
+            {
+				return null;
+            }
+				return connectedAccount.Client;
 		}
 		
 		/// <summary>
@@ -1085,6 +1165,10 @@ namespace Phoenix.Server.Network
 		private ConnectedAccount GetConnectedAccount(string id)
         {
 			var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == id);
+			if (connectedAccount == null)
+            {
+				return null;
+            }
 			return connectedAccount;
         }
 
