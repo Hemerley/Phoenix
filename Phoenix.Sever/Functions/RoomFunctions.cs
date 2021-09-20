@@ -85,7 +85,7 @@ namespace Phoenix.Server.Functions
 									foreach (Entity entity in game.rooms[account.Account.Character.RoomID].RoomEntities)
 									{
 										Entity newEntity = new();
-										newEntity.Name = entity.Name;
+										newEntity.Name = entity.DisplayName;
 										newEntity.Image = entity.Image;
 										newEntity.Type = entity.Type;
 										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
@@ -179,7 +179,7 @@ namespace Phoenix.Server.Functions
 									foreach (Entity entity in game.rooms[account.Account.Character.RoomID].RoomEntities)
 									{
 										Entity newEntity = new();
-										newEntity.Name = entity.Name;
+										newEntity.Name = entity.DisplayName;
 										newEntity.Image = entity.Image;
 										newEntity.Type = entity.Type;
 										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
@@ -273,7 +273,7 @@ namespace Phoenix.Server.Functions
 									foreach (Entity entity in game.rooms[account.Account.Character.RoomID].RoomEntities)
 									{
 										Entity newEntity = new();
-										newEntity.Name = entity.Name;
+										newEntity.Name = entity.DisplayName;
 										newEntity.Image = entity.Image;
 										newEntity.Type = entity.Type;
 										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
@@ -367,7 +367,7 @@ namespace Phoenix.Server.Functions
 									foreach (Entity entity in game.rooms[account.Account.Character.RoomID].RoomEntities)
 									{
 										Entity newEntity = new();
-										newEntity.Name = entity.Name;
+										newEntity.Name = entity.DisplayName;
 										newEntity.Image = entity.Image;
 										newEntity.Type = entity.Type;
 										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
@@ -491,7 +491,7 @@ namespace Phoenix.Server.Functions
 					foreach (Entity entity in game.rooms[roomID].RoomEntities)
 					{
 						Entity newEntity = new();
-						newEntity.Name = entity.Name;
+						newEntity.Name = entity.DisplayName;
 						newEntity.Image = entity.Image;
 						newEntity.Type = entity.Type;
 						clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);

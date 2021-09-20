@@ -37,6 +37,7 @@ namespace Phoenix.Common.Data.Types
         #region -- Server Fields --
 
         #region -- General Statistics --
+        public string DisplayName { get; set; }
         public Guid InstanceID { get; set; }
         public string Type { get; set; }
         public string Rarity { get; set; }

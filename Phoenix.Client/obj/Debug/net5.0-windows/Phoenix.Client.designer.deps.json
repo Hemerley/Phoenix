@@ -6,6 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
+      "ImageListView/13.8.2": {
+        "runtime": {
+          "lib/net35/ImageListView.dll": {
+            "assemblyVersion": "13.8.2.0",
+            "fileVersion": "13.8.2.0"
+          }
+        }
+      },
       "Serilog/2.10.0": {
         "runtime": {
           "lib/netstandard2.1/Serilog.dll": {
@@ -25,6 +33,13 @@
     }
   },
   "libraries": {
+    "ImageListView/13.8.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1Tt+Qbny9vdEz44Oh3pkOGWjWmz47iW9BllotsLlQiC0aGz8tNOtzublkqFtMj8ba3QS/Xwmsw65Ikv92L23Aw==",
+      "path": "imagelistview/13.8.2",
+      "hashPath": "imagelistview.13.8.2.nupkg.sha512"
+    },
     "Serilog/2.10.0": {
       "type": "package",
       "serviceable": true,

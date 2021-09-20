@@ -487,7 +487,6 @@ namespace Phoenix.Common.Commands.Factory
 						entity.Name = commandDataParts[1];
 						entity.Image = commandDataParts[2];
 						entity.Type = commandDataParts[3];
-						entity.Level = Int32.Parse(commandDataParts[4]);
 
 						return new RoomEntityUpdate
 						{

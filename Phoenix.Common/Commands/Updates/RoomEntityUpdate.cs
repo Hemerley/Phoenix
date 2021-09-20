@@ -23,10 +23,9 @@ namespace Phoenix.Common.Commands.Updates
 				new List<string>
 				{
 					this.Mode.ToString(),
-					this.Entity.Name,
+					this.Entity.DisplayName,
 					this.Entity.Image,
-					this.Entity.Type,
-					this.Entity.Level.ToString()
+					this.Entity.Type
 				}
 			};
 		}

@@ -457,7 +457,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as SummonPlayerStaff;
 
-							RoomFunctions.MovePlayer(false, 1, -1, "", accountConnected, $"&tilda&mA bright white sliver opens and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m steps through.", parsedCommand.Name.ToLower(), $"&tilda&mA bright white sliver open and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m is pulled into it!");
+							RoomFunctions.MovePlayer(false, 1, -1, "", accountConnected, $"&tilda&mA bright white portal opens and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m steps through.", parsedCommand.Name.ToLower(), $"&tilda&mA bright white portal opens and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m is pulled into it!");
 						}
 						break;
 					#endregion

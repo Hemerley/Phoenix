@@ -101,7 +101,7 @@ namespace Phoenix.Server.Data
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
-            string query = $"SELECT r.ID as RoomID, r.Name as RoomName, r.Area as RoomArea, r.Status as RoomStatus, r.Type as RoomType, r.Description as RoomDescription, r.Exits as RoomExits, r.Tile as RoomTile, r.North as RoomNorth, r.South as RoomSouth, r.West as RoomWest, r.East as RoomEast, r.Up as RoomUp, r.Down as RoomDown, r.KeyModeNorth as RoomKeyModeNorth, r.KeyModeSouth as RoomKeyModeSouth, r.KeyModeWest as RoomKeyModeWest, r.KeyModeEast as RoomKeyModeEast, r.KeyModeUp as RoomKeyModeUp, r.KeyModeDown as RoomKeyModeDown, r.KeyNameNorth as RoomKeyNameNorth, r.KeyNameSouth as RoomKeyNameSouth, r.KeyNameWest as RoomKeyNameWest, r.KeyNameEast as RoomKeyNameEast, r.KeyNameUp as RoomKeyNameUp, r.KeyNameDown as RoomKeyNameDown, r.KeyTypeNorth as RoomKeyTypeNorth, r.KeyTypeSouth as RoomKeyTypeSouth, r.KeyTypeWest as RoomKeyTypeWest, r.KeyTypeEast as RoomKeyTypeEast, r.KeyTypeUp as RoomKeyTypeUp, r.KeyTypeDown as RoomKeyTypeDown, r.KeyPassNorth as RoomKeyPassNorth, r.KeyPassSouth as RoomKeyPassSouth, r.KeyPassWest as RoomKeyPassWest, r.KeyPassEast as RoomKeyPassEast, r.KeyPassUp as RoomKeyPassUp, r.KeyPassDown as RoomKeyPassDown, r.KeyFailNorth as RoomKeyFailNorth, r.KeyFailSouth as RoomKeyFailSouth, r.KeyFailWest as RoomKeyFailWest, r.KeyFailEast as RoomKeyFailEast, r.KeyFailUp as RoomKeyFailUp, r.KeyFailDown as RoomKeyFailDown, r.Script as RoomScript, e.ID as EntityID, e.Type as EntityType, e.Rarity as EntityRarity, e.Name as EntityName, e.Image as EntityImage, e.HisHer as EntityHisHer, e.HeShe as EntityHeShe, e.BName as EntityBName, e.Level as EntityLevel, e.Gold as EntityGold, e.Strength as EntityStrength, e.Agility as EntityAgility, e.Intellect as EntityIntellect, e.Stamina as EntityStamina, e.Damage as EntityDamage, e.Haste as EntityHaste, e.Crit as EntityCrit, e.Mastery as EntityMastery, e.Versatility as EntityVersatility, e.Health as EntityHealth, e.Mana as EntityMana, e.Taunt as EntityTaunt, e.SpawnTime as EntitySpawnTime, e.SpawnDelay as EntitySpawnDelay, e.VanishTime as EntityVanishTime, e.Script as EntityScript FROM Rooms r LEFT OUTER JOIN RoomEntities re ON re.RoomID = r.ID LEFT OUTER JOIN Entities e ON e.ID = re.EntityID; ";
+            string query = $"SELECT r.ID as RoomID, r.Name as RoomName, r.Area as RoomArea, r.Status as RoomStatus, r.Type as RoomType, r.Description as RoomDescription, r.Exits as RoomExits, r.North as RoomNorth, r.South as RoomSouth, r.West as RoomWest, r.East as RoomEast, r.Up as RoomUp, r.Down as RoomDown, r.KeyModeNorth as RoomKeyModeNorth, r.KeyModeSouth as RoomKeyModeSouth, r.KeyModeWest as RoomKeyModeWest, r.KeyModeEast as RoomKeyModeEast, r.KeyModeUp as RoomKeyModeUp, r.KeyModeDown as RoomKeyModeDown, r.KeyNameNorth as RoomKeyNameNorth, r.KeyNameSouth as RoomKeyNameSouth, r.KeyNameWest as RoomKeyNameWest, r.KeyNameEast as RoomKeyNameEast, r.KeyNameUp as RoomKeyNameUp, r.KeyNameDown as RoomKeyNameDown, r.KeyTypeNorth as RoomKeyTypeNorth, r.KeyTypeSouth as RoomKeyTypeSouth, r.KeyTypeWest as RoomKeyTypeWest, r.KeyTypeEast as RoomKeyTypeEast, r.KeyTypeUp as RoomKeyTypeUp, r.KeyTypeDown as RoomKeyTypeDown, r.KeyPassNorth as RoomKeyPassNorth, r.KeyPassSouth as RoomKeyPassSouth, r.KeyPassWest as RoomKeyPassWest, r.KeyPassEast as RoomKeyPassEast, r.KeyPassUp as RoomKeyPassUp, r.KeyPassDown as RoomKeyPassDown, r.KeyFailNorth as RoomKeyFailNorth, r.KeyFailSouth as RoomKeyFailSouth, r.KeyFailWest as RoomKeyFailWest, r.KeyFailEast as RoomKeyFailEast, r.KeyFailUp as RoomKeyFailUp, r.KeyFailDown as RoomKeyFailDown, r.Script as RoomScript, e.ID as EntityID, e.Type as EntityType, e.Rarity as EntityRarity, e.Name as EntityName, e.Image as EntityImage, e.HisHer as EntityHisHer, e.HeShe as EntityHeShe, e.BName as EntityBName, e.Level as EntityLevel, e.Gold as EntityGold, e.Strength as EntityStrength, e.Agility as EntityAgility, e.Intellect as EntityIntellect, e.Stamina as EntityStamina, e.Damage as EntityDamage, e.Haste as EntityHaste, e.Crit as EntityCrit, e.Mastery as EntityMastery, e.Versatility as EntityVersatility, e.Health as EntityHealth, e.Mana as EntityMana, e.Taunt as EntityTaunt, e.SpawnTime as EntitySpawnTime, e.SpawnDelay as EntitySpawnDelay, e.VanishTime as EntityVanishTime, e.Script as EntityScript FROM Rooms r LEFT OUTER JOIN RoomEntities re ON re.RoomID = r.ID LEFT OUTER JOIN Entities e ON e.ID = re.EntityID; ";
             using var command = new SQLiteCommand(query, connection);
             using SQLiteDataReader reader = command.ExecuteReader();
             List<RoomEntityDto> rawData = new();
@@ -116,7 +116,6 @@ namespace Phoenix.Server.Data
                     RoomType = Int32.Parse(reader["RoomType"]?.ToString()),
                     RoomDescription = reader["RoomDescription"].ToString(),
                     RoomExits = reader["RoomExits"].ToString(),
-                    RoomTile = Int32.Parse(reader["RoomTile"]?.ToString()),
                     RoomNorth = Int32.Parse(reader["RoomNorth"]?.ToString()),
                     RoomSouth = Int32.Parse(reader["RoomSouth"]?.ToString()),
                     RoomWest = Int32.Parse(reader["RoomWest"]?.ToString()),
@@ -185,7 +184,7 @@ namespace Phoenix.Server.Data
             }
 
             return (from data in rawData
-                    group data by new { data.RoomID, data.RoomName, data.RoomArea, data.RoomStatus, data.RoomType, data.RoomDescription, data.RoomExits, data.RoomTile, data.RoomNorth, data.RoomSouth, data.RoomWest, data.RoomEast, data.RoomUp, data.RoomDown, data.RoomKeyModeNorth, data.RoomKeyModeSouth, data.RoomKeyModeWest, data.RoomKeyModeEast, data.RoomKeyModeUp, data.RoomKeyModeDown, data.RoomKeyNameNorth, data.RoomKeyNameSouth, data.RoomKeyNameWest, data.RoomKeyNameEast, data.RoomKeyNameUp, data.RoomKeyNameDown, data.RoomKeyTypeNorth, data.RoomKeyTypeSouth, data.RoomKeyTypeWest, data.RoomKeyTypeEast, data.RoomKeyTypeUp, data.RoomKeyTypeDown, data.RoomKeyPassNorth, data.RoomKeyPassSouth, data.RoomKeyPassWest, data.RoomKeyPassEast, data.RoomKeyPassUp, data.RoomKeyPassDown, data.RoomKeyFailNorth, data.RoomKeyFailSouth, data.RoomKeyFailWest, data.RoomKeyFailEast, data.RoomKeyFailUp, data.RoomKeyFailDown, data.RoomScript} into g
+                    group data by new { data.RoomID, data.RoomName, data.RoomArea, data.RoomStatus, data.RoomType, data.RoomDescription, data.RoomExits, data.RoomNorth, data.RoomSouth, data.RoomWest, data.RoomEast, data.RoomUp, data.RoomDown, data.RoomKeyModeNorth, data.RoomKeyModeSouth, data.RoomKeyModeWest, data.RoomKeyModeEast, data.RoomKeyModeUp, data.RoomKeyModeDown, data.RoomKeyNameNorth, data.RoomKeyNameSouth, data.RoomKeyNameWest, data.RoomKeyNameEast, data.RoomKeyNameUp, data.RoomKeyNameDown, data.RoomKeyTypeNorth, data.RoomKeyTypeSouth, data.RoomKeyTypeWest, data.RoomKeyTypeEast, data.RoomKeyTypeUp, data.RoomKeyTypeDown, data.RoomKeyPassNorth, data.RoomKeyPassSouth, data.RoomKeyPassWest, data.RoomKeyPassEast, data.RoomKeyPassUp, data.RoomKeyPassDown, data.RoomKeyFailNorth, data.RoomKeyFailSouth, data.RoomKeyFailWest, data.RoomKeyFailEast, data.RoomKeyFailUp, data.RoomKeyFailDown, data.RoomScript} into g
                     select new Room
                     {
                         ID = g.Key.RoomID,
@@ -194,8 +193,7 @@ namespace Phoenix.Server.Data
                         Status = g.Key.RoomStatus,
                         Type = g.Key.RoomType,
                         Description = g.Key.RoomDescription,
-                        Exits = g.Key.RoomExits,
-                        Tile = g.Key.RoomTile,
+                        Exits = Helper.RemoveTilda(g.Key.RoomExits),
                         North = g.Key.RoomNorth,
                         South = g.Key.RoomSouth,
                         West = g.Key.RoomWest,
@@ -270,7 +268,8 @@ namespace Phoenix.Server.Data
                             SpawnDelay = e.EntitySpawnDelay.Value,
                             VanishTime = e.EntityVanishTime.Value,
                             Script = e.EntityScript,
-                            InstanceID = Guid.NewGuid()
+                            InstanceID = Guid.NewGuid(),
+                            DisplayName = e.EntityName + " (Level: " + e.EntityLevel + ")"
                         }).ToList()
                     }).ToList();
         }

@@ -126,7 +126,7 @@ namespace Phoenix.Client
 
                             this.Invoke((Action)delegate
                             {
-                                UpdateRoom(roomEntityUpdateCommand.Mode, roomEntityUpdateCommand.Entity.Name + " (Level: " + roomEntityUpdateCommand.Entity.Level + ")", roomEntityUpdateCommand.Entity.Image, roomEntityUpdateCommand.Entity.Type);
+                                UpdateRoom(roomEntityUpdateCommand.Mode, roomEntityUpdateCommand.Entity.Name, roomEntityUpdateCommand.Entity.Image, roomEntityUpdateCommand.Entity.Type);
                             });
 
                             continue;

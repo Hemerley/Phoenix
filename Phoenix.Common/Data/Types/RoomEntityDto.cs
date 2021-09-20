@@ -11,7 +11,6 @@ namespace Phoenix.Common.Data.Types
         public int RoomType { get; set; }
         public string RoomDescription { get; set; }
         public string RoomExits { get; set; }
-        public int RoomTile { get; set; }
         public int RoomNorth { get; set; }
         public int RoomSouth { get; set; }
         public int RoomWest { get; set; }

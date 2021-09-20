@@ -16,6 +16,8 @@ namespace Phoenix.Client.Classes.Extensions
 		/// <summary>The pen to draw the lines showing you can go that direction.</summary>
 		private readonly Pen linePen = new(Brushes.White);
 
+		private readonly Pen outlinePen = new(Brushes.LightSlateGray, 3);
+
 		/// <summary>The list of current rooms that was most recently drawn.</summary>
 		private Room[,] currentRooms = null;
 
@@ -30,10 +32,13 @@ namespace Phoenix.Client.Classes.Extensions
 			this.BackColor = Color.Black;
 
 			this.roomBrushes.Add(0, Brushes.Black);
-			this.roomBrushes.Add(1, Brushes.Tan);
-			this.roomBrushes.Add(2, Brushes.Green);
-			this.roomBrushes.Add(3, Brushes.Brown);
-			this.roomBrushes.Add(4, Brushes.Gold);
+			this.roomBrushes.Add(1, Brushes.White);
+			this.roomBrushes.Add(2, Brushes.Tan);
+			this.roomBrushes.Add(3, Brushes.PeachPuff);
+			this.roomBrushes.Add(4, Brushes.Moccasin);
+			this.roomBrushes.Add(5, Brushes.BurlyWood);
+			this.roomBrushes.Add(6, Brushes.Brown);
+			this.roomBrushes.Add(7, Brushes.LawnGreen);
 
 			this.Paint += Map_Paint;
 		}
@@ -92,6 +97,7 @@ namespace Phoenix.Client.Classes.Extensions
 					var drawY = baseX + (roomHeight * x) + (roomGap * x);
 
 					g.FillRectangle(roomBrush, new Rectangle(drawX, drawY, roomWidth, roomHeight));
+					g.DrawRectangle(outlinePen, new Rectangle(drawX, drawY, roomWidth, roomHeight));
 
 					if (room.CanGoNorth)
 					{
