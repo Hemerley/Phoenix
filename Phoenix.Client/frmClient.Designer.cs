@@ -77,6 +77,7 @@ namespace Phoenix.Client
             this.lblModVers = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlCharacter = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.vbExp = new Phoenix.Client.Classes.Extensions.VisualBar();
             this.pbPlayer = new System.Windows.Forms.PictureBox();
             this.lblRank = new System.Windows.Forms.Label();
             this.pnlHotBar = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
@@ -178,6 +179,9 @@ namespace Phoenix.Client
             this.bgwBuffs = new System.ComponentModel.BackgroundWorker();
             this.bgwGCD = new System.ComponentModel.BackgroundWorker();
             this.pnlInput = new System.Windows.Forms.Panel();
+            this.vbCast = new Phoenix.Client.Classes.Extensions.VisualBar();
+            this.vbMana = new Phoenix.Client.Classes.Extensions.VisualBar();
+            this.vbHealth = new Phoenix.Client.Classes.Extensions.VisualBar();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.cpbGCD = new CircularProgressBar.CircularProgress.CircularProgressBar();
@@ -716,6 +720,7 @@ namespace Phoenix.Client
             this.pnlCharacter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCharacter.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
             this.pnlCharacter.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this.pnlCharacter.Controls.Add(this.vbExp);
             this.pnlCharacter.Controls.Add(this.pbPlayer);
             this.pnlCharacter.Controls.Add(this.lblRank);
             this.pnlCharacter.Controls.Add(this.label6);
@@ -769,6 +774,26 @@ namespace Phoenix.Client
             this.pnlCharacter.TabIndex = 1;
             this.pnlCharacter.Text = "Character Information";
             this.pnlCharacter.UseAnimation = true;
+            // 
+            // vbExp
+            // 
+            this.vbExp.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.vbExp.ChannelHeight = 10;
+            this.vbExp.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.vbExp.ForeBackColor = System.Drawing.Color.Transparent;
+            this.vbExp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.vbExp.Location = new System.Drawing.Point(5, 422);
+            this.vbExp.Name = "vbExp";
+            this.vbExp.ShowMaximun = true;
+            this.vbExp.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.Center;
+            this.vbExp.Size = new System.Drawing.Size(229, 23);
+            this.vbExp.SliderColor = System.Drawing.Color.DarkOrchid;
+            this.vbExp.SliderHeight = 20;
+            this.vbExp.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.vbExp.SymbolAfter = "";
+            this.vbExp.SymbolBefore = "";
+            this.vbExp.TabIndex = 226;
+            this.vbExp.Value = 50;
             // 
             // pbPlayer
             // 
@@ -2671,6 +2696,9 @@ namespace Phoenix.Client
             // pnlInput
             // 
             this.pnlInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            this.pnlInput.Controls.Add(this.vbCast);
+            this.pnlInput.Controls.Add(this.vbMana);
+            this.pnlInput.Controls.Add(this.vbHealth);
             this.pnlInput.Controls.Add(this.txtInput);
             this.pnlInput.Controls.Add(this.label23);
             this.pnlInput.Controls.Add(this.cpbGCD);
@@ -2680,6 +2708,66 @@ namespace Phoenix.Client
             this.pnlInput.Name = "pnlInput";
             this.pnlInput.Size = new System.Drawing.Size(697, 76);
             this.pnlInput.TabIndex = 27;
+            // 
+            // vbCast
+            // 
+            this.vbCast.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.vbCast.ChannelHeight = 10;
+            this.vbCast.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.vbCast.ForeBackColor = System.Drawing.Color.Transparent;
+            this.vbCast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.vbCast.Location = new System.Drawing.Point(417, 25);
+            this.vbCast.Name = "vbCast";
+            this.vbCast.ShowMaximun = false;
+            this.vbCast.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.None;
+            this.vbCast.Size = new System.Drawing.Size(201, 23);
+            this.vbCast.SliderColor = System.Drawing.Color.ForestGreen;
+            this.vbCast.SliderHeight = 20;
+            this.vbCast.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.vbCast.SymbolAfter = "";
+            this.vbCast.SymbolBefore = "";
+            this.vbCast.TabIndex = 229;
+            this.vbCast.Value = 50;
+            // 
+            // vbMana
+            // 
+            this.vbMana.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.vbMana.ChannelHeight = 10;
+            this.vbMana.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.vbMana.ForeBackColor = System.Drawing.Color.Transparent;
+            this.vbMana.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.vbMana.Location = new System.Drawing.Point(210, 25);
+            this.vbMana.Name = "vbMana";
+            this.vbMana.ShowMaximun = true;
+            this.vbMana.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.Center;
+            this.vbMana.Size = new System.Drawing.Size(201, 23);
+            this.vbMana.SliderColor = System.Drawing.Color.CornflowerBlue;
+            this.vbMana.SliderHeight = 20;
+            this.vbMana.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.vbMana.SymbolAfter = "";
+            this.vbMana.SymbolBefore = "";
+            this.vbMana.TabIndex = 228;
+            this.vbMana.Value = 50;
+            // 
+            // vbHealth
+            // 
+            this.vbHealth.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.vbHealth.ChannelHeight = 10;
+            this.vbHealth.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.vbHealth.ForeBackColor = System.Drawing.Color.Transparent;
+            this.vbHealth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.vbHealth.Location = new System.Drawing.Point(3, 25);
+            this.vbHealth.Name = "vbHealth";
+            this.vbHealth.ShowMaximun = true;
+            this.vbHealth.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.Center;
+            this.vbHealth.Size = new System.Drawing.Size(201, 23);
+            this.vbHealth.SliderColor = System.Drawing.Color.Crimson;
+            this.vbHealth.SliderHeight = 20;
+            this.vbHealth.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.vbHealth.SymbolAfter = "";
+            this.vbHealth.SymbolBefore = "";
+            this.vbHealth.TabIndex = 227;
+            this.vbHealth.Value = 50;
             // 
             // txtInput
             // 
@@ -2697,7 +2785,7 @@ namespace Phoenix.Client
             // label23
             // 
             this.label23.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(423, 10);
+            this.label23.Location = new System.Drawing.Point(417, 3);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(201, 23);
             this.label23.TabIndex = 222;
@@ -2732,7 +2820,7 @@ namespace Phoenix.Client
             this.cpbGCD.Font = new System.Drawing.Font("Nirmala UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cpbGCD.Image = null;
             this.cpbGCD.Info = "GCD";
-            this.cpbGCD.Location = new System.Drawing.Point(659, 14);
+            this.cpbGCD.Location = new System.Drawing.Point(652, 14);
             this.cpbGCD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cpbGCD.MinimumSize = new System.Drawing.Size(21, 25);
             this.cpbGCD.Name = "cpbGCD";
@@ -2743,7 +2831,7 @@ namespace Phoenix.Client
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(216, 10);
+            this.label5.Location = new System.Drawing.Point(210, 3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(201, 23);
             this.label5.TabIndex = 221;
@@ -2753,7 +2841,7 @@ namespace Phoenix.Client
             // lblHealth
             // 
             this.lblHealth.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblHealth.Location = new System.Drawing.Point(9, 10);
+            this.lblHealth.Location = new System.Drawing.Point(9, 3);
             this.lblHealth.Name = "lblHealth";
             this.lblHealth.Size = new System.Drawing.Size(201, 23);
             this.lblHealth.TabIndex = 220;
@@ -2967,5 +3055,9 @@ namespace Phoenix.Client
         private System.Windows.Forms.Label lblHealth;
         private Map pbMap;
         private System.Windows.Forms.PictureBox pbPlayer;
+        private VisualBar vbExp;
+        private VisualBar vbCast;
+        private VisualBar vbMana;
+        private VisualBar vbHealth;
     }
 }

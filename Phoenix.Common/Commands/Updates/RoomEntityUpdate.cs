@@ -25,7 +25,8 @@ namespace Phoenix.Common.Commands.Updates
 					this.Mode.ToString(),
 					this.Entity.Name,
 					this.Entity.Image,
-					this.Entity.Type
+					this.Entity.Type,
+					this.Entity.Level.ToString()
 				}
 			};
 		}

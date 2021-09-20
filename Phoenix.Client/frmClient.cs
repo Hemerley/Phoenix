@@ -4,6 +4,7 @@ using Phoenix.Common.Commands.Failure;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
 using Phoenix.Common.Commands.Server;
+using Phoenix.Common.Commands.Staff;
 using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
@@ -125,7 +126,7 @@ namespace Phoenix.Client
 
                             this.Invoke((Action)delegate
                             {
-                                UpdateRoom(roomEntityUpdateCommand.Mode, roomEntityUpdateCommand.Entity.Name, roomEntityUpdateCommand.Entity.Image, roomEntityUpdateCommand.Entity.Type);
+                                UpdateRoom(roomEntityUpdateCommand.Mode, roomEntityUpdateCommand.Entity.Name + " (Level: " + roomEntityUpdateCommand.Entity.Level + ")", roomEntityUpdateCommand.Entity.Image, roomEntityUpdateCommand.Entity.Type);
                             });
 
                             continue;
@@ -442,6 +443,14 @@ namespace Phoenix.Client
             this.lblBaseHaste.Text = this.character.Haste.ToString() + "%";
             this.lblBaseVers.Text = this.character.Versatility.ToString() + "%";
             this.lblWeight.Text = "Weight: 0 / " + (this.character.Strength * 2);
+            this.vbExp.Value = this.character.Experience;
+            this.vbExp.Maximum = 1000;
+            this.vbHealth.Value = this.character.Health;
+            this.vbHealth.Maximum = this.character.Health;
+            this.vbMana.Value = this.character.Mana;
+            this.vbMana.Maximum = this.character.Mana;
+            this.vbCast.Value = 0;
+            this.vbCast.Maximum = 100;
             this.rtbChat.SelectionColor = Color.LawnGreen;
             this.rtbChat.AppendText("Connecting to server...\n");
         }
@@ -994,6 +1003,23 @@ namespace Phoenix.Client
                                 SendingName = this.character.Name,
                                 ReceivingName = command[1],
                                 Message = message
+                            });
+                            return;
+                        }
+                    case "su":
+                    case "summon":
+                        {
+                            if (command.Length < 2)
+                            {
+                                UpdateChat("~rPlease enter a player name!\n");
+                                return;
+                            }
+                            message = message.Replace("/summon ", "");
+                            message = message.Replace("/su ", "");
+                            SendCommand(new SummonPlayerStaff
+                            {
+                                Type = 1,
+                                Name = command[1],
                             });
                             return;
                         }

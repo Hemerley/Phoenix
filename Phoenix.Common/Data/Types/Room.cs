@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Phoenix.Common.Data.Types
 {
     public class Room
     {
+
+        #region -- Database Fields --
         public int ID { get; set; }
         public string Name { get; set; }
         public string Area { get; set; }
@@ -49,6 +52,10 @@ namespace Phoenix.Common.Data.Types
         public string KeyFailUp { get; set; }
         public string KeyFailDown { get; set; }
         public string Script { get; set; }
+        #endregion
+
+        #region -- Server Fields --
+
         public List<Entity> Entities { get; set; } = new();
         public List<Character> RoomCharacters { get; set; } = new();
         public List<Entity> RoomEntities { get; set; } = new();
@@ -60,5 +67,8 @@ namespace Phoenix.Common.Data.Types
         public bool CanGoUp { get; set; }
         public bool CanGoDown { get; set; }
         public double TimeStamp { get; set; }
+        public Guid InstanceID { get; set; }
+
+        #endregion
     }
 }

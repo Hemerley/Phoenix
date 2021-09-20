@@ -1,12 +1,12 @@
 ﻿using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
-using Phoenix.Server.Logs;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Data.SQLite;
 using System.IO;
 using System;
+using Serilog;
 
 namespace Phoenix.Server.Data
 {
@@ -55,7 +55,7 @@ namespace Phoenix.Server.Data
             using var command = new SQLiteCommand(connection);
             command.CommandText = File.ReadAllText(file);
             command.ExecuteNonQuery();
-            Logger.ConsoleLog("Database", $"Executed query from {file}.");
+            Log.Information($"Executed query from {file}.");
         }
         
         /// <summary>
@@ -69,7 +69,7 @@ namespace Phoenix.Server.Data
                 SQLiteConnection.CreateFile(database);
 
                 // Log Database Creation
-                Logger.ConsoleLog("Error", $"{database} could not be located. Created new {database}.");
+                Log.Error($"{database} could not be located. Created new {database}.");
 
                 using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
                 connection.Open();
@@ -239,6 +239,7 @@ namespace Phoenix.Server.Data
                         CanGoEast = g.Key.RoomEast is not -1,
                         CanGoUp = g.Key.RoomUp is not -1,
                         CanGoDown = g.Key.RoomDown is not -1,
+                        InstanceID = Guid.NewGuid(),
                         Entities = g.Where(e => e.EntityID.HasValue).ToList().Select(e => new Entity
                         {
                             ID = e.EntityID.Value,
@@ -376,9 +377,9 @@ namespace Phoenix.Server.Data
             {
                 Character character = new()
                 {
-                    Name = reader[0].ToString(),
-                    Caste = Helper.ReturnCasteText(Int32.Parse(reader[1].ToString())),
-                    Philosophy = Helper.ReturnPhilosophyText(Int32.Parse(reader[2].ToString()))
+                    Name = reader[0].ToString().FirstCharToUpper(),
+                    Caste = Helper.ReturnCasteText(Int32.Parse(reader[1].ToString())).FirstCharToUpper(),
+                    Philosophy = Helper.ReturnPhilosophyText(Int32.Parse(reader[2].ToString())).FirstCharToUpper()
                 };
 
                 characters.Add(character);
@@ -402,7 +403,7 @@ namespace Phoenix.Server.Data
                 {
                     Id = Int32.Parse(reader[0].ToString()),
                     AccountId = Int32.Parse(reader[1].ToString()),
-                    Name = reader[2].ToString(),
+                    Name = reader[2].ToString().FirstCharToUpper(),
                     Type = Helper.ReturnCharacterTypeText(Int32.Parse(reader[3].ToString())),
                     TypeID = Int32.Parse(reader[3].ToString()),
                     Image = reader[4].ToString(),

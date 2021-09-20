@@ -50,8 +50,14 @@
 
 		#endregion
 
+		#region -- Staff (500 - 599) --
+
+		SummonPlayer = 500,
+
+		#endregion
+
 		#region -- Failure (900-999) --
-			NoCommand = 900,
+		NoCommand = 900,
 			NoPlayer = 901
 
 		#endregion

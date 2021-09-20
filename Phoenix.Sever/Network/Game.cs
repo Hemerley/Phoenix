@@ -3,13 +3,14 @@ using Phoenix.Common.Commands.Failure;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
 using Phoenix.Common.Commands.Server;
+using Phoenix.Common.Commands.Staff;
 using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using Phoenix.Server.Connections;
 using Phoenix.Server.Data;
 using Phoenix.Server.Functions;
-using Phoenix.Server.Logs;
+using Serilog;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -86,6 +87,11 @@ namespace Phoenix.Server.Network
 		public readonly List<Entity> currentEntities = new();
 
 		/// <summary>
+		/// Declaration of Current Rooms.
+		/// </summary>
+		public readonly List<Room> currentRooms = new();
+
+		/// <summary>
 		/// Declaration of Total Connections This Reboot.
 		/// </summary>
 		public int totalConnections = 0;
@@ -121,7 +127,7 @@ namespace Phoenix.Server.Network
 			this.connectedClients.Add(e.Id, e);
 
 			// Log Command
-			Logger.ConsoleLog("Connection", $"{e.Id} has connected.");
+			Log.Information($"{e.Id} has connected.");
 		}
 
 		/// <summary>
@@ -187,7 +193,7 @@ namespace Phoenix.Server.Network
 			}
 
 			// Log Command
-			Logger.ConsoleLog("Connection", $"{e.Id} has disconnected.");
+			Log.Information($"{e.Id} has disconnected.");
 		}
 
 		/// <summary>
@@ -198,7 +204,7 @@ namespace Phoenix.Server.Network
 		private void Server_OnServerStarted(object sender, EventArgs e)
 		{
 			// Log Command
-			Logger.ConsoleLog("System", "Server Started.");
+			Log.Information("Server Started!");
 		}
 
 		/// <summary>
@@ -209,7 +215,7 @@ namespace Phoenix.Server.Network
 		private void Server_OnServerStopped(object sender, EventArgs e)
 		{
 			// Log Command
-			Logger.ConsoleLog("System", "Server Shutdown.");
+			Log.Information("Server Shutdown!");
 		}
 
         #endregion
@@ -225,7 +231,7 @@ namespace Phoenix.Server.Network
 		{
 			var message = CommandFactory.FormatCommand(command);
 			client.Send(message);
-			Logger.ConsoleLog("Command", $"{command.CommandType} sent to {client.Id}");
+			Log.Information($"{command.CommandType} sent to {client.Id}");
 		}
 
         #endregion
@@ -242,8 +248,9 @@ namespace Phoenix.Server.Network
 
 			// Load Database .
             Database.InitializeDatabse();
-			Logger.ConsoleLog("System", "Loading Rooms.");
+			Log.Information("Loading Rooms...");
 			this.rooms = Database.LoadRooms(Constants.GAME_MODE);
+			Log.Information("Rooms Loaded!");
 
 			// Initialize Server.
 			this.server = new Listener();
@@ -287,9 +294,8 @@ namespace Phoenix.Server.Network
 				var command = cmd.Command;
 				var clientWhoSendCommand = ToolFunctions.GetClientById(clientId);
 				var accountConnected = ToolFunctions.GetConnectedAccount(clientId);
-				
-				// Log Command.
-				Logger.ConsoleLog("Command", $"{command.CommandType} from {clientId}.");
+
+				Log.Information($"{command.CommandType} from {clientId}.");
 
 				// Check if player is connected.
 				if (clientWhoSendCommand == null && accountConnected == null && clientId != serverID.ToString())
@@ -430,7 +436,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as PlayerMoveRequest;
 
-							RoomFunctions.MovePlayer(true, -1, parsedCommand.Direction, accountConnected);
+							RoomFunctions.MovePlayer(true, -1, -1, parsedCommand.Direction, accountConnected);
 							
 							break;
 						}
@@ -446,12 +452,22 @@ namespace Phoenix.Server.Network
 						break;
 					#endregion
 
+					#region  -- Summon Player --
+					case CommandType.SummonPlayer:
+						{
+							var parsedCommand = command as SummonPlayerStaff;
+
+							RoomFunctions.MovePlayer(false, 1, -1, "", accountConnected, $"&tilda&mA bright white sliver opens and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m steps through.", parsedCommand.Name.ToLower(), $"&tilda&mA bright white sliver open and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m is pulled into it!");
+						}
+						break;
+					#endregion
+
 					#region -- Unknown Command --
 
 					case CommandType.Unknown:
 					default:
 						{
-							Logger.ConsoleLog("Command", $"Unknown command from {clientId}.");
+							Log.Error($"Unknown command from {clientId}.");
 							break;
 						}
                     #endregion

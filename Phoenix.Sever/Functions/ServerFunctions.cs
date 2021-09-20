@@ -10,13 +10,14 @@ using Phoenix.Server.Connections;
 using Phoenix.Server.Data;
 using static Phoenix.Server.Program;
 using System;
-using Phoenix.Server.Logs;
 using System.Collections.Generic;
+using Serilog;
 
 namespace Phoenix.Server.Functions
 {
     public class ServerFunctions
     {
+
         #region -- Authentication --
 
         public static Command Authenticate(Version version, string username, string password, ConnectedClient client, ConnectedAccount account)
@@ -65,7 +66,7 @@ namespace Phoenix.Server.Functions
 			if (Database.GetCharacterField(Constants.GAME_MODE, "Name", "Name", name) == null)
 			{
 				Database.InsertNewCharacter(Constants.GAME_MODE, name, gender, philosophy, image, account.Account.Id);
-				Logger.ConsoleLog("System", $"{client.Id} has created a new character named: {name}");
+				Log.Information($"{client.Id} has created a new character named: {name}");
 				return new NewCharacterResponse
 				{
 					Success = true
@@ -73,7 +74,7 @@ namespace Phoenix.Server.Functions
 			}
 			else
 			{
-				Logger.ConsoleLog("System", $"{client.Id} has failed to create new character named: {name}. Reason: Character Exists.");
+				Log.Information($"{client.Id} has failed to create new character named: {name}. Reason: Character Exists.");
 				return new NewCharacterResponse
 				{
 					Success = false,
@@ -97,7 +98,7 @@ namespace Phoenix.Server.Functions
 			if (Database.GetAccountField(Constants.GAME_MODE, "Name", "Name", username) == null)
 			{
 				Database.InsertNewAccount(Constants.GAME_MODE, username, password, email);
-				Logger.ConsoleLog("System", $"{client.Id} has created a new account named: {username}.");
+				Log.Information($"{client.Id} has created a new account named: {username}.");
 
 				game.connectedAccounts.Add(new ConnectedAccount
 				{
@@ -116,7 +117,7 @@ namespace Phoenix.Server.Functions
 			}
 			else
 			{
-				Logger.ConsoleLog("System", $"{client.Id} has failed to create a new account named: {username}. Reason: Account Exists.");
+				Log.Information($"{client.Id} has failed to create a new account named: {username}. Reason: Account Exists.");
 				return new NewAccountResponse
 				{
 					Success = false,

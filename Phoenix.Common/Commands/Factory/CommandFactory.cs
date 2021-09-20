@@ -2,6 +2,7 @@
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
 using Phoenix.Common.Commands.Server;
+using Phoenix.Common.Commands.Staff;
 using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data.Types;
 using System;
@@ -486,6 +487,7 @@ namespace Phoenix.Common.Commands.Factory
 						entity.Name = commandDataParts[1];
 						entity.Image = commandDataParts[2];
 						entity.Type = commandDataParts[3];
+						entity.Level = Int32.Parse(commandDataParts[4]);
 
 						return new RoomEntityUpdate
 						{
@@ -518,6 +520,20 @@ namespace Phoenix.Common.Commands.Factory
 						{
 							EntityName = commandDataParts[0],
 							CharacterName = commandDataParts[1]
+						};
+					}
+				#endregion
+
+				#region -- Summon Player --
+				case CommandType.SummonPlayer:
+					{
+						if (commandDataParts.Length < 2)
+							return new UnknownCommand();
+
+						return new SummonPlayerStaff
+						{
+							Type = Int32.Parse(commandDataParts[0]),
+							Name = commandDataParts[1]
 						};
 					}
 				#endregion

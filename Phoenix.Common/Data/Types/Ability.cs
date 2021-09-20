@@ -2,6 +2,8 @@
 {
     class Ability
     {
+
+        #region -- Database Fields --
         public int Id { get; set; }
         public string Name { get; set; }
         public string Philosophy { get; set; }
@@ -11,5 +13,7 @@
         public string Rank { get; set; }
         public int RankID { get; set; }
         public string Script { get; set; }
+        #endregion
+
     }
 }
