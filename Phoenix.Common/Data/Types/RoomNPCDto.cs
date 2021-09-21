@@ -2,7 +2,7 @@
 
 namespace Phoenix.Common.Data.Types
 {
-    public class RoomEntityDto
+    public class RoomNPCDto
     {
         public int RoomID { get; set; }
         public string RoomName { get; set; }
@@ -48,32 +48,32 @@ namespace Phoenix.Common.Data.Types
         public string RoomKeyFailUp { get; set; }
         public string RoomKeyFailDown { get; set; }
         public string RoomScript { get; set; }
-        public int? EntityID { get; set; }
-        public int? EntityType { get; set; }
-        public int? EntityRarity { get; set; }
-        public int? EntityRank { get; set; }
-        public string EntityName { get; set; }
-        public string EntityImage { get; set; }
-        public string EntityHisHer { get; set; }
-        public string EntityHeShe { get; set; }
-        public string EntityBName { get; set; }
-        public int? EntityLevel { get; set; }
-        public int? EntityGold { get; set; }
-        public int? EntityStrength { get; set; }
-        public int? EntityAgility { get; set; }
-        public int? EntityIntellect { get; set; }
-        public int? EntityStamina { get; set; }
-        public int? EntityDamage { get; set; }
-        public double? EntityCrit { get; set; }
-        public double? EntityHaste { get; set; }
-        public double? EntityMastery { get; set; }
-        public double? EntityVersatility { get; set; }
-        public int? EntityHealth { get; set; }
-        public int? EntityMana { get; set; }
-        public int? EntityTaunt { get; set; }
-        public int? EntitySpawnTime { get; set; }
-        public int? EntitySpawnDelay { get; set; }
-        public int? EntityVanishTime { get; set; }
-        public string EntityScript { get; set; }
+        public int? NPCID { get; set; }
+        public int? NPCType { get; set; }
+        public int? NPCRarity { get; set; }
+        public int? NPCRank { get; set; }
+        public string NPCName { get; set; }
+        public string NPCImage { get; set; }
+        public string NPCHisHer { get; set; }
+        public string NPCHeShe { get; set; }
+        public string NPCBName { get; set; }
+        public int? NPCLevel { get; set; }
+        public int? NPCGold { get; set; }
+        public int? NPCStrength { get; set; }
+        public int? NPCAgility { get; set; }
+        public int? NPCIntellect { get; set; }
+        public int? NPCStamina { get; set; }
+        public int? NPCDamage { get; set; }
+        public double? NPCCrit { get; set; }
+        public double? NPCHaste { get; set; }
+        public double? NPCMastery { get; set; }
+        public double? NPCVersatility { get; set; }
+        public int? NPCHealth { get; set; }
+        public int? NPCMana { get; set; }
+        public int? NPCTaunt { get; set; }
+        public int? NPCSpawnTime { get; set; }
+        public int? NPCSpawnDelay { get; set; }
+        public int? NPCVanishTime { get; set; }
+        public string NPCScript { get; set; }
     }
 }

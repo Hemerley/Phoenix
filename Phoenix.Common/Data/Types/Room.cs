@@ -56,9 +56,9 @@ namespace Phoenix.Common.Data.Types
 
         #region -- Server Fields --
 
-        public List<Entity> Entities { get; set; } = new();
+        public List<NPC> NPC { get; set; } = new();
         public List<Character> RoomCharacters { get; set; } = new();
-        public List<Entity> RoomEntities { get; set; } = new();
+        public List<NPC> RoomNPC { get; set; } = new();
         public List<Item> RoomItems { get; set; } = new();
         public bool CanGoNorth { get; set; }
         public bool CanGoSouth { get; set; }

@@ -192,13 +192,13 @@ namespace Phoenix.Server.Network
 										clientRoomResponseCommand.Room.RoomCharacters.Add(newCharacter);
 									}
 
-									foreach (Entity entity in game.rooms[account.Account.Character.RoomID].RoomEntities)
+									foreach (NPC NPC in game.rooms[account.Account.Character.RoomID].RoomNPC)
 									{
-										Entity newEntity = new();
-										newEntity.Name = entity.DisplayName;
-										newEntity.Image = entity.Image;
-										newEntity.Type = entity.Type;
-										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
+										NPC newNPC = new();
+										newNPC.Name = NPC.DisplayName;
+										newNPC.Image = NPC.Image;
+										newNPC.Type = NPC.Type;
+										clientRoomResponseCommand.Room.RoomNPC.Add(newNPC);
 									}
 
 									foreach (Item item in game.rooms[account.Account.Character.RoomID].RoomItems)
@@ -286,13 +286,13 @@ namespace Phoenix.Server.Network
 										clientRoomResponseCommand.Room.RoomCharacters.Add(newCharacter);
 									}
 
-									foreach (Entity entity in game.rooms[account.Account.Character.RoomID].RoomEntities)
+									foreach (NPC NPC in game.rooms[account.Account.Character.RoomID].RoomNPC)
 									{
-										Entity newEntity = new();
-										newEntity.Name = entity.DisplayName;
-										newEntity.Image = entity.Image;
-										newEntity.Type = entity.Type;
-										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
+										NPC newNPC = new();
+										newNPC.Name = NPC.DisplayName;
+										newNPC.Image = NPC.Image;
+										newNPC.Type = NPC.Type;
+										clientRoomResponseCommand.Room.RoomNPC.Add(newNPC);
 									}
 
 									foreach (Item item in game.rooms[account.Account.Character.RoomID].RoomItems)
@@ -380,13 +380,13 @@ namespace Phoenix.Server.Network
 										clientRoomResponseCommand.Room.RoomCharacters.Add(newCharacter);
 									}
 
-									foreach (Entity entity in game.rooms[account.Account.Character.RoomID].RoomEntities)
+									foreach (NPC NPC in game.rooms[account.Account.Character.RoomID].RoomNPC)
 									{
-										Entity newEntity = new();
-										newEntity.Name = entity.DisplayName;
-										newEntity.Image = entity.Image;
-										newEntity.Type = entity.Type;
-										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
+										NPC newNPC = new();
+										newNPC.Name = NPC.DisplayName;
+										newNPC.Image = NPC.Image;
+										newNPC.Type = NPC.Type;
+										clientRoomResponseCommand.Room.RoomNPC.Add(newNPC);
 									}
 
 									foreach (Item item in game.rooms[account.Account.Character.RoomID].RoomItems)
@@ -474,13 +474,13 @@ namespace Phoenix.Server.Network
 										clientRoomResponseCommand.Room.RoomCharacters.Add(newCharacter);
 									}
 
-									foreach (Entity entity in game.rooms[account.Account.Character.RoomID].RoomEntities)
+									foreach (NPC NPC in game.rooms[account.Account.Character.RoomID].RoomNPC)
 									{
-										Entity newEntity = new();
-										newEntity.Name = entity.DisplayName;
-										newEntity.Image = entity.Image;
-										newEntity.Type = entity.Type;
-										clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
+										NPC newNPC = new();
+										newNPC.Name = NPC.DisplayName;
+										newNPC.Image = NPC.Image;
+										newNPC.Type = NPC.Type;
+										clientRoomResponseCommand.Room.RoomNPC.Add(newNPC);
 									}
 
 									foreach (Item item in game.rooms[account.Account.Character.RoomID].RoomItems)
@@ -598,13 +598,13 @@ namespace Phoenix.Server.Network
 						clientRoomResponseCommand.Room.RoomCharacters.Add(newCharacter);
 					}
 
-					foreach (Entity entity in game.rooms[roomID].RoomEntities)
+					foreach (NPC NPC in game.rooms[roomID].RoomNPC)
 					{
-						Entity newEntity = new();
-						newEntity.Name = entity.DisplayName;
-						newEntity.Image = entity.Image;
-						newEntity.Type = entity.Type;
-						clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
+						NPC newNPC = new();
+						newNPC.Name = NPC.DisplayName;
+						newNPC.Image = NPC.Image;
+						newNPC.Type = NPC.Type;
+						clientRoomResponseCommand.Room.RoomNPC.Add(newNPC);
 					}
 
 					foreach (Item item in game.rooms[roomID].RoomItems)
@@ -874,13 +874,13 @@ namespace Phoenix.Server.Network
 						clientRoomResponseCommand.Room.RoomCharacters.Add(newCharacter);
 					}
 
-					foreach (Entity entity in room.RoomEntities)
+					foreach (NPC NPC in room.RoomNPC)
 					{
-						Entity newEntity = new();
-						newEntity.Name = entity.Name;
-						newEntity.Image = entity.Image;
-						newEntity.Type = entity.Type;
-						clientRoomResponseCommand.Room.RoomEntities.Add(newEntity);
+						NPC newNPC = new();
+						newNPC.Name = NPC.Name;
+						newNPC.Image = NPC.Image;
+						newNPC.Type = NPC.Type;
+						clientRoomResponseCommand.Room.RoomNPC.Add(newNPC);
 					}
 
 					foreach (Item item in room.RoomItems)
@@ -912,32 +912,32 @@ namespace Phoenix.Server.Network
 		#endregion
 
 		#region -- Timers --
-		public static void SpawnEntity(string characterName, string entityName)
+		public static void SpawnNPC(string characterName, string NPCName)
 		{
-			if (characterName == "\0" && entityName == "\0")
+			if (characterName == "\0" && NPCName == "\0")
 			{
 				foreach (Room room in game.rooms)
 				{
-					foreach (Entity entity in room.Entities)
+					foreach (NPC NPC in room.NPC)
 					{
-						if (!game.currentEntities.Contains(entity))
+						if (!game.currentNPC.Contains(NPC))
 						{
-							game.currentEntities.Add(entity);
-							room.RoomEntities.Add(entity);
+							game.currentNPC.Add(NPC);
+							room.RoomNPC.Add(NPC);
 							foreach (ConnectedAccount connectedAccount in game.connectedAccounts)
 							{
 								if (connectedAccount.Account.Character != null)
 								{
 									if (connectedAccount.Account.Character.RoomID == room.ID)
 									{
-										game.SendCommandToClient(connectedAccount.Client, new RoomEntityUpdate
+										game.SendCommandToClient(connectedAccount.Client, new RoomNPCUpdate
 										{
 											Mode = 1,
-											Entity = entity
+											NPC = NPC
 										});
 										game.SendCommandToClient(connectedAccount.Client, new MessageRoomServer
 										{
-											Message = $"~l{entity.Name} wanders into view..."
+											Message = $"~l{NPC.Name} wanders into view..."
 										});
 									}
 								}
@@ -945,7 +945,7 @@ namespace Phoenix.Server.Network
 						}
 					}
 				}
-				Functions.AddToQueue(false, DateTimeOffset.Now.ToUnixTimeSeconds() + 120, new SpawnEntityServer(), game.serverID.ToString());
+				Functions.AddToQueue(false, DateTimeOffset.Now.ToUnixTimeSeconds() + 120, new SpawnNPCServer(), game.serverID.ToString());
 			}
 
 		}

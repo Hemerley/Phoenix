@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Server
 {
-    public class SpawnEntityServer : Command
+    public class SpawnNPCServer : Command
     {
 		#region -- Properties --
 
-		public string EntityName { get; set; } = "\0";
+		public string NPCName { get; set; } = "\0";
 		public string CharacterName { get; set; } = "\0";
 
         #endregion
 
-        public SpawnEntityServer()
+        public SpawnNPCServer()
 		{
-			this.CommandType = CommandType.SpawnEntity;
+			this.CommandType = CommandType.SpawnNPC;
 		}
 
 		public override IEnumerable<IEnumerable<string>> GetCommandParts()
@@ -23,7 +23,7 @@ namespace Phoenix.Common.Commands.Server
 			{
 				new List<string>
 				{
-					this.EntityName,
+					this.NPCName,
 					this.CharacterName
 				}
 			};

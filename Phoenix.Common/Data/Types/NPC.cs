@@ -2,7 +2,7 @@
 
 namespace Phoenix.Common.Data.Types
 {
-    public class Entity
+    public class NPC
     {
 
         #region -- Database Fields --

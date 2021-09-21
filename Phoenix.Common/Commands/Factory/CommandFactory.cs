@@ -393,9 +393,9 @@ namespace Phoenix.Common.Commands.Factory
 									Type = c[3]
 								});
 							}
-							else if (c[0] == "Entity")
+							else if (c[0] == "NPC")
 							{
-								room.RoomEntities.Add(new Entity
+								room.RoomNPC.Add(new NPC
 								{
 									Name = c[1],
 									Image = c[2],
@@ -489,22 +489,22 @@ namespace Phoenix.Common.Commands.Factory
 					}
 				#endregion
 
-				#region -- Room Entity Update --
-				case CommandType.RoomEntityUpdate:
+				#region -- Room NPC Update --
+				case CommandType.RoomNPCUpdate:
 					{
 						if (commandParts.Length < 1)
 							return new UnknownCommand();
 
-						Entity entity = new();
+						NPC NPC = new();
 
-						entity.Name = commandDataParts[1];
-						entity.Image = commandDataParts[2];
-						entity.Type = commandDataParts[3];
+						NPC.Name = commandDataParts[1];
+						NPC.Image = commandDataParts[2];
+						NPC.Type = commandDataParts[3];
 
-						return new RoomEntityUpdate
+						return new RoomNPCUpdate
 						{
 							Mode = Int32.Parse(commandDataParts[0]),
-							Entity = entity
+							NPC = NPC
 						};
 					}
 				#endregion
@@ -522,15 +522,15 @@ namespace Phoenix.Common.Commands.Factory
 					}
 				#endregion
 
-				#region -- Spawn Entity --
-				case CommandType.SpawnEntity:
+				#region -- Spawn NPC --
+				case CommandType.SpawnNPC:
 					{
 						if (commandDataParts.Length < 2)
 							return new UnknownCommand();
 
-						return new SpawnEntityServer
+						return new SpawnNPCServer
 						{
-							EntityName = commandDataParts[0],
+							NPCName = commandDataParts[0],
 							CharacterName = commandDataParts[1]
 						};
 					}

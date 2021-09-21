@@ -40,14 +40,14 @@
 		MapRequest = 204,
 		MapResponse = 205,
 		RoomPlayerUpdate = 206,
-		RoomEntityUpdate = 207,
+		RoomNPCUpdate = 207,
 		PlayerMoveRequest = 208,
 
 		#endregion
 
 		#region -- Server (300-499) --
 
-		SpawnEntity = 300,
+		SpawnNPC = 300,
 
 		#endregion
 

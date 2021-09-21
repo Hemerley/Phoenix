@@ -94,9 +94,9 @@ namespace Phoenix.Server.Network
 		public readonly List<Character> connectedCharacters = new();
 
 		/// <summary>
-		/// Declaration of Current Entities Spawned.
+		/// Declaration of Current NPC Spawned.
 		/// </summary>
-		public readonly List<Entity> currentEntities = new();
+		public readonly List<NPC> currentNPC = new();
 
 		/// <summary>
 		/// Declaration of Current Rooms.
@@ -284,7 +284,7 @@ namespace Phoenix.Server.Network
 			// Start Listening.
 			this.server.Start(IPAddress.IPv6Any, Constants.LIVE_PORT);
 
-			Functions.AddToQueue(false, DateTimeOffset.Now.ToUnixTimeSeconds() + 30, new SpawnEntityServer(), serverID.ToString());
+			Functions.AddToQueue(false, DateTimeOffset.Now.ToUnixTimeSeconds() + 30, new SpawnNPCServer(), serverID.ToString());
 			#endregion
 
 			while (!this.stopGameWorkerThread)
@@ -457,7 +457,7 @@ namespace Phoenix.Server.Network
                     #region  -- Room Player Update --
                     #endregion
 
-                    #region  -- Room Entity Update --
+                    #region  -- Room NPC Update --
                     #endregion
 
                     #region  -- Player Move Request --
@@ -471,12 +471,12 @@ namespace Phoenix.Server.Network
 						}
 					#endregion
 
-					#region  -- Spawn Entity --
-					case CommandType.SpawnEntity:
+					#region  -- Spawn NPC --
+					case CommandType.SpawnNPC:
 						{
-							var parsedCommand = command as SpawnEntityServer;
+							var parsedCommand = command as SpawnNPCServer;
 
-							Functions.SpawnEntity(parsedCommand.CharacterName, parsedCommand.EntityName);
+							Functions.SpawnNPC(parsedCommand.CharacterName, parsedCommand.NPCName);
 						}
 						break;
 					#endregion

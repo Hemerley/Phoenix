@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Phoenix.Common.Data;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -58,7 +59,7 @@ namespace GameLauncher
         public MainWindow()
         {
             InitializeComponent();
-
+            GameName.Content = Constants.GAME_NAME;
             rootPath = Directory.GetCurrentDirectory();
             versionFile = Path.Combine(rootPath, "Version.txt");
             patchZip = Path.Combine(rootPath, "Phoenix-Patch.Zip");

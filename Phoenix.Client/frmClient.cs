@@ -100,9 +100,9 @@ namespace Phoenix.Client
                                     {
                                         UpdateRoom(1, character.Name, character.Image, character.Type);
                                     }
-                                    foreach (Entity entity in clientRooomResponseCommand.Room.RoomEntities)
+                                    foreach (NPC NPC in clientRooomResponseCommand.Room.RoomNPC)
                                     {
-                                        UpdateRoom(1, entity.Name, entity.Image, entity.Type);
+                                        UpdateRoom(1, NPC.Name, NPC.Image, NPC.Type);
                                     }
                                     foreach (Item item in clientRooomResponseCommand.Room.RoomItems)
                                     {
@@ -129,14 +129,14 @@ namespace Phoenix.Client
                         }
                     #endregion
 
-                    #region -- Room Entity Update --
-                    case CommandType.RoomEntityUpdate:
+                    #region -- Room NPC Update --
+                    case CommandType.RoomNPCUpdate:
                         {
-                            var roomEntityUpdateCommand = command as RoomEntityUpdate;
+                            var roomNPCUpdateCommand = command as RoomNPCUpdate;
 
                             this.Invoke((Action)delegate
                             {
-                                UpdateRoom(roomEntityUpdateCommand.Mode, roomEntityUpdateCommand.Entity.Name, roomEntityUpdateCommand.Entity.Image, roomEntityUpdateCommand.Entity.Type);
+                                UpdateRoom(roomNPCUpdateCommand.Mode, roomNPCUpdateCommand.NPC.Name, roomNPCUpdateCommand.NPC.Image, roomNPCUpdateCommand.NPC.Type);
                             });
 
                             continue;
@@ -467,24 +467,24 @@ namespace Phoenix.Client
         #endregion
 
         #region -- Client UI Updates --
-        private void UpdateRoom(int mode, string entityName = "", string entityImage = "", string entityType = "")
+        private void UpdateRoom(int mode, string NPCName = "", string NPCImage = "", string NPCType = "")
         {
             // Mode 1 = Add, Mode 2 = Remove
             if (mode == 1)
             {
-                if (!this.ilAvatar.Images.Keys.Contains(entityImage))
+                if (!this.ilAvatar.Images.Keys.Contains(NPCImage))
                 {
-                    this.ilAvatar.Images.Add(entityImage, Image.FromFile("./Images/Avatar/" + entityImage));
+                    this.ilAvatar.Images.Add(NPCImage, Image.FromFile("./Images/Avatar/" + NPCImage));
                 }
-                lstvRoom.Items.Add(entityName.FirstCharToUpper(), entityImage).SubItems.Add(entityType);
-                int entityIndex = lstvRoom.Items.Count - 1;
-                UpdateEntityColor(entityIndex, entityType);
+                lstvRoom.Items.Add(NPCName.FirstCharToUpper(), NPCImage).SubItems.Add(NPCType);
+                int NPCIndex = lstvRoom.Items.Count - 1;
+                UpdateNPCColor(NPCIndex, NPCType);
             }
             else if (mode == 2)
             {
                 foreach (ListViewItem item in lstvRoom.Items)
                 {
-                    if (item.Text == entityName)
+                    if (item.Text == NPCName)
                     {
                         lstvRoom.Items.Remove(item);
                     }
@@ -502,8 +502,8 @@ namespace Phoenix.Client
                     this.ilItems.Images.Add(itemImage, Image.FromFile("./Images/Items/" + itemImage));
                 }
                 lstvDrops.Items.Add(itemName, itemImage).SubItems.Add(itemType);
-                int entityIndex = lstvDrops.Items.Count - 1;
-                UpdateDropColor(entityIndex, itemType);
+                int NPCIndex = lstvDrops.Items.Count - 1;
+                UpdateDropColor(NPCIndex, itemType);
             }
             else if (mode == 2)
             {
@@ -525,16 +525,16 @@ namespace Phoenix.Client
                 if (imageShow)
                 {
                     lstvEquipped.Items.Add(itemName, itemImage).SubItems.Add(slotType);
-                    int entityIndex = lstvEquipped.Items.Count - 1;
-                    lstvEquipped.Items[entityIndex].SubItems.Add(itemType);
-                    UpdateEquipColor(entityIndex, itemType);
+                    int NPCIndex = lstvEquipped.Items.Count - 1;
+                    lstvEquipped.Items[NPCIndex].SubItems.Add(itemType);
+                    UpdateEquipColor(NPCIndex, itemType);
                 }
                 else
                 {
                     lstvEquipped.Items.Add(itemName).SubItems.Add(slotType);
-                    int entityIndex = lstvEquipped.Items.Count - 1;
-                    lstvEquipped.Items[entityIndex].SubItems.Add(itemType);
-                    UpdateEquipColor(entityIndex, itemType);
+                    int NPCIndex = lstvEquipped.Items.Count - 1;
+                    lstvEquipped.Items[NPCIndex].SubItems.Add(itemType);
+                    UpdateEquipColor(NPCIndex, itemType);
                 }
             }
             else if (mode == 2)
@@ -776,16 +776,16 @@ namespace Phoenix.Client
                 if (imageShow)
                 {
                     lstvInventory.Items.Add(itemName, itemImage).SubItems.Add(slotType);
-                    int entityIndex = lstvInventory.Items.Count - 1;
-                    lstvInventory.Items[entityIndex].SubItems.Add(itemType);
-                    UpdateInventoryColor(entityIndex, itemType);
+                    int NPCIndex = lstvInventory.Items.Count - 1;
+                    lstvInventory.Items[NPCIndex].SubItems.Add(itemType);
+                    UpdateInventoryColor(NPCIndex, itemType);
                 }
                 else
                 {
                     lstvInventory.Items.Add(itemName).SubItems.Add(slotType);
-                    int entityIndex = lstvInventory.Items.Count - 1;
-                    lstvInventory.Items[entityIndex].SubItems.Add(itemType);
-                    UpdateInventoryColor(entityIndex, itemType);
+                    int NPCIndex = lstvInventory.Items.Count - 1;
+                    lstvInventory.Items[NPCIndex].SubItems.Add(itemType);
+                    UpdateInventoryColor(NPCIndex, itemType);
                 }
             }
             else if (mode == 2)
@@ -802,132 +802,132 @@ namespace Phoenix.Client
         #endregion
 
         #region -- Client Color Formatting --
-        private void UpdateEquipColor(int entityIndex, string itemType)
+        private void UpdateEquipColor(int NPCIndex, string itemType)
         {
             switch (itemType)
             {
                 case "(Junk)":
-                    lstvEquipped.Items[entityIndex].SubItems[0].ForeColor = Color.Gray;
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
                     return;
                 case "(Common)":
-                    lstvEquipped.Items[entityIndex].SubItems[0].ForeColor = Color.OldLace;
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.OldLace;
                     return;
                 case "(Uncommon)":
-                    lstvEquipped.Items[entityIndex].SubItems[0].ForeColor = Color.Chartreuse;
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.Chartreuse;
                     return;
                 case "(Rare)":
-                    lstvEquipped.Items[entityIndex].SubItems[0].ForeColor = Color.CornflowerBlue;
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.CornflowerBlue;
                     return;
                 case "(Epic)":
-                    lstvEquipped.Items[entityIndex].SubItems[0].ForeColor = Color.Violet;
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.Violet;
                     return;
                 case "(Legendary)":
-                    lstvEquipped.Items[entityIndex].SubItems[0].ForeColor = Color.Orange;
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.Orange;
                     return;
                 case "(Ancient)":
-                    lstvEquipped.Items[entityIndex].SubItems[0].ForeColor = Color.Red;
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.Red;
                     return;
                 default:
-                    lstvEquipped.Items[entityIndex].SubItems[0].ForeColor = Color.Gray;
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
                     return;
             }
         }
 
-        private void UpdateDropColor(int entityIndex, string itemType)
+        private void UpdateDropColor(int NPCIndex, string itemType)
         {
             switch (itemType)
             {
                 case "(Junk)":
-                    lstvDrops.Items[entityIndex].SubItems[0].ForeColor = Color.Gray;
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
                     return;
                 case "(Common)":
-                    lstvDrops.Items[entityIndex].SubItems[0].ForeColor = Color.OldLace;
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.OldLace;
                     return;
                 case "(Uncommon)":
-                    lstvDrops.Items[entityIndex].SubItems[0].ForeColor = Color.Chartreuse;
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.Chartreuse;
                     return;
                 case "(Rare)":
-                    lstvDrops.Items[entityIndex].SubItems[0].ForeColor = Color.CornflowerBlue;
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.CornflowerBlue;
                     return;
                 case "(Epic)":
-                    lstvDrops.Items[entityIndex].SubItems[0].ForeColor = Color.Violet;
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.Violet;
                     return;
                 case "(Legendary)":
-                    lstvDrops.Items[entityIndex].SubItems[0].ForeColor = Color.Orange;
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.Orange;
                     return;
                 case "(Ancient)":
-                    lstvDrops.Items[entityIndex].SubItems[0].ForeColor = Color.Red;
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.Red;
                     return;
                 default:
-                    lstvDrops.Items[entityIndex].SubItems[0].ForeColor = Color.Gray;
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
                     return;
             }
         }
         
-        private void UpdateEntityColor(int entityIndex, string entityType)
+        private void UpdateNPCColor(int NPCIndex, string NPCType)
         {
-            switch (entityType)
+            switch (NPCType)
             {
                 case "(God)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.Orange;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.Orange;
                     return;
                 case "(Demi-God)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.Yellow;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.Yellow;
                     return;
                 case "(Immortal)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.Violet;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.Violet;
                     return;
                 case "(Hero)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.CornflowerBlue;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.CornflowerBlue;
                     return;
                 case "(Player)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.OldLace;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.OldLace;
                     return;
                 case "(Friendly)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.Chartreuse;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.Chartreuse;
                     return;
                 case "(Spawned)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.LightSteelBlue;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.LightSteelBlue;
                     return;
                 case "(Neutral)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.Bisque;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.Bisque;
                     return;
                 case "(Hostile)":
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.Red;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.Red;
                     return;
                 default:
-                    lstvRoom.Items[entityIndex].SubItems[0].ForeColor = Color.Gray;
+                    lstvRoom.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
                     return;
             }
         }
         
-        private void UpdateInventoryColor(int entityIndex, string itemType)
+        private void UpdateInventoryColor(int NPCIndex, string itemType)
         {
             switch (itemType)
             {
                 case "(Junk)":
-                    lstvInventory.Items[entityIndex].SubItems[0].ForeColor = Color.Gray;
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
                     return;
                 case "(Common)":
-                    lstvInventory.Items[entityIndex].SubItems[0].ForeColor = Color.OldLace;
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.OldLace;
                     return;
                 case "(Uncommon)":
-                    lstvInventory.Items[entityIndex].SubItems[0].ForeColor = Color.Chartreuse;
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.Chartreuse;
                     return;
                 case "(Rare)":
-                    lstvInventory.Items[entityIndex].SubItems[0].ForeColor = Color.CornflowerBlue;
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.CornflowerBlue;
                     return;
                 case "(Epic)":
-                    lstvInventory.Items[entityIndex].SubItems[0].ForeColor = Color.Violet;
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.Violet;
                     return;
                 case "(Legendary)":
-                    lstvInventory.Items[entityIndex].SubItems[0].ForeColor = Color.Orange;
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.Orange;
                     return;
                 case "(Ancient)":
-                    lstvInventory.Items[entityIndex].SubItems[0].ForeColor = Color.Red;
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.Red;
                     return;
                 default:
-                    lstvInventory.Items[entityIndex].SubItems[0].ForeColor = Color.Gray;
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
                     return;
             }
         }

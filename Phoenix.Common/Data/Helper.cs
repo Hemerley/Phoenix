@@ -183,7 +183,7 @@ namespace Phoenix.Common.Data
             };
         }
 
-        public static string ReturnEntityTypeText(int type)
+        public static string ReturnNPCTypeText(int type)
         {
             return type switch
             {

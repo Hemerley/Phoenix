@@ -101,13 +101,13 @@ namespace Phoenix.Server.Data
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
-            string query = $"SELECT r.ID as RoomID, r.Name as RoomName, r.Area as RoomArea, r.Status as RoomStatus, r.Type as RoomType, r.Description as RoomDescription, r.Exits as RoomExits, r.North as RoomNorth, r.South as RoomSouth, r.West as RoomWest, r.East as RoomEast, r.Up as RoomUp, r.Down as RoomDown, r.KeyModeNorth as RoomKeyModeNorth, r.KeyModeSouth as RoomKeyModeSouth, r.KeyModeWest as RoomKeyModeWest, r.KeyModeEast as RoomKeyModeEast, r.KeyModeUp as RoomKeyModeUp, r.KeyModeDown as RoomKeyModeDown, r.KeyNameNorth as RoomKeyNameNorth, r.KeyNameSouth as RoomKeyNameSouth, r.KeyNameWest as RoomKeyNameWest, r.KeyNameEast as RoomKeyNameEast, r.KeyNameUp as RoomKeyNameUp, r.KeyNameDown as RoomKeyNameDown, r.KeyTypeNorth as RoomKeyTypeNorth, r.KeyTypeSouth as RoomKeyTypeSouth, r.KeyTypeWest as RoomKeyTypeWest, r.KeyTypeEast as RoomKeyTypeEast, r.KeyTypeUp as RoomKeyTypeUp, r.KeyTypeDown as RoomKeyTypeDown, r.KeyPassNorth as RoomKeyPassNorth, r.KeyPassSouth as RoomKeyPassSouth, r.KeyPassWest as RoomKeyPassWest, r.KeyPassEast as RoomKeyPassEast, r.KeyPassUp as RoomKeyPassUp, r.KeyPassDown as RoomKeyPassDown, r.KeyFailNorth as RoomKeyFailNorth, r.KeyFailSouth as RoomKeyFailSouth, r.KeyFailWest as RoomKeyFailWest, r.KeyFailEast as RoomKeyFailEast, r.KeyFailUp as RoomKeyFailUp, r.KeyFailDown as RoomKeyFailDown, r.Script as RoomScript, e.ID as EntityID, e.Type as EntityType, e.Rarity as EntityRarity, e.Name as EntityName, e.Image as EntityImage, e.HisHer as EntityHisHer, e.HeShe as EntityHeShe, e.BName as EntityBName, e.Level as EntityLevel, e.Gold as EntityGold, e.Strength as EntityStrength, e.Agility as EntityAgility, e.Intellect as EntityIntellect, e.Stamina as EntityStamina, e.Damage as EntityDamage, e.Haste as EntityHaste, e.Crit as EntityCrit, e.Mastery as EntityMastery, e.Versatility as EntityVersatility, e.Health as EntityHealth, e.Mana as EntityMana, e.Taunt as EntityTaunt, e.SpawnTime as EntitySpawnTime, e.SpawnDelay as EntitySpawnDelay, e.VanishTime as EntityVanishTime, e.Script as EntityScript FROM Rooms r LEFT OUTER JOIN RoomEntities re ON re.RoomID = r.ID LEFT OUTER JOIN Entities e ON e.ID = re.EntityID; ";
+            string query = $"SELECT r.ID as RoomID, r.Name as RoomName, r.Area as RoomArea, r.Status as RoomStatus, r.Type as RoomType, r.Description as RoomDescription, r.Exits as RoomExits, r.North as RoomNorth, r.South as RoomSouth, r.West as RoomWest, r.East as RoomEast, r.Up as RoomUp, r.Down as RoomDown, r.KeyModeNorth as RoomKeyModeNorth, r.KeyModeSouth as RoomKeyModeSouth, r.KeyModeWest as RoomKeyModeWest, r.KeyModeEast as RoomKeyModeEast, r.KeyModeUp as RoomKeyModeUp, r.KeyModeDown as RoomKeyModeDown, r.KeyNameNorth as RoomKeyNameNorth, r.KeyNameSouth as RoomKeyNameSouth, r.KeyNameWest as RoomKeyNameWest, r.KeyNameEast as RoomKeyNameEast, r.KeyNameUp as RoomKeyNameUp, r.KeyNameDown as RoomKeyNameDown, r.KeyTypeNorth as RoomKeyTypeNorth, r.KeyTypeSouth as RoomKeyTypeSouth, r.KeyTypeWest as RoomKeyTypeWest, r.KeyTypeEast as RoomKeyTypeEast, r.KeyTypeUp as RoomKeyTypeUp, r.KeyTypeDown as RoomKeyTypeDown, r.KeyPassNorth as RoomKeyPassNorth, r.KeyPassSouth as RoomKeyPassSouth, r.KeyPassWest as RoomKeyPassWest, r.KeyPassEast as RoomKeyPassEast, r.KeyPassUp as RoomKeyPassUp, r.KeyPassDown as RoomKeyPassDown, r.KeyFailNorth as RoomKeyFailNorth, r.KeyFailSouth as RoomKeyFailSouth, r.KeyFailWest as RoomKeyFailWest, r.KeyFailEast as RoomKeyFailEast, r.KeyFailUp as RoomKeyFailUp, r.KeyFailDown as RoomKeyFailDown, r.Script as RoomScript, e.ID as NPCID, e.Type as NPCType, e.Rarity as NPCRarity, e.Name as NPCName, e.Image as NPCImage, e.HisHer as NPCHisHer, e.HeShe as NPCHeShe, e.BName as NPCBName, e.Level as NPCLevel, e.Gold as NPCGold, e.Strength as NPCStrength, e.Agility as NPCAgility, e.Intellect as NPCIntellect, e.Stamina as NPCStamina, e.Damage as NPCDamage, e.Haste as NPCHaste, e.Crit as NPCCrit, e.Mastery as NPCMastery, e.Versatility as NPCVersatility, e.Health as NPCHealth, e.Mana as NPCMana, e.Taunt as NPCTaunt, e.SpawnTime as NPCSpawnTime, e.SpawnDelay as NPCSpawnDelay, e.VanishTime as NPCVanishTime, e.Script as NPCScript FROM Rooms r LEFT OUTER JOIN RoomNPC re ON re.RoomID = r.ID LEFT OUTER JOIN NPC e ON e.ID = re.NPCID; ";
             using var command = new SQLiteCommand(query, connection);
             using SQLiteDataReader reader = command.ExecuteReader();
-            List<RoomEntityDto> rawData = new();
+            List<RoomNPCDto> rawData = new();
             while (reader.Read())
             {
-                var roomEntityDto = new RoomEntityDto
+                var roomNPCDto = new RoomNPCDto
                 {
                     RoomID = Int32.Parse(reader["RoomID"]?.ToString()),
                     RoomName = reader["RoomName"].ToString(),
@@ -153,34 +153,34 @@ namespace Phoenix.Server.Data
                     RoomKeyFailUp = reader["RoomKeyFailUp"].ToString(),
                     RoomKeyFailDown = reader["RoomKeyFailDown"].ToString(),
                     RoomScript = reader["RoomScript"].ToString(),
-                    EntityID = int.TryParse(reader["EntityID"]?.ToString(), out int entityID) ? entityID : (int?)null,
-                    EntityType = int.TryParse(reader["EntityType"]?.ToString(), out int entityType) ? entityType : (int?)null,
-                    EntityRarity = int.TryParse(reader["EntityRarity"]?.ToString(), out int entityRarity) ? entityRarity : (int?)null,
-                    EntityName = reader["EntityName"].ToString(),
-                    EntityImage = reader["EntityImage"].ToString(),
-                    EntityHisHer = reader["EntityHisHer"].ToString(),
-                    EntityHeShe = reader["EntityHeShe"].ToString(),
-                    EntityBName = reader["EntityBName"].ToString(),
-                    EntityLevel = int.TryParse(reader["EntityLevel"]?.ToString(), out int entityLevel) ? entityLevel : (int?)null,
-                    EntityGold = int.TryParse(reader["EntityGold"]?.ToString(), out int entityGold) ? entityGold : (int?)null,
-                    EntityStrength = int.TryParse(reader["EntityStrength"]?.ToString(), out int entityStrength) ? entityStrength : (int?)null,
-                    EntityAgility = int.TryParse(reader["EntityAgility"]?.ToString(), out int entityAgility) ? entityAgility : (int?)null,
-                    EntityIntellect = int.TryParse(reader["EntityIntellect"]?.ToString(), out int entityIntellect) ? entityIntellect : (int?)null,
-                    EntityStamina = int.TryParse(reader["EntityStamina"]?.ToString(), out int entityStamina) ? entityStamina : (int?)null,
-                    EntityDamage = int.TryParse(reader["EntityDamage"]?.ToString(), out int entityDamage) ? entityDamage : (int?)null,
-                    EntityHaste = double.TryParse(reader["EntityDamage"]?.ToString(), out double entityHaste) ? entityHaste : (double?)null,
-                    EntityCrit = double.TryParse(reader["EntityDamage"]?.ToString(), out double entityCrit) ? entityCrit : (double?)null,
-                    EntityMastery = double.TryParse(reader["EntityDamage"]?.ToString(), out double entityMastery) ? entityMastery : (double?)null,
-                    EntityVersatility = double.TryParse(reader["EntityDamage"]?.ToString(), out double entityVersatility) ? entityVersatility : (double?)null,
-                    EntityHealth = int.TryParse(reader["EntityHealth"]?.ToString(), out int entityHealth) ? entityHealth : (int?)null,
-                    EntityMana = int.TryParse(reader["EntityMana"]?.ToString(), out int entityMana) ? entityMana : (int?)null,
-                    EntityTaunt = int.TryParse(reader["EntityTaunt"]?.ToString(), out int entityTaunt) ? entityTaunt : (int?)null,
-                    EntitySpawnTime = int.TryParse(reader["EntitySpawnTime"]?.ToString(), out int entitySpawnTime) ? entitySpawnTime : (int?)null,
-                    EntitySpawnDelay = int.TryParse(reader["EntitySpawnDelay"]?.ToString(), out int entitySpawnDelay) ? entitySpawnDelay : (int?)null,
-                    EntityVanishTime = int.TryParse(reader["EntityVanishTime"]?.ToString(), out int entityVanishTime) ? entityVanishTime : (int?)null,
-                    EntityScript = reader["EntityScript"].ToString()
+                    NPCID = int.TryParse(reader["NPCID"]?.ToString(), out int NPCID) ? NPCID : (int?)null,
+                    NPCType = int.TryParse(reader["NPCType"]?.ToString(), out int NPCType) ? NPCType : (int?)null,
+                    NPCRarity = int.TryParse(reader["NPCRarity"]?.ToString(), out int NPCRarity) ? NPCRarity : (int?)null,
+                    NPCName = reader["NPCName"].ToString(),
+                    NPCImage = reader["NPCImage"].ToString(),
+                    NPCHisHer = reader["NPCHisHer"].ToString(),
+                    NPCHeShe = reader["NPCHeShe"].ToString(),
+                    NPCBName = reader["NPCBName"].ToString(),
+                    NPCLevel = int.TryParse(reader["NPCLevel"]?.ToString(), out int NPCLevel) ? NPCLevel : (int?)null,
+                    NPCGold = int.TryParse(reader["NPCGold"]?.ToString(), out int NPCGold) ? NPCGold : (int?)null,
+                    NPCStrength = int.TryParse(reader["NPCStrength"]?.ToString(), out int NPCStrength) ? NPCStrength : (int?)null,
+                    NPCAgility = int.TryParse(reader["NPCAgility"]?.ToString(), out int NPCAgility) ? NPCAgility : (int?)null,
+                    NPCIntellect = int.TryParse(reader["NPCIntellect"]?.ToString(), out int NPCIntellect) ? NPCIntellect : (int?)null,
+                    NPCStamina = int.TryParse(reader["NPCStamina"]?.ToString(), out int NPCStamina) ? NPCStamina : (int?)null,
+                    NPCDamage = int.TryParse(reader["NPCDamage"]?.ToString(), out int NPCDamage) ? NPCDamage : (int?)null,
+                    NPCHaste = double.TryParse(reader["NPCDamage"]?.ToString(), out double NPCHaste) ? NPCHaste : (double?)null,
+                    NPCCrit = double.TryParse(reader["NPCDamage"]?.ToString(), out double NPCCrit) ? NPCCrit : (double?)null,
+                    NPCMastery = double.TryParse(reader["NPCDamage"]?.ToString(), out double NPCMastery) ? NPCMastery : (double?)null,
+                    NPCVersatility = double.TryParse(reader["NPCDamage"]?.ToString(), out double NPCVersatility) ? NPCVersatility : (double?)null,
+                    NPCHealth = int.TryParse(reader["NPCHealth"]?.ToString(), out int NPCHealth) ? NPCHealth : (int?)null,
+                    NPCMana = int.TryParse(reader["NPCMana"]?.ToString(), out int NPCMana) ? NPCMana : (int?)null,
+                    NPCTaunt = int.TryParse(reader["NPCTaunt"]?.ToString(), out int NPCTaunt) ? NPCTaunt : (int?)null,
+                    NPCSpawnTime = int.TryParse(reader["NPCSpawnTime"]?.ToString(), out int NPCSpawnTime) ? NPCSpawnTime : (int?)null,
+                    NPCSpawnDelay = int.TryParse(reader["NPCSpawnDelay"]?.ToString(), out int NPCSpawnDelay) ? NPCSpawnDelay : (int?)null,
+                    NPCVanishTime = int.TryParse(reader["NPCVanishTime"]?.ToString(), out int NPCVanishTime) ? NPCVanishTime : (int?)null,
+                    NPCScript = reader["NPCScript"].ToString()
                 };
-                rawData.Add(roomEntityDto);
+                rawData.Add(roomNPCDto);
             }
 
             return (from data in rawData
@@ -238,38 +238,38 @@ namespace Phoenix.Server.Data
                         CanGoUp = g.Key.RoomUp is not -1,
                         CanGoDown = g.Key.RoomDown is not -1,
                         InstanceID = Guid.NewGuid(),
-                        Entities = g.Where(e => e.EntityID.HasValue).ToList().Select(e => new Entity
+                        NPC = g.Where(e => e.NPCID.HasValue).ToList().Select(e => new NPC
                         {
-                            ID = e.EntityID.Value,
-                            Type = Helper.ReturnEntityTypeText(e.EntityType.Value),
-                            TypeID = e.EntityType.Value,
-                            Rarity = Helper.ReturnRarityText(e.EntityRarity.Value),
-                            RarityID = e.EntityRarity.Value,
-                            Name = e.EntityName,
-                            Image = e.EntityImage,
-                            HisHer = e.EntityHisHer,
-                            HeShe = e.EntityHeShe,
-                            BName = e.EntityBName,
-                            Level = e.EntityLevel.Value,
-                            Gold = e.EntityGold.Value,
-                            Strength = e.EntityStrength.Value,
-                            Agility = e.EntityAgility.Value,
-                            Intellect = e.EntityIntellect.Value,
-                            Stamina = e.EntityStamina.Value,
-                            Damage = e.EntityDamage.Value,
-                            Haste = e.EntityHaste.Value,
-                            Crit = e.EntityCrit.Value,
-                            Mastery = e.EntityMastery.Value,
-                            Versatility = e.EntityVersatility.Value,
-                            Health = e.EntityHealth.Value,
-                            Mana = e.EntityMana.Value,
-                            Taunt = e.EntityTaunt.Value,
-                            SpawnTime = e.EntitySpawnTime.Value,
-                            SpawnDelay = e.EntitySpawnDelay.Value,
-                            VanishTime = e.EntityVanishTime.Value,
-                            Script = e.EntityScript,
+                            ID = e.NPCID.Value,
+                            Type = Helper.ReturnNPCTypeText(e.NPCType.Value),
+                            TypeID = e.NPCType.Value,
+                            Rarity = Helper.ReturnRarityText(e.NPCRarity.Value),
+                            RarityID = e.NPCRarity.Value,
+                            Name = e.NPCName,
+                            Image = e.NPCImage,
+                            HisHer = e.NPCHisHer,
+                            HeShe = e.NPCHeShe,
+                            BName = e.NPCBName,
+                            Level = e.NPCLevel.Value,
+                            Gold = e.NPCGold.Value,
+                            Strength = e.NPCStrength.Value,
+                            Agility = e.NPCAgility.Value,
+                            Intellect = e.NPCIntellect.Value,
+                            Stamina = e.NPCStamina.Value,
+                            Damage = e.NPCDamage.Value,
+                            Haste = e.NPCHaste.Value,
+                            Crit = e.NPCCrit.Value,
+                            Mastery = e.NPCMastery.Value,
+                            Versatility = e.NPCVersatility.Value,
+                            Health = e.NPCHealth.Value,
+                            Mana = e.NPCMana.Value,
+                            Taunt = e.NPCTaunt.Value,
+                            SpawnTime = e.NPCSpawnTime.Value,
+                            SpawnDelay = e.NPCSpawnDelay.Value,
+                            VanishTime = e.NPCVanishTime.Value,
+                            Script = e.NPCScript,
                             InstanceID = Guid.NewGuid(),
-                            DisplayName = e.EntityName + " (Level: " + e.EntityLevel + ")"
+                            DisplayName = e.NPCName + " (Level: " + e.NPCLevel + ")"
                         }).ToList()
                     }).ToList();
         }

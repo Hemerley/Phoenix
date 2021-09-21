@@ -1,4 +1,4 @@
-CREATE TABLE EntityTypes (
+CREATE TABLE NPCTypes (
   ID    integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   Name  text
 );

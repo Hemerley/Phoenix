@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Phoenix.Common\Phoenix.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="images\Icon.ico" />
     <Resource Include="images\LauncherBackground.png" />
   </ItemGroup>

@@ -1,0 +1,32 @@
+2021-09-21 14:26:07.640 -05:00 [INF] Loading Rooms...
+2021-09-21 14:27:05.298 -05:00 [INF] Loading Rooms...
+2021-09-21 14:27:37.739 -05:00 [INF] Loading Rooms...
+2021-09-21 14:27:38.066 -05:00 [INF] Rooms Loaded!
+2021-09-21 14:27:38.067 -05:00 [INF] Initializing Script Globals...
+2021-09-21 14:27:38.298 -05:00 [INF] Script Globals Initialized!
+2021-09-21 14:27:38.355 -05:00 [INF] Server Started!
+2021-09-21 14:28:25.011 -05:00 [INF] Loading Rooms...
+2021-09-21 14:28:25.320 -05:00 [INF] Rooms Loaded!
+2021-09-21 14:28:25.321 -05:00 [INF] Initializing Script Globals...
+2021-09-21 14:28:25.550 -05:00 [INF] Script Globals Initialized!
+2021-09-21 14:28:25.601 -05:00 [INF] Server Started!
+2021-09-21 14:28:39.301 -05:00 [INF] e90786fa-a0f1-4c72-8946-e796692741f0 has connected.
+2021-09-21 14:28:39.365 -05:00 [INF] AuthenticateResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:39.415 -05:00 [INF] CharacterListResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:40.356 -05:00 [INF] CharacterLoginResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:40.393 -05:00 [INF] ClientConnectResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:40.566 -05:00 [INF] ClientRoomResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:40.571 -05:00 [INF] MapResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:55.011 -05:00 [INF] RoomNPCUpdate sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:55.015 -05:00 [INF] MessageRoom sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:55.017 -05:00 [INF] RoomNPCUpdate sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:28:55.019 -05:00 [INF] MessageRoom sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:02.929 -05:00 [INF] MessageRoom sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:02.932 -05:00 [INF] RoomPlayerUpdate sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:02.935 -05:00 [INF] ClientRoomResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:02.937 -05:00 [INF] MapResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:04.097 -05:00 [INF] MessageRoom sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:04.100 -05:00 [INF] RoomPlayerUpdate sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:04.102 -05:00 [INF] ClientRoomResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:04.104 -05:00 [INF] MapResponse sent to e90786fa-a0f1-4c72-8946-e796692741f0
+2021-09-21 14:31:17.184 -05:00 [INF] e90786fa-a0f1-4c72-8946-e796692741f0 has disconnected.

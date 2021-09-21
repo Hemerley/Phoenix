@@ -47,14 +47,14 @@ namespace Phoenix.Common.Commands.Response
 				});
             }
 
-			foreach (Entity entity in Room.RoomEntities)
+			foreach (NPC NPC in Room.RoomNPC)
             {
 				response.Add(new List<string>
 				{
-					"Entity",
-					entity.Name,
-					entity.Image,
-					entity.Type
+					"NPC",
+					NPC.Name,
+					NPC.Image,
+					NPC.Type
 				});
             }
 

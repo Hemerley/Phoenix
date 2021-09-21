@@ -1,4 +1,4 @@
-CREATE TABLE Entities (
+CREATE TABLE NPC (
   ID           integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   Type         integer,
   Rarity       integer,
@@ -28,7 +28,7 @@ CREATE TABLE Entities (
   /* Foreign keys */
   CONSTRAINT FK_Type
     FOREIGN KEY (Type)
-    REFERENCES EntityTypes(ID), 
+    REFERENCES NPCTypes(ID), 
   CONSTRAINT FK_Rarity
     FOREIGN KEY (Rarity)
     REFERENCES Rarity(ID)

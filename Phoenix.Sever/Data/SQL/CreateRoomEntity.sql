@@ -1,11 +1,11 @@
-CREATE TABLE RoomEntities (
+CREATE TABLE RoomNPC (
   ID        integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  EntityId  integer,
+  NPCId  integer,
   RoomId    integer,
   /* Foreign keys */
-  CONSTRAINT FK_EntityId
-    FOREIGN KEY (EntityId)
-    REFERENCES Entities(ID), 
+  CONSTRAINT FK_NPCId
+    FOREIGN KEY (NPCId)
+    REFERENCES NPC(ID), 
   CONSTRAINT FK_RoomId
     FOREIGN KEY (RoomId)
     REFERENCES Rooms(ID)

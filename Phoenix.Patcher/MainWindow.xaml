@@ -16,6 +16,6 @@
         <TextBlock Name="VersionText" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="10" Foreground="White" Margin="0,0,88,79" Width="37"/>
         <Button Name="PlayButton" Content="Checking For Updates" Click="PlayButton_Click" Height="45" FontSize="28" FontWeight="Bold" Foreground="#DDFFFFFF" Margin="0,371,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" MinWidth="150" Background="#FFFF9700" Padding="10,1,10,1"/>
         <ProgressBar Name="DownloadBar" Visibility="Visible" HorizontalAlignment="Center" Height="21" Margin="0,345,0,0" VerticalAlignment="Top" Width="309"/>
-        <Label x:Name="label" Content="Phoenix Online" HorizontalAlignment="Center" Margin="0,142,0,0" VerticalAlignment="Top" FontFamily="Viner Hand ITC" FontSize="48" FontWeight="Bold" Foreground="#FFB02828"/>
+        <Label x:Name="GameName" HorizontalAlignment="Center" Margin="0,142,0,0" VerticalAlignment="Top" FontFamily="Viner Hand ITC" FontSize="48" FontWeight="Bold" Foreground="#FFB02828"/>
     </Grid>
 </Window>

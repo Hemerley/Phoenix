@@ -1,4 +1,4 @@
 
-local roomID = Character.Get.Room(entityID, isPlayer);
+local roomID = Entity.Get.Room(entityID, isPlayer);
 Message.Room(roomID, "~cHello Room!");
 return true;
