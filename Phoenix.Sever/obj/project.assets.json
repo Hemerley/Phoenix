@@ -47,6 +47,18 @@
           "lib/netstandard1.6/MoonSharp.Interpreter.dll": {}
         }
       },
+      "MoonSharp.Debugger.VsCode/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "MoonSharp": "[2.0.0]"
+        },
+        "compile": {
+          "lib/netstandard1.6/MoonSharp.VsCodeDebugger.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/MoonSharp.VsCodeDebugger.dll": {}
+        }
+      },
       "Serilog/2.10.0": {
         "type": "package",
         "compile": {
@@ -244,6 +256,9 @@
       "Phoenix.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "MoonSharp": "2.0.0"
+        },
         "compile": {
           "bin/placeholder/Phoenix.Common.dll": {}
         },
@@ -344,6 +359,27 @@
         "lib/portable-net4+sl5+wp8+win8/MoonSharp.Interpreter.xml",
         "moonsharp.2.0.0.nupkg.sha512",
         "moonsharp.nuspec"
+      ]
+    },
+    "MoonSharp.Debugger.VsCode/2.0.0": {
+      "sha512": "ALLTmbkzKidTuJhHO2G9BF0N/S2LGYuvUX1U+PWDxUFWHo/0noBfXfR9gWzjH8J+2Wg5mqeC7oKTkgOTx2e1GQ==",
+      "type": "package",
+      "path": "moonsharp.debugger.vscode/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35-client/MoonSharp.VsCodeDebugger.dll",
+        "lib/net35-client/MoonSharp.VsCodeDebugger.pdb",
+        "lib/net40-client/MoonSharp.VsCodeDebugger.dll",
+        "lib/net40-client/MoonSharp.VsCodeDebugger.pdb",
+        "lib/netcore/MoonSharp.VsCodeDebugger.deps.json",
+        "lib/netcore/MoonSharp.VsCodeDebugger.dll",
+        "lib/netcore/MoonSharp.VsCodeDebugger.pdb",
+        "lib/netstandard1.6/MoonSharp.VsCodeDebugger.deps.json",
+        "lib/netstandard1.6/MoonSharp.VsCodeDebugger.dll",
+        "lib/netstandard1.6/MoonSharp.VsCodeDebugger.pdb",
+        "moonsharp.debugger.vscode.2.0.0.nupkg.sha512",
+        "moonsharp.debugger.vscode.nuspec"
       ]
     },
     "Serilog/2.10.0": {
@@ -740,6 +776,7 @@
     "net5.0": [
       "Dapper >= 2.0.90",
       "MoonSharp >= 2.0.0",
+      "MoonSharp.Debugger.VsCode >= 2.0.0",
       "Phoenix.Common >= 1.0.0",
       "Serilog >= 2.10.0",
       "Serilog.Sinks.Console >= 4.0.0",
@@ -798,6 +835,10 @@
             "version": "[2.0.90, )"
           },
           "MoonSharp": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
+          "MoonSharp.Debugger.VsCode": {
             "target": "Package",
             "version": "[2.0.0, )"
           },

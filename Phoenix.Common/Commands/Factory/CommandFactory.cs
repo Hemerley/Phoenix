@@ -310,6 +310,19 @@ namespace Phoenix.Common.Commands.Factory
 				#region -- Message Broadcast --
 				#endregion
 
+				#region -- Slash Command --
+				case CommandType.SlashCommand:
+					{
+						if (commandDataParts.Length < 1)
+							return new UnknownCommand();
+
+						return new SlashCommandRequest
+						{
+							Message = commandDataParts[0],
+						};
+					}
+				#endregion
+
 				#region -- Client Connect --
 				case CommandType.ClientConnect:
 					{

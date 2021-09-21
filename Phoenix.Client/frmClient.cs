@@ -10,6 +10,7 @@ using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Phoenix.Client
@@ -84,6 +85,15 @@ namespace Phoenix.Client
                                 this.Invoke((Action)delegate
                                 {
                                     this.lstvRoom.Items.Clear();
+                                    
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "south", "~cSouth~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "north", "~cNorth~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "west", "~cWest~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "east", "~cEast~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "up", "~cUp~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "down", "~cDown~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "all", "~cAll~w", RegexOptions.IgnoreCase);
+                                    
                                     var message = $"~g<~w{clientRooomResponseCommand.Room.Name}~g>~w {clientRooomResponseCommand.Room.Description} {clientRooomResponseCommand.Room.Exits}\n";
                                     UpdateChat(message);
                                     foreach (Character character in clientRooomResponseCommand.Room.RoomCharacters)
@@ -1024,7 +1034,10 @@ namespace Phoenix.Client
                             return;
                         }
                     default:
-                        UpdateChat("~cCommand does not exist!\n");
+                        SendCommand(new SlashCommandRequest
+                        {
+                            Message = message
+                        });
                         return;
                 }
             }

@@ -1,4 +1,5 @@
-﻿using Phoenix.Common.Commands.Factory;
+﻿using MoonSharp.Interpreter;
+using Phoenix.Common.Commands.Factory;
 using Phoenix.Common.Commands.Failure;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Response;
@@ -9,13 +10,14 @@ using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using Phoenix.Server.Connections;
 using Phoenix.Server.Data;
-using Phoenix.Server.Functions;
+using Phoenix.Server.Scripts;
 using Serilog;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Threading;
 
 namespace Phoenix.Server.Network
@@ -72,6 +74,16 @@ namespace Phoenix.Server.Network
 		public readonly List<ConnectedAccount> connectedAccounts = new();
 
 		/// <summary>
+		/// Declaration of Scripts in ./Scripts/
+		/// </summary>
+		public readonly List<string> scripts = new();
+
+		/// <summary>
+		/// Script Handlers for Game Engine.
+		/// </summary>
+		public Script script = new();
+
+		/// <summary>
 		/// Declaration of Loaded Rooms.
 		/// </summary>
 		public List<Room> rooms = new();
@@ -90,6 +102,8 @@ namespace Phoenix.Server.Network
 		/// Declaration of Current Rooms.
 		/// </summary>
 		public readonly List<Room> currentRooms = new();
+
+		public bool showCommands = false;
 
 		/// <summary>
 		/// Declaration of Total Connections This Reboot.
@@ -142,7 +156,7 @@ namespace Phoenix.Server.Network
 			{
 				var command = CommandFactory.ParseCommand(c);
 				double currentTimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
-				ToolFunctions.AddToQueue(false, currentTimeStamp, command, e.ConnectedClient.Id);
+				Functions.AddToQueue(false, currentTimeStamp, command, e.ConnectedClient.Id);
 			}
 		}
 
@@ -251,6 +265,11 @@ namespace Phoenix.Server.Network
 			Log.Information("Loading Rooms...");
 			this.rooms = Database.LoadRooms(Constants.GAME_MODE);
 			Log.Information("Rooms Loaded!");
+			Log.Information("Initializing Script Globals...");
+			foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+				UserData.RegisterAssembly(assembly);
+			ScriptEngine.Initialize();
+			Log.Information("Script Globals Initialized!");
 
 			// Initialize Server.
 			this.server = new Listener();
@@ -265,7 +284,7 @@ namespace Phoenix.Server.Network
 			// Start Listening.
 			this.server.Start(IPAddress.IPv6Any, Constants.LIVE_PORT);
 
-			ToolFunctions.AddToQueue(false, DateTimeOffset.Now.ToUnixTimeSeconds() + 30, new SpawnEntityServer(), serverID.ToString());
+			Functions.AddToQueue(false, DateTimeOffset.Now.ToUnixTimeSeconds() + 30, new SpawnEntityServer(), serverID.ToString());
 			#endregion
 
 			while (!this.stopGameWorkerThread)
@@ -277,9 +296,9 @@ namespace Phoenix.Server.Network
 				var currentTimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
 
 				// Check Queue Stack & Remove Items with TimeStamp. Hands off to Queue.
-				ToolFunctions.AddToQueue(true, currentTimeStamp - 1);
+				Functions.AddToQueue(true, currentTimeStamp - 1);
 				actionQueue.Remove(currentTimeStamp - 1);
-				ToolFunctions.AddToQueue(true, currentTimeStamp);
+				Functions.AddToQueue(true, currentTimeStamp);
 				actionQueue.Remove(currentTimeStamp);
 				
 				// Check Queue for items.
@@ -292,10 +311,11 @@ namespace Phoenix.Server.Network
 				// Handle Queue items.
 				var clientId = cmd.Id;
 				var command = cmd.Command;
-				var clientWhoSendCommand = ToolFunctions.GetClientById(clientId);
-				var accountConnected = ToolFunctions.GetConnectedAccount(clientId);
+				var clientWhoSendCommand = Functions.GetClientById(clientId);
+				var accountConnected = Functions.GetConnectedAccount(clientId);
 
-				Log.Information($"{command.CommandType} from {clientId}.");
+				if (showCommands)
+					Log.Information($"{command.CommandType} from {clientId}.");
 
 				// Check if player is connected.
 				if (clientWhoSendCommand == null && accountConnected == null && clientId != serverID.ToString())
@@ -312,7 +332,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as AuthenticateRequest;
 
-							SendCommandToClient(clientWhoSendCommand, ServerFunctions.Authenticate(parsedCommand.Version, parsedCommand.Username.ToLower(), parsedCommand.Password, clientWhoSendCommand, accountConnected));
+							SendCommandToClient(clientWhoSendCommand, Functions.Authenticate(parsedCommand.Version, parsedCommand.Username.ToLower(), parsedCommand.Password, clientWhoSendCommand, accountConnected));
 
 							break;
 						}
@@ -324,7 +344,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as NewAccountRequest;
 
-							SendCommandToClient(clientWhoSendCommand, ServerFunctions.NewAccount(parsedCommand.Version, parsedCommand.Username.ToLower(), parsedCommand.Password, parsedCommand.Email, clientWhoSendCommand, accountConnected));
+							SendCommandToClient(clientWhoSendCommand, Functions.NewAccount(parsedCommand.Version, parsedCommand.Username.ToLower(), parsedCommand.Password, parsedCommand.Email, clientWhoSendCommand, accountConnected));
 
                             break;
 						}
@@ -336,7 +356,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as NewCharacterCommand;
 
-							SendCommandToClient(clientWhoSendCommand, ServerFunctions.NewCharacter(parsedCommand.CharacterName.ToLower(), parsedCommand.Gender, parsedCommand.Philosophy, parsedCommand.Image, clientWhoSendCommand, accountConnected));
+							SendCommandToClient(clientWhoSendCommand, Functions.NewCharacter(parsedCommand.CharacterName.ToLower(), parsedCommand.Gender, parsedCommand.Philosophy, parsedCommand.Image, clientWhoSendCommand, accountConnected));
 
 							break;
 						}
@@ -348,7 +368,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as GetCharacterListRequest;
 
-							SendCommandToClient(clientWhoSendCommand, ServerFunctions.CharacterList(clientWhoSendCommand, accountConnected));
+							SendCommandToClient(clientWhoSendCommand, Functions.CharacterList(clientWhoSendCommand, accountConnected));
 
 							break;
 						}
@@ -360,7 +380,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as CharacterConnectRequest;
 
-							SendCommandToClient(clientWhoSendCommand, ServerFunctions.CharacterConnect(parsedCommand.Name.ToLower(), clientWhoSendCommand, accountConnected));
+							SendCommandToClient(clientWhoSendCommand, Functions.CharacterConnect(parsedCommand.Name.ToLower(), clientWhoSendCommand, accountConnected));
 
 							break;
 						}
@@ -371,7 +391,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as MessageRoomServer;
 
-							MessageFunctions.MessageRoom(true, parsedCommand.Message, accountConnected);
+							Functions.MessageRoom(true, parsedCommand.Message, accountConnected);
 
 							break;
 						}
@@ -381,7 +401,7 @@ namespace Phoenix.Server.Network
 					case CommandType.MessageDirect:
 						{
 							var parsedCommand = command as MessageDirectServer;
-							MessageFunctions.MessageDirect(true, parsedCommand.Message, parsedCommand.SendingName.ToLower(), parsedCommand.ReceivingName.ToLower(), accountConnected);
+							Functions.MessageDirect(true, parsedCommand.Message, parsedCommand.SendingName.ToLower(), parsedCommand.ReceivingName.ToLower(), accountConnected);
 							break;
 						}
 					#endregion
@@ -396,7 +416,7 @@ namespace Phoenix.Server.Network
 					case CommandType.MessageWorld:
 						{
 							var parsedCommand = command as MessageWorldServer;
-							MessageFunctions.MessageWorld(true, parsedCommand.Message, parsedCommand.ID, accountConnected);
+							Functions.MessageWorld(true, parsedCommand.Message, parsedCommand.ID, accountConnected);
 							break;
 						}
 					#endregion
@@ -404,11 +424,20 @@ namespace Phoenix.Server.Network
 					#region  -- Message Broadcast Response --
 					#endregion
 
+					#region -- Slash Command --
+					case CommandType.SlashCommand:
+						{
+							var parsedCommand = command as SlashCommandRequest;
+							Functions.SlashCommand(parsedCommand.Message, accountConnected);
+							break;
+						}
+					#endregion
+
 					#region -- Client Connect Response --
 					case CommandType.ClientConnect:
 						{
 							var parsedCommand = command as ClientConnectRequest;
-							SendCommandToClient(clientWhoSendCommand, ServerFunctions.ClientConnect(parsedCommand.Id, accountConnected));
+							SendCommandToClient(clientWhoSendCommand, Functions.ClientConnect(parsedCommand.Id, accountConnected));
 							break;							
 						}
 					#endregion
@@ -417,7 +446,7 @@ namespace Phoenix.Server.Network
 					case CommandType.ClientRoom:
 						{
 							var parseCommand = command as ClientRoomRequest;
-							ServerFunctions.ClientRoom(parseCommand.RoomID, accountConnected);
+							Functions.ClientRoom(parseCommand.RoomID, accountConnected);
 							break;
 						}
                     #endregion
@@ -436,7 +465,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as PlayerMoveRequest;
 
-							RoomFunctions.MovePlayer(true, -1, -1, parsedCommand.Direction, accountConnected);
+							Functions.MovePlayer(true, -1, -1, parsedCommand.Direction, accountConnected);
 							
 							break;
 						}
@@ -447,7 +476,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as SpawnEntityServer;
 
-							ServerFunctions.SpawnEntity(parsedCommand.CharacterName, parsedCommand.EntityName);
+							Functions.SpawnEntity(parsedCommand.CharacterName, parsedCommand.EntityName);
 						}
 						break;
 					#endregion
@@ -457,7 +486,7 @@ namespace Phoenix.Server.Network
 						{
 							var parsedCommand = command as SummonPlayerStaff;
 
-							RoomFunctions.MovePlayer(false, 1, -1, "", accountConnected, $"&tilda&mA bright white portal opens and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m steps through.", parsedCommand.Name.ToLower(), $"&tilda&mA bright white portal opens and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m is pulled into it!");
+							Functions.MovePlayer(false, 1, -1, "", accountConnected, $"&tilda&mA bright white portal opens and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m steps through.", parsedCommand.Name.ToLower(), $"&tilda&mA bright white portal opens and &tilda&w{parsedCommand.Name.ToLower().FirstCharToUpper()}&tilda&m is pulled into it!");
 						}
 						break;
 					#endregion

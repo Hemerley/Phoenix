@@ -27,6 +27,7 @@
 		MessageGuild = 104,
 		MessageWorld = 105,
 		MessageBroadcast = 106,
+		SlashCommand = 107,
 
 		#endregion
 

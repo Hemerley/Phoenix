@@ -1,0 +1,5 @@
+C:\Users\bheme\source\repos\Phoenix\Phoenix.Sever\obj\Debug\netcoreapp3.1\Phoenix.Server.csproj.AssemblyReference.cache
+C:\Users\bheme\source\repos\Phoenix\Phoenix.Sever\obj\Debug\netcoreapp3.1\Phoenix.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bheme\source\repos\Phoenix\Phoenix.Sever\obj\Debug\netcoreapp3.1\Phoenix.Server.AssemblyInfoInputs.cache
+C:\Users\bheme\source\repos\Phoenix\Phoenix.Sever\obj\Debug\netcoreapp3.1\Phoenix.Server.AssemblyInfo.cs
+C:\Users\bheme\source\repos\Phoenix\Phoenix.Sever\obj\Debug\netcoreapp3.1\Phoenix.Server.csproj.CoreCompileInputs.cache

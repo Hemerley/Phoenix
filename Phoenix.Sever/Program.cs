@@ -27,8 +27,12 @@ namespace Phoenix.Server
 
                 switch (input)
                 {
+					case "/showcommands":
+						game.showCommands = !game.showCommands;
+						Log.Information($"Command Status: {game.showCommands}");
+						continue;
 					default:
-						return;
+						continue;
                 }
 			}
         }
