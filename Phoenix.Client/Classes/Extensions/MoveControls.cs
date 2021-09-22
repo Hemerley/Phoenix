@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Phoenix.Client.Classes.Extensions
 {
@@ -8,8 +8,8 @@ namespace Phoenix.Client.Classes.Extensions
     {
         public enum Direction
         {
-            Any,  
-            Horizontal,  
+            Any,
+            Horizontal,
             Vertical
         }
         public static void Init(Control control)
@@ -25,16 +25,19 @@ namespace Phoenix.Client.Classes.Extensions
         {
             bool Dragging = false;
             Point DragStart = Point.Empty;
-            control.MouseDown += delegate (object sender, MouseEventArgs e) {
+            control.MouseDown += delegate (object sender, MouseEventArgs e)
+            {
                 Dragging = true;
                 DragStart = new Point(e.X, e.Y);
                 control.Capture = true;
             };
-            control.MouseUp += delegate (object sender, MouseEventArgs e) {
+            control.MouseUp += delegate (object sender, MouseEventArgs e)
+            {
                 Dragging = false;
                 control.Capture = false;
             };
-            control.MouseMove += delegate (object sender, MouseEventArgs e) {
+            control.MouseMove += delegate (object sender, MouseEventArgs e)
+            {
                 if (Dragging)
                 {
                     if (direction != Direction.Vertical) container.Left = Math.Max(0, e.X + container.Left - DragStart.X);

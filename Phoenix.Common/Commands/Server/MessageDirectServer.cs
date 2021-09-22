@@ -15,17 +15,17 @@ namespace Phoenix.Common.Commands.Server
             this.CommandType = CommandType.MessageDirect;
         }
 
-		public override IEnumerable<IEnumerable<string>> GetCommandParts()
-		{
-			return new List<List<string>>
-			{
-				new List<string>
-				{
-					this.SendingName,
-					this.ReceivingName,
-					this.Message
-				}
-			};
-		}
-	}
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
+            return new List<List<string>>
+            {
+                new List<string>
+                {
+                    this.SendingName,
+                    this.ReceivingName,
+                    this.Message
+                }
+            };
+        }
+    }
 }

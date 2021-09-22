@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Phoenix.Common.Data.Types
+﻿namespace Phoenix.Common.Data.Types
 {
     public class RoomNPCDto
     {

@@ -85,7 +85,7 @@ namespace Phoenix.Client
                                 this.Invoke((Action)delegate
                                 {
                                     this.lstvRoom.Items.Clear();
-                                    
+
                                     clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "south", "~cSouth~w", RegexOptions.IgnoreCase);
                                     clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "north", "~cNorth~w", RegexOptions.IgnoreCase);
                                     clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "west", "~cWest~w", RegexOptions.IgnoreCase);
@@ -93,7 +93,7 @@ namespace Phoenix.Client
                                     clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "up", "~cUp~w", RegexOptions.IgnoreCase);
                                     clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "down", "~cDown~w", RegexOptions.IgnoreCase);
                                     clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "all", "~cAll~w", RegexOptions.IgnoreCase);
-                                    
+
                                     var message = $"~g<~w{clientRooomResponseCommand.Room.Name}~g>~w {clientRooomResponseCommand.Room.Description} {clientRooomResponseCommand.Room.Exits}\n";
                                     UpdateChat(message);
                                     foreach (Character character in clientRooomResponseCommand.Room.RoomCharacters)
@@ -169,13 +169,17 @@ namespace Phoenix.Client
                             this.Invoke((Action)delegate
                             {
                                 var messagePlayerCommand = command as MessageDirectServer;
-                                if(messagePlayerCommand.SendingName == this.character.Name)
+                                if (messagePlayerCommand.SendingName == this.character.Name)
                                 {
                                     UpdateChat($"~mTell To ~w{messagePlayerCommand.ReceivingName.FirstCharToUpper()}~m: {messagePlayerCommand.Message}\n");
                                 }
-                                else
+                                else if (messagePlayerCommand.ReceivingName == this.character.Name)
                                 {
                                     UpdateChat($"~mTell From ~w{messagePlayerCommand.SendingName.FirstCharToUpper()}~m: {messagePlayerCommand.Message}\n");
+                                }
+                                else
+                                {
+                                    UpdateChat($"{messagePlayerCommand.Message}\n");
                                 }
                             });
                             continue;
@@ -229,7 +233,7 @@ namespace Phoenix.Client
                             UpdateChat($"{noPlayer.Message}\n");
                         });
                         continue;
-                    #endregion
+                        #endregion
 
                 }
             }
@@ -246,9 +250,9 @@ namespace Phoenix.Client
             {
                 case true:
                     MessageBox.Show("The connection was closed by the server.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.launcherForm.Invoke((Action)delegate 
+                    this.launcherForm.Invoke((Action)delegate
                     {
-                        
+
                     });
                     return;
                 default:
@@ -272,7 +276,7 @@ namespace Phoenix.Client
         #region -- Inits & Text Bar --
         private void InitializeControl()
         {
-            this.Text = Constants.GAME_NAME_DISPLAY; 
+            this.Text = Constants.GAME_NAME_DISPLAY;
 
             pnlCharacter.ForeColor = Color.FromArgb(238, 238, 238);
             pnlCharacter.Font = new Font("Nirmala UI", 9, FontStyle.Bold);
@@ -369,14 +373,14 @@ namespace Phoenix.Client
                 HandleCommands("e");
                 return;
             }
-            
+
             if (e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.Down)
             {
                 e.SuppressKeyPress = true;
                 HandleCommands("s");
                 return;
             }
-            
+
             if (e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.Left)
             {
                 e.SuppressKeyPress = true;
@@ -516,7 +520,7 @@ namespace Phoenix.Client
                 }
             }
         }
-        
+
         private void UpdateEquipped(int mode, string itemName = "", string itemImage = "", string itemType = "", string slotType = "", int updateSlot = -1, bool imageShow = true)
         {
             // Mode 1 = Add, Mode 2 = Remove, Mode 3 = Update
@@ -716,7 +720,7 @@ namespace Phoenix.Client
                             lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
                             UpdateEquipColor(updateSlot, itemType);
                         }
-                        return; 
+                        return;
                     case 11: // Off Hand
                         if (imageShow)
                         {
@@ -767,7 +771,7 @@ namespace Phoenix.Client
                 }
             }
         }
-        
+
         private void UpdateInventory(int mode, string itemName = "", string itemImage = "", string itemType = "", string slotType = "", bool imageShow = true)
         {
             // Mode 1 = Add, Mode 2 = Remove
@@ -790,7 +794,7 @@ namespace Phoenix.Client
             }
             else if (mode == 2)
             {
-                foreach(ListViewItem item in lstvInventory.Items)
+                foreach (ListViewItem item in lstvInventory.Items)
                 {
                     if (item.Selected)
                     {
@@ -863,7 +867,7 @@ namespace Phoenix.Client
                     return;
             }
         }
-        
+
         private void UpdateNPCColor(int NPCIndex, string NPCType)
         {
             switch (NPCType)
@@ -900,7 +904,7 @@ namespace Phoenix.Client
                     return;
             }
         }
-        
+
         private void UpdateInventoryColor(int NPCIndex, string itemType)
         {
             switch (itemType)
@@ -954,7 +958,7 @@ namespace Phoenix.Client
                 this.rtbChat.SelectionColor = Helper.ReturnColor(displayMessage[0].ToCharArray()[0]);
                 this.rtbChat.AppendText(displayMessage[0]);
             }
-            for(int i = 1; i < displayMessage.Length; i++)
+            for (int i = 1; i < displayMessage.Length; i++)
             {
                 if (displayMessage[i] == "")
                     continue;
@@ -1111,7 +1115,7 @@ namespace Phoenix.Client
                 }
             }
         }
-        
+
         private void EquipToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in lstvInventory.Items)

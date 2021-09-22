@@ -13,15 +13,15 @@ namespace Phoenix.Common.Commands.Request
             this.CommandType = CommandType.CharacterLogin;
         }
 
-		public override IEnumerable<IEnumerable<string>> GetCommandParts()
-		{
-			return new List<List<string>>
-			{
-				new List<string>
-				{
-					this.Name
-				}
-			};
-		}
-	}
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
+            return new List<List<string>>
+            {
+                new List<string>
+                {
+                    this.Name
+                }
+            };
+        }
+    }
 }

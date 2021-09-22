@@ -1,5 +1,4 @@
 ﻿using Phoenix.Common.Commands.Factory;
-using System;
 using System.Collections.Generic;
 
 
@@ -7,26 +6,26 @@ namespace Phoenix.Common.Commands.Request
 {
     public class SlashCommandRequest : Command
     {
-		#region -- Properties --
+        #region -- Properties --
 
-		public string Message { get; set; }
+        public string Message { get; set; }
 
-		#endregion
+        #endregion
 
-		public SlashCommandRequest()
-		{
-			this.CommandType = CommandType.SlashCommand;
-		}
+        public SlashCommandRequest()
+        {
+            this.CommandType = CommandType.SlashCommand;
+        }
 
-		public override IEnumerable<IEnumerable<string>> GetCommandParts()
-		{
-			return new List<List<string>>
-			{
-				new List<string>
-				{
-					this.Message
-				}
-			};
-		}
-	}
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
+            return new List<List<string>>
+            {
+                new List<string>
+                {
+                    this.Message
+                }
+            };
+        }
+    }
 }

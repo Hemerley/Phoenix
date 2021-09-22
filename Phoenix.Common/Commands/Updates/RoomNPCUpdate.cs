@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Updates
 {
-    public class RoomPlayerUpdate : Command
+    public class RoomNPCUpdate : Command
     {
         #region -- Properties --
         public int Mode { get; set; }
-        public Character Character { get; set; }
+        public NPC NPC { get; set; }
         #endregion
 
-        public RoomPlayerUpdate()
+        public RoomNPCUpdate()
         {
-            this.CommandType = CommandType.RoomPlayerUpdate;
+            this.CommandType = CommandType.RoomNPCUpdate;
         }
 
         public override IEnumerable<IEnumerable<string>> GetCommandParts()
@@ -23,9 +23,9 @@ namespace Phoenix.Common.Commands.Updates
                 new List<string>
                 {
                     this.Mode.ToString(),
-                    this.Character.Name,
-                    this.Character.Image,
-                    this.Character.Type
+                    this.NPC.DisplayName,
+                    this.NPC.Image,
+                    this.NPC.Type
                 }
             };
         }

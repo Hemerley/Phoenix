@@ -14,16 +14,16 @@ namespace Phoenix.Common.Commands.Staff
             this.CommandType = CommandType.SummonPlayer;
         }
 
-		public override IEnumerable<IEnumerable<string>> GetCommandParts()
-		{
-			return new List<List<string>>
-			{
-				new List<string>
-				{
-					this.Type.ToString(),
-					this.Name
-				}
-			};
-		}
-	}
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
+            return new List<List<string>>
+            {
+                new List<string>
+                {
+                    this.Type.ToString(),
+                    this.Name
+                }
+            };
+        }
+    }
 }

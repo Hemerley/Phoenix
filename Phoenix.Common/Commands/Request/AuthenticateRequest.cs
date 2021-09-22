@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Request
 {
-	public class AuthenticateRequest : Command
-	{
+    public class AuthenticateRequest : Command
+    {
 
         #region -- Properties --
 
@@ -13,26 +13,26 @@ namespace Phoenix.Common.Commands.Request
 
         public string Username { get; set; }
 
-		public string Password { get; set; }
+        public string Password { get; set; }
 
-		#endregion
+        #endregion
 
-		public AuthenticateRequest()
-		{
-			this.CommandType = CommandType.Authenticate;
-		}
+        public AuthenticateRequest()
+        {
+            this.CommandType = CommandType.Authenticate;
+        }
 
-		public override IEnumerable<IEnumerable<string>> GetCommandParts()
-		{
-			return new List<List<string>>
-			{
-				new List<string>
-				{
-					this.Version.ToString(),
-					this.Username,
-					this.Password
-				}
-			};
-		}
-	}
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
+            return new List<List<string>>
+            {
+                new List<string>
+                {
+                    this.Version.ToString(),
+                    this.Username,
+                    this.Password
+                }
+            };
+        }
+    }
 }

@@ -5,36 +5,36 @@ using System;
 
 namespace Phoenix.Server
 {
-	class Program
-	{
-		public static Game game = new(); 
+    class Program
+    {
+        public static Game game = new();
 
         static void Main()
-		{
-			Console.Title = Constants.GAME_NAME + " Server - V" + Constants.GAME_VERSION;
+        {
+            Console.Title = Constants.GAME_NAME + " Server - V" + Constants.GAME_VERSION;
 
-			Log.Logger = new LoggerConfiguration()
-			   .MinimumLevel.Debug()
-			   .WriteTo.Console()
-			   .WriteTo.File("logs/server/console-output.txt", rollingInterval: RollingInterval.Day)
-			   .CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+               .MinimumLevel.Debug()
+               .WriteTo.Console()
+               .WriteTo.File("logs/server/console-output.txt", rollingInterval: RollingInterval.Day)
+               .CreateLogger();
 
-			game.Start();
+            game.Start();
 
-			while (true)
+            while (true)
             {
-				string input = Console.ReadLine();
+                string input = Console.ReadLine();
 
                 switch (input)
                 {
-					case "/showcommands":
-						game.showCommands = !game.showCommands;
-						Log.Information($"Command Status: {game.showCommands}");
-						continue;
-					default:
-						continue;
+                    case "/showcommands":
+                        game.showCommands = !game.showCommands;
+                        Log.Information($"Command Status: {game.showCommands}");
+                        continue;
+                    default:
+                        continue;
                 }
-			}
+            }
         }
-	}
+    }
 }

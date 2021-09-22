@@ -8,7 +8,7 @@ namespace Phoenix.Common.Commands.Request
     {
         #region -- Properties --
         public Version Version { get; set; }
-        
+
         public string Username { get; set; }
 
         public string Password { get; set; }

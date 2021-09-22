@@ -1,5 +1,4 @@
 ﻿using Phoenix.Common.Commands.Factory;
-using Phoenix.Common.Data.Types;
 using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Request
@@ -13,20 +12,20 @@ namespace Phoenix.Common.Commands.Request
         #endregion
 
         public ClientConnectRequest()
-		{
-			this.CommandType = CommandType.ClientConnect;
-		}
+        {
+            this.CommandType = CommandType.ClientConnect;
+        }
 
-		public override IEnumerable<IEnumerable<string>> GetCommandParts()
-		{
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
 
-			return new List<List<string>>
-			{
-				new List<string>
-				{
-					this.Id.ToString()
+            return new List<List<string>>
+            {
+                new List<string>
+                {
+                    this.Id.ToString()
                 }
-			};
-		}
-	}
+            };
+        }
+    }
 }

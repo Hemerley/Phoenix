@@ -85,7 +85,7 @@ namespace Phoenix.Client
             if (authMode)
             {
                 this.pnlAuthenicate.Invoke((Action)delegate
-                { 
+                {
                     SendCommand(new AuthenticateRequest
                     {
                         Version = new Version(Constants.GAME_VERSION),
@@ -202,8 +202,8 @@ namespace Phoenix.Client
                             {
                                 this.Invoke((Action)delegate
                                 {
-                                // Update Character List
-                                this.pnlCharacterCreation.Hide();
+                                    // Update Character List
+                                    this.pnlCharacterCreation.Hide();
                                     this.pnlAccountView.Show();
                                     this.dgvCharacter.Rows.Clear();
                                 });
@@ -422,7 +422,7 @@ namespace Phoenix.Client
                 MessageBox.Show("Please enter a valid e-mail address.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (!Helper.HasSpecialChar(this.txtNPassword.Text) || !Helper.HasSpecialChar(this.txtNVerifyPassword.Text) || this.txtNPassword.Text.Length <= 6 || this.txtNVerifyPassword.Text.Length <= 6 || !Helper.HasUpperLowerDigit(this.txtNVerifyPassword.Text) || !Helper.HasUpperLowerDigit(this.txtNPassword.Text) || this.txtNPassword.Text.Contains(" ") || this.txtNVerifyPassword.Text.Contains(" ")) 
+            else if (!Helper.HasSpecialChar(this.txtNPassword.Text) || !Helper.HasSpecialChar(this.txtNVerifyPassword.Text) || this.txtNPassword.Text.Length <= 6 || this.txtNVerifyPassword.Text.Length <= 6 || !Helper.HasUpperLowerDigit(this.txtNVerifyPassword.Text) || !Helper.HasUpperLowerDigit(this.txtNPassword.Text) || this.txtNPassword.Text.Contains(" ") || this.txtNVerifyPassword.Text.Contains(" "))
             {
                 MessageBox.Show("Passwords must be longer than 6 characters, cannot contain spaces, and must contain a number, upper character, lower character, and a special character '\\|!#$%&/()=?»«@£§€{}.-;'<>_,'", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -449,7 +449,7 @@ namespace Phoenix.Client
 
             }
         }
-        
+
         private void BtnAuthenticate_Click(object sender, EventArgs e)
         {
             if (this.txtAccountName.Text == "" || this.txtPassword.Text == "" || this.txtAccountName.Text == "Account Name" || this.txtPassword.Text == "Password" || Helper.HasSpecialChar(this.txtAccountName.Text))
@@ -560,12 +560,12 @@ namespace Phoenix.Client
 
         private void TxtAccountName_Enter(object sender, EventArgs e)
         {
-           if (this.txtAccountName.Text == "Account Name")
+            if (this.txtAccountName.Text == "Account Name")
             {
                 this.txtAccountName.Text = "";
             }
         }
-        
+
         private void TxtPassword_Enter(object sender, EventArgs e)
         {
             if (this.txtPassword.Text == "Password")
@@ -574,7 +574,7 @@ namespace Phoenix.Client
                 this.txtPassword.PasswordChar = '*';
             }
         }
-        
+
         private void TxtPassword_Leave(object sender, EventArgs e)
         {
             if (this.txtPassword.Text.Trim() == "")
@@ -583,7 +583,7 @@ namespace Phoenix.Client
                 this.txtPassword.PasswordChar = '\0';
             }
         }
-        
+
         private void TxtAccountName_Leave(object sender, EventArgs e)
         {
             if (this.txtAccountName.Text.Trim() == "")
@@ -591,7 +591,7 @@ namespace Phoenix.Client
                 this.txtAccountName.Text = "Account Name";
             }
         }
-        
+
         private void TxtNAccount_Enter(object sender, EventArgs e)
         {
             if (this.txtNAccount.Text == "Account Name")
@@ -599,7 +599,7 @@ namespace Phoenix.Client
                 this.txtNAccount.Text = "";
             }
         }
-        
+
         private void TxtEmail_Enter(object sender, EventArgs e)
         {
             if (this.txtEmail.Text == "E-mail Address")
@@ -616,7 +616,7 @@ namespace Phoenix.Client
                 this.txtNPassword.PasswordChar = '*';
             }
         }
-        
+
         private void TxtNVerifyPassword_Enter(object sender, EventArgs e)
         {
             if (this.txtNVerifyPassword.Text == "Verify Password")
@@ -625,7 +625,7 @@ namespace Phoenix.Client
                 this.txtNVerifyPassword.PasswordChar = '*';
             }
         }
-        
+
         private void TxtNAccount_Leave(object sender, EventArgs e)
         {
             if (this.txtNAccount.Text.Trim() == "")
@@ -633,7 +633,7 @@ namespace Phoenix.Client
                 this.txtNAccount.Text = "Account Name";
             }
         }
-        
+
         private void TxtEmail_Leave(object sender, EventArgs e)
         {
             if (this.txtEmail.Text.Trim() == "")
@@ -641,7 +641,7 @@ namespace Phoenix.Client
                 this.txtEmail.Text = "E-mail Address";
             }
         }
-        
+
         private void TxtNPassword_Leave(object sender, EventArgs e)
         {
             if (this.txtNPassword.Text.Trim() == "")
@@ -650,7 +650,7 @@ namespace Phoenix.Client
                 this.txtNPassword.PasswordChar = '\0';
             }
         }
-        
+
         private void TxtNVerifyPassword_Leave(object sender, EventArgs e)
         {
             if (this.txtNVerifyPassword.Text.Trim() == "")

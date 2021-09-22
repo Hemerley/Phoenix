@@ -12,29 +12,29 @@ namespace Phoenix.Common.Commands.Response
 
         public List<Character> Characters { get; set; } = new();
 
-		#endregion
+        #endregion
 
-		public CharacterListResponse()
-		{
-			this.CommandType = CommandType.CharacterListResponse;
-		}
+        public CharacterListResponse()
+        {
+            this.CommandType = CommandType.CharacterListResponse;
+        }
 
-		public override IEnumerable<IEnumerable<string>> GetCommandParts()
-		{
-			var response = new List<string>();
-			var characters = new List<List<string>>();
-			response.Add(this.Success.ToString());
-			characters.Add(response);
-			foreach (var character in this.Characters)
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
+            var response = new List<string>();
+            var characters = new List<List<string>>();
+            response.Add(this.Success.ToString());
+            characters.Add(response);
+            foreach (var character in this.Characters)
             {
-				characters.Add(new List<string>
-				{
-					character.Name,
-					character.Caste,
-					character.Philosophy
-				});
+                characters.Add(new List<string>
+                {
+                    character.Name,
+                    character.Caste,
+                    character.Philosophy
+                });
             }
-			return characters;
-		}
-	}
+            return characters;
+        }
+    }
 }

@@ -1,5 +1,4 @@
 ﻿using Phoenix.Common.Commands.Factory;
-using Phoenix.Common.Data.Types;
 using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Request

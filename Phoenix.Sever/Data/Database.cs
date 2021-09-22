@@ -1,12 +1,12 @@
 ﻿using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
+using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Data.SQLite;
 using System.IO;
-using System;
-using Serilog;
+using System.Linq;
 
 namespace Phoenix.Server.Data
 {
@@ -18,7 +18,7 @@ namespace Phoenix.Server.Data
         /// </summary>
 
         #region -- Abilities --
-  
+
         #endregion
 
         #region -- Accounts --
@@ -42,9 +42,9 @@ namespace Phoenix.Server.Data
         public static void InitializeDatabse()
         {
             CheckDatabase("LiveDB.db", "Live");
-            CheckDatabase("TestDB.db","Test");   
+            CheckDatabase("TestDB.db", "Test");
         }
-        
+
         /// <summary>
         /// Run Query
         /// </summary>
@@ -57,10 +57,10 @@ namespace Phoenix.Server.Data
             command.ExecuteNonQuery();
             Log.Information($"Executed query from {file}.");
         }
-        
+
         /// <summary>
-       /// Checks Database, Creates if not there.
-       /// </summary>
+        /// Checks Database, Creates if not there.
+        /// </summary>
         private static void CheckDatabase(string database, string connectionType)
         {
             // Create TestDB if it doesn't exist.
@@ -112,7 +112,7 @@ namespace Phoenix.Server.Data
                     RoomID = Int32.Parse(reader["RoomID"]?.ToString()),
                     RoomName = reader["RoomName"].ToString(),
                     RoomArea = reader["RoomArea"].ToString(),
-                    RoomStatus = Int32.Parse(reader["RoomStatus"]?.ToString()), 
+                    RoomStatus = Int32.Parse(reader["RoomStatus"]?.ToString()),
                     RoomType = Int32.Parse(reader["RoomType"]?.ToString()),
                     RoomDescription = reader["RoomDescription"].ToString(),
                     RoomExits = reader["RoomExits"].ToString(),
@@ -122,7 +122,7 @@ namespace Phoenix.Server.Data
                     RoomEast = Int32.Parse(reader["RoomEast"]?.ToString()),
                     RoomUp = Int32.Parse(reader["RoomUp"]?.ToString()),
                     RoomDown = Int32.Parse(reader["RoomDown"]?.ToString()),
-                    RoomKeyModeNorth = Int32.Parse(reader["RoomKeyModeNorth"]?.ToString()), 
+                    RoomKeyModeNorth = Int32.Parse(reader["RoomKeyModeNorth"]?.ToString()),
                     RoomKeyModeSouth = Int32.Parse(reader["RoomKeyModeSouth"]?.ToString()),
                     RoomKeyModeWest = Int32.Parse(reader["RoomKeyModeWest"]?.ToString()),
                     RoomKeyModeEast = Int32.Parse(reader["RoomKeyModeEast"]?.ToString()),
@@ -184,7 +184,7 @@ namespace Phoenix.Server.Data
             }
 
             return (from data in rawData
-                    group data by new { data.RoomID, data.RoomName, data.RoomArea, data.RoomStatus, data.RoomType, data.RoomDescription, data.RoomExits, data.RoomNorth, data.RoomSouth, data.RoomWest, data.RoomEast, data.RoomUp, data.RoomDown, data.RoomKeyModeNorth, data.RoomKeyModeSouth, data.RoomKeyModeWest, data.RoomKeyModeEast, data.RoomKeyModeUp, data.RoomKeyModeDown, data.RoomKeyNameNorth, data.RoomKeyNameSouth, data.RoomKeyNameWest, data.RoomKeyNameEast, data.RoomKeyNameUp, data.RoomKeyNameDown, data.RoomKeyTypeNorth, data.RoomKeyTypeSouth, data.RoomKeyTypeWest, data.RoomKeyTypeEast, data.RoomKeyTypeUp, data.RoomKeyTypeDown, data.RoomKeyPassNorth, data.RoomKeyPassSouth, data.RoomKeyPassWest, data.RoomKeyPassEast, data.RoomKeyPassUp, data.RoomKeyPassDown, data.RoomKeyFailNorth, data.RoomKeyFailSouth, data.RoomKeyFailWest, data.RoomKeyFailEast, data.RoomKeyFailUp, data.RoomKeyFailDown, data.RoomScript} into g
+                    group data by new { data.RoomID, data.RoomName, data.RoomArea, data.RoomStatus, data.RoomType, data.RoomDescription, data.RoomExits, data.RoomNorth, data.RoomSouth, data.RoomWest, data.RoomEast, data.RoomUp, data.RoomDown, data.RoomKeyModeNorth, data.RoomKeyModeSouth, data.RoomKeyModeWest, data.RoomKeyModeEast, data.RoomKeyModeUp, data.RoomKeyModeDown, data.RoomKeyNameNorth, data.RoomKeyNameSouth, data.RoomKeyNameWest, data.RoomKeyNameEast, data.RoomKeyNameUp, data.RoomKeyNameDown, data.RoomKeyTypeNorth, data.RoomKeyTypeSouth, data.RoomKeyTypeWest, data.RoomKeyTypeEast, data.RoomKeyTypeUp, data.RoomKeyTypeDown, data.RoomKeyPassNorth, data.RoomKeyPassSouth, data.RoomKeyPassWest, data.RoomKeyPassEast, data.RoomKeyPassUp, data.RoomKeyPassDown, data.RoomKeyFailNorth, data.RoomKeyFailSouth, data.RoomKeyFailWest, data.RoomKeyFailEast, data.RoomKeyFailUp, data.RoomKeyFailDown, data.RoomScript } into g
                     select new Room
                     {
                         ID = g.Key.RoomID,
@@ -298,7 +298,7 @@ namespace Phoenix.Server.Data
             }
             return null;
         }
-        
+
         /// <summary>
         /// Inserts A New Account
         /// </summary>
@@ -363,7 +363,7 @@ namespace Phoenix.Server.Data
             command.ExecuteNonQuery();
         }
 
-        public static List<Character> GetCharacterList (string connectionType, int accountID)
+        public static List<Character> GetCharacterList(string connectionType, int accountID)
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
@@ -386,7 +386,7 @@ namespace Phoenix.Server.Data
             return characters;
         }
 
-        public static Character GetCharacter (string connectionType, int accountID, string name)
+        public static Character GetCharacter(string connectionType, int accountID, string name)
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();

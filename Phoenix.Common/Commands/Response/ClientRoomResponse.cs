@@ -10,14 +10,14 @@ namespace Phoenix.Common.Commands.Response
         #region -- Properties --
 
         public bool Success { get; set; }
-		public Room Room { get; set; } = new();
+        public Room Room { get; set; } = new();
 
         public ClientRoomResponse()
-		{
-			this.CommandType = CommandType.ClientRoomResponse;
-		}
-		public override IEnumerable<IEnumerable<string>> GetCommandParts()
-		{
+        {
+            this.CommandType = CommandType.ClientRoomResponse;
+        }
+        public override IEnumerable<IEnumerable<string>> GetCommandParts()
+        {
 
             var response = new List<List<string>>
             {
@@ -38,42 +38,42 @@ namespace Phoenix.Common.Commands.Response
 
             foreach (Character character in Room.RoomCharacters)
             {
-				response.Add(new List<string>
-				{
-					"Character",
-					character.Name,
-					character.Image,
-					character.Type,
-				});
+                response.Add(new List<string>
+                {
+                    "Character",
+                    character.Name,
+                    character.Image,
+                    character.Type,
+                });
             }
 
-			foreach (NPC NPC in Room.RoomNPC)
+            foreach (NPC NPC in Room.RoomNPC)
             {
-				response.Add(new List<string>
-				{
-					"NPC",
-					NPC.Name,
-					NPC.Image,
-					NPC.Type
-				});
+                response.Add(new List<string>
+                {
+                    "NPC",
+                    NPC.Name,
+                    NPC.Image,
+                    NPC.Type
+                });
             }
 
-			foreach (Item item in Room.RoomItems)
+            foreach (Item item in Room.RoomItems)
             {
-				response.Add(new List<string>
-				{
-					"Item",
-					item.Name,
-					item.Image,
-					item.Type,
-					item.Amount.ToString()
-				});
+                response.Add(new List<string>
+                {
+                    "Item",
+                    item.Name,
+                    item.Image,
+                    item.Type,
+                    item.Amount.ToString()
+                });
             }
 
-			return response;
-		}
+            return response;
+        }
 
-		#endregion
+        #endregion
 
-	}
+    }
 }

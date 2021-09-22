@@ -6,7 +6,7 @@ namespace Phoenix.Client.Classes.Extensions
 {
     public class ListViewWithoutScrollBar : ListView
     {
-       protected override void WndProc(ref Message m)
+        protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
             {
