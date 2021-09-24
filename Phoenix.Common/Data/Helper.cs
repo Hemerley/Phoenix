@@ -175,7 +175,7 @@ namespace Phoenix.Common.Data
         {
             return rank switch
             {
-                0 => "(Initiate)",
+                1 => "(Initiate)",
                 _ => "(None)",
             };
         }

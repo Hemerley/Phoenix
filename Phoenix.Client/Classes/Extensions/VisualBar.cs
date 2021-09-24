@@ -24,14 +24,12 @@ namespace Phoenix.Client.Classes.Extensions
         private string symbolBefore = "";
         private string symbolAfter = "";
         private bool showMaximun = false;
-        // -> Others
-        private bool paintedBack = false;
-        private bool stopPainting = false;
 
         public VisualBar()
         {
 
             this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.ForeColor = Color.White;
 
         }
@@ -148,56 +146,32 @@ namespace Phoenix.Client.Classes.Extensions
 
         protected override void OnPaintBackground(PaintEventArgs pevent)
         {
-            if (stopPainting == false)
-            {
-                if (paintedBack == false)
-                {
-                    // Fields
-                    Graphics graph = pevent.Graphics;
-                    Rectangle rectChannel = new(0, 0, this.Width, ChannelHeight);
-                    using var brushChannel = new SolidBrush(channelColor);
-                    if (channelHeight >= sliderHeight)
-                        rectChannel.Y = this.Height - channelHeight;
-                    else rectChannel.Y = this.Height - ((channelHeight + sliderHeight) / 2);
-                    // Painting
-                    graph.Clear(this.Parent.BackColor); // Surface
-                    graph.FillRectangle(brushChannel, rectChannel); // Channel
-                                                                    // Stop painting the back & Channel
-                    if (this.DesignMode == false)
-                        paintedBack = true;
-                }
-                // Reset painting the back & channel
-                if (this.Value == this.Maximum || this.Value == this.Minimum)
-                    paintedBack = false;
-            }
+            Graphics graph = pevent.Graphics;
+            Rectangle rectChannel = new(0, 0, this.Width, ChannelHeight);
+            using var brushChannel = new SolidBrush(channelColor);
+            if (channelHeight >= sliderHeight)
+                rectChannel.Y = this.Height - channelHeight;
+            else rectChannel.Y = this.Height - ((channelHeight + sliderHeight) / 2);
+            graph.Clear(this.Parent.BackColor);
+            graph.FillRectangle(brushChannel, rectChannel);
         }
 
-        //-> Paint slider
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (stopPainting == false)
-            {
-                //Fields
-                Graphics graph = e.Graphics;
-                double scaleFactor = (((double)this.Value - this.Minimum) / ((double)this.Maximum - this.Minimum));
-                int sliderWidth = (int)(this.Width * scaleFactor);
-                Rectangle rectSlider = new(0, 0, sliderWidth, sliderHeight);
-                using var brushSlider = new SolidBrush(sliderColor);
-                if (sliderHeight >= channelHeight)
-                    rectSlider.Y = this.Height - sliderHeight;
-                else rectSlider.Y = this.Height - ((sliderHeight + channelHeight) / 2);
-
-                //Painting
-                if (sliderWidth > 1) //Slider
-                    graph.FillRectangle(brushSlider, rectSlider);
-                if (showValue != TextPosition.None) //Text
-                    DrawValueText(graph, sliderWidth, rectSlider);
-            }
-            if (this.Value == this.Maximum) stopPainting = true;//Stop painting
-            else stopPainting = false; //Keep painting
+            Graphics graph = e.Graphics;
+            double scaleFactor = (((double)this.Value - this.Minimum) / ((double)this.Maximum - this.Minimum));
+            int sliderWidth = (int)(this.Width * scaleFactor);
+            Rectangle rectSlider = new(0, 0, sliderWidth, sliderHeight);
+            using var brushSlider = new SolidBrush(sliderColor);
+            if (sliderHeight >= channelHeight)
+                rectSlider.Y = this.Height - sliderHeight;
+            else rectSlider.Y = this.Height - ((sliderHeight + channelHeight) / 2);
+            if (sliderWidth > 1)
+                graph.FillRectangle(brushSlider, rectSlider);
+            if (showValue != TextPosition.None)
+                DrawValueText(graph, sliderWidth, rectSlider);            
         }
 
-        // -> Paint value text
         private void DrawValueText(Graphics graph, int sliderWidth, Rectangle rectSlider)
         {
             // Fields
@@ -226,7 +200,6 @@ namespace Phoenix.Client.Classes.Extensions
                 case TextPosition.Sliding:
                     rectText.X = sliderWidth - textSize.Width;
                     textFormat.Alignment = StringAlignment.Center;
-                    // Clean previous text surface
                     using (var brushClear = new SolidBrush(this.Parent.BackColor))
                     {
                         var rect = rectSlider;
@@ -236,7 +209,6 @@ namespace Phoenix.Client.Classes.Extensions
                     }
                     break;
             }
-            // Painting
             graph.FillRectangle(brushTextBack, rectText);
             graph.DrawString(text, this.Font, brushText, rectText, textFormat);
         }

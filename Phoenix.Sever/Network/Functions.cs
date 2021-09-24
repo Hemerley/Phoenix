@@ -20,90 +20,48 @@ namespace Phoenix.Server.Network
     class Functions
     {
         #region -- Messages --
-        public static void MessageRoom(string message, ConnectedAccount account)
-        {
-            foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
-            {
-                if (connectedAccount.Account.Character == null)
-                {
-                    continue;
-                }
-                if (connectedAccount.Account.Character.RoomID == account.Account.Character.RoomID)
-                {
-                    game.SendCommandToClient(connectedAccount.Client, new MessageRoomServer
-                    {
-                        Character = account.Account.Character,
-                        Message = message
-                    });
-                }   
-            }
-        }
         public static void MessageRoom(string message, int roomID)
         {
-            foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
+            var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == roomID);
+            foreach (ConnectedAccount account in accounts)
             {
-                if (connectedAccount.Account.Character == null)
+                game.SendCommandToClient(account.Client, new MessageRoomServer
                 {
-                    continue;
-                }
-                if (connectedAccount.Account.Character.RoomID == roomID)
-                {
-                    game.SendCommandToClient(connectedAccount.Client, new MessageRoomServer
-                    {
-                        Message = message
-                    });
-                }   
+                    Message = message
+                });
             }
         }
         public static void MessageRoom(string message, int roomID, ConnectedAccount account)
         {
-            foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
+            var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == roomID);
+            foreach (ConnectedAccount accountx in accounts)
             {
-                if (connectedAccount.Account.Character == null)
-                {
-                    continue;
-                }
-                if (connectedAccount.Account.Character.RoomID == roomID && connectedAccount != account)
-                {
-                    game.SendCommandToClient(connectedAccount.Client, new MessageRoomServer
+                if (accountx != account)
+                    game.SendCommandToClient(account.Client, new MessageRoomServer
                     {
                         Message = message
                     });
-                }
             }
         }
         public static void MessageRoom(string message, int roomID, ConnectedAccount account, ConnectedAccount sAccount)
         {
-            foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
+            var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == roomID);
+            foreach (ConnectedAccount accountx in accounts)
             {
-                if (connectedAccount.Account.Character == null)
-                {
-                    continue;
-                }
-                if (connectedAccount.Account.Character.RoomID == roomID && connectedAccount != account && connectedAccount != sAccount)
-                {
-                    game.SendCommandToClient(connectedAccount.Client, new MessageRoomServer
+                if (accountx != account && accountx != sAccount)
+                    game.SendCommandToClient(account.Client, new MessageRoomServer
                     {
                         Message = message
                     });
-                }
             }
         }
         public static void MessageDirect(string message, string sending, string receiving, ConnectedAccount account)
         {
+            var character = game.connectedAccounts.Values.FirstOrDefault( x => x.Account.Character.Name.ToLower() == receiving);
 
-            bool foundPlayer = false;
-            foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
+            if (character != null)
             {
-                if (connectedAccount.Account.Character == null)
-                {
-                    continue;
-                }
-                if (connectedAccount.Account.Character.Name.ToLower() != receiving)
-                {
-                    continue;
-                }
-                game.SendCommandToClient(connectedAccount.Client, new MessageDirectServer
+                game.SendCommandToClient(character.Client, new MessageDirectServer
                 {
                     SendingName = sending.FirstCharToUpper(),
                     ReceivingName = receiving.FirstCharToUpper(),
@@ -115,11 +73,11 @@ namespace Phoenix.Server.Network
                     ReceivingName = receiving.FirstCharToUpper(),
                     Message = message
                 });
-                foundPlayer = true;
             }
-            if (!foundPlayer)
+            else
             {
                 game.SendCommandToClient(account.Client, new NoPlayerFailure());
+
             }
         }
         public static void MessageDirect(string message, string id)
@@ -309,21 +267,12 @@ namespace Phoenix.Server.Network
             if (type == 1)
             {
                 int roomID = account.Account.Character.RoomID;
-                ConnectedAccount targetAccount = null;
+                ConnectedAccount targetAccount = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == playerName);
 
                 if (account.Account.Character.TypeID < 1)
                 {
                     game.SendCommandToClient(account.Client, new NoCommandFailure());
                     return;
-                }
-
-                foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
-                {
-                    if (connectedAccount.Account.Character.Name.ToLower() == playerName.ToLower())
-                    {
-                        targetAccount = connectedAccount;
-                        break;
-                    }
                 }
 
                 if (targetAccount == null)
@@ -559,17 +508,16 @@ namespace Phoenix.Server.Network
         {
             Character loginCharacter = Database.GetCharacter(Constants.GAME_MODE, account.Account.Id, name);
 
-            foreach (Character character in game.connectedCharacters.Values)
+            Character character = game.connectedCharacters.Values.FirstOrDefault(x => x.Name.ToLower() == loginCharacter.Name.ToLower());
+
+            if (character != null)
             {
-                if (character.Name == loginCharacter.Name)
+                return new CharacterConnectResponse
                 {
-                    return new CharacterConnectResponse
-                    {
-                        Success = false,
-                        Message = "Character is already online!",
-                        Character = null
-                    };
-                }
+                    Success = false,
+                    Message = "Character is already online!",
+                    Character = null
+                };
             }
 
             if (loginCharacter != null)
@@ -577,32 +525,20 @@ namespace Phoenix.Server.Network
                 account.Account.Character = loginCharacter;
                 game.connectedCharacters.Add(loginCharacter.Id.ToString(), loginCharacter);
 
+                var characters = game.connectedCharacters.Values.Where(x => x.RoomID == loginCharacter.RoomID);
+                var accounts = game.connectedAccounts.Values.Where(x => characters.Any(z => z.RoomID == x.Account.Character.RoomID));
 
-                foreach (Room room in game.rooms)
+                foreach (ConnectedAccount cAccount in accounts)
                 {
-                    if (loginCharacter.RoomID == room.ID)
+                    game.SendCommandToClient(cAccount.Client, new RoomCharacterUpdate
                     {
-                        foreach (Character character in room.RoomCharacters)
-                        {
-                            foreach (ConnectedAccount cAccount in game.connectedAccounts.Values)
-                            {
-                                if (cAccount.Account.Character.Id == character.Id)
-                                {
-                                    game.SendCommandToClient(cAccount.Client, new RoomCharacterUpdate
-                                    {
-                                        Mode = 1,
-                                        Character = loginCharacter
-                                    });
-                                    game.SendCommandToClient(cAccount.Client, new MessageWorldServer
-                                    {
-                                        Message = $"&tilda&g{loginCharacter.Name}&tilda&w has come &tilda&gonline&tilda&w!"
-                                    });
-                                }
-                            }
-                        }
-                        room.RoomCharacters.Add(loginCharacter);
-                    }
+                        Mode = 1,
+                        Character = loginCharacter
+                    });
                 }
+
+                MessageWorld($"&tilda&g{loginCharacter.Name}&tilda&w has come &tilda&gonline&tilda&w!");
+                game.rooms[loginCharacter.RoomID].RoomCharacters.Add(loginCharacter);
                 game.totalConnections++;
                 if (game.maximumPlayers < game.connectedCharacters.Count) game.maximumPlayers++;
 
@@ -613,12 +549,15 @@ namespace Phoenix.Server.Network
                     Character = loginCharacter
                 };
             }
-            return new CharacterConnectResponse
+            else
             {
-                Success = loginCharacter != null,
-                Message = loginCharacter != null ? "\0" : "Failed to locate character, please contact a God for further assistance!",
-                Character = loginCharacter
-            };
+                return new CharacterConnectResponse
+                {
+                    Success = loginCharacter != null,
+                    Message = loginCharacter != null ? "\0" : "Failed to locate character, please contact a God for further assistance!",
+                    Character = loginCharacter
+                };
+            }
         }
         public static Command ClientConnect(int ID)
         {
@@ -739,36 +678,28 @@ namespace Phoenix.Server.Network
         }
         public static void NPCUpdate(int mode, int roomID, NPC npc)
         {
-            var myLinqQuery = from x in game.connectedAccounts.Values
-                              where x.Account.Character.RoomID == roomID 
-                              select x.Client;
-            foreach(ConnectedClient connectedClient in myLinqQuery)
-            {
+            var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == roomID);
 
-                    game.SendCommandToClient(connectedClient, new RoomNPCUpdate
-                    {
-                        Mode = mode,
-                        NPC = npc
-                    });
-                
+            foreach (ConnectedAccount connectedAccount in accounts)
+            {
+                game.SendCommandToClient(connectedAccount.Client, new RoomNPCUpdate
+                {
+                    Mode = mode,
+                    NPC = npc
+                });                
             }
         }
         public static void CharacterUpdate(int mode, int roomID, Character character)
         {
-            foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
+            var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == roomID);
+
+            foreach (ConnectedAccount connectedAccount in accounts)
             {
-                if (connectedAccount.Account.Character == null)
+                game.SendCommandToClient(connectedAccount.Client, new RoomCharacterUpdate
                 {
-                    continue;
-                }
-                if (connectedAccount.Account.Character.RoomID == roomID)
-                {
-                    game.SendCommandToClient(connectedAccount.Client, new RoomCharacterUpdate
-                    {
-                        Mode = mode,
-                        Character = character
-                    });
-                }
+                    Mode = mode,
+                    Character = character
+                });
             }
         }
         public static void CharacterStatUpdate(ConnectedAccount account, Character character)

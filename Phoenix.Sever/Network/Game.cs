@@ -391,7 +391,7 @@ namespace Phoenix.Server.Network
                         {
                             var parsedCommand = command as MessageRoomServer;
 
-                            Functions.MessageRoom(parsedCommand.Message, accountConnected);
+                            Functions.MessageRoom(parsedCommand.Message, accountConnected.Account.Character.RoomID);
 
                             break;
                         }

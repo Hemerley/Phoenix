@@ -783,6 +783,7 @@ namespace Phoenix.Client
             this.vbExp.ForeBackColor = System.Drawing.Color.Transparent;
             this.vbExp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.vbExp.Location = new System.Drawing.Point(5, 422);
+            this.vbExp.MarqueeAnimationSpeed = 0;
             this.vbExp.Name = "vbExp";
             this.vbExp.ShowMaximun = true;
             this.vbExp.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.Center;
