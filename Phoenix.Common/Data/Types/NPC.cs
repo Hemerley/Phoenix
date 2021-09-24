@@ -41,6 +41,7 @@ namespace Phoenix.Common.Data.Types
         public Guid InstanceID { get; set; }
         public string Type { get; set; }
         public string Rarity { get; set; }
+        public int RoomID { get; set; }
         #endregion
 
         #region -- Combat Statistics --

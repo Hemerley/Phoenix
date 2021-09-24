@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Request
 {
-    public class PlayerMoveRequest : Command
+    public class CharacterMoveRequest : Command
     {
         public string Direction { get; set; }
 
-        public PlayerMoveRequest()
+        public CharacterMoveRequest()
         {
-            this.CommandType = CommandType.PlayerMoveRequest;
+            this.CommandType = CommandType.CharacterMoveRequest;
         }
 
         public override IEnumerable<IEnumerable<string>> GetCommandParts()

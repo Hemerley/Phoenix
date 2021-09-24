@@ -358,7 +358,7 @@ namespace Phoenix.Server.Data
                 heShe = "He";
                 hisHer = "His";
             }
-            string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID) VALUES ('{accountID}', '{CharacterName}', '{Image}', 0, '{Gender}', '{hisHer}', '{heShe}', 0, 'Initiate', 0, 0, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 1);";
+            string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID, CurrentHealth, CurrentMana, Recall) VALUES ('{accountID}', '{CharacterName}', '{Image}', 0, '{Gender}', '{hisHer}', '{heShe}', 0, 'Initiate', 0, 0, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 1, 20, 20, 1);";
             using var command = new SQLiteCommand(query, connection);
             command.ExecuteNonQuery();
         }
@@ -390,7 +390,7 @@ namespace Phoenix.Server.Data
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
-            string query = $"SELECT ID, AccountID, Name, Type, Image, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID FROM Characters WHERE AccountID = '{accountID}' AND Name = '{name}';";
+            string query = $"SELECT ID, AccountID, Name, Type, Image, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID, CurrentHealth, CurrentMana, Recall FROM Characters WHERE AccountID = '{accountID}' AND Name = '{name}';";
             using var command = new SQLiteCommand(query, connection);
             using SQLiteDataReader reader = command.ExecuteReader();
 
@@ -430,7 +430,15 @@ namespace Phoenix.Server.Data
                     Crit = 0,
                     Mastery = 0,
                     Haste = 0,
-                    Versatility = 0
+                    Versatility = 0,
+                    CurrentHealth = Int32.Parse(reader[23].ToString()),
+                    CurrentMana = Int32.Parse(reader[24].ToString()),
+                    AttackSpeed = 1,
+                    IsAttacking = false,
+                    IsDead = false,
+                    MaxExperience = Int32.Parse(reader[11].ToString())*1500,
+                    TargetID = -1,
+                    Recall = Int32.Parse(reader[25].ToString())
                 };
                 return character;
             }

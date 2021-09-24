@@ -230,7 +230,10 @@ namespace Phoenix.Common.Commands.Factory
                                 Crit = Int32.Parse(c[27]),
                                 Mastery = Int32.Parse(c[28]),
                                 Haste = Int32.Parse(c[29]),
-                                Versatility = Int32.Parse(c[30])
+                                Versatility = Int32.Parse(c[30]),
+                                CurrentHealth = Int32.Parse(c[31]),
+                                CurrentMana = Int32.Parse(c[32]),
+                                MaxExperience = Int32.Parse(c[33])
                             };
                         }
 
@@ -470,7 +473,7 @@ namespace Phoenix.Common.Commands.Factory
                 #endregion
 
                 #region -- Room Player Update --
-                case CommandType.RoomPlayerUpdate:
+                case CommandType.RoomCharacterUpdate:
                     {
                         if (commandParts.Length < 1)
                             return new UnknownCommand();
@@ -481,7 +484,7 @@ namespace Phoenix.Common.Commands.Factory
                         character.Image = commandDataParts[2];
                         character.Type = commandDataParts[3];
 
-                        return new RoomPlayerUpdate
+                        return new RoomCharacterUpdate
                         {
                             Mode = Int32.Parse(commandDataParts[0]),
                             Character = character
@@ -510,14 +513,66 @@ namespace Phoenix.Common.Commands.Factory
                 #endregion
 
                 #region -- Player Move Request --
-                case CommandType.PlayerMoveRequest:
+                case CommandType.CharacterMoveRequest:
                     {
                         if (commandDataParts.Length < 1)
                             return new UnknownCommand();
 
-                        return new PlayerMoveRequest
+                        return new CharacterMoveRequest
                         {
                             Direction = commandDataParts[0]
+                        };
+                    }
+                #endregion
+
+                #region -- Character Stat Update --
+                case CommandType.CharacterStatUpdate:
+                    {
+                        if (commandDataParts.Length < 1)
+                            return new UnknownCommand();
+                        Character character = null;
+                        string[] c = commandDataParts[1].Split("|");
+                        character = new()
+                        {
+                            Id = Int32.Parse(commandDataParts[0]),
+                            AccountId = Int32.Parse(commandDataParts[1]),
+                            Name = commandDataParts[2],
+                            Type = commandDataParts[3],
+                            TypeID = Int32.Parse(commandDataParts[4]),
+                            Image = commandDataParts[5],
+                            Gender = commandDataParts[6],
+                            HisHer = commandDataParts[7],
+                            HeShe = commandDataParts[8],
+                            Experience = Int32.Parse(commandDataParts[9]),
+                            Title = commandDataParts[10],
+                            Caste = commandDataParts[11],
+                            CasteID = Int32.Parse(commandDataParts[12]),
+                            Rank = commandDataParts[13],
+                            RankID = Int32.Parse(commandDataParts[14]),
+                            Philosophy = commandDataParts[15],
+                            PhilosophyID = Int32.Parse(commandDataParts[16]),
+                            Alignment = Int32.Parse(commandDataParts[17]),
+                            Creation = Int32.Parse(commandDataParts[18]),
+                            Strength = Int32.Parse(commandDataParts[19]),
+                            Agility = Int32.Parse(commandDataParts[20]),
+                            Intellect = Int32.Parse(commandDataParts[21]),
+                            Stamina = Int32.Parse(commandDataParts[22]),
+                            Damage = Int32.Parse(commandDataParts[23]),
+                            Health = Int32.Parse(commandDataParts[24]),
+                            Mana = Int32.Parse(commandDataParts[25]),
+                            RoomID = Int32.Parse(commandDataParts[26]),
+                            Crit = Int32.Parse(commandDataParts[27]),
+                            Mastery = Int32.Parse(commandDataParts[28]),
+                            Haste = Int32.Parse(commandDataParts[29]),
+                            Versatility = Int32.Parse(commandDataParts[30]),
+                            CurrentHealth = Int32.Parse(commandDataParts[31]),
+                            CurrentMana = Int32.Parse(commandDataParts[32]),
+                            MaxExperience = Int32.Parse(commandDataParts[33])
+                        };
+
+                        return new CharacterStatUpdate
+                        {
+                            Character = character
                         };
                     }
                 #endregion
@@ -532,6 +587,22 @@ namespace Phoenix.Common.Commands.Factory
                         {
                             NPCName = commandDataParts[0],
                             CharacterName = commandDataParts[1]
+                        };
+                    }
+                #endregion
+
+                #region -- Respawn Character --
+                case CommandType.RespawnCharacter:
+                    {
+                        if (commandDataParts.Length < 2)
+                            return new UnknownCommand();
+
+                        return new RespawnCharacterServer
+                        {
+                            RoomID = commandDataParts[0],
+                            EntityID = commandDataParts[1],
+                            ArrivalMessage = commandDataParts[2],
+                            DepartureMessage = commandDataParts[3]
                         };
                     }
                 #endregion

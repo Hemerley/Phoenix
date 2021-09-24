@@ -287,7 +287,13 @@ namespace Phoenix.Server.Scripts
 
             public static class Get
             {
-
+                public static int StaffLevel(string entityID)
+                {
+                    if (game.connectedAccounts.ContainsKey(entityID))
+                        return game.connectedAccounts[entityID].Account.Character.TypeID;
+                    else
+                        return -1;
+                }
             }
 
             public static class Remove
@@ -319,133 +325,56 @@ namespace Phoenix.Server.Scripts
             {
                 if (defenderIsPlayer && isPlayer)
                 {
-                    ConnectedAccount defenderCharacter = new();
-                    ConnectedAccount attackerCharacter = new();
-                    foreach (ConnectedAccount connectedAccount in game.connectedAccounts)
-                    {
-                        if (connectedAccount.Account.Character == null)
-                        {
-                            continue;
-                        }
-                        if (connectedAccount.Client.Id == defenderID)
-                        {
-                            defenderCharacter = connectedAccount;
-                            break;
-                        }
-                    }
-                    foreach (ConnectedAccount connectedAccount in game.connectedAccounts)
-                    {
-                        if (connectedAccount.Account.Character == null)
-                        {
-                            continue;
-                        }
-                        if (connectedAccount.Client.Id == entityID)
-                        {
-                            attackerCharacter = connectedAccount;
-                            break;
-                        }
-                    }
 
-                    defenderCharacter.Account.Character.CurrentHealth = 0;
-                    defenderCharacter.Account.Character.IsDead = true;
-                    Functions.MovePlayer(0, defenderCharacter, $"~r{defenderCharacter.Account.Character.Name.FirstCharToUpper()} appears suddenly!", $"~r{defenderCharacter.Account.Character.Name} falls to the floor lifelessly!");
-                    Functions.MessageDirect($"~w{attackerCharacter.Account.Character.Name}~m has killed you!", defenderCharacter.Client.Id);
-                    Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.Account.Character.Name}~m!", attackerCharacter.Client.Id);
-                    Functions.MessageRoom($"~w{attackerCharacter.Account.Character.Name} ~mhas killed {defenderCharacter.Account.Character.Name}~m!", attackerCharacter.Account.Character.RoomID);
+                    Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+
+                    defenderCharacter.CurrentHealth = 0;
+                    defenderCharacter.IsDead = true;
+                    Functions.MovePlayer(0, game.connectedAccounts[defenderID], $"~r{defenderCharacter.Name.FirstCharToUpper()} appears suddenly!", $"~r{defenderCharacter.Name.FirstCharToUpper()} falls to the floor lifelessly!", game.connectedAccounts[defenderID]);
+                    Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()}~m has killed you!", game.connectedAccounts[defenderID].Client.Id);
+                    Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.Name.FirstCharToUpper()}~m!", game.connectedAccounts[entityID].Client.Id);
+                    Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~mhas killed {defenderCharacter.Name.FirstCharToUpper()}~m!", attackerCharacter.RoomID, game.connectedAccounts[entityID]);
+                    Functions.CharacterStatUpdate(game.connectedAccounts[defenderID], defenderCharacter);
+                    var respawnCommand = new RespawnCharacterServer
+                    {
+                        RoomID = defenderCharacter.Recall.ToString(),
+                        EntityID = defenderID,
+                        ArrivalMessage = $"~w{defenderCharacter.Name.FirstCharToUpper()} ~gappears back in the world of the living following a bright white flash!",
+                        DepartureMessage = $"~w{defenderCharacter.Name.FirstCharToUpper()} ~gvanishes back to the world of the living following a bright white flash!"
+                    };
+                    Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeSeconds() + 20, respawnCommand, game.serverID.ToString());
                 }
                 else if (defenderIsPlayer && !isPlayer)
                 {
-                    ConnectedAccount defenderCharacter = new();
-                    NPC attackerCharacter = new();
-                    foreach (ConnectedAccount connectedAccount in game.connectedAccounts)
-                    {
-                        if (connectedAccount.Account.Character == null)
-                        {
-                            continue;
-                        }
-                        if (connectedAccount.Client.Id == defenderID)
-                        {
-                            defenderCharacter = connectedAccount;
-                            break;
-                        }
-                    }
-                    foreach (NPC npc in game.currentNPC)
-                    {
-                        if (npc.InstanceID.ToString() == entityID)
-                        {
-                            attackerCharacter = npc;
-                            break;
-                        }
-                    }
+                    Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
+                    NPC attackerCharacter = game.currentNPC[entityID];
 
-                    defenderCharacter.Account.Character.CurrentHealth = 0;
-                    defenderCharacter.Account.Character.IsDead = true;
-                    int roomID = defenderCharacter.Account.Character.RoomID;
-                    Functions.MovePlayer(0, defenderCharacter, $"~r{defenderCharacter.Account.Character.Name.FirstCharToUpper()} appears suddenly!", $"~r{defenderCharacter.Account.Character} falls to the floor lifelessly!");
-                    Functions.MessageDirect($"~w{attackerCharacter.BName} {attackerCharacter.Name}~m has killed you!", defenderCharacter.Client.Id);
-                    Functions.MessageRoom($"~w{attackerCharacter.BName} {attackerCharacter.Name} ~mhas killed {defenderCharacter.Account.Character.Name}~m!", roomID);
+                    defenderCharacter.CurrentHealth = 0;
+                    defenderCharacter.IsDead = true;
+                    int roomID = game.connectedAccounts[defenderID].Account.Character.RoomID;
+                    Functions.MovePlayer(0, game.connectedAccounts[defenderID], $"~r{defenderCharacter.Name.FirstCharToUpper()} appears suddenly!", $"~r{defenderCharacter.Name.FirstCharToUpper()} falls to the floor lifelessly!", game.connectedAccounts[defenderID]); ;
+                    Functions.MessageDirect($"~w{attackerCharacter.BName} {attackerCharacter.Name}~m has killed you!", game.connectedAccounts[defenderID].Client.Id);
+                    Functions.MessageRoom($"~w{attackerCharacter.BName} {attackerCharacter.Name} ~mhas killed {defenderCharacter.Name.FirstCharToUpper()}~m!", roomID);
+                    Functions.CharacterStatUpdate(game.connectedAccounts[defenderID], defenderCharacter);
                 }
                 else if (!defenderIsPlayer && isPlayer)
                 {
-                    NPC defenderCharacter = new();
-                    ConnectedAccount attackerCharacter = new();
-                    foreach (NPC npc in game.currentNPC)
-                    {
-                        if (npc.InstanceID.ToString() == entityID)
-                        {
-                            defenderCharacter = npc;
-                            break;
-                        }
-                    }
-                    foreach (ConnectedAccount connectedAccount in game.connectedAccounts)
-                    {
-                        if (connectedAccount.Account.Character == null)
-                        {
-                            continue;
-                        }
-                        if (connectedAccount.Client.Id == entityID)
-                        {
-                            attackerCharacter = connectedAccount;
-                            break;
-                        }
-                    }
-                    game.currentNPC.Remove(defenderCharacter);
-                    Functions.EntityUpdate(2, attackerCharacter.Account.Character.RoomID, defenderCharacter);
-                    Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.BName} {defenderCharacter.Name}!", attackerCharacter.Client.Id);
-                    Functions.MessageRoom($"~w{attackerCharacter.Account.Character.Name} ~mhas killed {defenderCharacter.BName} {defenderCharacter.Name}~m!", attackerCharacter.Account.Character.RoomID);
+                    NPC defenderCharacter = game.currentNPC[defenderID];
+                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+
+                    game.currentNPC.Remove(defenderID);
+                    Functions.NPCUpdate(2, attackerCharacter.RoomID, defenderCharacter);
+                    Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.BName} {defenderCharacter.Name.FirstCharToUpper()}!", game.connectedAccounts[entityID].Client.Id);
+                    Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~mhas killed {defenderCharacter.BName} {defenderCharacter.Name.FirstCharToUpper()}~m!", attackerCharacter.RoomID, game.connectedAccounts[entityID]);
                 }
                 else if (!defenderIsPlayer && !isPlayer)
                 {
-                    NPC defenderCharacter = new();
-                    NPC attackerCharacter = new();
-                    int roomID = -1;
-                    foreach (NPC npc in game.currentNPC)
-                    {
-                        if (npc.InstanceID.ToString() == entityID)
-                        {
-                            defenderCharacter = npc;
-                            break;
-                        }
-                    }
-                    foreach (NPC npc in game.currentNPC)
-                    {
-                        if (npc.InstanceID.ToString() == entityID)
-                        {
-                            attackerCharacter = npc;
-                            break;
-                        }
-                    }
-                    foreach (Room room in game.rooms)
-                    {
-                        if (room.RoomNPC.Contains(attackerCharacter))
-                        {
-                            roomID = room.ID;
-                            break;
-                        }
-                    }
-                    game.currentNPC.Remove(defenderCharacter);
-                    Functions.EntityUpdate(2, roomID, defenderCharacter);
-                    Functions.MessageRoom($"~w{attackerCharacter.BName} {attackerCharacter.Name} ~mhas killed {defenderCharacter.BName} {defenderCharacter.Name}~m!", roomID);
+                    NPC defenderCharacter = game.currentNPC[defenderID];
+                    NPC attackerCharacter = game.currentNPC[entityID];
+                    game.currentNPC.Remove(defenderID);
+                    Functions.NPCUpdate(2, attackerCharacter.RoomID, defenderCharacter);
+                    Functions.MessageRoom($"~w{attackerCharacter.BName} {attackerCharacter.Name.FirstCharToUpper()} ~mhas killed {defenderCharacter.BName} {defenderCharacter.Name.FirstCharToUpper()}~m!", attackerCharacter.RoomID);
                 }
             }
 
@@ -456,85 +385,37 @@ namespace Phoenix.Server.Scripts
 
             public static class Get
             {
-                public static string HisHer(string id, bool type)
+                public static string HisHer(string entityID, bool isPlayer)
                 {
-                    if (type)
+                    if (isPlayer)
                     {
-                        foreach (ConnectedAccount connectedAccount in game.connectedAccounts)
-                        {
-                            if (connectedAccount.Client.Id == id)
-                            {
-                                return connectedAccount.Account.Character.HisHer;
-                            }
-                        }
-                        return "";
+                        return game.connectedAccounts.ContainsKey(entityID) ? game.connectedAccounts[entityID].Account.Character.HisHer : "";
                     }
                     else
                     {
-                        foreach (NPC npc in game.currentNPC)
-                        {
-                            if (npc.InstanceID.ToString() == id)
-                            {
-                                return npc.HisHer;
-                            }
-                        }
-                        return "";
+                        return game.currentNPC.ContainsKey(entityID) ? game.currentNPC[entityID].HisHer : "";
                     }
                 }
-                public static string Name(string id, bool type)
+                public static string Name(string entityID, bool isPlayer)
                 {
-                    if (type)
+                    if (isPlayer)
                     {
-                        foreach (ConnectedAccount connectedAccount in game.connectedAccounts)
-                        {
-                            if (connectedAccount.Client.Id == id)
-                            {
-                                return connectedAccount.Account.Character.Name;
-                            }
-                        }
-                        return "";
+                        return game.connectedAccounts.ContainsKey(entityID) ? game.connectedAccounts[entityID].Account.Character.Name : "";
                     }
                     else
                     {
-                        foreach (NPC npc in game.currentNPC)
-                        {
-                            if (npc.InstanceID.ToString() == id)
-                            {
-                                return npc.Name;
-                            }
-                        }
-                        return "";
+                        return game.currentNPC.ContainsKey(entityID) ? game.currentNPC[entityID].Name : "";
                     }
                 }
-                public static int Room(string id, bool type)
+                public static int Room(string entityID, bool isPlayer)
                 {
-                    if (type)
+                    if (isPlayer)
                     {
-                        foreach (ConnectedAccount connectedAccount in game.connectedAccounts)
-                        {
-                            if (connectedAccount.Client.Id == id)
-                            {
-                                return connectedAccount.Account.Character.RoomID;
-                            }
-                        }
-                        return -1;
+                        return game.connectedAccounts.ContainsKey(entityID) ? game.connectedAccounts[entityID].Account.Character.RoomID : -1;
                     }
                     else
                     {
-                        foreach (NPC npc in game.currentNPC)
-                        {
-                            if (npc.InstanceID.ToString() == id)
-                            {
-                                foreach (Room room in game.rooms)
-                                {
-                                    if (room.RoomNPC.Contains(npc))
-                                    {
-                                        return room.ID;
-                                    }
-                                }
-                            }
-                        }
-                        return -1;
+                        return game.currentNPC.ContainsKey(entityID) ? game.currentNPC[entityID].RoomID : -1;
                     }
                 }
             }
@@ -563,6 +444,14 @@ namespace Phoenix.Server.Scripts
             public static void Room(int roomID, string message)
             {
                 Functions.MessageRoom(Helper.RemoveCaret(Helper.RemovePercent(Helper.RemovePipe(Helper.RemoveTilda(message)))), roomID);
+            }
+            public static void Room(int roomID, string message, string entityID)
+            {
+                Functions.MessageRoom(Helper.RemoveCaret(Helper.RemovePercent(Helper.RemovePipe(Helper.RemoveTilda(message)))), roomID, game.connectedAccounts[entityID]);
+            }
+            public static void Room(int roomID, string message, string entityID, string defenderID)
+            {
+                Functions.MessageRoom(Helper.RemoveCaret(Helper.RemovePercent(Helper.RemovePipe(Helper.RemoveTilda(message)))), roomID, game.connectedAccounts[entityID], game.connectedAccounts[defenderID]);
             }
         }
         #endregion
@@ -602,7 +491,15 @@ namespace Phoenix.Server.Scripts
         [MoonSharpUserData]
         class LuaRandom
         {
-
+            private static readonly Random random = new();
+            public static int Number(int min, int max)
+            {
+                return random.Next(min, max);
+            }
+            public static double NumberDouble(double min, double max)
+            {
+                return random.NextDouble() * (min - max) + min;
+            }
         }
         #endregion
 

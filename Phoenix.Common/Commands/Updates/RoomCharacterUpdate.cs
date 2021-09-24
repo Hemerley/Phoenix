@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace Phoenix.Common.Commands.Updates
 {
-    public class RoomPlayerUpdate : Command
+    public class RoomCharacterUpdate : Command
     {
         #region -- Properties --
         public int Mode { get; set; }
         public Character Character { get; set; }
         #endregion
 
-        public RoomPlayerUpdate()
+        public RoomCharacterUpdate()
         {
-            this.CommandType = CommandType.RoomPlayerUpdate;
+            this.CommandType = CommandType.RoomCharacterUpdate;
         }
 
         public override IEnumerable<IEnumerable<string>> GetCommandParts()

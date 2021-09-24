@@ -1,5 +1,4 @@
 ﻿using MoonSharp.Interpreter;
-using MoonSharp.VsCodeDebugger;
 using Phoenix.Common.Commands.Factory;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Server;
@@ -61,7 +60,7 @@ namespace Phoenix.Server.Network
         /// <summary>
         /// Queue Command Library.
         /// </summary>
-        public readonly SortedDictionary<double, List<ClientCommand>> actionQueue = new();
+        public readonly Dictionary<double, List<ClientCommand>> actionQueue = new();
 
         /// <summary>
         /// Connected clients that are NOT authenticated yet.
@@ -71,7 +70,7 @@ namespace Phoenix.Server.Network
         /// <summary>
         /// Connected clients that ARE authenticated.
         /// </summary>
-        public readonly List<ConnectedAccount> connectedAccounts = new();
+        public readonly Dictionary<string, ConnectedAccount> connectedAccounts = new();
 
         /// <summary>
         /// Declaration of Scripts in ./Scripts/
@@ -91,17 +90,17 @@ namespace Phoenix.Server.Network
         /// <summary>
         /// Declaration of Connected Characters.
         /// </summary>
-        public readonly List<Character> connectedCharacters = new();
+        public readonly Dictionary<string, Character> connectedCharacters = new();
 
         /// <summary>
         /// Declaration of Current NPC Spawned.
         /// </summary>
-        public readonly List<NPC> currentNPC = new();
+        public readonly Dictionary<string, NPC> currentNPC = new();
 
         /// <summary>
         /// Declaration of Current Rooms.
         /// </summary>
-        public readonly List<Room> currentRooms = new();
+        public readonly Dictionary<string, Room> currentRooms = new();
 
         public bool showCommands = false;
 
@@ -168,43 +167,30 @@ namespace Phoenix.Server.Network
         private void Server_OnClientDisconnected(object sender, ConnectedClient e)
         {
             //Remove from EITHER connected clients OR connected accounts (it could be in either)
-            var connectedAccount = this.connectedAccounts.FirstOrDefault(c => c.Client.Id == e.Id);
             if (this.connectedClients.ContainsKey(e.Id))
+            {
                 this.connectedClients.Remove(e.Id);
+                return;
+            }
 
             //coding it this way to be safe, just in case we have a different instance of the same connection
             //I DOUBT we do though
-            if (connectedAccount != null)
+            var connectedAccount = this.connectedAccounts[e.Id];
+            if (connectedAccount.Account.Character != null)
             {
-                foreach (Room room in this.rooms)
+                rooms[connectedAccount.Account.Character.RoomID].RoomCharacters.Remove(connectedAccount.Account.Character);
+                foreach (ConnectedAccount cAccount in connectedAccounts.Values)
                 {
-                    if (connectedAccount.Account.Character != null)
-                        if (connectedAccount.Account.Character.RoomID == room.ID)
-                        {
-                            room.RoomCharacters.Remove(connectedAccount.Account.Character);
-                            foreach (Character character in room.RoomCharacters)
-                            {
-                                foreach (ConnectedAccount cAccount in connectedAccounts)
-                                {
-                                    if (cAccount.Account.Character.Id == character.Id)
-                                    {
-                                        SendCommandToClient(cAccount.Client, new RoomPlayerUpdate
-                                        {
-                                            Mode = 2,
-                                            Character = connectedAccount.Account.Character
-                                        });
-                                        SendCommandToClient(cAccount.Client, new MessageWorldServer
-                                        {
-                                            Message = $"&tilda&g{connectedAccount.Account.Character.Name}&tilda&w has went &tilda&roffline&tilda&w!"
-                                        });
-                                    }
-                                }
-                            }
-                        }
-                    this.connectedCharacters.Remove(connectedAccount.Account.Character);
-                    this.connectedAccounts.Remove(connectedAccount);
+                    if (cAccount.Account.Character.RoomID == connectedAccount.Account.Character.RoomID)
+                    {
+                        Functions.CharacterUpdate(2, connectedAccount.Account.Character.RoomID, connectedAccount.Account.Character);
+                    }
                 }
+                this.connectedCharacters.Remove(connectedAccount.Account.Character.Id.ToString());
+                Functions.MessageWorld($"&tilda&g{connectedAccount.Account.Character.Name}&tilda&w has went &tilda&roffline&tilda&w!");
             }
+            this.connectedAccounts.Remove(connectedAccount.Client.Id);
+            
 
             // Log Command
             Log.Information($"{e.Id} has disconnected.");
@@ -346,7 +332,7 @@ namespace Phoenix.Server.Network
                         {
                             var parsedCommand = command as AuthenticateRequest;
 
-                            SendCommandToClient(clientWhoSendCommand, Functions.Authenticate(parsedCommand.Version, parsedCommand.Username.ToLower(), parsedCommand.Password, clientWhoSendCommand, accountConnected));
+                            SendCommandToClient(clientWhoSendCommand, Functions.Authenticate(parsedCommand.Version, parsedCommand.Username.ToLower(), parsedCommand.Password, clientWhoSendCommand));
 
                             break;
                         }
@@ -358,7 +344,7 @@ namespace Phoenix.Server.Network
                         {
                             var parsedCommand = command as NewAccountRequest;
 
-                            SendCommandToClient(clientWhoSendCommand, Functions.NewAccount(parsedCommand.Version, parsedCommand.Username.ToLower(), parsedCommand.Password, parsedCommand.Email, clientWhoSendCommand, accountConnected));
+                            SendCommandToClient(clientWhoSendCommand, Functions.NewAccount(parsedCommand.Version, parsedCommand.Username.ToLower(), parsedCommand.Password, parsedCommand.Email, clientWhoSendCommand));
 
                             break;
                         }
@@ -370,7 +356,7 @@ namespace Phoenix.Server.Network
                         {
                             var parsedCommand = command as NewCharacterCommand;
 
-                            SendCommandToClient(clientWhoSendCommand, Functions.NewCharacter(parsedCommand.CharacterName.ToLower(), parsedCommand.Gender, parsedCommand.Philosophy, parsedCommand.Image, clientWhoSendCommand, accountConnected));
+                            SendCommandToClient(accountConnected.Client, Functions.NewCharacter(parsedCommand.CharacterName.ToLower(), parsedCommand.Gender, parsedCommand.Philosophy, parsedCommand.Image, accountConnected));
 
                             break;
                         }
@@ -382,7 +368,7 @@ namespace Phoenix.Server.Network
                         {
                             var parsedCommand = command as GetCharacterListRequest;
 
-                            SendCommandToClient(clientWhoSendCommand, Functions.CharacterList(clientWhoSendCommand, accountConnected));
+                            SendCommandToClient(accountConnected.Client, Functions.CharacterList(accountConnected));
 
                             break;
                         }
@@ -394,7 +380,7 @@ namespace Phoenix.Server.Network
                         {
                             var parsedCommand = command as CharacterConnectRequest;
 
-                            SendCommandToClient(clientWhoSendCommand, Functions.CharacterConnect(parsedCommand.Name.ToLower(), clientWhoSendCommand, accountConnected));
+                            SendCommandToClient(accountConnected.Client, Functions.CharacterConnect(parsedCommand.Name.ToLower(), accountConnected));
 
                             break;
                         }
@@ -430,7 +416,7 @@ namespace Phoenix.Server.Network
                     case CommandType.MessageWorld:
                         {
                             var parsedCommand = command as MessageWorldServer;
-                            Functions.MessageWorld(parsedCommand.Message, parsedCommand.ID, accountConnected);
+                            Functions.MessageWorld(parsedCommand.Message, parsedCommand.ID.ToString(), accountConnected);
                             break;
                         }
                     #endregion
@@ -451,7 +437,7 @@ namespace Phoenix.Server.Network
                     case CommandType.ClientConnect:
                         {
                             var parsedCommand = command as ClientConnectRequest;
-                            SendCommandToClient(clientWhoSendCommand, Functions.ClientConnect(parsedCommand.Id, accountConnected));
+                            SendCommandToClient(accountConnected.Client, Functions.ClientConnect(parsedCommand.Id));
                             break;
                         }
                     #endregion
@@ -460,7 +446,7 @@ namespace Phoenix.Server.Network
                     case CommandType.ClientRoom:
                         {
                             var parseCommand = command as ClientRoomRequest;
-                            Functions.ClientRoom(parseCommand.RoomID, accountConnected);
+                            Functions.MovementUpdate(accountConnected);
                             break;
                         }
                     #endregion
@@ -475,9 +461,9 @@ namespace Phoenix.Server.Network
                     #endregion
 
                     #region  -- Player Move Request --
-                    case CommandType.PlayerMoveRequest:
+                    case CommandType.CharacterMoveRequest:
                         {
-                            var parsedCommand = command as PlayerMoveRequest;
+                            var parsedCommand = command as CharacterMoveRequest;
 
                             Functions.MovePlayer(parsedCommand.Direction, accountConnected);
 
@@ -491,6 +477,16 @@ namespace Phoenix.Server.Network
                             var parsedCommand = command as SpawnNPCServer;
 
                             Functions.SpawnNPC(parsedCommand.CharacterName, parsedCommand.NPCName);
+                        }
+                        break;
+                    #endregion
+
+                    #region  -- Respawn Character --
+                    case CommandType.RespawnCharacter:
+                        {
+                            var parsedCommand = command as RespawnCharacterServer;
+
+                            Functions.RespawnCharacter(Int32.Parse(parsedCommand.RoomID), this.connectedAccounts[parsedCommand.EntityID], parsedCommand.ArrivalMessage, parsedCommand.DepartureMessage);
                         }
                         break;
                     #endregion
@@ -519,8 +515,6 @@ namespace Phoenix.Server.Network
                 Thread.Sleep(10);
             }
         }
-
         #endregion
-
     }
 }

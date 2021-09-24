@@ -789,7 +789,6 @@ namespace Phoenix.Client
             this.vbExp.Size = new System.Drawing.Size(229, 23);
             this.vbExp.SliderColor = System.Drawing.Color.DarkOrchid;
             this.vbExp.SliderHeight = 20;
-            this.vbExp.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.vbExp.SymbolAfter = "";
             this.vbExp.SymbolBefore = "";
             this.vbExp.TabIndex = 226;
@@ -2723,11 +2722,9 @@ namespace Phoenix.Client
             this.vbCast.Size = new System.Drawing.Size(201, 23);
             this.vbCast.SliderColor = System.Drawing.Color.ForestGreen;
             this.vbCast.SliderHeight = 20;
-            this.vbCast.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.vbCast.SymbolAfter = "";
             this.vbCast.SymbolBefore = "";
             this.vbCast.TabIndex = 229;
-            this.vbCast.Value = 50;
             // 
             // vbMana
             // 
@@ -2743,7 +2740,6 @@ namespace Phoenix.Client
             this.vbMana.Size = new System.Drawing.Size(201, 23);
             this.vbMana.SliderColor = System.Drawing.Color.CornflowerBlue;
             this.vbMana.SliderHeight = 20;
-            this.vbMana.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.vbMana.SymbolAfter = "";
             this.vbMana.SymbolBefore = "";
             this.vbMana.TabIndex = 228;
@@ -2763,7 +2759,6 @@ namespace Phoenix.Client
             this.vbHealth.Size = new System.Drawing.Size(201, 23);
             this.vbHealth.SliderColor = System.Drawing.Color.Crimson;
             this.vbHealth.SliderHeight = 20;
-            this.vbHealth.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.vbHealth.SymbolAfter = "";
             this.vbHealth.SymbolBefore = "";
             this.vbHealth.TabIndex = 227;

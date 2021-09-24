@@ -9,13 +9,9 @@ namespace Phoenix.Server.Connections
     public class ConnectedClient
     {
         public Action<ConnectedClient, bool> Disconnected;
-
         private readonly AsyncTcpClient tcpClient;
-
         private readonly Network.Listener server;
-
         public string Id { get; private set; }
-
         public ConnectedClient(TcpClient tcpClient, Network.Listener server)
         {
             this.Id = Guid.NewGuid().ToString();
@@ -30,12 +26,10 @@ namespace Phoenix.Server.Connections
 
             this.server = server;
         }
-
         private Task ClientConnected(AsyncTcpClient client, bool isReconnected)
         {
             return Task.CompletedTask;
         }
-
         private Task MessageRecieved(AsyncTcpClient client, int count)
         {
             byte[] bytes = client.ByteBuffer.Dequeue(count);
@@ -44,17 +38,14 @@ namespace Phoenix.Server.Connections
             this.server.ClientMessage(this, message);
             return Task.CompletedTask;
         }
-
         private void ClientClosed(AsyncTcpClient client, bool remote)
         {
             Disconnected?.Invoke(this, remote);
         }
-
         public Task RunAsync()
         {
             return tcpClient.RunAsync();
         }
-
         public void Send(string msg)
         {
             var bytes = Encoding.UTF8.GetBytes(msg);

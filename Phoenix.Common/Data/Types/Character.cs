@@ -40,6 +40,7 @@
         public double Haste { get; set; }
         public double Mastery { get; set; }
         public double Versatility { get; set; }
+        public int Recall { get; set; }
         #endregion
 
         #region -- Combat Statistics --
@@ -52,6 +53,7 @@
         #region -- Resource Statistics --
         public int CurrentHealth { get; set; }
         public int CurrentMana { get; set; }
+        public int MaxExperience { get; set; }
         #endregion
 
         #endregion

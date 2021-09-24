@@ -35,6 +35,7 @@ namespace Phoenix.Client
 
         #region -- Client Events --
         private void Client_OnActivity(object sender, string e)
+        
         {
             this.Invoke((Action)delegate
             {
@@ -85,14 +86,15 @@ namespace Phoenix.Client
                                 this.Invoke((Action)delegate
                                 {
                                     this.lstvRoom.Items.Clear();
+                                    this.lstvDrops.Items.Clear();
 
-                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "south", "~cSouth~w", RegexOptions.IgnoreCase);
-                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "north", "~cNorth~w", RegexOptions.IgnoreCase);
-                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "west", "~cWest~w", RegexOptions.IgnoreCase);
-                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "east", "~cEast~w", RegexOptions.IgnoreCase);
-                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "up", "~cUp~w", RegexOptions.IgnoreCase);
-                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "down", "~cDown~w", RegexOptions.IgnoreCase);
-                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, "all", "~cAll~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, @"\bsouth\b", "~cSouth~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, @"\bnorth\b", "~cNorth~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, @"\bwest\b", "~cWest~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, @"\beast\b", "~cEast~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, @"\bup\b", "~cUp~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, @"\bdown\b", "~cDown~w", RegexOptions.IgnoreCase);
+                                    clientRooomResponseCommand.Room.Exits = Regex.Replace(clientRooomResponseCommand.Room.Exits, @"\ball\b", "~cAll~w", RegexOptions.IgnoreCase);
 
                                     var message = $"~g<~w{clientRooomResponseCommand.Room.Name}~g>~w {clientRooomResponseCommand.Room.Description} {clientRooomResponseCommand.Room.Exits}\n";
                                     UpdateChat(message);
@@ -116,13 +118,13 @@ namespace Phoenix.Client
                     #endregion
 
                     #region -- Room Player Update --
-                    case CommandType.RoomPlayerUpdate:
+                    case CommandType.RoomCharacterUpdate:
                         {
-                            var roomPlayerUpdateCommand = command as RoomPlayerUpdate;
+                            var RoomCharacterUpdateCommand = command as RoomCharacterUpdate;
 
                             this.Invoke((Action)delegate
                             {
-                                UpdateRoom(roomPlayerUpdateCommand.Mode, roomPlayerUpdateCommand.Character.Name, roomPlayerUpdateCommand.Character.Image, roomPlayerUpdateCommand.Character.Type);
+                                UpdateRoom(RoomCharacterUpdateCommand.Mode, RoomCharacterUpdateCommand.Character.Name, RoomCharacterUpdateCommand.Character.Image, RoomCharacterUpdateCommand.Character.Type);
                             });
 
                             continue;
@@ -137,6 +139,21 @@ namespace Phoenix.Client
                             this.Invoke((Action)delegate
                             {
                                 UpdateRoom(roomNPCUpdateCommand.Mode, roomNPCUpdateCommand.NPC.Name, roomNPCUpdateCommand.NPC.Image, roomNPCUpdateCommand.NPC.Type);
+                            });
+
+                            continue;
+                        }
+                    #endregion
+
+                    #region -- Character Stat Update --
+                    case CommandType.CharacterStatUpdate:
+                        {
+                            var parsedCommand = command as CharacterStatUpdate;
+
+                            this.Invoke((Action)delegate
+                            {
+                                this.character = parsedCommand.Character;
+                                this.CharacterLoad();
                             });
 
                             continue;
@@ -356,32 +373,34 @@ namespace Phoenix.Client
 
             SendCommand(clientConnectCommand);
             this.CharacterLoad();
+            this.rtbChat.SelectionColor = Color.LawnGreen;
+            this.rtbChat.AppendText("Connecting to server...\n");
         }
 
         private void TxtInput_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.NumPad8)
             {
                 e.SuppressKeyPress = true;
                 HandleCommands("n");
                 return;
             }
 
-            if (e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.Right)
+            if (e.KeyCode == Keys.NumPad6)
             {
                 e.SuppressKeyPress = true;
                 HandleCommands("e");
                 return;
             }
 
-            if (e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.Down)
+            if (e.KeyCode == Keys.NumPad2)
             {
                 e.SuppressKeyPress = true;
                 HandleCommands("s");
                 return;
             }
 
-            if (e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.NumPad4)
             {
                 e.SuppressKeyPress = true;
                 HandleCommands("w");
@@ -437,7 +456,6 @@ namespace Phoenix.Client
         #region -- Client Start Updates --
         private void CharacterLoad()
         {
-
             this.lblName.Text = "Name: " + this.character.Name.ToString().FirstCharToUpper();
             if (!this.ilAvatar.Images.Keys.Contains(this.character.Image))
             {
@@ -458,15 +476,14 @@ namespace Phoenix.Client
             this.lblBaseVers.Text = this.character.Versatility.ToString() + "%";
             this.lblWeight.Text = "Weight: 0 / " + (this.character.Strength * 2);
             this.vbExp.Value = this.character.Experience;
-            this.vbExp.Maximum = 1000;
-            this.vbHealth.Value = this.character.Health;
+            this.vbExp.Maximum = this.character.MaxExperience;
+            this.vbExp.Refresh();
+            this.vbHealth.Value = this.character.CurrentHealth;
             this.vbHealth.Maximum = this.character.Health;
-            this.vbMana.Value = this.character.Mana;
+            this.vbHealth.Refresh();
+            this.vbMana.Value = this.character.CurrentMana;
             this.vbMana.Maximum = this.character.Mana;
-            this.vbCast.Value = 0;
-            this.vbCast.Maximum = 100;
-            this.rtbChat.SelectionColor = Color.LawnGreen;
-            this.rtbChat.AppendText("Connecting to server...\n");
+            this.vbMana.Refresh();
         }
         #endregion
 
@@ -1052,7 +1069,7 @@ namespace Phoenix.Client
                     case "north":
                     case "n":
                         {
-                            SendCommand(new PlayerMoveRequest
+                            SendCommand(new CharacterMoveRequest
                             {
                                 Direction = "north"
                             });
@@ -1061,7 +1078,7 @@ namespace Phoenix.Client
                     case "south":
                     case "s":
                         {
-                            SendCommand(new PlayerMoveRequest
+                            SendCommand(new CharacterMoveRequest
                             {
                                 Direction = "south"
                             });
@@ -1070,7 +1087,7 @@ namespace Phoenix.Client
                     case "west":
                     case "w":
                         {
-                            SendCommand(new PlayerMoveRequest
+                            SendCommand(new CharacterMoveRequest
                             {
                                 Direction = "west"
                             });
@@ -1079,7 +1096,7 @@ namespace Phoenix.Client
                     case "east":
                     case "e":
                         {
-                            SendCommand(new PlayerMoveRequest
+                            SendCommand(new CharacterMoveRequest
                             {
                                 Direction = "east"
                             });

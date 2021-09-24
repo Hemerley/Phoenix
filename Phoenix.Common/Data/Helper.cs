@@ -223,6 +223,7 @@ namespace Phoenix.Common.Data
                 'o' => Color.Orange,
                 'y' => Color.Yellow,
                 'q' => Color.BlueViolet,
+                'v' => Color.MediumOrchid,
                 'm' => Color.Magenta,
                 'p' => Color.Pink,
                 'l' => Color.DarkGray,

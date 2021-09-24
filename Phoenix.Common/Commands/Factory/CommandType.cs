@@ -39,15 +39,18 @@
         ClientRoomResponse = 203,
         MapRequest = 204,
         MapResponse = 205,
-        RoomPlayerUpdate = 206,
+        RoomCharacterUpdate = 206,
         RoomNPCUpdate = 207,
-        PlayerMoveRequest = 208,
+        CharacterMoveRequest = 208,
+        CharacterStatUpdate = 209,
 
         #endregion
 
         #region -- Server (300-499) --
 
         SpawnNPC = 300,
+        RespawnCharacter = 301,
+
 
         #endregion
 

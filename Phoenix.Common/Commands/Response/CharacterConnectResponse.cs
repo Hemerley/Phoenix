@@ -60,7 +60,10 @@ namespace Phoenix.Common.Commands.Response
                 this.Character.Crit.ToString(),
                 this.Character.Mastery.ToString(),
                 this.Character.Haste.ToString(),
-                this.Character.Versatility.ToString()
+                this.Character.Versatility.ToString(),
+                this.Character.CurrentHealth.ToString(),
+                this.Character.CurrentMana.ToString(),
+                this.Character.MaxExperience.ToString()
             });
 
             return character;
