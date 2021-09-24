@@ -1,0 +1,416 @@
+2021-09-24 00:03:05.403 -05:00 [INF] Loading Rooms...
+2021-09-24 00:03:05.901 -05:00 [INF] Rooms Loaded!
+2021-09-24 00:03:05.902 -05:00 [INF] Initializing Script Globals...
+2021-09-24 00:03:06.169 -05:00 [INF] Script Globals Initialized!
+2021-09-24 00:03:06.170 -05:00 [INF] Loading Scripts...
+2021-09-24 00:03:06.174 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-24 00:03:06.175 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-24 00:03:06.176 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-24 00:03:06.177 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-24 00:03:06.178 -05:00 [INF] Scripts Loaded!
+2021-09-24 00:03:06.234 -05:00 [INF] Server Started!
+2021-09-24 00:03:15.557 -05:00 [INF] cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17 has connected.
+2021-09-24 00:03:15.617 -05:00 [INF] AuthenticateResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:15.667 -05:00 [INF] CharacterListResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:19.116 -05:00 [INF] RoomCharacterUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:19.119 -05:00 [INF] MessageWorld sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:19.123 -05:00 [INF] CharacterLoginResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:19.155 -05:00 [INF] ClientConnectResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:19.325 -05:00 [INF] ClientRoomResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:19.331 -05:00 [INF] MapResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:36.012 -05:00 [INF] RoomNPCUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:36.016 -05:00 [INF] MessageRoom sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:36.018 -05:00 [INF] RoomNPCUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:36.021 -05:00 [INF] MessageRoom sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:36.469 -05:00 [INF] 3a64ffa9-18e0-4ec6-b134-60d47404c481 has connected.
+2021-09-24 00:03:36.496 -05:00 [INF] AuthenticateResponse sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:36.536 -05:00 [INF] CharacterListResponse sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:38.978 -05:00 [INF] RoomCharacterUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:38.982 -05:00 [INF] RoomCharacterUpdate sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:38.984 -05:00 [INF] MessageWorld sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:38.986 -05:00 [INF] MessageWorld sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:38.988 -05:00 [INF] CharacterLoginResponse sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:39.005 -05:00 [INF] ClientConnectResponse sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:39.129 -05:00 [INF] ClientRoomResponse sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:39.131 -05:00 [INF] MapResponse sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:43.262 -05:00 [INF] MessageDirect sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:43.265 -05:00 [INF] MessageDirect sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:43.267 -05:00 [INF] MessageDirect sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:43.274 -05:00 [INF] MessageRoom sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:43.276 -05:00 [INF] MessageRoom sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:43.280 -05:00 [INF] RoomCharacterUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:43.284 -05:00 [INF] RoomCharacterUpdate sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:43.287 -05:00 [INF] MessageRoom sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:43.290 -05:00 [INF] ClientRoomResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:43.292 -05:00 [INF] MapResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:43.294 -05:00 [INF] MessageDirect sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:03:43.296 -05:00 [INF] MessageDirect sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:03:43.301 -05:00 [INF] CharacterStatUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:03.002 -05:00 [INF] RoomCharacterUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:03.005 -05:00 [INF] RoomCharacterUpdate sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:04:03.007 -05:00 [INF] MessageRoom sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:03.010 -05:00 [INF] ClientRoomResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:03.013 -05:00 [INF] MapResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:03.015 -05:00 [INF] MessageDirect sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:03.018 -05:00 [INF] CharacterStatUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:39.555 -05:00 [INF] MessageDirect sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:39.557 -05:00 [INF] MessageDirect sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:39.559 -05:00 [INF] MessageDirect sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:04:39.562 -05:00 [INF] MessageRoom sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:04:39.564 -05:00 [INF] MessageRoom sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:04:39.567 -05:00 [INF] RoomCharacterUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:39.569 -05:00 [INF] RoomCharacterUpdate sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:04:39.571 -05:00 [INF] MessageRoom sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:39.573 -05:00 [INF] ClientRoomResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:39.576 -05:00 [INF] MapResponse sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:39.578 -05:00 [INF] MessageDirect sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:39.580 -05:00 [INF] MessageDirect sent to 3a64ffa9-18e0-4ec6-b134-60d47404c481
+2021-09-24 00:04:39.583 -05:00 [INF] CharacterStatUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:46.452 -05:00 [INF] RoomCharacterUpdate sent to cd9bc08b-b534-4ac1-b17f-acb8ce3b8d17
+2021-09-24 00:04:50.302 -05:00 [INF] Loading Rooms...
+2021-09-24 00:04:50.591 -05:00 [INF] Rooms Loaded!
+2021-09-24 00:04:50.592 -05:00 [INF] Initializing Script Globals...
+2021-09-24 00:04:50.770 -05:00 [INF] Script Globals Initialized!
+2021-09-24 00:04:50.771 -05:00 [INF] Loading Scripts...
+2021-09-24 00:04:50.774 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-24 00:04:50.775 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-24 00:04:50.775 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-24 00:04:50.776 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-24 00:04:50.776 -05:00 [INF] Scripts Loaded!
+2021-09-24 00:04:50.810 -05:00 [INF] Server Started!
+2021-09-24 00:05:02.583 -05:00 [INF] c8c4cd01-75bc-4f08-b678-3868185736f4 has connected.
+2021-09-24 00:05:02.650 -05:00 [INF] AuthenticateResponse sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:05:02.704 -05:00 [INF] CharacterListResponse sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:05:04.198 -05:00 [INF] RoomCharacterUpdate sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:05:04.202 -05:00 [INF] MessageWorld sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:05:04.205 -05:00 [INF] CharacterLoginResponse sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:05:04.226 -05:00 [INF] ClientConnectResponse sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:05:04.363 -05:00 [INF] ClientRoomResponse sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:05:04.368 -05:00 [INF] MapResponse sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:05:15.618 -05:00 [INF] 4157063d-2c51-4eab-8641-ab23343fd3e1 has connected.
+2021-09-24 00:05:15.634 -05:00 [INF] AuthenticateResponse sent to 4157063d-2c51-4eab-8641-ab23343fd3e1
+2021-09-24 00:05:15.660 -05:00 [INF] CharacterListResponse sent to 4157063d-2c51-4eab-8641-ab23343fd3e1
+2021-09-24 00:05:20.017 -05:00 [INF] RoomNPCUpdate sent to c8c4cd01-75bc-4f08-b678-3868185736f4
+2021-09-24 00:08:02.819 -05:00 [INF] Loading Rooms...
+2021-09-24 00:08:03.157 -05:00 [INF] Rooms Loaded!
+2021-09-24 00:08:03.159 -05:00 [INF] Initializing Script Globals...
+2021-09-24 00:08:03.367 -05:00 [INF] Script Globals Initialized!
+2021-09-24 00:08:03.368 -05:00 [INF] Loading Scripts...
+2021-09-24 00:08:03.371 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-24 00:08:03.372 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-24 00:08:03.372 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-24 00:08:03.373 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-24 00:08:03.374 -05:00 [INF] Scripts Loaded!
+2021-09-24 00:08:03.430 -05:00 [INF] Server Started!
+2021-09-24 00:08:19.437 -05:00 [INF] 798a5bf8-4d96-46c6-861d-e10af5d78b33 has connected.
+2021-09-24 00:08:19.494 -05:00 [INF] AuthenticateResponse sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:19.528 -05:00 [INF] CharacterListResponse sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:21.058 -05:00 [INF] RoomCharacterUpdate sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:21.062 -05:00 [INF] MessageWorld sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:21.066 -05:00 [INF] CharacterLoginResponse sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:21.085 -05:00 [INF] ClientConnectResponse sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:21.252 -05:00 [INF] ClientRoomResponse sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:21.257 -05:00 [INF] MapResponse sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:31.598 -05:00 [INF] ee83fff0-f6ff-41a5-bdcf-e6adef026560 has connected.
+2021-09-24 00:08:31.638 -05:00 [INF] AuthenticateResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:08:31.673 -05:00 [INF] CharacterListResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:08:33.034 -05:00 [INF] RoomNPCUpdate sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:33.061 -05:00 [INF] MessageRoom sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:33.078 -05:00 [INF] RoomNPCUpdate sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:33.094 -05:00 [INF] MessageRoom sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:40.646 -05:00 [INF] MessageWorld sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:40.649 -05:00 [INF] MessageWorld sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:08:50.448 -05:00 [INF] RoomCharacterUpdate sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:50.474 -05:00 [INF] RoomCharacterUpdate sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:08:50.492 -05:00 [INF] MessageWorld sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:08:50.518 -05:00 [INF] MessageWorld sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:08:50.535 -05:00 [INF] CharacterLoginResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:08:50.573 -05:00 [INF] ClientConnectResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:08:52.035 -05:00 [INF] ClientRoomResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:08:52.062 -05:00 [INF] MapResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:08.832 -05:00 [INF] MessageDirect sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:08.835 -05:00 [INF] MessageDirect sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:08.837 -05:00 [INF] MessageDirect sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:09:08.846 -05:00 [INF] RoomCharacterUpdate sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:09:08.848 -05:00 [INF] RoomCharacterUpdate sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:08.851 -05:00 [INF] MessageRoom sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:08.853 -05:00 [INF] ClientRoomResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:08.855 -05:00 [INF] MapResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:08.857 -05:00 [INF] MessageDirect sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:08.860 -05:00 [INF] MessageDirect sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:09:08.863 -05:00 [INF] CharacterStatUpdate sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:28.011 -05:00 [INF] RoomCharacterUpdate sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:28.014 -05:00 [INF] RoomCharacterUpdate sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:09:28.016 -05:00 [INF] MessageRoom sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:28.018 -05:00 [INF] ClientRoomResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:28.020 -05:00 [INF] MapResponse sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:28.023 -05:00 [INF] MessageDirect sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:28.025 -05:00 [INF] CharacterStatUpdate sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:40.985 -05:00 [INF] RoomCharacterUpdate sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:09:41.011 -05:00 [INF] RoomCharacterUpdate sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:41.059 -05:00 [INF] RoomCharacterUpdate sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:09:41.103 -05:00 [INF] RoomCharacterUpdate sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:41.164 -05:00 [INF] MessageWorld sent to 798a5bf8-4d96-46c6-861d-e10af5d78b33
+2021-09-24 00:09:41.219 -05:00 [INF] MessageWorld sent to ee83fff0-f6ff-41a5-bdcf-e6adef026560
+2021-09-24 00:09:41.271 -05:00 [INF] ee83fff0-f6ff-41a5-bdcf-e6adef026560 has disconnected.
+2021-09-24 00:23:29.370 -05:00 [INF] Loading Rooms...
+2021-09-24 00:23:29.787 -05:00 [INF] Rooms Loaded!
+2021-09-24 00:23:29.789 -05:00 [INF] Initializing Script Globals...
+2021-09-24 00:23:30.071 -05:00 [INF] Script Globals Initialized!
+2021-09-24 00:23:30.072 -05:00 [INF] Loading Scripts...
+2021-09-24 00:23:30.076 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-24 00:23:30.077 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-24 00:23:30.077 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-24 00:23:30.078 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-24 00:23:30.080 -05:00 [INF] Scripts Loaded!
+2021-09-24 00:23:30.145 -05:00 [INF] Server Started!
+2021-09-24 00:23:44.523 -05:00 [INF] 62fdcd65-5ecb-4671-9aa0-a2f69b56f565 has connected.
+2021-09-24 00:23:44.592 -05:00 [INF] AuthenticateResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:23:44.643 -05:00 [INF] CharacterListResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:23:45.988 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:23:45.992 -05:00 [INF] MessageWorld sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:23:45.996 -05:00 [INF] CharacterLoginResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:23:46.028 -05:00 [INF] ClientConnectResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:23:46.168 -05:00 [INF] ClientRoomResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:23:46.175 -05:00 [INF] MapResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:00.012 -05:00 [INF] RoomNPCUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:00.016 -05:00 [INF] MessageRoom sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:00.019 -05:00 [INF] RoomNPCUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:00.021 -05:00 [INF] MessageRoom sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:04.951 -05:00 [INF] 2b2b8fb2-4167-4cd7-8088-9f149d29261e has connected.
+2021-09-24 00:24:05.255 -05:00 [INF] AuthenticateResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:05.691 -05:00 [INF] CharacterListResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:08.404 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:08.445 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:08.468 -05:00 [INF] MessageWorld sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:08.503 -05:00 [INF] MessageWorld sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:08.528 -05:00 [INF] CharacterLoginResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:08.758 -05:00 [INF] ClientConnectResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:10.690 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:10.882 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:15.100 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:15.103 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:15.105 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:15.108 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:15.111 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:15.720 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:15.723 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:15.726 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:15.729 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:15.731 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.058 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.061 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:16.063 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.086 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.089 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.472 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.475 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.478 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:16.480 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.482 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.873 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.876 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:16.879 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.881 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:16.883 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.272 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.275 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.278 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:17.280 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.283 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.503 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.506 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:17.509 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.511 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.514 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.932 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.935 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.937 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:17.940 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:17.942 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:18.194 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:18.197 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:18.200 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:18.202 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:18.204 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:18.595 -05:00 [INF] MessageRoom sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:18.598 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:18.600 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:18.603 -05:00 [INF] ClientRoomResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:18.605 -05:00 [INF] MapResponse sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:22.168 -05:00 [INF] MessageDirect sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:27.303 -05:00 [INF] MessageDirect sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:27.305 -05:00 [INF] MessageDirect sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:27.307 -05:00 [INF] MessageDirect sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:27.316 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:27.318 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:27.320 -05:00 [INF] MessageRoom sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:27.322 -05:00 [INF] ClientRoomResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:27.325 -05:00 [INF] MapResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:27.327 -05:00 [INF] MessageDirect sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:27.330 -05:00 [INF] MessageDirect sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:27.333 -05:00 [INF] CharacterStatUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:47.009 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:47.012 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:47.015 -05:00 [INF] MessageRoom sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:47.017 -05:00 [INF] ClientRoomResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:47.020 -05:00 [INF] MapResponse sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:47.023 -05:00 [INF] MessageDirect sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:47.025 -05:00 [INF] CharacterStatUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:57.025 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:57.028 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:57.030 -05:00 [INF] RoomCharacterUpdate sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:57.033 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:57.035 -05:00 [INF] MessageWorld sent to 62fdcd65-5ecb-4671-9aa0-a2f69b56f565
+2021-09-24 00:24:57.037 -05:00 [INF] MessageWorld sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:57.038 -05:00 [INF] 62fdcd65-5ecb-4671-9aa0-a2f69b56f565 has disconnected.
+2021-09-24 00:24:57.965 -05:00 [INF] RoomCharacterUpdate sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:57.967 -05:00 [INF] MessageWorld sent to 2b2b8fb2-4167-4cd7-8088-9f149d29261e
+2021-09-24 00:24:57.968 -05:00 [INF] 2b2b8fb2-4167-4cd7-8088-9f149d29261e has disconnected.
+2021-09-24 00:29:29.653 -05:00 [INF] Loading Rooms...
+2021-09-24 00:29:29.974 -05:00 [INF] Rooms Loaded!
+2021-09-24 00:29:29.975 -05:00 [INF] Initializing Script Globals...
+2021-09-24 00:29:30.168 -05:00 [INF] Script Globals Initialized!
+2021-09-24 00:29:30.170 -05:00 [INF] Loading Scripts...
+2021-09-24 00:29:30.173 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-24 00:29:30.173 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-24 00:29:30.174 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-24 00:29:30.175 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-24 00:29:30.175 -05:00 [INF] Scripts Loaded!
+2021-09-24 00:29:30.214 -05:00 [INF] Server Started!
+2021-09-24 00:29:43.177 -05:00 [INF] 5a85b633-96be-4d90-b328-db8a9d9ee8ec has connected.
+2021-09-24 00:29:43.278 -05:00 [INF] AuthenticateResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:43.309 -05:00 [INF] CharacterListResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:44.682 -05:00 [INF] RoomCharacterUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:44.685 -05:00 [INF] MessageWorld sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:44.689 -05:00 [INF] CharacterLoginResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:44.708 -05:00 [INF] ClientConnectResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:44.844 -05:00 [INF] ClientRoomResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:44.848 -05:00 [INF] MapResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:54.997 -05:00 [INF] 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f has connected.
+2021-09-24 00:29:55.026 -05:00 [INF] AuthenticateResponse sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:29:55.050 -05:00 [INF] CharacterListResponse sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:29:56.723 -05:00 [INF] RoomCharacterUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:56.726 -05:00 [INF] RoomCharacterUpdate sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:29:56.728 -05:00 [INF] MessageWorld sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:29:56.730 -05:00 [INF] MessageWorld sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:29:56.732 -05:00 [INF] CharacterLoginResponse sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:29:56.750 -05:00 [INF] ClientConnectResponse sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:29:56.919 -05:00 [INF] ClientRoomResponse sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:29:56.922 -05:00 [INF] MapResponse sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:00.012 -05:00 [INF] RoomNPCUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:00.016 -05:00 [INF] RoomNPCUpdate sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:00.019 -05:00 [INF] MessageRoom sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:00.021 -05:00 [INF] MessageRoom sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:00.024 -05:00 [INF] RoomNPCUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:00.028 -05:00 [INF] RoomNPCUpdate sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:00.030 -05:00 [INF] MessageRoom sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:00.033 -05:00 [INF] MessageRoom sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:29.961 -05:00 [INF] MessageDirect sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:29.964 -05:00 [INF] MessageDirect sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:29.967 -05:00 [INF] MessageDirect sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:29.976 -05:00 [INF] RoomCharacterUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:29.978 -05:00 [INF] RoomCharacterUpdate sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:29.980 -05:00 [INF] MessageRoom sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:29.984 -05:00 [INF] ClientRoomResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:29.986 -05:00 [INF] MapResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:29.988 -05:00 [INF] MessageDirect sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:29.990 -05:00 [INF] MessageDirect sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:29.993 -05:00 [INF] CharacterStatUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:49.014 -05:00 [INF] RoomCharacterUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:49.017 -05:00 [INF] RoomCharacterUpdate sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:49.019 -05:00 [INF] MessageRoom sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:30:49.021 -05:00 [INF] ClientRoomResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:49.024 -05:00 [INF] MapResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:49.026 -05:00 [INF] MessageDirect sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:30:49.028 -05:00 [INF] CharacterStatUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:31:03.734 -05:00 [INF] MessageWorld sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:31:03.737 -05:00 [INF] MessageWorld sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:04.929 -05:00 [INF] MessageRoom sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:04.931 -05:00 [INF] RoomCharacterUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:31:04.934 -05:00 [INF] RoomCharacterUpdate sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:04.936 -05:00 [INF] ClientRoomResponse sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:04.938 -05:00 [INF] MapResponse sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:07.375 -05:00 [INF] NoCommand sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:09.553 -05:00 [INF] MessageWorld sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:31:09.555 -05:00 [INF] MessageWorld sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:13.169 -05:00 [INF] RoomCharacterUpdate sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:31:13.172 -05:00 [INF] MessageRoom sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:31:13.174 -05:00 [INF] RoomCharacterUpdate sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:13.177 -05:00 [INF] MessageRoom sent to 7cf528f6-a19e-44e5-bbb4-24a1f5d6dd6f
+2021-09-24 00:31:13.179 -05:00 [INF] ClientRoomResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:31:13.183 -05:00 [INF] MapResponse sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:31:13.185 -05:00 [INF] MessageDirect sent to 5a85b633-96be-4d90-b328-db8a9d9ee8ec
+2021-09-24 00:33:57.576 -05:00 [INF] Loading Rooms...
+2021-09-24 00:33:57.883 -05:00 [INF] Rooms Loaded!
+2021-09-24 00:33:57.885 -05:00 [INF] Initializing Script Globals...
+2021-09-24 00:33:58.164 -05:00 [INF] Script Globals Initialized!
+2021-09-24 00:33:58.165 -05:00 [INF] Loading Scripts...
+2021-09-24 00:33:58.168 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-24 00:33:58.169 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-24 00:33:58.170 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-24 00:33:58.171 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-24 00:33:58.171 -05:00 [INF] Scripts Loaded!
+2021-09-24 00:33:58.217 -05:00 [INF] Server Started!
+2021-09-24 00:34:11.520 -05:00 [INF] f4a05321-f3c7-4071-9621-8c8ddf508ad9 has connected.
+2021-09-24 00:34:11.568 -05:00 [INF] AuthenticateResponse sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:11.620 -05:00 [INF] CharacterListResponse sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:12.545 -05:00 [INF] RoomCharacterUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:12.548 -05:00 [INF] MessageWorld sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:12.553 -05:00 [INF] CharacterLoginResponse sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:12.573 -05:00 [INF] ClientConnectResponse sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:12.709 -05:00 [INF] ClientRoomResponse sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:12.716 -05:00 [INF] MapResponse sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:23.759 -05:00 [INF] 539362bc-14a1-4755-9b2c-23367d077d47 has connected.
+2021-09-24 00:34:23.785 -05:00 [INF] AuthenticateResponse sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:23.826 -05:00 [INF] CharacterListResponse sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:25.620 -05:00 [INF] RoomCharacterUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:25.623 -05:00 [INF] RoomCharacterUpdate sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:25.625 -05:00 [INF] MessageWorld sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:25.627 -05:00 [INF] MessageWorld sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:25.630 -05:00 [INF] CharacterLoginResponse sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:25.652 -05:00 [INF] ClientConnectResponse sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:25.761 -05:00 [INF] ClientRoomResponse sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:25.763 -05:00 [INF] MapResponse sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:28.037 -05:00 [INF] RoomNPCUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:28.058 -05:00 [INF] RoomNPCUpdate sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:28.097 -05:00 [INF] MessageRoom sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:28.126 -05:00 [INF] MessageRoom sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:28.150 -05:00 [INF] RoomNPCUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:28.193 -05:00 [INF] RoomNPCUpdate sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:28.205 -05:00 [INF] MessageRoom sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:28.210 -05:00 [INF] MessageRoom sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:29.432 -05:00 [INF] MessageRoom sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:29.435 -05:00 [INF] RoomCharacterUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:29.437 -05:00 [INF] RoomCharacterUpdate sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:29.439 -05:00 [INF] ClientRoomResponse sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:29.442 -05:00 [INF] MapResponse sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:31.896 -05:00 [INF] RoomCharacterUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:31.899 -05:00 [INF] RoomCharacterUpdate sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:31.902 -05:00 [INF] MessageRoom sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:34:31.905 -05:00 [INF] ClientRoomResponse sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:31.908 -05:00 [INF] MapResponse sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:34:31.913 -05:00 [INF] MessageDirect sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:35:00.603 -05:00 [INF] RoomCharacterUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:35:00.605 -05:00 [INF] RoomCharacterUpdate sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:35:00.607 -05:00 [INF] RoomCharacterUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:35:00.609 -05:00 [INF] RoomCharacterUpdate sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:35:00.612 -05:00 [INF] MessageWorld sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:35:00.615 -05:00 [INF] MessageWorld sent to 539362bc-14a1-4755-9b2c-23367d077d47
+2021-09-24 00:35:00.616 -05:00 [INF] 539362bc-14a1-4755-9b2c-23367d077d47 has disconnected.
+2021-09-24 00:35:01.480 -05:00 [INF] RoomCharacterUpdate sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:35:01.482 -05:00 [INF] MessageWorld sent to f4a05321-f3c7-4071-9621-8c8ddf508ad9
+2021-09-24 00:35:01.483 -05:00 [INF] f4a05321-f3c7-4071-9621-8c8ddf508ad9 has disconnected.
+2021-09-24 00:38:18.780 -05:00 [INF] Loading Rooms...
+2021-09-24 00:38:19.071 -05:00 [INF] Rooms Loaded!
+2021-09-24 00:38:19.073 -05:00 [INF] Initializing Script Globals...
+2021-09-24 00:38:19.254 -05:00 [INF] Script Globals Initialized!
+2021-09-24 00:38:19.255 -05:00 [INF] Loading Scripts...
+2021-09-24 00:38:19.258 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-24 00:38:19.259 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-24 00:38:19.259 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-24 00:38:19.260 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-24 00:38:19.260 -05:00 [INF] Scripts Loaded!
+2021-09-24 00:38:19.302 -05:00 [INF] Server Started!
+2021-09-24 00:38:30.969 -05:00 [INF] 78554dc9-e154-4cfa-abbb-ed5038374fac has connected.
+2021-09-24 00:38:54.399 -05:00 [INF] 78554dc9-e154-4cfa-abbb-ed5038374fac has disconnected.

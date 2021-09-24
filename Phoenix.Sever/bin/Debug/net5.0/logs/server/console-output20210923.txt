@@ -3014,3 +3014,14 @@
 2021-09-23 23:07:06.698 -05:00 [INF] MessageWorld sent to 79071d1f-911f-4210-8187-d9df2529c125
 2021-09-23 23:07:06.703 -05:00 [INF] MessageWorld sent to 344a33ea-4f2d-4fdc-a2ee-81e7922519f8
 2021-09-23 23:07:06.704 -05:00 [INF] 344a33ea-4f2d-4fdc-a2ee-81e7922519f8 has disconnected.
+2021-09-23 23:44:03.267 -05:00 [INF] Loading Rooms...
+2021-09-23 23:44:03.574 -05:00 [INF] Rooms Loaded!
+2021-09-23 23:44:03.575 -05:00 [INF] Initializing Script Globals...
+2021-09-23 23:44:03.761 -05:00 [INF] Script Globals Initialized!
+2021-09-23 23:44:03.762 -05:00 [INF] Loading Scripts...
+2021-09-23 23:44:03.765 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-23 23:44:03.766 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-23 23:44:03.766 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-23 23:44:03.767 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-23 23:44:03.767 -05:00 [INF] Scripts Loaded!
+2021-09-23 23:44:03.817 -05:00 [INF] Server Started!

@@ -253,7 +253,7 @@ namespace Phoenix.Server.Network
             CharacterUpdate(2, account.Account.Character.RoomID, account.Account.Character);
             MessageRoom(departureMessage, account.Account.Character.RoomID, ignoreAccount);
             CharacterUpdate(1, roomID, account.Account.Character);
-            MessageRoom(arrivalMessage, roomID, ignoreAccount);
+            MessageRoom(arrivalMessage, roomID);
             game.rooms[account.Account.Character.RoomID].RoomCharacters.Remove(account.Account.Character);
             game.rooms[roomID].RoomCharacters.Add(account.Account.Character);
 
@@ -282,7 +282,7 @@ namespace Phoenix.Server.Network
                 }
 
                 CharacterUpdate(2, targetAccount.Account.Character.RoomID, targetAccount.Account.Character);
-                MessageRoom(departureMessage, targetAccount.Account.Character.RoomID);
+                MessageRoom(departureMessage, targetAccount.Account.Character.RoomID, targetAccount);
                 CharacterUpdate(1, roomID, targetAccount.Account.Character);
                 MessageRoom(arrivalMessage, roomID);
                 game.rooms[targetAccount.Account.Character.RoomID].RoomCharacters.Remove(targetAccount.Account.Character);
@@ -325,7 +325,8 @@ namespace Phoenix.Server.Network
                 Account = new Account
                 {
                     Id = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "ID", "Name", username)),
-                    Gold = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "Gold", "Name", username))
+                    Gold = Int32.Parse(Database.GetAccountField(Constants.GAME_MODE, "Gold", "Name", username)),
+                    Character = new Character()
                 }
             });
             game.connectedClients.Remove(client.Id.ToString());

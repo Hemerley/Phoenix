@@ -19,7 +19,7 @@ namespace Phoenix.Client
         public FrmLauncher()
         {
             InitializeComponent();
-
+            this.lblVersion.Text = Constants.GAME_VERSION;
             this.client = new Classes.Network.Client();
             this.client.OnActivity += Client_OnActivity;
             this.client.IsConnected += Client_IsConnected;

@@ -357,6 +357,14 @@ namespace Phoenix.Server.Scripts
                     Functions.MessageDirect($"~w{attackerCharacter.BName} {attackerCharacter.Name}~m has killed you!", game.connectedAccounts[defenderID].Client.Id);
                     Functions.MessageRoom($"~w{attackerCharacter.BName} {attackerCharacter.Name} ~mhas killed {defenderCharacter.Name.FirstCharToUpper()}~m!", roomID);
                     Functions.CharacterStatUpdate(game.connectedAccounts[defenderID], defenderCharacter);
+                    var respawnCommand = new RespawnCharacterServer
+                    {
+                        RoomID = defenderCharacter.Recall.ToString(),
+                        EntityID = defenderID,
+                        ArrivalMessage = $"~w{defenderCharacter.Name.FirstCharToUpper()} ~gappears back in the world of the living following a bright white flash!",
+                        DepartureMessage = $"~w{defenderCharacter.Name.FirstCharToUpper()} ~gvanishes back to the world of the living following a bright white flash!"
+                    };
+                    Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeSeconds() + 20, respawnCommand, game.serverID.ToString());
                 }
                 else if (!defenderIsPlayer && isPlayer)
                 {

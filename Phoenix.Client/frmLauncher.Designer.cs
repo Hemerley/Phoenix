@@ -33,9 +33,9 @@ namespace Phoenix.Client
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLauncher));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSide = new System.Windows.Forms.Panel();
             this.btnStore = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -81,6 +81,7 @@ namespace Phoenix.Client
             this.btnNCharcterCreate = new System.Windows.Forms.Button();
             this.txtCharacterName = new System.Windows.Forms.TextBox();
             this.ptbPhoenix4 = new System.Windows.Forms.PictureBox();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.pnlSide.SuspendLayout();
             this.pnlAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbAccountImage)).BeginInit();
@@ -288,7 +289,7 @@ namespace Phoenix.Client
             // ptbPhoenix1
             // 
             this.ptbPhoenix1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
-            this.ptbPhoenix1.Image = Phoenix.Client.Properties.Resources.Logo;
+            this.ptbPhoenix1.Image = global::Phoenix.Client.Properties.Resources.Logo;
             this.ptbPhoenix1.Location = new System.Drawing.Point(0, 37);
             this.ptbPhoenix1.Name = "ptbPhoenix1";
             this.ptbPhoenix1.Size = new System.Drawing.Size(724, 489);
@@ -333,9 +334,9 @@ namespace Phoenix.Client
             // 
             // dgvCharacterName
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(225)))));
-            this.dgvCharacterName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(225)))));
+            this.dgvCharacterName.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCharacterName.HeaderText = "Name";
             this.dgvCharacterName.Name = "dgvCharacterName";
             this.dgvCharacterName.ReadOnly = true;
@@ -344,9 +345,9 @@ namespace Phoenix.Client
             // 
             // dgvCharacterCaste
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(225)))));
-            this.dgvCharacterCaste.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(225)))));
+            this.dgvCharacterCaste.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCharacterCaste.HeaderText = "Caste";
             this.dgvCharacterCaste.Name = "dgvCharacterCaste";
             this.dgvCharacterCaste.ReadOnly = true;
@@ -354,9 +355,9 @@ namespace Phoenix.Client
             // 
             // dgvCharacterPhilosophy
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(225)))));
-            this.dgvCharacterPhilosophy.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(37)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(225)))));
+            this.dgvCharacterPhilosophy.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCharacterPhilosophy.HeaderText = "Philosophy";
             this.dgvCharacterPhilosophy.Name = "dgvCharacterPhilosophy";
             this.dgvCharacterPhilosophy.ReadOnly = true;
@@ -712,12 +713,23 @@ namespace Phoenix.Client
             this.ptbPhoenix4.TabIndex = 30;
             this.ptbPhoenix4.TabStop = false;
             // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lblVersion.Location = new System.Drawing.Point(915, 551);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Text = Constants.GAME_VERSION;
+            this.lblVersion.Size = new System.Drawing.Size(0, 21);
+            this.lblVersion.TabIndex = 43;
+            // 
             // FrmLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(969, 572);
+            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.pnlAccountCreate);
             this.Controls.Add(this.pnlAccountView);
             this.Controls.Add(this.pnlCharacterCreation);
@@ -748,6 +760,7 @@ namespace Phoenix.Client
             ((System.ComponentModel.ISupportInitialize)(this.pbCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoenix4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -798,5 +811,6 @@ namespace Phoenix.Client
         private System.Windows.Forms.PictureBox pbCharacter;
         private System.Windows.Forms.ComboBox cboImage;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblVersion;
     }
 }

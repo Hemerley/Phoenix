@@ -231,7 +231,8 @@ namespace Phoenix.Server.Network
         {
             var message = CommandFactory.FormatCommand(command);
             client.Send(message);
-            Log.Information($"{command.CommandType} sent to {client.Id}");
+            if (showCommands)
+                Log.Information($"{command.CommandType} sent to {client.Id}");
         }
 
         #endregion
