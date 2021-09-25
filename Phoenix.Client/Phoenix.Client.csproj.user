@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Forms\Build\FrmBuild.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Classes\Extensions\ListViewWithoutScrollBar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -10,13 +13,22 @@
     <Compile Update="Classes\Extensions\VisualBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="frmClient.cs">
+    <Compile Update="Forms\Client\frmClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmDebug.cs">
+    <Compile Update="Forms\Debug\FrmDebug.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmLauncher.cs">
+    <Compile Update="Forms\Client\frmLauncher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Build\FrmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Build\FrmNPC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Build\FrmRoom.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

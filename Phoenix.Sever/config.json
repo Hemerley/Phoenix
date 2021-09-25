@@ -1,0 +1,12 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "token": "ODg4NTU3NTIzMjc0MjAzMTU2.YUUbrg.uzNNePamJ9t25h-Vgw5hx7XKyn0",
+  "prefix": "!p"
+}

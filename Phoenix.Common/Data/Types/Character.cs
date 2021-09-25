@@ -5,7 +5,7 @@
         #region -- Database Fields --
         public int Id { get; set; }
         public int AccountId { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
         public int TypeID { get; set; }
         public string Image { get; set; }
         public string Gender { get; set; }
@@ -40,14 +40,21 @@
         public double Haste { get; set; }
         public double Mastery { get; set; }
         public double Versatility { get; set; }
+        public int CurrentStrength { get; set; }
+        public int CurrentAgility { get; set; }
+        public int CurrentIntellect { get; set; }
+        public int CurrentStamina { get; set; }
+        public int CurrentDamage { get; set; }
+        public int CurrentArmor { get; set; }
         public int Recall { get; set; }
         #endregion
 
         #region -- Combat Statistics --
-        public double AttackSpeed { get; set; }
-        public bool IsAttacking { get; set; }
-        public bool IsDead { get; set; }
-        public int TargetID { get; set; }
+        public double AttackSpeed { get; set; } = 1;
+        public bool HealthRegen { get; set; } = true;
+        public bool IsAttacking { get; set; } = false;
+        public bool IsDead { get; set; } = false;
+        public int TargetID { get; set; } = 0;
         #endregion
 
         #region -- Resource Statistics --

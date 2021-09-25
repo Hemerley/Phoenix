@@ -50,7 +50,9 @@
 
         SpawnNPC = 300,
         RespawnCharacter = 301,
-
+        TickTimer = 302,
+        SecondTimer = 303,
+        MinuteTimer = 304,
 
         #endregion
 

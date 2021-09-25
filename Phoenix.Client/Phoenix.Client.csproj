@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Logo.ico</ApplicationIcon>
     <NeutralLanguage>en-US</NeutralLanguage>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Phoenix Patcher.pfx</AssemblyOriginatorKeyFile>
@@ -18,10 +18,10 @@
 
   <ItemGroup>
     <None Remove="Logo.ico" />
+    <None Remove="Resources\Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Unclassified.AsyncTcpClient" Version="1.0.2" />
   </ItemGroup>
 
@@ -42,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Logo.ico" />
+    <Resource Include="Resources\Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>

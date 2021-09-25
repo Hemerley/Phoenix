@@ -169,7 +169,7 @@ namespace Phoenix.Client.Classes.Extensions
             if (sliderWidth > 1)
                 graph.FillRectangle(brushSlider, rectSlider);
             if (showValue != TextPosition.None)
-                DrawValueText(graph, sliderWidth, rectSlider);            
+                DrawValueText(graph, sliderWidth, rectSlider);
         }
 
         private void DrawValueText(Graphics graph, int sliderWidth, Rectangle rectSlider)

@@ -2,7 +2,6 @@ using MoonSharp.Interpreter;
 using Phoenix.Common.Commands.Server;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
-using Phoenix.Server.Connections;
 using Phoenix.Server.Network;
 using Serilog;
 using System;
@@ -20,6 +19,7 @@ namespace Phoenix.Server.Scripts
             game.script.Globals["Character"] = new LuaCharacter();
             game.script.Globals["Command"] = new LuaCommand();
             game.script.Globals["Entity"] = new LuaEntity();
+            game.script.Globals["General"] = new LuaGeneral();
             game.script.Globals["Message"] = new LuaMessage();
             game.script.Globals["NPC"] = new LuaMessage();
             game.script.Globals["Party"] = new LuaParty();
@@ -130,7 +130,7 @@ namespace Phoenix.Server.Scripts
         }
         public static void RunScript(string scriptFile, string entityID, bool isPlayer)
         {
-           try
+            try
             {
 
                 game.script.Globals["entityID"] = entityID;
@@ -180,99 +180,99 @@ namespace Phoenix.Server.Scripts
         }
         #endregion
 
-        #region -- Lua Public Methods --
-
-        #region -- Combat --
-        public static int Attack(int damage, string itemName, int targetID, bool targetIsPlayer)
-        {
-            return 0;
-        }
-        public static int Attack(int damage, string itemName, string weaponName, int attackerID, bool attackerIsPlayer)
-        {
-            return 0;
-        }
-        public static int DamageNegation(int damage, string itemName, int attackerID, bool attackerIsPlayer)
-        {
-            return 0;
-        }
-        public static int DamageNegation(int damage, string itemName, int attackerID, bool attackerIsPlayer, int defenderID, bool defenderIsPlayer)
-        {
-            return 0;
-        }
-        public static bool Death(int killerID, bool killerIsPlayer)
-        {
-            return false;
-        }
-        public static bool Death(int killerID, bool killerIsPlayer, int defenderID, bool defenderIsPlayer)
-        {
-            return false;
-        }
-        public static int SpellNegation(int damage, int spellType, string spellName, int attackerID, bool attackerIsPlayer)
-        {
-            return 0;
-        }
-        public static int SpellNegation(int damage, int spellType, string spellName, int attackerID, bool attackerIsPlayer, int defenderID, bool defenderIsPlayer)
-        {
-            return 0;
-        }
-        #endregion
-
-        #region -- Items --
-        public static bool Drop(string name, int inventoryNumber, int amount)
-        {
-            return false;
-        }
-        public static bool Equip(string name, int inventoryNumber, int itemType, int slotType)
-        {
-            return false;
-        }
-        public static bool Get(string name, int roomNumber)
-        {
-            return false;
-        }
-        public static bool Give(string name, int inventorySlot, int amount)
-        {
-            return false;
-        }
-        public static bool OnUse(string name, int inventoryNumber, int itemType)
-        {
-            return false;
-        }
-        public static bool UnEquip(int equipSlot)
-        {
-            return false;
-        }
-        #endregion
-
-        #region -- Movement --
-        public static bool Movement(int roomID, int entityID, bool isPlayer, string direction)
-        {
-            return false;
-        }
-        #endregion
-
-        #region -- Timers --
-        public static bool MinuteTimer()
-        {
-            return false;
-        }
-        public static bool SecondTimer()
-        {
-            return false;
-        }
-        public static bool TickTimer()
-        {
-            return false;
-        }
-        #endregion
-
-        #endregion
-
         #region -- Lua Attack --
         [MoonSharpUserData]
         class LuaAttack
         {
+            public static bool Dodge(string entityID, bool isPlayer, string defenderID, bool defenderIsPlayer)
+            {
+                if (defenderIsPlayer && isPlayer)
+                {
+                    Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
 
+                    double levelDifference = Convert.ToDouble(defenderCharacter.RankID) / Convert.ToDouble(attackerCharacter.RankID);
+                    double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
+
+                    if (LuaRandom.NumberDouble(0, 1) < dodgeChance)
+                        return true;
+                    return false;
+                }
+                else if (defenderIsPlayer && !isPlayer)
+                {
+                    Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
+                    NPC attackerCharacter = game.currentNPC[entityID];
+
+                    double levelDifference = Convert.ToDouble(defenderCharacter.RankID) / Convert.ToDouble(attackerCharacter.Level);
+                    double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
+
+                    if (LuaRandom.NumberDouble(0, 1) < dodgeChance)
+                        return true;
+                    return false;
+                }
+                else if (!defenderIsPlayer && isPlayer)
+                {
+                    NPC defenderCharacter = game.currentNPC[defenderID];
+                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+
+
+                    double levelDifference = Convert.ToDouble(defenderCharacter.Level) / Convert.ToDouble(attackerCharacter.RankID);
+                    double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
+
+                    if (LuaRandom.NumberDouble(0, 1) < dodgeChance)
+                        return true;
+                    return false;
+                }
+                else
+                {
+                    NPC defenderCharacter = game.currentNPC[defenderID];
+                    NPC attackerCharacter = game.currentNPC[entityID];
+
+                    double levelDifference = Convert.ToDouble(defenderCharacter.Level) / Convert.ToDouble(attackerCharacter.Level);
+                    double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
+
+                    if (LuaRandom.NumberDouble(0, 1) < dodgeChance)
+                        return true;
+                    return false;
+                }
+            }
+            public static void Full(string entityID, bool isPlayer, string defenderID, bool defenderIsPlayer, string itemName, string attackMessageToModify, string defendMessageToModify, string roomMessageToModify)
+            {
+                if (defenderIsPlayer && isPlayer)
+                {
+                    Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+
+                    if (LuaAttack.Dodge(entityID, isPlayer, defenderID, defenderIsPlayer))
+                    {
+                        Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattempts to attack you with their ~w{itemName.ToLower()}~o, but ~ymisses~o!", defenderID);
+                        Functions.MessageDirect($"~oYou attempt to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your {itemName.ToLower()}~w, but ~ymiss~o!", entityID);
+                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID);
+                    }
+                    else
+                    {
+                        var totalDamage = (attackerCharacter.Damage * LuaRandom.NumberDouble(.80, 1)) - (defenderCharacter.CurrentArmor * .5);
+                        Functions.MessageDirect(defendMessageToModify, defenderID);
+                        Functions.MessageDirect(attackMessageToModify, entityID);
+                        Functions.MessageRoom(roomMessageToModify, defenderCharacter.RoomID);
+                    }
+                }
+                else if (defenderIsPlayer && !isPlayer)
+                {
+                    Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
+                    NPC attackerCharacter = game.currentNPC[entityID];
+                }
+                else if (!defenderIsPlayer && isPlayer)
+                {
+                    NPC defenderCharacter = game.currentNPC[defenderID];
+                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                }
+                else if (!defenderIsPlayer && !isPlayer)
+                {
+                    NPC defenderCharacter = game.currentNPC[defenderID];
+                    NPC attackerCharacter = game.currentNPC[entityID];
+                }
+            }
         }
         #endregion
 
@@ -331,11 +331,12 @@ namespace Phoenix.Server.Scripts
 
                     defenderCharacter.CurrentHealth = 0;
                     defenderCharacter.IsDead = true;
+                    defenderCharacter.HealthRegen = false;
                     Functions.MovePlayer(0, game.connectedAccounts[defenderID], $"~r{defenderCharacter.Name.FirstCharToUpper()} appears suddenly!", $"~r{defenderCharacter.Name.FirstCharToUpper()} falls to the floor lifelessly!", game.connectedAccounts[defenderID]);
                     Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()}~m has killed you!", game.connectedAccounts[defenderID].Client.Id);
                     Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.Name.FirstCharToUpper()}~m!", game.connectedAccounts[entityID].Client.Id);
                     Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~mhas killed {defenderCharacter.Name.FirstCharToUpper()}~m!", attackerCharacter.RoomID, game.connectedAccounts[entityID]);
-                    Functions.CharacterStatUpdate(game.connectedAccounts[defenderID], defenderCharacter);
+                    Functions.CharacterStatUpdate(game.connectedAccounts[defenderID]);
                     var respawnCommand = new RespawnCharacterServer
                     {
                         RoomID = defenderCharacter.Recall.ToString(),
@@ -343,7 +344,7 @@ namespace Phoenix.Server.Scripts
                         ArrivalMessage = $"~w{defenderCharacter.Name.FirstCharToUpper()} ~gappears back in the world of the living following a bright white flash!",
                         DepartureMessage = $"~w{defenderCharacter.Name.FirstCharToUpper()} ~gvanishes back to the world of the living following a bright white flash!"
                     };
-                    Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeSeconds() + 20, respawnCommand, game.serverID.ToString());
+                    Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 20000, respawnCommand, game.serverID.ToString());
                 }
                 else if (defenderIsPlayer && !isPlayer)
                 {
@@ -352,11 +353,12 @@ namespace Phoenix.Server.Scripts
 
                     defenderCharacter.CurrentHealth = 0;
                     defenderCharacter.IsDead = true;
+                    defenderCharacter.HealthRegen = false;
                     int roomID = game.connectedAccounts[defenderID].Account.Character.RoomID;
                     Functions.MovePlayer(0, game.connectedAccounts[defenderID], $"~r{defenderCharacter.Name.FirstCharToUpper()} appears suddenly!", $"~r{defenderCharacter.Name.FirstCharToUpper()} falls to the floor lifelessly!", game.connectedAccounts[defenderID]); ;
                     Functions.MessageDirect($"~w{attackerCharacter.BName} {attackerCharacter.Name}~m has killed you!", game.connectedAccounts[defenderID].Client.Id);
                     Functions.MessageRoom($"~w{attackerCharacter.BName} {attackerCharacter.Name} ~mhas killed {defenderCharacter.Name.FirstCharToUpper()}~m!", roomID);
-                    Functions.CharacterStatUpdate(game.connectedAccounts[defenderID], defenderCharacter);
+                    Functions.CharacterStatUpdate(game.connectedAccounts[defenderID]);
                     var respawnCommand = new RespawnCharacterServer
                     {
                         RoomID = defenderCharacter.Recall.ToString(),
@@ -364,7 +366,7 @@ namespace Phoenix.Server.Scripts
                         ArrivalMessage = $"~w{defenderCharacter.Name.FirstCharToUpper()} ~gappears back in the world of the living following a bright white flash!",
                         DepartureMessage = $"~w{defenderCharacter.Name.FirstCharToUpper()} ~gvanishes back to the world of the living following a bright white flash!"
                     };
-                    Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeSeconds() + 20, respawnCommand, game.serverID.ToString());
+                    Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 20000, respawnCommand, game.serverID.ToString());
                 }
                 else if (!defenderIsPlayer && isPlayer)
                 {
@@ -441,6 +443,14 @@ namespace Phoenix.Server.Scripts
         }
         #endregion
 
+        #region -- Lua General --
+        [MoonSharpUserData]
+        class LuaGeneral
+        {
+
+        }
+        #endregion
+
         #region -- Lua Message --
         [MoonSharpUserData]
         class LuaMessage
@@ -502,11 +512,11 @@ namespace Phoenix.Server.Scripts
             private static readonly Random random = new();
             public static int Number(int min, int max)
             {
-                return random.Next(min, max);
+                return Math.Abs(random.Next(min, max));
             }
             public static double NumberDouble(double min, double max)
             {
-                return random.NextDouble() * (min - max) + min;
+                return Math.Abs(random.NextDouble() * (min - max) + min);
             }
         }
         #endregion

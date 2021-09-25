@@ -1,0 +1,16 @@
+2021-09-25 00:02:42.998 -05:00 [INF] Loading Rooms...
+2021-09-25 00:02:43.303 -05:00 [INF] Rooms Loaded!
+2021-09-25 00:02:43.304 -05:00 [INF] Initializing Script Globals...
+2021-09-25 00:02:43.494 -05:00 [INF] Script Globals Initialized!
+2021-09-25 00:02:43.495 -05:00 [INF] Loading Scripts...
+2021-09-25 00:02:43.499 -05:00 [INF] Located Script: ./Scripts/Main.lua
+2021-09-25 00:02:43.500 -05:00 [INF] Located Script: ./Scripts/NPC.lua
+2021-09-25 00:02:43.501 -05:00 [INF] Located Script: ./Scripts/.vs\slnx.sqlite
+2021-09-25 00:02:43.501 -05:00 [INF] Located Script: ./Scripts/.vs\slnx.sqlite-journal
+2021-09-25 00:02:43.502 -05:00 [INF] Located Script: ./Scripts/Commands\nuke.lua
+2021-09-25 00:02:43.502 -05:00 [INF] Located Script: ./Scripts/Main\movement.lua
+2021-09-25 00:02:43.503 -05:00 [INF] Located Script: ./Scripts/.vs\Scripts\v16\.suo
+2021-09-25 00:02:43.503 -05:00 [INF] Scripts Loaded!
+2021-09-25 00:02:43.517 -05:00 [INF] Server Started!
+2021-09-25 00:03:14.542 -05:00 [INF] 5068d35b-370f-42c4-8020-64fb82c2cf93 has connected.
+2021-09-25 00:03:21.924 -05:00 [INF] 5068d35b-370f-42c4-8020-64fb82c2cf93 has disconnected.

@@ -3,7 +3,6 @@ using Phoenix.Common.Commands.Factory;
 using Phoenix.Common.Commands.Request;
 using Phoenix.Common.Commands.Server;
 using Phoenix.Common.Commands.Staff;
-using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using Phoenix.Server.Connections;
@@ -14,7 +13,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Threading;
@@ -88,11 +86,6 @@ namespace Phoenix.Server.Network
         public List<Room> rooms = new();
 
         /// <summary>
-        /// Declaration of Connected Characters.
-        /// </summary>
-        public readonly Dictionary<string, Character> connectedCharacters = new();
-
-        /// <summary>
         /// Declaration of Current NPC Spawned.
         /// </summary>
         public readonly Dictionary<string, NPC> currentNPC = new();
@@ -154,7 +147,7 @@ namespace Phoenix.Server.Network
             foreach (string c in commands)
             {
                 var command = CommandFactory.ParseCommand(c);
-                double currentTimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+                double currentTimeStamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                 Functions.AddToQueue(currentTimeStamp, command, e.ConnectedClient.Id);
             }
         }
@@ -186,11 +179,11 @@ namespace Phoenix.Server.Network
                         Functions.CharacterUpdate(2, connectedAccount.Account.Character.RoomID, connectedAccount.Account.Character);
                     }
                 }
-                this.connectedCharacters.Remove(connectedAccount.Account.Character.Id.ToString());
                 Functions.MessageWorld($"&tilda&g{connectedAccount.Account.Character.Name}&tilda&w has went &tilda&roffline&tilda&w!");
             }
+            Database.SetCharacter(Constants.GAME_MODE, connectedAccount.Account.Character);
             this.connectedAccounts.Remove(connectedAccount.Client.Id);
-            
+
 
             // Log Command
             Log.Information($"{e.Id} has disconnected.");
@@ -253,7 +246,7 @@ namespace Phoenix.Server.Network
             Log.Information("Loading Rooms...");
             this.rooms = Database.LoadRooms(Constants.GAME_MODE);
             Log.Information("Rooms Loaded!");
-            
+
             Log.Information("Initializing Script Globals...");
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
                 UserData.RegisterAssembly(assembly);
@@ -285,7 +278,10 @@ namespace Phoenix.Server.Network
             // Start Listening.
             this.server.Start(IPAddress.IPv6Any, Constants.LIVE_PORT);
 
-            Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeSeconds() + 30, new SpawnNPCServer(), serverID.ToString());
+            Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 30000, new SpawnNPCServer(), serverID.ToString());
+            Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 30000, new TickTimerServer(), serverID.ToString());
+            Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 30000, new SecondTimerServer(), serverID.ToString());
+            Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 30000, new MinuteTimerServer(), serverID.ToString());
             #endregion
 
             while (!this.stopGameWorkerThread)
@@ -294,13 +290,10 @@ namespace Phoenix.Server.Network
                 #region -- Queue Handling --
 
                 // Establish Time Stamp.
-                var currentTimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+                var currentTimeStamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
                 // Check Queue Stack & Remove Items with TimeStamp. Hands off to Queue.
-                Functions.AddToQueue(currentTimeStamp - 1);
-                actionQueue.Remove(currentTimeStamp - 1);
                 Functions.AddToQueue(currentTimeStamp);
-                actionQueue.Remove(currentTimeStamp);
 
                 // Check Queue for items.
                 if (!this.queuedCommand.TryDequeue(out ClientCommand cmd))
@@ -392,7 +385,7 @@ namespace Phoenix.Server.Network
                         {
                             var parsedCommand = command as MessageRoomServer;
 
-                            Functions.MessageRoom(parsedCommand.Message, accountConnected.Account.Character.RoomID);
+                            Functions.MessageRoom(parsedCommand.Message, accountConnected.Account.Character.RoomID, accountConnected.Account.Character);
 
                             break;
                         }
@@ -480,6 +473,33 @@ namespace Phoenix.Server.Network
                             Functions.SpawnNPC(parsedCommand.CharacterName, parsedCommand.NPCName);
                         }
                         break;
+                    #endregion
+
+                    #region -- Tick Timer --
+
+                    case CommandType.TickTimer:
+                        {
+                            Functions.TickTimer();
+                            break;
+                        }
+                    #endregion
+
+                    #region -- Second Timer --
+
+                    case CommandType.SecondTimer:
+                        {
+                            Functions.SecondTimer();
+                            break;
+                        }
+                    #endregion
+
+                    #region -- Minute Timer --
+
+                    case CommandType.MinuteTimer:
+                        {
+                            Functions.MinuteTimer();
+                            break;
+                        }
                     #endregion
 
                     #region  -- Respawn Character --

@@ -45,10 +45,6 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
-            "Serilog": {
-              "target": "Package",
-              "version": "[2.10.0, )"
-            },
             "Unclassified.AsyncTcpClient": {
               "target": "Package",
               "version": "[1.0.2, )"
@@ -112,12 +108,6 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "dependencies": {
-            "MoonSharp": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

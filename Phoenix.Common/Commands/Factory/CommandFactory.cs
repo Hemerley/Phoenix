@@ -530,9 +530,7 @@ namespace Phoenix.Common.Commands.Factory
                     {
                         if (commandDataParts.Length < 1)
                             return new UnknownCommand();
-                        Character character = null;
-                        string[] c = commandDataParts[1].Split("|");
-                        character = new()
+                        Character character = new()
                         {
                             Id = Int32.Parse(commandDataParts[0]),
                             AccountId = Int32.Parse(commandDataParts[1]),
@@ -604,6 +602,30 @@ namespace Phoenix.Common.Commands.Factory
                             ArrivalMessage = commandDataParts[2],
                             DepartureMessage = commandDataParts[3]
                         };
+                    }
+                #endregion
+
+                #region -- Tick Timer --
+
+                case CommandType.TickTimer:
+                    {
+                        return new TickTimerServer();
+                    }
+                #endregion
+
+                #region -- Second Timer --
+
+                case CommandType.SecondTimer:
+                    {
+                        return new SecondTimerServer();
+                    }
+                #endregion
+
+                #region -- Character List --
+
+                case CommandType.MinuteTimer:
+                    {
+                        return new MinuteTimerServer();
                     }
                 #endregion
 

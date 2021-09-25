@@ -31,6 +31,18 @@ namespace Phoenix.Server.Network
                 });
             }
         }
+        public static void MessageRoom(string message, int roomID, Character character)
+        {
+            var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == roomID);
+            foreach (ConnectedAccount account in accounts)
+            {
+                game.SendCommandToClient(account.Client, new MessageRoomServer
+                {
+                    Message = message,
+                    Character = character
+                });
+            }
+        }
         public static void MessageRoom(string message, int roomID, ConnectedAccount account)
         {
             var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == roomID);
@@ -57,7 +69,7 @@ namespace Phoenix.Server.Network
         }
         public static void MessageDirect(string message, string sending, string receiving, ConnectedAccount account)
         {
-            var character = game.connectedAccounts.Values.FirstOrDefault( x => x.Account.Character.Name.ToLower() == receiving);
+            var character = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == receiving);
 
             if (character != null)
             {
@@ -82,7 +94,7 @@ namespace Phoenix.Server.Network
         }
         public static void MessageDirect(string message, string id)
         {
-        
+
             game.SendCommandToClient(game.connectedAccounts[id].Client, new MessageDirectServer
             {
                 SendingName = "1",
@@ -101,10 +113,10 @@ namespace Phoenix.Server.Network
         }
         public static void MessageWorld(string message, string ID, ConnectedAccount account)
         {
-
-            if (game.connectedCharacters.ContainsKey(ID))
+            var playerAccount = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Id.ToString() == ID);
+            if (playerAccount != null)
             {
-                if (game.connectedCharacters[ID].TypeID > 2)
+                if (playerAccount.Account.Character.TypeID > 2)
                 {
                     foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
                     {
@@ -267,7 +279,7 @@ namespace Phoenix.Server.Network
             if (type == 1)
             {
                 int roomID = account.Account.Character.RoomID;
-                ConnectedAccount targetAccount = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == playerName);
+                ConnectedAccount targetAccount = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == playerName.ToLower());
 
                 if (account.Account.Character.TypeID < 1)
                 {
@@ -346,7 +358,7 @@ namespace Phoenix.Server.Network
             message = Helper.ReturnTilda(message);
             message = Helper.ReturnPercent(message);
             string[] command = message.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            
+
             if (command[0].ToLower()[1..] == "scriptglobalreload")
             {
                 game.scripts.Clear();
@@ -508,10 +520,9 @@ namespace Phoenix.Server.Network
         public static Command CharacterConnect(string name, ConnectedAccount account)
         {
             Character loginCharacter = Database.GetCharacter(Constants.GAME_MODE, account.Account.Id, name);
+            ConnectedAccount playerAccount = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == loginCharacter.Name.ToLower());
 
-            Character character = game.connectedCharacters.Values.FirstOrDefault(x => x.Name.ToLower() == loginCharacter.Name.ToLower());
-
-            if (character != null)
+            if (playerAccount != null)
             {
                 return new CharacterConnectResponse
                 {
@@ -523,11 +534,7 @@ namespace Phoenix.Server.Network
 
             if (loginCharacter != null)
             {
-                account.Account.Character = loginCharacter;
-                game.connectedCharacters.Add(loginCharacter.Id.ToString(), loginCharacter);
-
-                var characters = game.connectedCharacters.Values.Where(x => x.RoomID == loginCharacter.RoomID);
-                var accounts = game.connectedAccounts.Values.Where(x => characters.Any(z => z.RoomID == x.Account.Character.RoomID));
+                var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == loginCharacter.RoomID);
 
                 foreach (ConnectedAccount cAccount in accounts)
                 {
@@ -538,15 +545,17 @@ namespace Phoenix.Server.Network
                     });
                 }
 
+
                 MessageWorld($"&tilda&g{loginCharacter.Name}&tilda&w has come &tilda&gonline&tilda&w!");
+                account.Account.Character = loginCharacter;
                 game.rooms[loginCharacter.RoomID].RoomCharacters.Add(loginCharacter);
                 game.totalConnections++;
-                if (game.maximumPlayers < game.connectedCharacters.Count) game.maximumPlayers++;
+                if (game.maximumPlayers < game.connectedAccounts.Values.Where(x => x.Account.Character.Name != "").ToList().Count) game.maximumPlayers++;
 
                 return new CharacterConnectResponse
                 {
-                    Success = loginCharacter != null,
-                    Message = loginCharacter != null ? "\0" : "Failed to locate character, please contact a God for further assistance!",
+                    Success = true,
+                    Message = "\0",
                     Character = loginCharacter
                 };
             }
@@ -562,16 +571,14 @@ namespace Phoenix.Server.Network
         }
         public static Command ClientConnect(int ID)
         {
-            foreach (Character character in game.connectedCharacters.Values)
+            var character = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Id == ID);
+            if (character != null)
             {
-                if (character.Id == ID)
+                return new ClientConnectResponse
                 {
-                    return new ClientConnectResponse
-                    {
-                        Success = true,
-                        Message = $"&tilda&w&tilda&gWelcome to &tilda&w{Constants.GAME_NAME}&tilda&g, &tilda&w{character.Name}&tilda&g! There are &tilda&w{game.connectedCharacters.Count}&tilda&g players online. We have had &tilda&w{game.totalConnections}&tilda&g total connections and a maximum of &tilda&w{game.maximumPlayers}&tilda&g players online this reboot. The current time is &tilda&w{DateTime.Now.ToShortTimeString()}&tilda&g.\n"
-                    };
-                }
+                    Success = true,
+                    Message = $"&tilda&w&tilda&gWelcome to &tilda&w{Constants.GAME_NAME}&tilda&g, &tilda&w{character.Account.Character.Name}&tilda&g! There are &tilda&w{game.connectedAccounts.Values.Where(x => x.Account.Character.Name != "").ToList().Count}&tilda&g players online. We have had &tilda&w{game.totalConnections}&tilda&g total connections and a maximum of &tilda&w{game.maximumPlayers}&tilda&g players online this reboot. The current time is &tilda&w{DateTime.Now.ToShortTimeString()}&tilda&g.\n"
+                };
             }
             return new ClientConnectResponse
             {
@@ -581,11 +588,20 @@ namespace Phoenix.Server.Network
         #endregion
 
         #region -- Timers --
+        public static void MinuteTimer()
+        {
+            Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 60000, new MinuteTimerServer(), game.serverID.ToString());
+        }
         public static void RespawnCharacter(int roomID, ConnectedAccount account, string arrivalMessage, string departureMessage)
         {
             account.Account.Character.CurrentHealth = Convert.ToInt32(account.Account.Character.Health * .50);
+            account.Account.Character.HealthRegen = true;
             MovePlayer(roomID, account, arrivalMessage, departureMessage, account, "~gYou slowly feel your heart begin to thunder as you return back to life!");
-            Functions.CharacterStatUpdate(account, account.Account.Character);
+            Functions.CharacterStatUpdate(account);
+        }
+        public static void SecondTimer()
+        {
+            Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 1000, new SecondTimerServer(), game.serverID.ToString());
         }
         public static void SpawnNPC(string characterName, string NPCName)
         {
@@ -598,15 +614,31 @@ namespace Phoenix.Server.Network
                         if (!game.currentNPC.ContainsKey(NPC.InstanceID.ToString()))
                         {
                             NPC.RoomID = room.ID;
-                            game.currentNPC.Add(NPC.InstanceID.ToString(),NPC);
+                            game.currentNPC.Add(NPC.InstanceID.ToString(), NPC);
                             room.RoomNPC.Add(NPC);
                             NPCUpdate(1, room.ID, NPC);
                             MessageRoom($"~l{NPC.Name} wanders into view...", room.ID);
                         }
                     }
                 }
-                Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeSeconds() + 120, new SpawnNPCServer(), game.serverID.ToString());
+                Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 120000, new SpawnNPCServer(), game.serverID.ToString());
             }
+        }
+        public static void TickTimer()
+        {
+            var characters = game.connectedAccounts.Values.Where(x => x.Account.Character.HealthRegen == true && x.Account.Character.Name != "");
+            foreach (ConnectedAccount character in characters)
+            {
+                character.Account.Character.CurrentHealth += 2;
+                if (character.Account.Character.CurrentHealth > character.Account.Character.Health)
+                {
+                    character.Account.Character.CurrentHealth = character.Account.Character.Health;
+                    character.Account.Character.HealthRegen = false;
+                    Functions.CharacterStatUpdate(character);
+                }
+
+            }
+            Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 250, new TickTimerServer(), game.serverID.ToString());
         }
         #endregion
 
@@ -623,8 +655,10 @@ namespace Phoenix.Server.Network
         }
         public static void MovementUpdate(ConnectedAccount account)
         {
-            var clientRoomResponseCommand = new ClientRoomResponse();
-            clientRoomResponseCommand.Success = true;
+            var clientRoomResponseCommand = new ClientRoomResponse
+            {
+                Success = true
+            };
             clientRoomResponseCommand.Room.Name = game.rooms[account.Account.Character.RoomID].Name;
             clientRoomResponseCommand.Room.Description = game.rooms[account.Account.Character.RoomID].Description;
             clientRoomResponseCommand.Room.Exits = game.rooms[account.Account.Character.RoomID].Exits + " ";
@@ -658,7 +692,7 @@ namespace Phoenix.Server.Network
             {
                 clientRoomResponseCommand.Room.Exits = clientRoomResponseCommand.Room.Exits.Remove(clientRoomResponseCommand.Room.Exits.Length - 2, 2) + " are standing here with you. ";
             }
-                 
+
 
             foreach (Item item in game.rooms[account.Account.Character.RoomID].RoomItems)
             {
@@ -687,7 +721,7 @@ namespace Phoenix.Server.Network
                 {
                     Mode = mode,
                     NPC = npc
-                });                
+                });
             }
         }
         public static void CharacterUpdate(int mode, int roomID, Character character)
@@ -703,11 +737,11 @@ namespace Phoenix.Server.Network
                 });
             }
         }
-        public static void CharacterStatUpdate(ConnectedAccount account, Character character)
+        public static void CharacterStatUpdate(ConnectedAccount account)
         {
             game.SendCommandToClient(account.Client, new CharacterStatUpdate
             {
-                Character = character
+                Character = account.Account.Character
             });
         }
         #endregion
@@ -830,12 +864,19 @@ namespace Phoenix.Server.Network
         /// <param name="currentTimeStamp"></param>
         public static void AddToQueue(double currentTimeStamp)
         {
-            if (game.actionQueue.ContainsKey(currentTimeStamp))
+            try
             {
-                foreach (ClientCommand clientCommand in game.actionQueue[currentTimeStamp])
+                foreach (double timestamp in game.actionQueue.Keys.Where(x => x <= currentTimeStamp))
                 {
-                    game.queuedCommand.Enqueue(clientCommand);
+                    foreach (ClientCommand clientCommand in game.actionQueue[timestamp])
+                    {
+                        game.queuedCommand.Enqueue(clientCommand);
+                        game.actionQueue.Remove(timestamp);
+                    }
                 }
+            }
+            catch
+            {
             }
         }
 
@@ -847,27 +888,33 @@ namespace Phoenix.Server.Network
         /// <param name="uid"></param>
         public static void AddToQueue(double currentTimeStamp, Command command, string uid)
         {
-            if (game.actionQueue.ContainsKey(currentTimeStamp))
+            try
             {
-                game.actionQueue[currentTimeStamp].Add(new ClientCommand
+                if (game.actionQueue.ContainsKey(currentTimeStamp))
                 {
-                    Id = uid,
-                    Command = command
-                });
-            }
-            else
-            {
-                game.actionQueue.Add(currentTimeStamp, new List<ClientCommand>
-                {
-                    new ClientCommand
+                    game.actionQueue[currentTimeStamp].Add(new ClientCommand
                     {
                         Id = uid,
                         Command = command
-                    }
-                });
+                    });
+                }
+                else
+                {
+                    game.actionQueue.Add(currentTimeStamp, new List<ClientCommand>
+                    {
+                        new ClientCommand
+                        {
+                            Id = uid,
+                            Command = command
+                        }
+                    });
+                }
+            }
+            catch
+            {
+
             }
         }
-
         #endregion
     }
 }

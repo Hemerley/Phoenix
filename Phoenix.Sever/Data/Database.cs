@@ -269,7 +269,18 @@ namespace Phoenix.Server.Data
                             VanishTime = e.NPCVanishTime.Value,
                             Script = e.NPCScript,
                             InstanceID = Guid.NewGuid(),
-                            DisplayName = e.NPCName + " (Level: " + e.NPCLevel + ")"
+                            DisplayName = e.NPCName + " (Level: " + e.NPCLevel + ")",
+                            CurrentAgility = e.NPCAgility.Value,
+                            CurrentStrength = e.NPCStrength.Value,
+                            CurrentIntellect = e.NPCIntellect.Value,
+                            CurrentStamina = e.NPCStamina.Value,
+                            AttackSpeed = 1,
+                            CurrentHealth = e.NPCHealth.Value,
+                            CurrentMana = e.NPCMana.Value,
+                            IsAttacking = false,
+                            RoomID = g.Key.RoomID,
+                            TargetID = 0,
+                            Threat = 0
                         }).ToList()
                     }).ToList();
         }
@@ -297,6 +308,23 @@ namespace Phoenix.Server.Data
                 return reader[0].ToString();
             }
             return null;
+        }
+
+        /// <summary>
+        /// Updates An Account Field in Database.
+        /// </summary>
+        /// <param name="connectionType"></param>
+        /// <param name="column"></param>
+        /// <param name="columnValue"></param>
+        /// <param name="field"></param>
+        /// <param name="fieldValue"></param>
+        public static void SetAccountField(string connectionType, string column, string columnValue, string field, string fieldValue)
+        {
+            using SQLiteConnection connection = new(LoadConnectionString(connectionType));
+            connection.Open();
+            string query = $"UPDATE Accounts SET {field} = '{fieldValue}' WHERE {column} = '{columnValue}';";
+            using var command = new SQLiteCommand(query, connection);
+            command.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -340,6 +368,15 @@ namespace Phoenix.Server.Data
             return null;
         }
 
+        public static void SetCharacterField(string connectionType, string column, string columnValue, string field, string fieldValue)
+        {
+            using SQLiteConnection connection = new(LoadConnectionString(connectionType));
+            connection.Open();
+            string query = $"UPDATE Characters SET {field} = '{fieldValue}' WHERE {column} = '{columnValue}';";
+            using var command = new SQLiteCommand(query, connection);
+            command.ExecuteNonQuery();
+        }
+
         /// <summary>
         /// Inserts A New Account
         /// </summary>
@@ -359,6 +396,15 @@ namespace Phoenix.Server.Data
                 hisHer = "His";
             }
             string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID, CurrentHealth, CurrentMana, Recall) VALUES ('{accountID}', '{CharacterName}', '{Image}', 0, '{Gender}', '{hisHer}', '{heShe}', 0, 'Initiate', 0, 1, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 1, 20, 20, 1);";
+            using var command = new SQLiteCommand(query, connection);
+            command.ExecuteNonQuery();
+        }
+
+        public static void SetCharacter(string connectionType, Character character)
+        {
+            using SQLiteConnection connection = new(LoadConnectionString(connectionType));
+            connection.Open();
+            string query = $"UPDATE Characters SET Experience = '{character.Experience}',  Title = '{character.Title}', Caste = '{character.CasteID}', Rank = '{character.RankID}', Alignment = '{character.Alignment}', Strength = '{character.Strength}',  Agility = '{character.Agility}', Intellect = '{character.Intellect}',  Stamina = '{character.Stamina}',  Damage = '{character.Damage}',  Health = '{character.Health}',  Mana = '{character.Mana}', RoomID = '{character.RoomID}', CurrentHealth = '{character.CurrentHealth}', CurrentMana = '{character.CurrentMana}', Recall = '{character.Recall}' WHERE Name = '{character.Name.ToLower()}';";
             using var command = new SQLiteCommand(query, connection);
             command.ExecuteNonQuery();
         }
@@ -431,12 +477,18 @@ namespace Phoenix.Server.Data
                     Mastery = 0,
                     Haste = 0,
                     Versatility = 0,
+                    CurrentStrength = Int32.Parse(reader[15].ToString()),
+                    CurrentAgility = Int32.Parse(reader[16].ToString()),
+                    CurrentIntellect = Int32.Parse(reader[17].ToString()),
+                    CurrentStamina = Int32.Parse(reader[18].ToString()),
+                    CurrentDamage = Int32.Parse(reader[19].ToString()),
                     CurrentHealth = Int32.Parse(reader[23].ToString()),
                     CurrentMana = Int32.Parse(reader[24].ToString()),
+                    CurrentArmor = 0,
                     AttackSpeed = 1,
                     IsAttacking = false,
                     IsDead = false,
-                    MaxExperience = Int32.Parse(reader[11].ToString())*1500,
+                    MaxExperience = Int32.Parse(reader[11].ToString()) * 1500,
                     TargetID = -1,
                     Recall = Int32.Parse(reader[25].ToString())
                 };

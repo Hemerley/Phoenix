@@ -46,6 +46,10 @@ namespace Phoenix.Common.Data.Types
 
         #region -- Combat Statistics --
         public double AttackSpeed { get; set; }
+        public int CurrentStrength { get; set; }
+        public int CurrentAgility { get; set; }
+        public int CurrentIntellect { get; set; }
+        public int CurrentStamina { get; set; }
         public bool IsAttacking { get; set; }
         public int TargetID { get; set; }
         public int Threat { get; set; }

@@ -22,6 +22,7 @@ namespace Phoenix.Client
         private FrmLauncher launcherForm;
         private readonly FrmDebug debugForm;
         public event EventHandler<string> NewPacket;
+        private int chatLength = 100;
 
         public FrmClient(FrmLauncher frmLauncher)
         {
@@ -35,7 +36,7 @@ namespace Phoenix.Client
 
         #region -- Client Events --
         private void Client_OnActivity(object sender, string e)
-        
+
         {
             this.Invoke((Action)delegate
             {
@@ -417,6 +418,7 @@ namespace Phoenix.Client
                 return;
             }
         }
+
         #endregion
 
         #region -- Move Window --
@@ -965,6 +967,14 @@ namespace Phoenix.Client
 
         private void UpdateChat(string message)
         {
+            if (this.rtbChat.Lines.Length > chatLength)
+            {
+                this.rtbChat.ReadOnly = false;
+                this.rtbChat.SelectionStart = 0;
+                this.rtbChat.Select(0, this.rtbChat.GetFirstCharIndexFromLine(chatLength - 10));
+                this.rtbChat.Cut();
+                this.rtbChat.ReadOnly = true;
+            }
             message = Helper.ReturnPipe(message);
             message = Helper.ReturnTilda(message);
             message = Helper.ReturnCaret(message);
