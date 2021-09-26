@@ -707,9 +707,9 @@ namespace Phoenix.Client
             // 
             this.label6.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label6.Location = new System.Drawing.Point(4, 403);
+            this.label6.Location = new System.Drawing.Point(-1, 403);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(224, 18);
+            this.label6.Size = new System.Drawing.Size(240, 18);
             this.label6.TabIndex = 222;
             this.label6.Text = "Experience";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -779,21 +779,20 @@ namespace Phoenix.Client
             // 
             this.vbExp.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.vbExp.ChannelHeight = 10;
-            this.vbExp.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.vbExp.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.vbExp.ForeBackColor = System.Drawing.Color.Transparent;
-            this.vbExp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.vbExp.Location = new System.Drawing.Point(5, 422);
-            this.vbExp.MarqueeAnimationSpeed = 0;
+            this.vbExp.ForeColor = System.Drawing.Color.White;
+            this.vbExp.Location = new System.Drawing.Point(3, 424);
+            this.vbExp.Maximum = 2000000;
             this.vbExp.Name = "vbExp";
             this.vbExp.ShowMaximun = true;
             this.vbExp.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.Center;
-            this.vbExp.Size = new System.Drawing.Size(229, 23);
-            this.vbExp.SliderColor = System.Drawing.Color.DarkOrchid;
+            this.vbExp.Size = new System.Drawing.Size(232, 18);
+            this.vbExp.SliderColor = System.Drawing.Color.BlueViolet;
             this.vbExp.SliderHeight = 20;
             this.vbExp.SymbolAfter = "";
             this.vbExp.SymbolBefore = "";
             this.vbExp.TabIndex = 226;
-            this.vbExp.Value = 50;
             // 
             // pbPlayer
             // 
@@ -2713,12 +2712,12 @@ namespace Phoenix.Client
             // 
             this.vbCast.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.vbCast.ChannelHeight = 10;
-            this.vbCast.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.vbCast.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.vbCast.ForeBackColor = System.Drawing.Color.Transparent;
-            this.vbCast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.vbCast.Location = new System.Drawing.Point(417, 25);
+            this.vbCast.ForeColor = System.Drawing.Color.White;
+            this.vbCast.Location = new System.Drawing.Point(423, 25);
             this.vbCast.Name = "vbCast";
-            this.vbCast.ShowMaximun = false;
+            this.vbCast.ShowMaximun = true;
             this.vbCast.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.None;
             this.vbCast.Size = new System.Drawing.Size(201, 23);
             this.vbCast.SliderColor = System.Drawing.Color.ForestGreen;
@@ -2731,10 +2730,11 @@ namespace Phoenix.Client
             // 
             this.vbMana.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.vbMana.ChannelHeight = 10;
-            this.vbMana.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.vbMana.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.vbMana.ForeBackColor = System.Drawing.Color.Transparent;
-            this.vbMana.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.vbMana.Location = new System.Drawing.Point(210, 25);
+            this.vbMana.ForeColor = System.Drawing.Color.White;
+            this.vbMana.Location = new System.Drawing.Point(216, 25);
+            this.vbMana.Maximum = 1500;
             this.vbMana.Name = "vbMana";
             this.vbMana.ShowMaximun = true;
             this.vbMana.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.Center;
@@ -2744,16 +2744,17 @@ namespace Phoenix.Client
             this.vbMana.SymbolAfter = "";
             this.vbMana.SymbolBefore = "";
             this.vbMana.TabIndex = 228;
-            this.vbMana.Value = 50;
+            this.vbMana.Value = 1500;
             // 
             // vbHealth
             // 
             this.vbHealth.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.vbHealth.ChannelHeight = 10;
-            this.vbHealth.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.vbHealth.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.vbHealth.ForeBackColor = System.Drawing.Color.Transparent;
-            this.vbHealth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.vbHealth.Location = new System.Drawing.Point(3, 25);
+            this.vbHealth.ForeColor = System.Drawing.Color.White;
+            this.vbHealth.Location = new System.Drawing.Point(9, 25);
+            this.vbHealth.Maximum = 1500;
             this.vbHealth.Name = "vbHealth";
             this.vbHealth.ShowMaximun = true;
             this.vbHealth.ShowValue = Phoenix.Client.Classes.Extensions.VisualBar.TextPosition.Center;
@@ -2763,7 +2764,7 @@ namespace Phoenix.Client
             this.vbHealth.SymbolAfter = "";
             this.vbHealth.SymbolBefore = "";
             this.vbHealth.TabIndex = 227;
-            this.vbHealth.Value = 50;
+            this.vbHealth.Value = 1500;
             // 
             // txtInput
             // 

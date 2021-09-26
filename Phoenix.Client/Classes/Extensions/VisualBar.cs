@@ -175,10 +175,10 @@ namespace Phoenix.Client.Classes.Extensions
         private void DrawValueText(Graphics graph, int sliderWidth, Rectangle rectSlider)
         {
             // Fields
-            string text = symbolBefore + this.Value.ToString() + symbolAfter;
-            if (showMaximun) text = text + "/" + symbolBefore + this.Maximum.ToString() + symbolAfter;
+            string text = this.Value.ToString();
+            if (showMaximun) text = text + "/" + this.Maximum.ToString();
             var textSize = TextRenderer.MeasureText(text, this.Font);
-            var rectText = new Rectangle(0, 0, textSize.Width, textSize.Height + 2);
+            var rectText = new Rectangle(0, 0, textSize.Width + 5, textSize.Height + 2);
             using var brushText = new SolidBrush(this.ForeColor);
             using var brushTextBack = new SolidBrush(foreBackColor);
             using var textFormat = new StringFormat();

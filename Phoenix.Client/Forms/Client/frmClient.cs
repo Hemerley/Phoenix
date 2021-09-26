@@ -22,7 +22,7 @@ namespace Phoenix.Client
         private FrmLauncher launcherForm;
         private readonly FrmDebug debugForm;
         public event EventHandler<string> NewPacket;
-        private int chatLength = 100;
+        private readonly int chatLength = 100;
 
         public FrmClient(FrmLauncher frmLauncher)
         {
@@ -477,7 +477,10 @@ namespace Phoenix.Client
             this.lblBaseHaste.Text = this.character.Haste.ToString() + "%";
             this.lblBaseVers.Text = this.character.Versatility.ToString() + "%";
             this.lblWeight.Text = "Weight: 0 / " + (this.character.Strength * 2);
-            this.vbExp.Value = this.character.Experience;
+            if (this.character.Experience > this.vbExp.Maximum)
+                this.vbExp.Value = this.vbExp.Maximum;
+            else
+                this.vbExp.Value = this.character.Experience;
             this.vbExp.Maximum = this.character.MaxExperience;
             this.vbExp.Refresh();
             this.vbHealth.Value = this.character.CurrentHealth;
@@ -486,6 +489,7 @@ namespace Phoenix.Client
             this.vbMana.Value = this.character.CurrentMana;
             this.vbMana.Maximum = this.character.Mana;
             this.vbMana.Refresh();
+
         }
         #endregion
 
@@ -973,6 +977,7 @@ namespace Phoenix.Client
                 this.rtbChat.SelectionStart = 0;
                 this.rtbChat.Select(0, this.rtbChat.GetFirstCharIndexFromLine(chatLength - 10));
                 this.rtbChat.Cut();
+                Clipboard.Clear();
                 this.rtbChat.ReadOnly = true;
             }
             message = Helper.ReturnPipe(message);

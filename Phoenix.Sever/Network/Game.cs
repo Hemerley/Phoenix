@@ -257,7 +257,7 @@ namespace Phoenix.Server.Network
             string[] files = Directory.GetFiles("./Scripts/", "*.*", SearchOption.AllDirectories);
             foreach (string file in files)
             {
-                this.scripts.Add(file);
+                this.scripts.Add(file.ToLower());
             }
             foreach (string script in scripts)
             {

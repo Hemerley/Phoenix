@@ -49,7 +49,7 @@ namespace Phoenix.Server.Network
             foreach (ConnectedAccount accountx in accounts)
             {
                 if (accountx != account)
-                    game.SendCommandToClient(account.Client, new MessageRoomServer
+                    game.SendCommandToClient(accountx.Client, new MessageRoomServer
                     {
                         Message = message
                     });
@@ -61,7 +61,7 @@ namespace Phoenix.Server.Network
             foreach (ConnectedAccount accountx in accounts)
             {
                 if (accountx != account && accountx != sAccount)
-                    game.SendCommandToClient(account.Client, new MessageRoomServer
+                    game.SendCommandToClient(accountx.Client, new MessageRoomServer
                     {
                         Message = message
                     });
@@ -353,6 +353,11 @@ namespace Phoenix.Server.Network
         #region -- Commands --
         public static void SlashCommand(string message, ConnectedAccount account)
         {
+            if (account.Account.Character.IsDead)
+            {
+                Functions.MessageDirect("~rYou are currently dead and cannot do that!", account.Client.Id);
+                return;
+            }
             message = Helper.ReturnCaret(message);
             message = Helper.ReturnPipe(message);
             message = Helper.ReturnTilda(message);
@@ -361,11 +366,17 @@ namespace Phoenix.Server.Network
 
             if (command[0].ToLower()[1..] == "scriptglobalreload")
             {
+                if (account.Account.Character.TypeID < 2)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+
                 game.scripts.Clear();
                 string[] files = Directory.GetFiles("./Scripts/", "*.*", SearchOption.AllDirectories);
                 foreach (string file in files)
                 {
-                    game.scripts.Add(file);
+                    game.scripts.Add(file.ToLower());
                 }
                 Functions.MessageDirect("~qAll Scripts Reloaded!", account.Client.Id);
                 return;
@@ -373,7 +384,11 @@ namespace Phoenix.Server.Network
 
             foreach (string script in game.scripts)
             {
-                if (script.Contains(command[0].ToLower()[1..]))
+                string[] x = script.Split("/");
+                string[] z = x[^1].Split("\\");
+                string scriptNamez = z[^1][0..^4].ToLower();
+
+                if (scriptNamez == command[0].ToLower()[1..])
                 {
                     if (command.Length < 1)
                     {
