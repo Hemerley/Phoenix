@@ -292,6 +292,17 @@ namespace Phoenix.Server.Scripts
                         Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattempts to attack you with their ~w{itemName.ToLower()}~o, but ~ymisses~o!", defenderID);
                         Functions.MessageDirect($"~oYou attempt to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o, but ~ymiss~o!", entityID);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID, game.connectedAccounts[defenderID], game.connectedAccounts[entityID]);
+                        attackerCharacter.IsAttacking = true;
+                        attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
+                        attackerCharacter.TargetIsPlayer = true;
+                        attackerCharacter.HealthRegen = false;
+                        defenderCharacter.HealthRegen = false;
+                        if (defenderCharacter.AutoAttack)
+                        {
+                            defenderCharacter.IsAttacking = true;
+                            defenderCharacter.TargetIsPlayer = true;
+                            defenderCharacter.TargetID = attackerCharacter.Name.ToLower();
+                        }
                     }
                     else
                     {
@@ -300,8 +311,30 @@ namespace Phoenix.Server.Scripts
                         Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattacks you with their ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", defenderID);
                         Functions.MessageDirect($"~oYou attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", entityID);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID, game.connectedAccounts[defenderID], game.connectedAccounts[entityID]);
-                        if (Death(death)) LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
-                        else Functions.CharacterStatUpdate(game.connectedAccounts[defenderID]);
+                        if (Death(death))
+                        {
+                            LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
+                            attackerCharacter.IsAttacking = false;
+                            attackerCharacter.TargetID = "";
+                            defenderCharacter.IsAttacking = false;
+                            defenderCharacter.TargetID = "";
+                            attackerCharacter.HealthRegen = true;
+                        }
+                        else
+                        {
+                            Functions.CharacterStatUpdate(game.connectedAccounts[defenderID]);
+                            attackerCharacter.IsAttacking = true;
+                            attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
+                            attackerCharacter.TargetIsPlayer = true;
+                            attackerCharacter.HealthRegen = false;
+                            defenderCharacter.HealthRegen = false;
+                            if (defenderCharacter.AutoAttack)
+                            {
+                                defenderCharacter.IsAttacking = true;
+                                defenderCharacter.TargetIsPlayer = true;
+                                defenderCharacter.TargetID = attackerCharacter.Name.ToLower();
+                            }
+                        }
                     }
                 }
                 else if (defenderIsPlayer && !isPlayer)
@@ -317,6 +350,16 @@ namespace Phoenix.Server.Scripts
                     {
                         Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattempts to attack you with their ~w{itemName.ToLower()}~o, but ~ymisses~o!", defenderID);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID, game.connectedAccounts[defenderID]);
+                        attackerCharacter.IsAttacking = true;
+                        attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
+                        attackerCharacter.TargetIsPlayer = true;
+                        defenderCharacter.HealthRegen = false;
+                        if (defenderCharacter.AutoAttack)
+                        {
+                            defenderCharacter.IsAttacking = true;
+                            defenderCharacter.TargetIsPlayer = false;
+                            defenderCharacter.TargetID = attackerCharacter.Name.ToLower();
+                        }
                     }
                     else
                     {
@@ -324,8 +367,28 @@ namespace Phoenix.Server.Scripts
                         int death = LuaEntity.Remove.CurrentHealth(defenderID, defenderIsPlayer, totalDamage);
                         Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattacks you with their ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", defenderID);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID, game.connectedAccounts[defenderID]);
-                        if (LuaAttack.Death(death)) LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
-                        else Functions.CharacterStatUpdate(game.connectedAccounts[defenderID]);
+                        if (Death(death))
+                        {
+                            LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
+                            attackerCharacter.IsAttacking = false;
+                            attackerCharacter.TargetID = "";
+                            defenderCharacter.IsAttacking = false;
+                            defenderCharacter.TargetID = "";
+                        }
+                        else
+                        {
+                            Functions.CharacterStatUpdate(game.connectedAccounts[defenderID]);
+                            attackerCharacter.IsAttacking = true;
+                            attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
+                            attackerCharacter.TargetIsPlayer = true;
+                            defenderCharacter.HealthRegen = false;
+                            if (defenderCharacter.AutoAttack)
+                            {
+                                defenderCharacter.IsAttacking = true;
+                                defenderCharacter.TargetIsPlayer = false;
+                                defenderCharacter.TargetID = attackerCharacter.Name.ToLower();
+                            }
+                        }
                     }
                 }
                 else if (!defenderIsPlayer && isPlayer)
@@ -343,6 +406,13 @@ namespace Phoenix.Server.Scripts
                     {
                         Functions.MessageDirect($"~oYou attempt to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o, but ~ymiss~o!", entityID);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID, game.connectedAccounts[entityID]);
+                        attackerCharacter.IsAttacking = true;
+                        attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
+                        attackerCharacter.TargetIsPlayer = false;
+                        defenderCharacter.IsAttacking = true;
+                        defenderCharacter.TargetID = attackerCharacter.Name.ToLower();
+                        defenderCharacter.TargetIsPlayer = true;
+                        attackerCharacter.HealthRegen = false;
                     }
                     else
                     {
@@ -356,6 +426,21 @@ namespace Phoenix.Server.Scripts
                             LuaCharacter.Add.Experience(entityID, defenderCharacter.Level);
                             LuaCharacter.Add.Gold(entityID, defenderCharacter.Gold);
                             Functions.CharacterStatUpdate(game.connectedAccounts[entityID]);
+                            attackerCharacter.IsAttacking = false;
+                            attackerCharacter.TargetID = "";
+                            defenderCharacter.IsAttacking = false;
+                            defenderCharacter.TargetID = "";
+                            attackerCharacter.HealthRegen = true;
+                        }
+                        else
+                        {
+                            attackerCharacter.IsAttacking = true;
+                            attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
+                            attackerCharacter.TargetIsPlayer = false;
+                            defenderCharacter.IsAttacking = true;
+                            defenderCharacter.TargetID = attackerCharacter.Name.ToLower();
+                            defenderCharacter.TargetIsPlayer = true;
+                            attackerCharacter.HealthRegen = false;
                         }
                     }
                 }
@@ -370,13 +455,33 @@ namespace Phoenix.Server.Scripts
                     if (LuaAttack.Dodge(entityID, isPlayer, defenderID, defenderIsPlayer))
                     {
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID);
+                        attackerCharacter.IsAttacking = true;
+                        attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
+                        attackerCharacter.TargetIsPlayer = false;
+                        defenderCharacter.IsAttacking = true;
+                        defenderCharacter.TargetID = attackerCharacter.Name.ToLower();
+                        defenderCharacter.TargetIsPlayer = false;
                     }
                     else
                     {
                         int totalDamage = LuaAttack.Damage(entityID, isPlayer, defenderID, defenderIsPlayer);
                         int death = LuaEntity.Remove.CurrentHealth(defenderID, defenderIsPlayer, totalDamage);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID);
-                        if (LuaAttack.Death(death)) LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
+                        if (LuaAttack.Death(death))
+                        {
+                            LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
+                            attackerCharacter.IsAttacking = false;
+                            attackerCharacter.Name = "";
+                        }
+                        else
+                        {
+                            attackerCharacter.IsAttacking = true;
+                            attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
+                            attackerCharacter.TargetIsPlayer = false;
+                            defenderCharacter.IsAttacking = true;
+                            defenderCharacter.TargetID = attackerCharacter.Name.ToLower();
+                            defenderCharacter.TargetIsPlayer = false;
+                        }
                     }
                 }
             }
@@ -526,6 +631,17 @@ namespace Phoenix.Server.Scripts
                     else
                     {
                         return game.currentNPC.ContainsKey(entityID) ? game.currentNPC[entityID].HisHer : "";
+                    }
+                }
+                public static bool IsAttacking(string entityID, bool isPlayer)
+                {
+                    if (isPlayer)
+                    {
+                        return game.connectedAccounts.ContainsKey(entityID) && game.connectedAccounts[entityID].Account.Character.IsAttacking;
+                    }
+                    else
+                    {
+                        return game.currentNPC.ContainsKey(entityID) && game.currentNPC[entityID].IsAttacking;
                     }
                 }
                 public static string Name(string entityID, bool isPlayer)

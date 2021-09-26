@@ -176,6 +176,25 @@ namespace Phoenix.Server.Network
                                 game.rooms[game.rooms[account.Account.Character.RoomID].North].RoomCharacters.Add(account.Account.Character);
 
                                 account.Account.Character.RoomID = game.rooms[account.Account.Character.RoomID].North;
+                                account.Account.Character.IsAttacking = false;
+                                account.Account.Character.TargetID = "";
+
+                                #region -- Hostile Mob Loop --
+                                {
+                                    var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                                    foreach (NPC npc in npcs)
+                                    {
+                                        var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                                        if (characters != null)
+                                        {
+                                            npc.IsAttacking = true;
+                                            npc.TargetID = characters[0].Name.ToLower();
+                                            npc.TargetIsPlayer = true;
+                                        }
+                                    }
+                                }
+                                #endregion
+
                                 MovementUpdate(account);
                             }
                             else
@@ -195,6 +214,25 @@ namespace Phoenix.Server.Network
                                 game.rooms[game.rooms[account.Account.Character.RoomID].South].RoomCharacters.Add(account.Account.Character);
 
                                 account.Account.Character.RoomID = game.rooms[account.Account.Character.RoomID].South;
+                                account.Account.Character.IsAttacking = false;
+                                account.Account.Character.TargetID = "";
+
+                                #region -- Hostile Mob Loop --
+                                {
+                                    var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                                    foreach (NPC npc in npcs)
+                                    {
+                                        var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                                        if (characters != null)
+                                        {
+                                            npc.IsAttacking = true;
+                                            npc.TargetID = characters[0].Name.ToLower();
+                                            npc.TargetIsPlayer = true;
+                                        }
+                                    }
+                                }
+                                #endregion
+
                                 MovementUpdate(account);
                             }
                             else
@@ -214,6 +252,25 @@ namespace Phoenix.Server.Network
                                 game.rooms[game.rooms[account.Account.Character.RoomID].West].RoomCharacters.Add(account.Account.Character);
 
                                 account.Account.Character.RoomID = game.rooms[account.Account.Character.RoomID].West;
+                                account.Account.Character.IsAttacking = false;
+                                account.Account.Character.TargetID = "";
+
+                                #region -- Hostile Mob Loop --
+                                {
+                                    var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                                    foreach (NPC npc in npcs)
+                                    {
+                                        var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                                        if (characters != null)
+                                        {
+                                            npc.IsAttacking = true;
+                                            npc.TargetID = characters[0].Name.ToLower();
+                                            npc.TargetIsPlayer = true;
+                                        }
+                                    }
+                                }
+                                #endregion
+
                                 MovementUpdate(account);
                             }
                             else
@@ -233,6 +290,25 @@ namespace Phoenix.Server.Network
                                 game.rooms[game.rooms[account.Account.Character.RoomID].East].RoomCharacters.Add(account.Account.Character);
 
                                 account.Account.Character.RoomID = game.rooms[account.Account.Character.RoomID].East;
+                                account.Account.Character.IsAttacking = false;
+                                account.Account.Character.TargetID = "";
+
+                                #region -- Hostile Mob Loop --
+                                {
+                                    var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                                    foreach (NPC npc in npcs)
+                                    {
+                                        var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                                        if (characters != null)
+                                        {
+                                            npc.IsAttacking = true;
+                                            npc.TargetID = characters[0].Name.ToLower();
+                                            npc.TargetIsPlayer = true;
+                                        }
+                                    }
+                                }
+                                #endregion
+
                                 MovementUpdate(account);
                             }
                             else
@@ -257,6 +333,25 @@ namespace Phoenix.Server.Network
             game.rooms[roomID].RoomCharacters.Add(account.Account.Character);
 
             account.Account.Character.RoomID = roomID;
+            account.Account.Character.IsAttacking = false;
+            account.Account.Character.TargetID = "";
+
+            #region -- Hostile Mob Loop --
+            {
+                var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                foreach (NPC npc in npcs)
+                {
+                    var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                    if (characters != null)
+                    {
+                        npc.IsAttacking = true;
+                        npc.TargetID = characters[0].Name.ToLower();
+                        npc.TargetIsPlayer = true;
+                    }
+                }
+            }
+            #endregion
+
             MovementUpdate(account);
         }
         public static void MovePlayer(int roomID, ConnectedAccount account, string arrivalMessage, string departureMessage, ConnectedAccount ignoreAccount, string directMessage)
@@ -270,6 +365,25 @@ namespace Phoenix.Server.Network
             game.rooms[roomID].RoomCharacters.Add(account.Account.Character);
 
             account.Account.Character.RoomID = roomID;
+            account.Account.Character.IsAttacking = false;
+            account.Account.Character.TargetID = "";
+
+            #region -- Hostile Mob Loop --
+            {
+                var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                foreach (NPC npc in npcs)
+                {
+                    var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                    if (characters != null)
+                    {
+                        npc.IsAttacking = true;
+                        npc.TargetID = characters[0].Name.ToLower();
+                        npc.TargetIsPlayer = true;
+                    }
+                }
+            }
+            #endregion
+
             MovementUpdate(account);
             Functions.MessageDirect(directMessage, account.Client.Id);
         }
@@ -299,8 +413,25 @@ namespace Phoenix.Server.Network
                 MessageRoom(arrivalMessage, roomID);
                 game.rooms[targetAccount.Account.Character.RoomID].RoomCharacters.Remove(targetAccount.Account.Character);
                 game.rooms[roomID].RoomCharacters.Add(targetAccount.Account.Character);
-
                 targetAccount.Account.Character.RoomID = roomID;
+                targetAccount.Account.Character.IsAttacking = false;
+                targetAccount.Account.Character.TargetID = "";
+
+                #region -- Hostile Mob Loop --
+                {
+                    var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                    foreach (NPC npc in npcs)
+                    {
+                        var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                        if (characters != null)
+                        {
+                            npc.IsAttacking = true;
+                            npc.TargetID = characters[0].Name.ToLower();
+                            npc.TargetIsPlayer = true;
+                        }
+                    }
+                }
+                #endregion
 
                 MovementUpdate(targetAccount);
                 MessageDirect($"~mYou have be summoned by ~w{account.Account.Character.Name.FirstCharToUpper()}~m!", targetAccount.Client.Id);
@@ -381,6 +512,25 @@ namespace Phoenix.Server.Network
                 Functions.MessageDirect("~qAll Scripts Reloaded!", account.Client.Id);
                 return;
             }
+            else if (command[0].ToLower()[1..] == "who")
+            {
+                var characterNames = game.connectedAccounts.Values.Where(x => x.Account.Character.Name != "").Select(x => x.Account.Character.Name);
+
+                Functions.MessageDirect($"~gThere are currrently ~w{characterNames.Count()} ~gplayers online: ~w{string.Join(", ", characterNames)}~g.", account.Client.Id);
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "autoattack")
+            {
+                account.Account.Character.AutoAttack = !account.Account.Character.AutoAttack;
+                Functions.MessageDirect($"~wAutoAttack~c has been set to: ~w{account.Account.Character.AutoAttack}~c.", account.Client.Id);
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "autoloot")
+            {
+                account.Account.Character.AutoLoot = !account.Account.Character.AutoLoot;
+                Functions.MessageDirect($"~wAutoLoot~c has been set to: ~w{account.Account.Character.AutoLoot}~c.", account.Client.Id);
+                return;
+            }
 
             foreach (string script in game.scripts)
             {
@@ -401,37 +551,12 @@ namespace Phoenix.Server.Network
                         string scriptName = command[0].ToLower()[1..];
                         command = command.Skip(1).ToArray();
                         string name = string.Join(" ", command).ToLower();
-                        foreach (ConnectedAccount connectedAccount in game.connectedAccounts.Values)
-                        {
-                            if (connectedAccount.Account.Character == null)
-                            {
-                                continue;
-                            }
-                            if (connectedAccount.Account.Character.Name.ToLower() == name)
-                            {
-                                defenderID = connectedAccount.Client.Id;
-                                break;
-                            }
-                        }
+                        if (game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == name) != null)
+                            defenderID = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == name).Client.Id;
                         if (defenderID == "")
                         {
-                            foreach (Room room in game.rooms)
-                            {
-                                if (room.ID == account.Account.Character.RoomID)
-                                {
-                                    foreach (NPC npc in room.RoomNPC)
-                                    {
-                                        if (npc.Name.ToLower() == name)
-                                        {
-                                            foreach (NPC nPC in game.currentNPC.Values)
-                                            {
-                                                defenderID = npc.InstanceID.ToString();
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            if (game.currentNPC.Values.FirstOrDefault(x => x.Name.ToLower() == name && x.RoomID == account.Account.Character.RoomID) != null)
+                                defenderID = game.currentNPC.Values.FirstOrDefault(x => x.Name.ToLower() == name && x.RoomID == account.Account.Character.RoomID).InstanceID.ToString();
                         }
                         else
                         {
@@ -441,6 +566,11 @@ namespace Phoenix.Server.Network
                         if (defenderID == "")
                         {
                             Functions.MessageDirect($"~c{name} isn't here!", account.Client.Id);
+                            if (command[0].ToLower()[1..] == "attack")
+                            {
+                                account.Account.Character.IsAttacking = false;
+                                account.Account.Character.TargetID = "";
+                            }
                             return;
                         }
                         else
@@ -611,11 +741,81 @@ namespace Phoenix.Server.Network
         {
             account.Account.Character.CurrentHealth = Convert.ToInt32(account.Account.Character.Health * .50);
             account.Account.Character.HealthRegen = true;
+            account.Account.Character.IsDead = false;
             MovePlayer(roomID, account, arrivalMessage, departureMessage, account, "~gYou slowly feel your heart begin to thunder as you return back to life!");
             Functions.CharacterStatUpdate(account);
         }
         public static void SecondTimer()
         {
+            #region -- Attack Loop --
+            {
+                var characters = game.connectedAccounts.Values.Where(x => x.Account.Character.IsAttacking == true);
+                var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == true);
+                var defenderID = "";
+                foreach (ConnectedAccount connectedAccount in characters)
+                {
+                    if (connectedAccount.Account.Character.TargetIsPlayer)
+                    {
+                        if (game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == connectedAccount.Account.Character.TargetID) != null)
+                        {
+                            defenderID = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == connectedAccount.Account.Character.TargetID).Client.Id;
+                            ScriptEngine.RunScript("attack", connectedAccount.Client.Id, true, defenderID, true);
+                            defenderID = "";
+                            continue;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if (game.currentNPC.Values.FirstOrDefault(x => x.Name.ToLower() == connectedAccount.Account.Character.TargetID) != null)
+                        {
+                            defenderID = game.currentNPC.Values.FirstOrDefault(x => x.Name.ToLower() == connectedAccount.Account.Character.TargetID).InstanceID.ToString();
+                            ScriptEngine.RunScript("attack", connectedAccount.Client.Id, true, defenderID, false);
+                            defenderID = "";
+                            continue;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+                foreach (NPC npc in npcs)
+                {
+                    if (npc.TargetIsPlayer)
+                    {
+                        if (game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == npc.TargetID) != null)
+                        {
+                            defenderID = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == npc.TargetID).Client.Id;
+                            ScriptEngine.RunScript("attack", npc.InstanceID.ToString(), false, defenderID, true);
+                            continue;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if (game.currentNPC.Values.FirstOrDefault(x => x.Name.ToLower() == npc.TargetID) != null)
+                        {
+                            defenderID = game.currentNPC.Values.FirstOrDefault(x => x.Name.ToLower() == npc.TargetID).InstanceID.ToString();
+                            ScriptEngine.RunScript("attack", npc.InstanceID.ToString(), false, defenderID, false);
+                            continue;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+            }
+            #endregion
+
             Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 1000, new SecondTimerServer(), game.serverID.ToString());
         }
         public static void SpawnNPC(string characterName, string NPCName)
@@ -633,6 +833,21 @@ namespace Phoenix.Server.Network
                             room.RoomNPC.Add(NPC);
                             NPCUpdate(1, room.ID, NPC);
                             MessageRoom($"~l{NPC.Name} wanders into view...", room.ID);
+                            #region -- Hostile Mob Loop --
+                            {
+                                var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                                foreach (NPC npc in npcs)
+                                {
+                                    var characters = game.rooms[NPC.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                                    if (characters != null)
+                                    {
+                                        npc.IsAttacking = true;
+                                        npc.TargetID = characters[0].Name.ToLower();
+                                        npc.TargetIsPlayer = true;
+                                    }
+                                }
+                            }
+                            #endregion
                         }
                     }
                 }

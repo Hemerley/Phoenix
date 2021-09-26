@@ -422,6 +422,9 @@ namespace Phoenix.Server.Network
                     case CommandType.SlashCommand:
                         {
                             var parsedCommand = command as SlashCommandRequest;
+                            string[] c = parsedCommand.Message.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                            if (c[0].ToLower()[1..] == "attack")
+                                if (accountConnected.Account.Character.IsAttacking == true) return;
                             Functions.SlashCommand(parsedCommand.Message, accountConnected);
                             break;
                         }

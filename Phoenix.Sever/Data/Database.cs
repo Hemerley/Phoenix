@@ -279,7 +279,7 @@ namespace Phoenix.Server.Data
                             CurrentMana = e.NPCMana.Value,
                             IsAttacking = false,
                             RoomID = g.Key.RoomID,
-                            TargetID = 0,
+                            TargetID = "",
                             Threat = 0
                         }).ToList()
                     }).ToList();
@@ -395,7 +395,7 @@ namespace Phoenix.Server.Data
                 heShe = "He";
                 hisHer = "His";
             }
-            string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID, CurrentHealth, CurrentMana, Recall) VALUES ('{accountID}', '{CharacterName}', '{Image}', 0, '{Gender}', '{hisHer}', '{heShe}', 0, 'Initiate', 0, 1, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 1, 20, 20, 1);";
+            string query = $"INSERT INTO Characters (AccountID, Name, Image, Type, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID, CurrentHealth, CurrentMana, Recall, AutoAttack, AutoLoot) VALUES ('{accountID}', '{CharacterName}', '{Image}', 0, '{Gender}', '{hisHer}', '{heShe}', 0, 'Initiate', 0, 1, {Philosophy}, 0, 0, 10, 10, 10, 10, 20, 20, 20, 1, 20, 20, 1, false, false);";
             using var command = new SQLiteCommand(query, connection);
             command.ExecuteNonQuery();
         }
@@ -404,7 +404,7 @@ namespace Phoenix.Server.Data
         {
             using SQLiteConnection connection = new(LoadConnectionString(connectionType));
             connection.Open();
-            string query = $"UPDATE Characters SET Experience = '{character.Experience}',  Title = '{character.Title}', Caste = '{character.CasteID}', Rank = '{character.RankID}', Alignment = '{character.Alignment}', Strength = '{character.Strength}',  Agility = '{character.Agility}', Intellect = '{character.Intellect}',  Stamina = '{character.Stamina}',  Damage = '{character.Damage}',  Health = '{character.Health}',  Mana = '{character.Mana}', RoomID = '{character.RoomID}', CurrentHealth = '{character.CurrentHealth}', CurrentMana = '{character.CurrentMana}', Recall = '{character.Recall}' WHERE Name = '{character.Name.ToLower()}';";
+            string query = $"UPDATE Characters SET Experience = '{character.Experience}',  Title = '{character.Title}', Caste = '{character.CasteID}', Rank = '{character.RankID}', Alignment = '{character.Alignment}', Strength = '{character.Strength}',  Agility = '{character.Agility}', Intellect = '{character.Intellect}',  Stamina = '{character.Stamina}',  Damage = '{character.Damage}',  Health = '{character.Health}',  Mana = '{character.Mana}', RoomID = '{character.RoomID}', CurrentHealth = '{character.CurrentHealth}', CurrentMana = '{character.CurrentMana}', Recall = '{character.Recall}', AutoAttack = '{character.AutoAttack}', AutoLoot = '{character.AutoLoot}' WHERE Name = '{character.Name.ToLower()}';";
             using var command = new SQLiteCommand(query, connection);
             command.ExecuteNonQuery();
         }
@@ -436,7 +436,7 @@ namespace Phoenix.Server.Data
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
-            string query = $"SELECT ID, AccountID, Name, Type, Image, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID, CurrentHealth, CurrentMana, Recall FROM Characters WHERE AccountID = '{accountID}' AND Name = '{name}';";
+            string query = $"SELECT ID, AccountID, Name, Type, Image, Gender, HisHer, HeShe, Experience, Title, Caste, Rank, Philosophy, Alignment, Creation, Strength, Agility, Intellect, Stamina, Damage, Health, Mana, RoomID, CurrentHealth, CurrentMana, Recall, AutoAttack, AutoLoot FROM Characters WHERE AccountID = '{accountID}' AND Name = '{name}';";
             using var command = new SQLiteCommand(query, connection);
             using SQLiteDataReader reader = command.ExecuteReader();
 
@@ -489,8 +489,12 @@ namespace Phoenix.Server.Data
                     IsAttacking = false,
                     IsDead = false,
                     MaxExperience = Int32.Parse(reader[11].ToString()) * 1500,
-                    TargetID = -1,
-                    Recall = Int32.Parse(reader[25].ToString())
+                    TargetID = "",
+                    Recall = Int32.Parse(reader[25].ToString()),
+                    AutoAttack = bool.Parse(reader[26].ToString()),
+                    AutoLoot = bool.Parse(reader[27].ToString()),
+                    TargetIsPlayer = false,
+                    HealthRegen = true
                 };
                 return character;
             }

@@ -46,6 +46,8 @@
         public int CurrentStamina { get; set; }
         public int CurrentDamage { get; set; }
         public int CurrentArmor { get; set; }
+        public bool AutoLoot { get; set; }
+        public bool AutoAttack { get; set; }
         public int Recall { get; set; }
         #endregion
 
@@ -54,7 +56,8 @@
         public bool HealthRegen { get; set; } = true;
         public bool IsAttacking { get; set; } = false;
         public bool IsDead { get; set; } = false;
-        public int TargetID { get; set; } = 0;
+        public string TargetID { get; set; } = "";
+        public bool TargetIsPlayer { get; set; } = false;
         #endregion
 
         #region -- Resource Statistics --

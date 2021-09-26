@@ -184,7 +184,6 @@ namespace Phoenix.Client
             this.vbHealth = new Phoenix.Client.Classes.Extensions.VisualBar();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.cpbGCD = new CircularProgressBar.CircularProgress.CircularProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.lblHealth = new System.Windows.Forms.Label();
             this.pnlDrawMap.SuspendLayout();
@@ -2700,7 +2699,6 @@ namespace Phoenix.Client
             this.pnlInput.Controls.Add(this.vbHealth);
             this.pnlInput.Controls.Add(this.txtInput);
             this.pnlInput.Controls.Add(this.label23);
-            this.pnlInput.Controls.Add(this.cpbGCD);
             this.pnlInput.Controls.Add(this.label5);
             this.pnlInput.Controls.Add(this.lblHealth);
             this.pnlInput.Location = new System.Drawing.Point(257, 790);
@@ -2788,42 +2786,6 @@ namespace Phoenix.Client
             this.label23.TabIndex = 222;
             this.label23.Text = "Cast Bar";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cpbGCD
-            // 
-            this.cpbGCD.Bar1.ActiveColor = System.Drawing.Color.Chartreuse;
-            this.cpbGCD.Bar1.BorderColor = System.Drawing.Color.Black;
-            this.cpbGCD.Bar1.Enabled = true;
-            this.cpbGCD.Bar1.FinishColor = System.Drawing.Color.LightGreen;
-            this.cpbGCD.Bar1.InactiveColor = System.Drawing.Color.Transparent;
-            this.cpbGCD.Bar1.Value = 100;
-            this.cpbGCD.Bar2.ActiveColor = System.Drawing.Color.LightSeaGreen;
-            this.cpbGCD.Bar2.BorderColor = System.Drawing.Color.Black;
-            this.cpbGCD.Bar2.FinishColor = System.Drawing.Color.LightGreen;
-            this.cpbGCD.Bar2.InactiveColor = System.Drawing.Color.LightGray;
-            this.cpbGCD.Bar3.ActiveColor = System.Drawing.Color.LightSeaGreen;
-            this.cpbGCD.Bar3.BorderColor = System.Drawing.Color.Black;
-            this.cpbGCD.Bar3.FinishColor = System.Drawing.Color.LightGreen;
-            this.cpbGCD.Bar3.InactiveColor = System.Drawing.Color.LightGray;
-            this.cpbGCD.Bar4.ActiveColor = System.Drawing.Color.LightSeaGreen;
-            this.cpbGCD.Bar4.BorderColor = System.Drawing.Color.Black;
-            this.cpbGCD.Bar4.FinishColor = System.Drawing.Color.LightGreen;
-            this.cpbGCD.Bar4.InactiveColor = System.Drawing.Color.LightGray;
-            this.cpbGCD.Bar5.ActiveColor = System.Drawing.Color.LightSeaGreen;
-            this.cpbGCD.Bar5.BorderColor = System.Drawing.Color.Black;
-            this.cpbGCD.Bar5.FinishColor = System.Drawing.Color.LightGreen;
-            this.cpbGCD.Bar5.InactiveColor = System.Drawing.Color.LightGray;
-            this.cpbGCD.DisplayPercentage = false;
-            this.cpbGCD.Font = new System.Drawing.Font("Nirmala UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cpbGCD.Image = null;
-            this.cpbGCD.Info = "GCD";
-            this.cpbGCD.Location = new System.Drawing.Point(652, 14);
-            this.cpbGCD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cpbGCD.MinimumSize = new System.Drawing.Size(21, 25);
-            this.cpbGCD.Name = "cpbGCD";
-            this.cpbGCD.Size = new System.Drawing.Size(35, 35);
-            this.cpbGCD.TabIndex = 219;
-            this.cpbGCD.TextShadowColor = System.Drawing.Color.White;
             // 
             // label5
             // 
@@ -3047,7 +3009,6 @@ namespace Phoenix.Client
         private System.Windows.Forms.Panel pnlInput;
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.Label label23;
-        private CircularProgressBar.CircularProgress.CircularProgressBar cpbGCD;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblHealth;
         private Map pbMap;

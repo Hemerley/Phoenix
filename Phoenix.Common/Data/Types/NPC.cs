@@ -51,7 +51,8 @@ namespace Phoenix.Common.Data.Types
         public int CurrentIntellect { get; set; }
         public int CurrentStamina { get; set; }
         public bool IsAttacking { get; set; }
-        public int TargetID { get; set; }
+        public string TargetID { get; set; }
+        public bool TargetIsPlayer { get; set; } = false;
         public int Threat { get; set; }
         #endregion
 

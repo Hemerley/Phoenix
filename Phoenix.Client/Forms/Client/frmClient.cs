@@ -23,6 +23,7 @@ namespace Phoenix.Client
         private readonly FrmDebug debugForm;
         public event EventHandler<string> NewPacket;
         private readonly int chatLength = 100;
+        private string lastCommand = "";
 
         public FrmClient(FrmLauncher frmLauncher)
         {
@@ -256,12 +257,10 @@ namespace Phoenix.Client
                 }
             }
         }
-
         private void Client_IsConnected(object sender, bool isReconnected)
         {
 
         }
-
         private void Client_IsClosed(object sender, bool remote)
         {
             switch (remote)
@@ -353,12 +352,10 @@ namespace Phoenix.Client
             UpdateEquipped(1, "None", "", "(Junk)", "Slot: Left Ring");
             UpdateEquipped(1, "None", "", "(Junk)", "Slot: Right Ring");
         }
-
         private void FrmClient_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
         public void Initialize(Classes.Network.Client client, Character character, FrmLauncher parent)
         {
             this.client = client;
@@ -377,7 +374,6 @@ namespace Phoenix.Client
             this.rtbChat.SelectionColor = Color.LawnGreen;
             this.rtbChat.AppendText("Connecting to server...\n");
         }
-
         private void TxtInput_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.NumPad8)
@@ -408,17 +404,24 @@ namespace Phoenix.Client
                 return;
             }
 
+            if (e.KeyCode == Keys.Up)
+            {
+                this.txtInput.Text = "";
+                txtInput.Text = this.lastCommand;
+                return;
+            }
+
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
                 if (txtInput.Text == "")
                     return;
                 HandleCommands(txtInput.Text.Trim());
+                this.lastCommand = txtInput.Text;
                 txtInput.Text = "";
                 return;
             }
         }
-
         #endregion
 
         #region -- Move Window --
