@@ -425,6 +425,7 @@ namespace Phoenix.Server.Scripts
                             LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
                             LuaCharacter.Add.Experience(entityID, defenderCharacter.Level);
                             LuaCharacter.Add.Gold(entityID, defenderCharacter.Gold);
+                            // LOG NPC DROPS
                             Functions.CharacterStatUpdate(game.connectedAccounts[entityID]);
                             attackerCharacter.IsAttacking = false;
                             attackerCharacter.TargetID = "";
@@ -470,6 +471,7 @@ namespace Phoenix.Server.Scripts
                         if (LuaAttack.Death(death))
                         {
                             LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
+                            // LOG NPC DROPS
                             attackerCharacter.IsAttacking = false;
                             attackerCharacter.Name = "";
                         }

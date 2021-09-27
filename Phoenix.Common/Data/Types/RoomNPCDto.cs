@@ -49,7 +49,6 @@
         public int? NPCID { get; set; }
         public int? NPCType { get; set; }
         public int? NPCRarity { get; set; }
-        public int? NPCRank { get; set; }
         public string NPCName { get; set; }
         public string NPCImage { get; set; }
         public string NPCHisHer { get; set; }
@@ -73,5 +72,9 @@
         public int? NPCSpawnDelay { get; set; }
         public int? NPCVanishTime { get; set; }
         public string NPCScript { get; set; }
+        public int? NPCDEntityID { get; set; }
+        public int? NPCDItemID { get; set; }
+        public double? NPCDDropChance { get; set; }
+        public int? NPCDItemAmount { get; set; }
     }
 }

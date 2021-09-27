@@ -27,7 +27,11 @@
         public int Health { get; set; }
         public int Mana { get; set; }
         public int RoomID { get; set; }
-
+        public int CurrentHealth { get; set; }
+        public int CurrentMana { get; set; }
+        public bool AutoLoot { get; set; }
+        public bool AutoAttack { get; set; }
+        public int Recall { get; set; }
         #endregion
 
         #region -- Server Fields --
@@ -46,9 +50,6 @@
         public int CurrentStamina { get; set; }
         public int CurrentDamage { get; set; }
         public int CurrentArmor { get; set; }
-        public bool AutoLoot { get; set; }
-        public bool AutoAttack { get; set; }
-        public int Recall { get; set; }
         #endregion
 
         #region -- Combat Statistics --
@@ -61,8 +62,6 @@
         #endregion
 
         #region -- Resource Statistics --
-        public int CurrentHealth { get; set; }
-        public int CurrentMana { get; set; }
         public int MaxExperience { get; set; }
         #endregion
 

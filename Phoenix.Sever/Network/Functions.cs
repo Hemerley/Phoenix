@@ -838,8 +838,8 @@ namespace Phoenix.Server.Network
                                 var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
                                 foreach (NPC npc in npcs)
                                 {
-                                    var characters = game.rooms[NPC.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
-                                    if (characters != null)
+                                    var characters = game.rooms[npc.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                                    if (characters.Count > 0)
                                     {
                                         npc.IsAttacking = true;
                                         npc.TargetID = characters[0].Name.ToLower();

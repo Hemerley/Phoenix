@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Phoenix.Common.Data.Types
 {
@@ -42,6 +43,7 @@ namespace Phoenix.Common.Data.Types
         public string Type { get; set; }
         public string Rarity { get; set; }
         public int RoomID { get; set; }
+        public List<NPCItems> Drops { get; set; } = new();
         #endregion
 
         #region -- Combat Statistics --

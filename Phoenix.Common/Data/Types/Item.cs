@@ -27,6 +27,7 @@
         public int IntellectReq { get; set; }
         public int StaminaReq { get; set; }
         public int AlignmentReq { get; set; }
+        public int RankReq { get; set; }
         public string Script { get; set; }
         public int Amount { get; set; }
     }

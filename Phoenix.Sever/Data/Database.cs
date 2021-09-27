@@ -101,7 +101,7 @@ namespace Phoenix.Server.Data
         {
             using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
             connection.Open();
-            string query = $"SELECT r.ID as RoomID, r.Name as RoomName, r.Area as RoomArea, r.Status as RoomStatus, r.Type as RoomType, r.Description as RoomDescription, r.Exits as RoomExits, r.North as RoomNorth, r.South as RoomSouth, r.West as RoomWest, r.East as RoomEast, r.Up as RoomUp, r.Down as RoomDown, r.KeyModeNorth as RoomKeyModeNorth, r.KeyModeSouth as RoomKeyModeSouth, r.KeyModeWest as RoomKeyModeWest, r.KeyModeEast as RoomKeyModeEast, r.KeyModeUp as RoomKeyModeUp, r.KeyModeDown as RoomKeyModeDown, r.KeyNameNorth as RoomKeyNameNorth, r.KeyNameSouth as RoomKeyNameSouth, r.KeyNameWest as RoomKeyNameWest, r.KeyNameEast as RoomKeyNameEast, r.KeyNameUp as RoomKeyNameUp, r.KeyNameDown as RoomKeyNameDown, r.KeyTypeNorth as RoomKeyTypeNorth, r.KeyTypeSouth as RoomKeyTypeSouth, r.KeyTypeWest as RoomKeyTypeWest, r.KeyTypeEast as RoomKeyTypeEast, r.KeyTypeUp as RoomKeyTypeUp, r.KeyTypeDown as RoomKeyTypeDown, r.KeyPassNorth as RoomKeyPassNorth, r.KeyPassSouth as RoomKeyPassSouth, r.KeyPassWest as RoomKeyPassWest, r.KeyPassEast as RoomKeyPassEast, r.KeyPassUp as RoomKeyPassUp, r.KeyPassDown as RoomKeyPassDown, r.KeyFailNorth as RoomKeyFailNorth, r.KeyFailSouth as RoomKeyFailSouth, r.KeyFailWest as RoomKeyFailWest, r.KeyFailEast as RoomKeyFailEast, r.KeyFailUp as RoomKeyFailUp, r.KeyFailDown as RoomKeyFailDown, r.Script as RoomScript, e.ID as NPCID, e.Type as NPCType, e.Rarity as NPCRarity, e.Name as NPCName, e.Image as NPCImage, e.HisHer as NPCHisHer, e.HeShe as NPCHeShe, e.BName as NPCBName, e.Level as NPCLevel, e.Gold as NPCGold, e.Strength as NPCStrength, e.Agility as NPCAgility, e.Intellect as NPCIntellect, e.Stamina as NPCStamina, e.Damage as NPCDamage, e.Haste as NPCHaste, e.Crit as NPCCrit, e.Mastery as NPCMastery, e.Versatility as NPCVersatility, e.Health as NPCHealth, e.Mana as NPCMana, e.Taunt as NPCTaunt, e.SpawnTime as NPCSpawnTime, e.SpawnDelay as NPCSpawnDelay, e.VanishTime as NPCVanishTime, e.Script as NPCScript FROM Rooms r LEFT OUTER JOIN RoomNPC re ON re.RoomID = r.ID LEFT OUTER JOIN NPC e ON e.ID = re.NPCID; ";
+            string query = $"SELECT r.ID as RoomID, r.Name as RoomName, r.Area as RoomArea, r.Status as RoomStatus, r.Type as RoomType, r.Description as RoomDescription, r.Exits as RoomExits, r.North as RoomNorth, r.South as RoomSouth, r.West as RoomWest, r.East as RoomEast, r.Up as RoomUp, r.Down as RoomDown, r.KeyModeNorth as RoomKeyModeNorth, r.KeyModeSouth as RoomKeyModeSouth, r.KeyModeWest as RoomKeyModeWest, r.KeyModeEast as RoomKeyModeEast, r.KeyModeUp as RoomKeyModeUp, r.KeyModeDown as RoomKeyModeDown, r.KeyNameNorth as RoomKeyNameNorth, r.KeyNameSouth as RoomKeyNameSouth, r.KeyNameWest as RoomKeyNameWest, r.KeyNameEast as RoomKeyNameEast, r.KeyNameUp as RoomKeyNameUp, r.KeyNameDown as RoomKeyNameDown, r.KeyTypeNorth as RoomKeyTypeNorth, r.KeyTypeSouth as RoomKeyTypeSouth, r.KeyTypeWest as RoomKeyTypeWest, r.KeyTypeEast as RoomKeyTypeEast, r.KeyTypeUp as RoomKeyTypeUp, r.KeyTypeDown as RoomKeyTypeDown, r.KeyPassNorth as RoomKeyPassNorth, r.KeyPassSouth as RoomKeyPassSouth, r.KeyPassWest as RoomKeyPassWest, r.KeyPassEast as RoomKeyPassEast, r.KeyPassUp as RoomKeyPassUp, r.KeyPassDown as RoomKeyPassDown, r.KeyFailNorth as RoomKeyFailNorth, r.KeyFailSouth as RoomKeyFailSouth, r.KeyFailWest as RoomKeyFailWest, r.KeyFailEast as RoomKeyFailEast, r.KeyFailUp as RoomKeyFailUp, r.KeyFailDown as RoomKeyFailDown, r.Script as RoomScript, e.ID as NPCID, e.Type as NPCType, e.Rarity as NPCRarity, e.Name as NPCName, e.Image as NPCImage, e.HisHer as NPCHisHer, e.HeShe as NPCHeShe, e.BName as NPCBName, e.Level as NPCLevel, e.Gold as NPCGold, e.Strength as NPCStrength, e.Agility as NPCAgility, e.Intellect as NPCIntellect, e.Stamina as NPCStamina, e.Damage as NPCDamage, e.Haste as NPCHaste, e.Crit as NPCCrit, e.Mastery as NPCMastery, e.Versatility as NPCVersatility, e.Health as NPCHealth, e.Mana as NPCMana, e.Taunt as NPCTaunt, e.SpawnTime as NPCSpawnTime, e.SpawnDelay as NPCSpawnDelay, e.VanishTime as NPCVanishTime, e.Script as NPCScript, nd.EntityID as NPCDEntityID, nd.ItemId as NPCDItemID, nd.DropChance as NPCDDropChance, nd.ItemAmount as NPCDItemAmount FROM Rooms r LEFT OUTER JOIN RoomNPC re ON re.RoomID = r.ID LEFT OUTER JOIN NPC e ON e.ID = re.NPCID LEFT OUTER JOIN NPCItems nd ON nd.EntityID = e.ID; ";
             using var command = new SQLiteCommand(query, connection);
             using SQLiteDataReader reader = command.ExecuteReader();
             List<RoomNPCDto> rawData = new();
@@ -178,7 +178,11 @@ namespace Phoenix.Server.Data
                     NPCSpawnTime = int.TryParse(reader["NPCSpawnTime"]?.ToString(), out int NPCSpawnTime) ? NPCSpawnTime : (int?)null,
                     NPCSpawnDelay = int.TryParse(reader["NPCSpawnDelay"]?.ToString(), out int NPCSpawnDelay) ? NPCSpawnDelay : (int?)null,
                     NPCVanishTime = int.TryParse(reader["NPCVanishTime"]?.ToString(), out int NPCVanishTime) ? NPCVanishTime : (int?)null,
-                    NPCScript = reader["NPCScript"].ToString()
+                    NPCScript = reader["NPCScript"].ToString(),
+                    NPCDEntityID = int.TryParse(reader["NPCDEntityID"]?.ToString(), out int NPCDEntityID) ? NPCDEntityID : (int?)null,
+                    NPCDDropChance = double.TryParse(reader["NPCDDropChance"]?.ToString(), out double NPCDDropChance) ? NPCDDropChance : (double?)null,
+                    NPCDItemAmount = int.TryParse(reader["NPCDItemAmount"]?.ToString(), out int NPCDItemAmount) ? NPCDItemAmount : (int?)null,
+                    NPCDItemID = int.TryParse(reader["NPCDItemID"]?.ToString(), out int NPCDItemID) ? NPCDItemID : (int?)null
                 };
                 rawData.Add(roomNPCDto);
             }
@@ -280,7 +284,15 @@ namespace Phoenix.Server.Data
                             IsAttacking = false,
                             RoomID = g.Key.RoomID,
                             TargetID = "",
-                            Threat = 0
+                            Threat = 0,
+                            TargetIsPlayer = false,
+                            Drops = g.Where(x => x.NPCDEntityID.HasValue).ToList().Select(x => new NPCItems
+                            {
+                                EntityID = x.NPCDEntityID.Value,
+                                DropChance = x.NPCDDropChance.Value,
+                                ItemID = x.NPCDItemID.Value,
+                                ItemAmount = x.NPCDItemAmount.Value
+                            }).ToList()
                         }).ToList()
                     }).ToList();
         }
