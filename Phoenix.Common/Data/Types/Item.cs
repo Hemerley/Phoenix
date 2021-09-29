@@ -10,7 +10,8 @@
         public string Slot { get; set; }
         public int SlotID { get; set; }
         public int Value { get; set; }
-        public int Rarity { get; set; }
+        public string Rarity { get; set; }
+        public int RarityID { get; set; }
         public int Weight { get; set; }
         public int Damage { get; set; }
         public int Strength { get; set; }

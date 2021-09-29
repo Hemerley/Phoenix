@@ -86,6 +86,11 @@ namespace Phoenix.Server.Network
         public List<Room> rooms = new();
 
         /// <summary>
+        /// Declaration of Loaded Items.
+        /// </summary>
+        public List<Item> items = new();
+
+        /// <summary>
         /// Declaration of Current NPC Spawned.
         /// </summary>
         public readonly Dictionary<string, NPC> currentNPC = new();
@@ -246,6 +251,10 @@ namespace Phoenix.Server.Network
             Log.Information("Loading Rooms...");
             this.rooms = Database.LoadRooms(Constants.GAME_MODE);
             Log.Information("Rooms Loaded!");
+
+            Log.Information("Loading Items...");
+            this.items = Database.LoadItems(Constants.GAME_MODE);
+            Log.Information("Items Loaded!");
 
             Log.Information("Initializing Script Globals...");
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())

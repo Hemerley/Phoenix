@@ -189,31 +189,31 @@ namespace Phoenix.Server.Scripts
         [MoonSharpUserData]
         class LuaAttack
         {
-            public static int Damage(string entityID, bool isPlayer, string defenderID, bool defenderIsPlayer)
+            public static int Damage(string attackerID, bool attackerIsPlayer, string defenderID, bool defenderIsPlayer)
             {
-                if (defenderIsPlayer && isPlayer)
+                if (defenderIsPlayer && attackerIsPlayer)
                 {
                     Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
-                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[attackerID].Account.Character;
 
                     return Convert.ToInt32((attackerCharacter.Damage * LuaRandom.NumberDouble(.80, 1)) - (defenderCharacter.CurrentArmor * .5));
                 }
-                else if (defenderIsPlayer && !isPlayer)
+                else if (defenderIsPlayer && !attackerIsPlayer)
                 {
                     Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
-                    NPC attackerCharacter = game.currentNPC[entityID];
+                    NPC attackerCharacter = game.currentNPC[attackerID];
 
                     return Convert.ToInt32((attackerCharacter.Damage * LuaRandom.NumberDouble(.80, 1)) - (defenderCharacter.CurrentArmor * .5));
                 }
-                else if (!defenderIsPlayer && isPlayer)
+                else if (!defenderIsPlayer && attackerIsPlayer)
                 {
-                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[attackerID].Account.Character;
 
                     return Convert.ToInt32(attackerCharacter.Damage * LuaRandom.NumberDouble(.80, 1));
                 }
-                else if (!defenderIsPlayer && !isPlayer)
+                else if (!defenderIsPlayer && !attackerIsPlayer)
                 {
-                    NPC attackerCharacter = game.currentNPC[entityID];
+                    NPC attackerCharacter = game.currentNPC[attackerID];
                     return Convert.ToInt32(attackerCharacter.Damage * LuaRandom.NumberDouble(.80, 1));
                 }
                 return 0;
@@ -222,12 +222,12 @@ namespace Phoenix.Server.Scripts
             {
                 return health <= 0;
             }
-            public static bool Dodge(string entityID, bool isPlayer, string defenderID, bool defenderIsPlayer)
+            public static bool Dodge(string attackerID, bool attackerIsPlayer, string defenderID, bool defenderIsPlayer)
             {
-                if (defenderIsPlayer && isPlayer)
+                if (defenderIsPlayer && attackerIsPlayer)
                 {
                     Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
-                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[attackerID].Account.Character;
 
                     double levelDifference = Convert.ToDouble(defenderCharacter.RankID) / Convert.ToDouble(attackerCharacter.RankID);
                     double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
@@ -236,10 +236,10 @@ namespace Phoenix.Server.Scripts
                         return true;
                     return false;
                 }
-                else if (defenderIsPlayer && !isPlayer)
+                else if (defenderIsPlayer && !attackerIsPlayer)
                 {
                     Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
-                    NPC attackerCharacter = game.currentNPC[entityID];
+                    NPC attackerCharacter = game.currentNPC[attackerID];
 
                     double levelDifference = Convert.ToDouble(defenderCharacter.RankID) / Convert.ToDouble(attackerCharacter.Level);
                     double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
@@ -248,10 +248,10 @@ namespace Phoenix.Server.Scripts
                         return true;
                     return false;
                 }
-                else if (!defenderIsPlayer && isPlayer)
+                else if (!defenderIsPlayer && attackerIsPlayer)
                 {
                     NPC defenderCharacter = game.currentNPC[defenderID];
-                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[attackerID].Account.Character;
 
 
                     double levelDifference = Convert.ToDouble(defenderCharacter.Level) / Convert.ToDouble(attackerCharacter.RankID);
@@ -264,7 +264,7 @@ namespace Phoenix.Server.Scripts
                 else
                 {
                     NPC defenderCharacter = game.currentNPC[defenderID];
-                    NPC attackerCharacter = game.currentNPC[entityID];
+                    NPC attackerCharacter = game.currentNPC[attackerID];
 
                     double levelDifference = Convert.ToDouble(defenderCharacter.Level) / Convert.ToDouble(attackerCharacter.Level);
                     double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
@@ -274,24 +274,24 @@ namespace Phoenix.Server.Scripts
                     return false;
                 }
             }
-            public static void Full(string entityID, bool isPlayer, string defenderID, bool defenderIsPlayer, string itemName)
+            public static void Full(string attackerID, bool attackerIsPlayer, string defenderID, bool defenderIsPlayer, string itemName)
             {
-                if (defenderIsPlayer && isPlayer)
+                if (defenderIsPlayer && attackerIsPlayer)
                 {
                     Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
-                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[attackerID].Account.Character;
 
                     if (defenderCharacter.RoomID != attackerCharacter.RoomID)
                     {
-                        LuaMessage.Direct(entityID, $"~w{defenderCharacter.Name} is not here!");
+                        LuaMessage.Direct(attackerID, $"~w{defenderCharacter.Name} is not here!");
                         return;
                     }
 
-                    if (Dodge(entityID, isPlayer, defenderID, defenderIsPlayer))
+                    if (Dodge(attackerID, attackerIsPlayer, defenderID, defenderIsPlayer))
                     {
                         Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattempts to attack you with their ~w{itemName.ToLower()}~o, but ~ymisses~o!", defenderID);
-                        Functions.MessageDirect($"~oYou attempt to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o, but ~ymiss~o!", entityID);
-                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID, game.connectedAccounts[defenderID], game.connectedAccounts[entityID]);
+                        Functions.MessageDirect($"~oYou attempt to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o, but ~ymiss~o!", attackerID);
+                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID, game.connectedAccounts[defenderID], game.connectedAccounts[attackerID]);
                         attackerCharacter.IsAttacking = true;
                         attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
                         attackerCharacter.TargetIsPlayer = true;
@@ -306,14 +306,14 @@ namespace Phoenix.Server.Scripts
                     }
                     else
                     {
-                        int totalDamage = Damage(entityID, isPlayer, defenderID, defenderIsPlayer);
+                        int totalDamage = Damage(attackerID, attackerIsPlayer, defenderID, defenderIsPlayer);
                         int death = LuaEntity.Remove.CurrentHealth(defenderID, defenderIsPlayer, totalDamage);
                         Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattacks you with their ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", defenderID);
-                        Functions.MessageDirect($"~oYou attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", entityID);
-                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID, game.connectedAccounts[defenderID], game.connectedAccounts[entityID]);
+                        Functions.MessageDirect($"~oYou attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", attackerID);
+                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID, game.connectedAccounts[defenderID], game.connectedAccounts[attackerID]);
                         if (Death(death))
                         {
-                            LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
+                            LuaEntity.Kill(defenderID, defenderIsPlayer, attackerID, attackerIsPlayer);
                             attackerCharacter.IsAttacking = false;
                             attackerCharacter.TargetID = "";
                             defenderCharacter.IsAttacking = false;
@@ -337,16 +337,16 @@ namespace Phoenix.Server.Scripts
                         }
                     }
                 }
-                else if (defenderIsPlayer && !isPlayer)
+                else if (defenderIsPlayer && !attackerIsPlayer)
                 {
                     Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
-                    NPC attackerCharacter = game.currentNPC[entityID];
+                    NPC attackerCharacter = game.currentNPC[attackerID];
                     if (defenderCharacter.RoomID != attackerCharacter.RoomID)
                     {
                         return;
                     }
 
-                    if (LuaAttack.Dodge(entityID, isPlayer, defenderID, defenderIsPlayer))
+                    if (LuaAttack.Dodge(attackerID, attackerIsPlayer, defenderID, defenderIsPlayer))
                     {
                         Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattempts to attack you with their ~w{itemName.ToLower()}~o, but ~ymisses~o!", defenderID);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID, game.connectedAccounts[defenderID]);
@@ -363,13 +363,13 @@ namespace Phoenix.Server.Scripts
                     }
                     else
                     {
-                        int totalDamage = LuaAttack.Damage(entityID, isPlayer, defenderID, defenderIsPlayer);
+                        int totalDamage = LuaAttack.Damage(attackerID, attackerIsPlayer, defenderID, defenderIsPlayer);
                         int death = LuaEntity.Remove.CurrentHealth(defenderID, defenderIsPlayer, totalDamage);
                         Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()} ~oattacks you with their ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", defenderID);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID, game.connectedAccounts[defenderID]);
                         if (Death(death))
                         {
-                            LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
+                            LuaEntity.Kill(defenderID, defenderIsPlayer, attackerID, attackerIsPlayer);
                             attackerCharacter.IsAttacking = false;
                             attackerCharacter.TargetID = "";
                             defenderCharacter.IsAttacking = false;
@@ -391,21 +391,21 @@ namespace Phoenix.Server.Scripts
                         }
                     }
                 }
-                else if (!defenderIsPlayer && isPlayer)
+                else if (!defenderIsPlayer && attackerIsPlayer)
                 {
                     NPC defenderCharacter = game.currentNPC[defenderID];
-                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[attackerID].Account.Character;
 
                     if (defenderCharacter.RoomID != attackerCharacter.RoomID)
                     {
-                        LuaMessage.Direct(entityID, $"~w{defenderCharacter.Name} is not here!");
+                        LuaMessage.Direct(attackerID, $"~w{defenderCharacter.Name} is not here!");
                         return;
                     }
 
-                    if (LuaAttack.Dodge(entityID, isPlayer, defenderID, defenderIsPlayer))
+                    if (LuaAttack.Dodge(attackerID, attackerIsPlayer, defenderID, defenderIsPlayer))
                     {
-                        Functions.MessageDirect($"~oYou attempt to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o, but ~ymiss~o!", entityID);
-                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID, game.connectedAccounts[entityID]);
+                        Functions.MessageDirect($"~oYou attempt to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o, but ~ymiss~o!", attackerID);
+                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID, game.connectedAccounts[attackerID]);
                         attackerCharacter.IsAttacking = true;
                         attackerCharacter.TargetID = defenderCharacter.Name.ToLower();
                         attackerCharacter.TargetIsPlayer = false;
@@ -416,17 +416,17 @@ namespace Phoenix.Server.Scripts
                     }
                     else
                     {
-                        int totalDamage = LuaAttack.Damage(entityID, isPlayer, defenderID, defenderIsPlayer);
+                        int totalDamage = LuaAttack.Damage(attackerID, attackerIsPlayer, defenderID, defenderIsPlayer);
                         int death = LuaEntity.Remove.CurrentHealth(defenderID, defenderIsPlayer, totalDamage);
-                        Functions.MessageDirect($"~oYou attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", entityID);
-                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID, game.connectedAccounts[entityID]);
+                        Functions.MessageDirect($"~oYou attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~owith your ~w{itemName.ToLower()}~o for ~y{totalDamage}~o points of damage!", attackerID);
+                        Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID, game.connectedAccounts[attackerID]);
                         if (LuaAttack.Death(death))
                         {
-                            LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
-                            LuaCharacter.Add.Experience(entityID, defenderCharacter.Level);
-                            LuaCharacter.Add.Gold(entityID, defenderCharacter.Gold);
-                            // LOG NPC DROPS
-                            Functions.CharacterStatUpdate(game.connectedAccounts[entityID]);
+                            LuaEntity.Kill(defenderID, defenderIsPlayer, attackerID, attackerIsPlayer);
+                            LuaCharacter.Add.Experience(attackerID, defenderCharacter.Level);
+                            LuaCharacter.Add.Gold(attackerID, defenderCharacter.Gold);
+                            LuaNPC.Drops(defenderCharacter, attackerID, attackerIsPlayer);
+                            Functions.CharacterStatUpdate(game.connectedAccounts[attackerID]);
                             attackerCharacter.IsAttacking = false;
                             attackerCharacter.TargetID = "";
                             defenderCharacter.IsAttacking = false;
@@ -445,15 +445,15 @@ namespace Phoenix.Server.Scripts
                         }
                     }
                 }
-                else if (!defenderIsPlayer && !isPlayer)
+                else if (!defenderIsPlayer && !attackerIsPlayer)
                 {
                     NPC defenderCharacter = game.currentNPC[defenderID];
-                    NPC attackerCharacter = game.currentNPC[entityID];
+                    NPC attackerCharacter = game.currentNPC[attackerID];
                     if (defenderCharacter.RoomID != attackerCharacter.RoomID)
                     {
                         return;
                     }
-                    if (LuaAttack.Dodge(entityID, isPlayer, defenderID, defenderIsPlayer))
+                    if (LuaAttack.Dodge(attackerID, attackerIsPlayer, defenderID, defenderIsPlayer))
                     {
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattempted to attack ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}, but missed!", defenderCharacter.RoomID);
                         attackerCharacter.IsAttacking = true;
@@ -465,13 +465,13 @@ namespace Phoenix.Server.Scripts
                     }
                     else
                     {
-                        int totalDamage = LuaAttack.Damage(entityID, isPlayer, defenderID, defenderIsPlayer);
+                        int totalDamage = LuaAttack.Damage(attackerID, attackerIsPlayer, defenderID, defenderIsPlayer);
                         int death = LuaEntity.Remove.CurrentHealth(defenderID, defenderIsPlayer, totalDamage);
                         Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~cattacks ~w{defenderCharacter.Name.FirstCharToUpper()} ~cwith their {itemName.ToLower()}!", defenderCharacter.RoomID);
                         if (LuaAttack.Death(death))
                         {
-                            LuaEntity.Kill(defenderID, defenderIsPlayer, entityID, isPlayer);
-                            // LOG NPC DROPS
+                            LuaEntity.Kill(defenderID, defenderIsPlayer, attackerID, attackerIsPlayer);
+                            // Do Drops (Cannot Do Until Party System)
                             attackerCharacter.IsAttacking = false;
                             attackerCharacter.Name = "";
                         }
@@ -496,27 +496,27 @@ namespace Phoenix.Server.Scripts
         {
             public static class Add
             {
-                public static void Experience(string entityID, int level)
+                public static void Experience(string characterID, int level)
                 {
-                    Character character = game.connectedAccounts[entityID].Account.Character;
+                    Character character = game.connectedAccounts[characterID].Account.Character;
                     int experience = level * 300;
                     double levelDifference = Math.Max(0d, Math.Min(1.5d, Convert.ToDouble(level) / Convert.ToDouble(character.RankID)));
                     double experienceMod = Convert.ToDouble(experience) * levelDifference;
                     character.Experience += Convert.ToInt32(experienceMod);
-                    if (experienceMod > 0) LuaMessage.Direct(entityID, $"~cYou have gained ~w{experienceMod} ~cexperience!");
+                    if (experienceMod > 0) LuaMessage.Direct(characterID, $"~cYou have gained ~w{experienceMod} ~cexperience!");
                 }
-                public static void Gold(string entityID, int gold)
+                public static void Gold(string characterID, int gold)
                 {
-                    game.connectedAccounts[entityID].Account.Gold += gold;
-                    LuaMessage.Direct(entityID, $"~cYou loot ~w{gold} ~cgold!");
+                    game.connectedAccounts[characterID].Account.Gold += gold;
+                    LuaMessage.Direct(characterID, $"~cYou loot ~w{gold} ~cgold!");
                 }
             }
             public static class Get
             {
-                public static int StaffLevel(string entityID)
+                public static int StaffLevel(string characterID)
                 {
-                    if (game.connectedAccounts.ContainsKey(entityID))
-                        return game.connectedAccounts[entityID].Account.Character.TypeID;
+                    if (game.connectedAccounts.ContainsKey(characterID))
+                        return game.connectedAccounts[characterID].Account.Character.TypeID;
                     else
                         return -1;
                 }
@@ -544,19 +544,19 @@ namespace Phoenix.Server.Scripts
         [MoonSharpUserData]
         class LuaEntity
         {
-            public static void Kill(string defenderID, bool defenderIsPlayer, string entityID, bool isPlayer)
+            public static void Kill(string defenderID, bool defenderIsPlayer, string killerID, bool killerIsPlayer)
             {
-                if (defenderIsPlayer && isPlayer)
+                if (defenderIsPlayer && killerIsPlayer)
                 {
                     Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
-                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[killerID].Account.Character;
                     defenderCharacter.CurrentHealth = 0;
                     defenderCharacter.IsDead = true;
                     defenderCharacter.HealthRegen = false;
                     Functions.MovePlayer(0, game.connectedAccounts[defenderID], $"~r{defenderCharacter.Name.FirstCharToUpper()} appears suddenly!", $"~r{defenderCharacter.Name.FirstCharToUpper()} falls to the floor lifelessly!", game.connectedAccounts[defenderID]);
                     Functions.MessageDirect($"~w{attackerCharacter.Name.FirstCharToUpper()}~m has killed you!", game.connectedAccounts[defenderID].Client.Id);
-                    Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.Name.FirstCharToUpper()}~m!", game.connectedAccounts[entityID].Client.Id);
-                    Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~mhas killed {defenderCharacter.Name.FirstCharToUpper()}~m!", attackerCharacter.RoomID, game.connectedAccounts[entityID]);
+                    Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.Name.FirstCharToUpper()}~m!", game.connectedAccounts[killerID].Client.Id);
+                    Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~mhas killed {defenderCharacter.Name.FirstCharToUpper()}~m!", attackerCharacter.RoomID, game.connectedAccounts[killerID]);
                     Functions.CharacterStatUpdate(game.connectedAccounts[defenderID]);
                     var respawnCommand = new RespawnCharacterServer
                     {
@@ -567,10 +567,10 @@ namespace Phoenix.Server.Scripts
                     };
                     Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 20000, respawnCommand, game.serverID.ToString());
                 }
-                else if (defenderIsPlayer && !isPlayer)
+                else if (defenderIsPlayer && !killerIsPlayer)
                 {
                     Character defenderCharacter = game.connectedAccounts[defenderID].Account.Character;
-                    NPC attackerCharacter = game.currentNPC[entityID];
+                    NPC attackerCharacter = game.currentNPC[killerID];
                     defenderCharacter.CurrentHealth = 0;
                     defenderCharacter.IsDead = true;
                     defenderCharacter.HealthRegen = false;
@@ -588,20 +588,20 @@ namespace Phoenix.Server.Scripts
                     };
                     Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 20000, respawnCommand, game.serverID.ToString());
                 }
-                else if (!defenderIsPlayer && isPlayer)
+                else if (!defenderIsPlayer && killerIsPlayer)
                 {
                     NPC defenderCharacter = game.currentNPC[defenderID];
-                    Character attackerCharacter = game.connectedAccounts[entityID].Account.Character;
+                    Character attackerCharacter = game.connectedAccounts[killerID].Account.Character;
                     game.currentNPC.Remove(defenderID);
                     game.rooms[defenderCharacter.RoomID].RoomNPC.Remove(defenderCharacter);
                     Functions.NPCUpdate(2, attackerCharacter.RoomID, defenderCharacter);
-                    Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.BName} {defenderCharacter.Name.FirstCharToUpper()}!", game.connectedAccounts[entityID].Client.Id);
-                    Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~mhas killed {defenderCharacter.BName} {defenderCharacter.Name.FirstCharToUpper()}~m!", attackerCharacter.RoomID, game.connectedAccounts[entityID]);
+                    Functions.MessageDirect($"~mYou have killed ~w{defenderCharacter.BName} {defenderCharacter.Name.FirstCharToUpper()}!", game.connectedAccounts[killerID].Client.Id);
+                    Functions.MessageRoom($"~w{attackerCharacter.Name.FirstCharToUpper()} ~mhas killed {defenderCharacter.BName} {defenderCharacter.Name.FirstCharToUpper()}~m!", attackerCharacter.RoomID, game.connectedAccounts[killerID]);
                 }
-                else if (!defenderIsPlayer && !isPlayer)
+                else if (!defenderIsPlayer && !killerIsPlayer)
                 {
                     NPC defenderCharacter = game.currentNPC[defenderID];
-                    NPC attackerCharacter = game.currentNPC[entityID];
+                    NPC attackerCharacter = game.currentNPC[killerID];
                     game.currentNPC.Remove(defenderID);
                     game.rooms[defenderCharacter.RoomID].RoomNPC.Remove(defenderCharacter);
                     Functions.NPCUpdate(2, attackerCharacter.RoomID, defenderCharacter);
@@ -736,7 +736,19 @@ namespace Phoenix.Server.Scripts
         [MoonSharpUserData]
         class LuaNPC
         {
-
+            public static void Drops(NPC npc, string killerID, bool killerIsPlayer)
+            {
+                if (killerIsPlayer)
+                {
+                    foreach (NPCItems nPCItems in npc.Drops)
+                    {
+                        if (LuaRandom.NumberDouble(0,1) < nPCItems.DropChance)
+                        {
+                            LuaMessage.Room(npc.RoomID, $"~w{npc.BName} {npc.Name} ~cdropped a ~w{game.items[nPCItems.ItemID].Name}~c!");
+                        }
+                    }
+                }
+            }
             public static class Get
             {
 

@@ -515,5 +515,70 @@ namespace Phoenix.Server.Data
 
         #endregion
 
+        #region -- Items --
+
+        public static string GetItemField(string connectionType, string column, string field, string value)
+        {
+            using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
+            connection.Open();
+            string query = $"SELECT {column} FROM Items WHERE {field} = '{value}';";
+            using var command = new SQLiteCommand(query, connection);
+            using SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                return reader[0].ToString();
+            }
+            return null;
+        }
+
+        public static List<Item> LoadItems(string connectionType)
+        {
+            using var connection = new SQLiteConnection(LoadConnectionString(connectionType));
+            connection.Open();
+            string query = $"SELECT ID, Name, Image, Type, Slot, Value, Rarity, Weight, Damage, Strength, Agility, Intellect, Stamina, Crit, Haste, Mastery, Versatility, PhilosophyReq, StrengthReq, AgilityReq, IntellectReq, StaminaReq, AlignmentReq, RankReq, Script FROM Items";
+            using var command = new SQLiteCommand(query, connection);
+            using SQLiteDataReader reader = command.ExecuteReader();
+            List<Item> items = new();
+            while (reader.Read())
+            {
+                Item item = new Item
+                {
+                    Id = Convert.ToInt32(reader[0].ToString()),
+                    Name = reader[1].ToString(),
+                    Image = reader[2].ToString(),
+                    TypeID = Convert.ToInt32(reader[3].ToString()),
+                    SlotID = Convert.ToInt32(reader[4].ToString()),
+                    Value = Convert.ToInt32(reader[5].ToString()),
+                    RarityID = Convert.ToInt32(reader[6].ToString()),
+                    Weight = Convert.ToInt32(reader[7].ToString()),
+                    Damage = Convert.ToInt32(reader[8].ToString()),
+                    Strength = Convert.ToInt32(reader[9].ToString()),
+                    Agility = Convert.ToInt32(reader[10].ToString()),
+                    Intellect = Convert.ToInt32(reader[11].ToString()),
+                    Stamina = Convert.ToInt32(reader[12].ToString()),
+                    Crit = Convert.ToDouble(reader[13].ToString()),
+                    Haste = Convert.ToDouble(reader[14].ToString()),
+                    Mastery = Convert.ToDouble(reader[15].ToString()),
+                    Versatility = Convert.ToDouble(reader[16].ToString()),
+                    PhilosophyReq = Convert.ToInt32(reader[17].ToString()),
+                    StrengthReq = Convert.ToInt32(reader[18].ToString()),
+                    AgilityReq = Convert.ToInt32(reader[19].ToString()),
+                    IntellectReq = Convert.ToInt32(reader[20].ToString()),
+                    StaminaReq = Convert.ToInt32(reader[21].ToString()),
+                    AlignmentReq = Convert.ToInt32(reader[22].ToString()),
+                    RankReq = Convert.ToInt32(reader[23].ToString()),
+                    Script = reader[24].ToString(),
+                    Amount = 1,
+                    Rarity = Helper.ReturnRarityText(Convert.ToInt32(reader[6].ToString())),
+                    Slot = Helper.ReturnSlotText(Convert.ToInt32(reader[4].ToString())),
+                    Type = Helper.ReturnTypeText(Convert.ToInt32(reader[3].ToString()))
+                };
+                items.Add(item);
+            }
+            return items;
+        }
+
+        #endregion
+
     }
 }

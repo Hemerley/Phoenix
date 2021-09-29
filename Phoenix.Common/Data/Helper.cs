@@ -209,6 +209,41 @@ namespace Phoenix.Common.Data
             };
         }
 
+        public static string ReturnSlotText(int slot)
+        {
+            return slot switch
+            {
+                0 => "(Helmet)",
+                1 => "(Shoulder)",
+                2 => "(Cloak)",
+                3 => "(Neck)",
+                4 => "(Wrists)",
+                5 => "(Chest)",
+                6 => "(Waist)",
+                7 => "(Legs)",
+                8 => "(Gloves)",
+                9 => "(Boots)",
+                10 => "(Main Hand)",
+                11 => "(Off Hand)",
+                12 => "(Left Ring)",
+                13 => "(Right Ring)",
+                _ => "(None)",
+            };
+        }
+
+        public static string ReturnTypeText(int type)
+        {
+            return type switch
+            {
+                0 => "(Junk)",
+                1 => "(Consumable)",
+                2 => "(Weapon)",
+                3 => "(Armor)",
+                4 => "(Jewelry)",
+                _ => "(None)",
+            };
+        }
+
         #endregion
 
         #region -- Color --
