@@ -162,6 +162,21 @@ namespace Phoenix.Client
                         }
                     #endregion
 
+                    #region -- Room Item Update --
+                    case CommandType.RoomItemUpdate:
+                        {
+                            var parsedCommand = command as RoomItemUpdate;
+
+                            this.Invoke((Action)delegate
+                            {
+                                this.UpdateDrop(parsedCommand.Mode, parsedCommand.Item.Name, parsedCommand.Item.Image, parsedCommand.Item.Type);
+                            });
+
+                            continue;
+                        }
+                    #endregion
+
+
                     #region -- Message Room --
                     case CommandType.MessageRoom:
                         {

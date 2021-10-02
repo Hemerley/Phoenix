@@ -1,22 +1,20 @@
 using MoonSharp.Interpreter;
 using Phoenix.Common.Commands.Server;
+using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
+using Phoenix.Server.Connections;
 using Phoenix.Server.Network;
 using Serilog;
 using System;
+using System.Linq;
 using static Phoenix.Server.Program;
 
 namespace Phoenix.Server.Scripts
 {
     class ScriptEngine
     {
-        /*
-         * Fix Exp Bar
-         * Add Tick Timer to Attack
-         * Up Arrow - Last Command
-         * Update Command Block When Dead
-         */
+
         #region -- Handlers --
         public static void Initialize()
         {
@@ -742,8 +740,23 @@ namespace Phoenix.Server.Scripts
                 {
                     foreach (NPCItems nPCItems in npc.Drops)
                     {
-                        if (LuaRandom.NumberDouble(0,1) < nPCItems.DropChance)
+                        if (LuaRandom.NumberDouble(0, 1) < nPCItems.DropChance)
                         {
+                            var characters = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == npc.RoomID);
+                            foreach (ConnectedAccount connectedAccount in characters)
+                            {
+                                game.SendCommandToClient(connectedAccount.Client, new RoomItemUpdate
+                                {
+                                    Mode = 1,
+                                    Item = new Item
+                                    {
+                                        Name = game.items[nPCItems.ItemID].Name,
+                                        Image = game.items[nPCItems.ItemID].Image,
+                                        Type = game.items[nPCItems.ItemID].Type
+                                    }
+                                });
+                            }
+                            game.rooms[npc.RoomID].RoomItems.Add(game.items[nPCItems.ItemID]);
                             LuaMessage.Room(npc.RoomID, $"~w{npc.BName} {npc.Name} ~cdropped a ~w{game.items[nPCItems.ItemID].Name}~c!");
                         }
                     }

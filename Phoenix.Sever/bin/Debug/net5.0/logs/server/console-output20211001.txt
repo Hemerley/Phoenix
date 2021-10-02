@@ -1,0 +1,50 @@
+2021-10-01 19:25:36.126 -05:00 [INF] Loading Rooms...
+2021-10-01 19:25:36.438 -05:00 [INF] Rooms Loaded!
+2021-10-01 19:25:36.439 -05:00 [INF] Loading Items...
+2021-10-01 19:25:36.445 -05:00 [INF] Items Loaded!
+2021-10-01 19:25:36.445 -05:00 [INF] Initializing Script Globals...
+2021-10-01 19:25:36.717 -05:00 [INF] Script Globals Initialized!
+2021-10-01 19:25:36.718 -05:00 [INF] Loading Scripts...
+2021-10-01 19:25:36.725 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-01 19:25:36.726 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-01 19:25:36.727 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-01 19:25:36.728 -05:00 [INF] Located Script: ./scripts/main\attack.lua
+2021-10-01 19:25:36.728 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-01 19:25:36.729 -05:00 [INF] Scripts Loaded!
+2021-10-01 19:25:36.747 -05:00 [INF] Server Started!
+2021-10-01 19:26:03.251 -05:00 [INF] 9e65d30b-0217-4835-9a0a-99bbf9f76aef has connected.
+2021-10-01 19:28:56.321 -05:00 [INF] 9e65d30b-0217-4835-9a0a-99bbf9f76aef has disconnected.
+2021-10-01 23:38:45.538 -05:00 [INF] Loading Rooms...
+2021-10-01 23:38:45.807 -05:00 [INF] Rooms Loaded!
+2021-10-01 23:38:45.808 -05:00 [INF] Loading Items...
+2021-10-01 23:38:45.813 -05:00 [INF] Items Loaded!
+2021-10-01 23:38:45.814 -05:00 [INF] Initializing Script Globals...
+2021-10-01 23:38:46.003 -05:00 [INF] Script Globals Initialized!
+2021-10-01 23:38:46.004 -05:00 [INF] Loading Scripts...
+2021-10-01 23:38:46.010 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-01 23:38:46.011 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-01 23:38:46.012 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-01 23:38:46.012 -05:00 [INF] Located Script: ./scripts/main\attack.lua
+2021-10-01 23:38:46.013 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-01 23:38:46.013 -05:00 [INF] Scripts Loaded!
+2021-10-01 23:38:46.028 -05:00 [INF] Server Started!
+2021-10-01 23:39:47.876 -05:00 [INF] c06d4679-61b0-4e02-b10e-11a4909d7681 has connected.
+2021-10-01 23:41:27.836 -05:00 [INF] c06d4679-61b0-4e02-b10e-11a4909d7681 has disconnected.
+2021-10-01 23:45:38.234 -05:00 [INF] Loading Rooms...
+2021-10-01 23:45:38.613 -05:00 [INF] Rooms Loaded!
+2021-10-01 23:45:38.614 -05:00 [INF] Loading Items...
+2021-10-01 23:45:38.620 -05:00 [INF] Items Loaded!
+2021-10-01 23:45:38.621 -05:00 [INF] Initializing Script Globals...
+2021-10-01 23:45:38.809 -05:00 [INF] Script Globals Initialized!
+2021-10-01 23:45:38.810 -05:00 [INF] Loading Scripts...
+2021-10-01 23:45:38.817 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-01 23:45:38.818 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-01 23:45:38.819 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-01 23:45:38.819 -05:00 [INF] Located Script: ./scripts/main\attack.lua
+2021-10-01 23:45:38.820 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-01 23:45:38.821 -05:00 [INF] Scripts Loaded!
+2021-10-01 23:45:38.835 -05:00 [INF] Server Started!
+2021-10-01 23:45:48.476 -05:00 [INF] a66f4ba2-a5e9-4b7b-a1af-d1705941db38 has connected.
+2021-10-01 23:46:35.198 -05:00 [INF] d547f222-033e-4721-a929-418878500200 has connected.
+2021-10-01 23:48:34.735 -05:00 [INF] d547f222-033e-4721-a929-418878500200 has disconnected.
+2021-10-01 23:48:38.851 -05:00 [INF] a66f4ba2-a5e9-4b7b-a1af-d1705941db38 has disconnected.

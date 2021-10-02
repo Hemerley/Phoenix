@@ -541,7 +541,7 @@ namespace Phoenix.Server.Data
             List<Item> items = new();
             while (reader.Read())
             {
-                Item item = new Item
+                Item item = new()
                 {
                     Id = Convert.ToInt32(reader[0].ToString()),
                     Name = reader[1].ToString(),

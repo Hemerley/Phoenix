@@ -575,6 +575,26 @@ namespace Phoenix.Common.Commands.Factory
                     }
                 #endregion
 
+                #region -- Room Item Update --
+                case CommandType.RoomItemUpdate:
+                    {
+                        if (commandParts.Length < 1)
+                            return new UnknownCommand();
+
+                        Item item = new();
+
+                        item.Name = commandDataParts[1];
+                        item.Image = commandDataParts[2];
+                        item.Type = commandDataParts[3];
+
+                        return new RoomItemUpdate
+                        {
+                            Mode = Int32.Parse(commandDataParts[0]),
+                            Item = item
+                        };
+                    }
+                #endregion
+
                 #region -- Spawn NPC --
                 case CommandType.SpawnNPC:
                     {
