@@ -31,5 +31,10 @@
         public int RankReq { get; set; }
         public string Script { get; set; }
         public int Amount { get; set; }
+
+        #region -- Character Specific --
+        public int SlotIndex { get; set; } = -1;
+        public bool IsEquipped { get; set; } = false;
+        #endregion
     }
 }

@@ -233,10 +233,25 @@ namespace Phoenix.Common.Commands.Factory
                                 Versatility = Int32.Parse(c[30]),
                                 CurrentHealth = Int32.Parse(c[31]),
                                 CurrentMana = Int32.Parse(c[32]),
-                                MaxExperience = Int32.Parse(c[33])
+                                MaxExperience = Int32.Parse(c[33]),
+                                Gold = Int32.Parse(c[34]),
+                                Items = new List<Item>()
                             };
+                            for (int i = 2; i < s.Length; i++)
+                            {
+                                string[] z = s[i].Split("|");
+                                character.Items.Add(new Item
+                                {
+                                    Name = z[0],
+                                    Image = z[1],
+                                    Rarity = z[2],
+                                    Amount = Int32.Parse(z[3]),
+                                    IsEquipped = bool.Parse(z[4]),
+                                    SlotIndex = Int32.Parse(z[5]),
+                                    Type = z[6]
+                                });
+                            }
                         }
-
                         return new CharacterConnectResponse
                         {
                             Success = bool.Parse(m[0]),
@@ -411,7 +426,7 @@ namespace Phoenix.Common.Commands.Factory
                                 {
                                     Name = c[1],
                                     Image = c[2],
-                                    Type = c[3],
+                                    Rarity = c[3],
                                     Amount = Int32.Parse(c[4])
                                 });
                             }
@@ -530,43 +545,61 @@ namespace Phoenix.Common.Commands.Factory
                     {
                         if (commandDataParts.Length < 1)
                             return new UnknownCommand();
+                        string[] s = commandParts[1].Split("~");
+                        string[] c = s[0].Split("|");
                         Character character = new()
                         {
-                            Id = Int32.Parse(commandDataParts[0]),
-                            AccountId = Int32.Parse(commandDataParts[1]),
-                            Name = commandDataParts[2],
-                            Type = commandDataParts[3],
-                            TypeID = Int32.Parse(commandDataParts[4]),
-                            Image = commandDataParts[5],
-                            Gender = commandDataParts[6],
-                            HisHer = commandDataParts[7],
-                            HeShe = commandDataParts[8],
-                            Experience = Int32.Parse(commandDataParts[9]),
-                            Title = commandDataParts[10],
-                            Caste = commandDataParts[11],
-                            CasteID = Int32.Parse(commandDataParts[12]),
-                            Rank = commandDataParts[13],
-                            RankID = Int32.Parse(commandDataParts[14]),
-                            Philosophy = commandDataParts[15],
-                            PhilosophyID = Int32.Parse(commandDataParts[16]),
-                            Alignment = Int32.Parse(commandDataParts[17]),
-                            Creation = Int32.Parse(commandDataParts[18]),
-                            Strength = Int32.Parse(commandDataParts[19]),
-                            Agility = Int32.Parse(commandDataParts[20]),
-                            Intellect = Int32.Parse(commandDataParts[21]),
-                            Stamina = Int32.Parse(commandDataParts[22]),
-                            Damage = Int32.Parse(commandDataParts[23]),
-                            Health = Int32.Parse(commandDataParts[24]),
-                            Mana = Int32.Parse(commandDataParts[25]),
-                            RoomID = Int32.Parse(commandDataParts[26]),
-                            Crit = Int32.Parse(commandDataParts[27]),
-                            Mastery = Int32.Parse(commandDataParts[28]),
-                            Haste = Int32.Parse(commandDataParts[29]),
-                            Versatility = Int32.Parse(commandDataParts[30]),
-                            CurrentHealth = Int32.Parse(commandDataParts[31]),
-                            CurrentMana = Int32.Parse(commandDataParts[32]),
-                            MaxExperience = Int32.Parse(commandDataParts[33])
+                            Id = Int32.Parse(c[0]),
+                            AccountId = Int32.Parse(c[1]),
+                            Name = c[2],
+                            Type = c[3],
+                            TypeID = Int32.Parse(c[4]),
+                            Image = c[5],
+                            Gender = c[6],
+                            HisHer = c[7],
+                            HeShe = c[8],
+                            Experience = Int32.Parse(c[9]),
+                            Title = c[10],
+                            Caste = c[11],
+                            CasteID = Int32.Parse(c[12]),
+                            Rank = c[13],
+                            RankID = Int32.Parse(c[14]),
+                            Philosophy = c[15],
+                            PhilosophyID = Int32.Parse(c[16]),
+                            Alignment = Int32.Parse(c[17]),
+                            Creation = Int32.Parse(c[18]),
+                            Strength = Int32.Parse(c[19]),
+                            Agility = Int32.Parse(c[20]),
+                            Intellect = Int32.Parse(c[21]),
+                            Stamina = Int32.Parse(c[22]),
+                            Damage = Int32.Parse(c[23]),
+                            Health = Int32.Parse(c[24]),
+                            Mana = Int32.Parse(c[25]),
+                            RoomID = Int32.Parse(c[26]),
+                            Crit = Int32.Parse(c[27]),
+                            Mastery = Int32.Parse(c[28]),
+                            Haste = Int32.Parse(c[29]),
+                            Versatility = Int32.Parse(c[30]),
+                            CurrentHealth = Int32.Parse(c[31]),
+                            CurrentMana = Int32.Parse(c[32]),
+                            MaxExperience = Int32.Parse(c[33]),
+                            Gold = Int32.Parse(c[34]),
+                            Items = new List<Item>()
                         };
+                        for (int i = 1; i < s.Length; i++)
+                        {
+                            string[] z = s[i].Split("|");
+                            character.Items.Add(new Item
+                            {
+                                Name = z[0],
+                                Image = z[1],
+                                Rarity = z[2],
+                                Amount = Int32.Parse(z[3]),
+                                IsEquipped = bool.Parse(z[4]),
+                                SlotIndex = Int32.Parse(z[5]),
+                                Type = z[6]
+                            });
+                        }
 
                         return new CharacterStatUpdate
                         {
@@ -585,12 +618,32 @@ namespace Phoenix.Common.Commands.Factory
 
                         item.Name = commandDataParts[1];
                         item.Image = commandDataParts[2];
-                        item.Type = commandDataParts[3];
+                        item.Rarity = commandDataParts[3];
 
                         return new RoomItemUpdate
                         {
                             Mode = Int32.Parse(commandDataParts[0]),
                             Item = item
+                        };
+                    }
+                #endregion
+
+                #region -- Item Loot Request --
+
+                case CommandType.ItemLootRequest:
+                    {
+                        /// <summary>
+                        /// Validate Incoming Command is Proper Format.
+                        /// </summary>
+                        if (commandDataParts.Length < 1)
+                            return new UnknownCommand();
+
+                        /// <summary>
+                        /// Return Authenticate Command.
+                        /// </summary>
+                        return new ItemLootRequest
+                        {
+                            DropIndex = Int32.Parse(commandDataParts[0])
                         };
                     }
                 #endregion

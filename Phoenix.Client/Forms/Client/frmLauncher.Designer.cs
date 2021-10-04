@@ -261,6 +261,7 @@ namespace Phoenix.Client
             this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "Password";
             this.txtPassword.Enter += new System.EventHandler(this.TxtPassword_Enter);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPassword_KeyDown);
             this.txtPassword.Leave += new System.EventHandler(this.TxtPassword_Leave);
             // 
             // txtAccountName
@@ -719,9 +720,9 @@ namespace Phoenix.Client
             this.lblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lblVersion.Location = new System.Drawing.Point(915, 551);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Text = Constants.GAME_VERSION;
-            this.lblVersion.Size = new System.Drawing.Size(0, 21);
+            this.lblVersion.Size = new System.Drawing.Size(43, 21);
             this.lblVersion.TabIndex = 43;
+            this.lblVersion.Text = "0.1.6";
             // 
             // FrmLauncher
             // 

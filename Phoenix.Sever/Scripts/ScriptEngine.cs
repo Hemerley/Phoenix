@@ -228,7 +228,7 @@ namespace Phoenix.Server.Scripts
                     Character attackerCharacter = game.connectedAccounts[attackerID].Account.Character;
 
                     double levelDifference = Convert.ToDouble(defenderCharacter.RankID) / Convert.ToDouble(attackerCharacter.RankID);
-                    double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
+                    double dodgeChance = Math.Min(0.3d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
 
                     if (LuaRandom.NumberDouble(0, 1) < dodgeChance)
                         return true;
@@ -240,7 +240,7 @@ namespace Phoenix.Server.Scripts
                     NPC attackerCharacter = game.currentNPC[attackerID];
 
                     double levelDifference = Convert.ToDouble(defenderCharacter.RankID) / Convert.ToDouble(attackerCharacter.Level);
-                    double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
+                    double dodgeChance = Math.Min(0.3d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
 
                     if (LuaRandom.NumberDouble(0, 1) < dodgeChance)
                         return true;
@@ -253,7 +253,7 @@ namespace Phoenix.Server.Scripts
 
 
                     double levelDifference = Convert.ToDouble(defenderCharacter.Level) / Convert.ToDouble(attackerCharacter.RankID);
-                    double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
+                    double dodgeChance = Math.Min(0.3d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
 
                     if (LuaRandom.NumberDouble(0, 1) < dodgeChance)
                         return true;
@@ -265,7 +265,7 @@ namespace Phoenix.Server.Scripts
                     NPC attackerCharacter = game.currentNPC[attackerID];
 
                     double levelDifference = Convert.ToDouble(defenderCharacter.Level) / Convert.ToDouble(attackerCharacter.Level);
-                    double dodgeChance = Math.Min(0.5d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
+                    double dodgeChance = Math.Min(0.3d, (Convert.ToDouble(defenderCharacter.CurrentAgility) * levelDifference) / Convert.ToDouble(attackerCharacter.CurrentAgility));
 
                     if (LuaRandom.NumberDouble(0, 1) < dodgeChance)
                         return true;
@@ -506,6 +506,7 @@ namespace Phoenix.Server.Scripts
                 public static void Gold(string characterID, int gold)
                 {
                     game.connectedAccounts[characterID].Account.Gold += gold;
+                    game.connectedAccounts[characterID].Account.Character.Gold = game.connectedAccounts[characterID].Account.Gold;
                     LuaMessage.Direct(characterID, $"~cYou loot ~w{gold} ~cgold!");
                 }
             }
@@ -752,7 +753,7 @@ namespace Phoenix.Server.Scripts
                                     {
                                         Name = game.items[nPCItems.ItemID].Name,
                                         Image = game.items[nPCItems.ItemID].Image,
-                                        Type = game.items[nPCItems.ItemID].Type
+                                        Rarity = game.items[nPCItems.ItemID].Rarity
                                     }
                                 });
                             }

@@ -25,7 +25,7 @@ namespace Phoenix.Common.Commands.Updates
                     this.Mode.ToString(),
                     this.Item.Name,
                     this.Item.Image,
-                    this.Item.Type
+                    this.Item.Rarity
                 }
             };
         }

@@ -151,6 +151,8 @@ namespace Phoenix.Client
             this.lstvDrops = new Phoenix.Client.Classes.Extensions.ListViewWithoutScrollBar();
             this.lstvDropsCName = new System.Windows.Forms.ColumnHeader();
             this.lstvDropsCType = new System.Windows.Forms.ColumnHeader();
+            this.cmDrops = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmDropsGet = new System.Windows.Forms.ToolStripMenuItem();
             this.ilItems = new System.Windows.Forms.ImageList(this.components);
             this.pnlEquipped = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.lstvEquipped = new Phoenix.Client.Classes.Extensions.ListViewWithoutScrollBar();
@@ -197,6 +199,7 @@ namespace Phoenix.Client
             this.pnlSecondaryWindow.SuspendLayout();
             this.pnlRoom.SuspendLayout();
             this.pnlDrops.SuspendLayout();
+            this.cmDrops.SuspendLayout();
             this.pnlEquipped.SuspendLayout();
             this.pnlInventory.SuspendLayout();
             this.cmsInventory.SuspendLayout();
@@ -2464,6 +2467,7 @@ namespace Phoenix.Client
             this.lstvDrops.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lstvDropsCName,
             this.lstvDropsCType});
+            this.lstvDrops.ContextMenuStrip = this.cmDrops;
             this.lstvDrops.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstvDrops.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.lstvDrops.FullRowSelect = true;
@@ -2484,6 +2488,20 @@ namespace Phoenix.Client
             // lstvDropsCType
             // 
             this.lstvDropsCType.Width = 0;
+            // 
+            // cmDrops
+            // 
+            this.cmDrops.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmDropsGet});
+            this.cmDrops.Name = "cmDrops";
+            this.cmDrops.Size = new System.Drawing.Size(181, 48);
+            // 
+            // cmDropsGet
+            // 
+            this.cmDropsGet.Name = "cmDropsGet";
+            this.cmDropsGet.Size = new System.Drawing.Size(180, 22);
+            this.cmDropsGet.Text = "Get";
+            this.cmDropsGet.Click += new System.EventHandler(this.CMDropsGet_Click);
             // 
             // ilItems
             // 
@@ -2704,7 +2722,7 @@ namespace Phoenix.Client
             this.pnlInput.Location = new System.Drawing.Point(257, 790);
             this.pnlInput.Name = "pnlInput";
             this.pnlInput.Size = new System.Drawing.Size(697, 76);
-            this.pnlInput.TabIndex = 27;
+            this.pnlInput.TabIndex = 0;
             // 
             // vbCast
             // 
@@ -2850,6 +2868,7 @@ namespace Phoenix.Client
             this.pnlRoom.PerformLayout();
             this.pnlDrops.ResumeLayout(false);
             this.pnlDrops.PerformLayout();
+            this.cmDrops.ResumeLayout(false);
             this.pnlEquipped.ResumeLayout(false);
             this.pnlEquipped.PerformLayout();
             this.pnlInventory.ResumeLayout(false);
@@ -3017,5 +3036,7 @@ namespace Phoenix.Client
         private VisualBar vbCast;
         private VisualBar vbMana;
         private VisualBar vbHealth;
+        private System.Windows.Forms.ContextMenuStrip cmDrops;
+        private System.Windows.Forms.ToolStripMenuItem cmDropsGet;
     }
 }

@@ -65,7 +65,7 @@ namespace Phoenix.Common.Commands.Response
                     "Item",
                     item.Name,
                     item.Image,
-                    item.Type,
+                    item.Rarity,
                     item.Amount.ToString()
                 });
             }

@@ -6,14 +6,17 @@ using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
 using Phoenix.Server.Connections;
+using Phoenix.Server.Bot.Commands;
 using Phoenix.Server.Data;
 using Phoenix.Server.Scripts;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using static Phoenix.Server.Program;
+using System.Threading.Tasks;
 
 namespace Phoenix.Server.Network
 {
@@ -102,6 +105,10 @@ namespace Phoenix.Server.Network
                 Message = message
             });
 
+        }
+        public static void MessageDiscord(ulong channel, string msg)
+        {
+           _ = MessageChannelBot.MessageChannel(channel, msg);
         }
         public static void MessageParty()
         {
@@ -436,6 +443,113 @@ namespace Phoenix.Server.Network
                 MovementUpdate(targetAccount);
                 MessageDirect($"~mYou have be summoned by ~w{account.Account.Character.Name.FirstCharToUpper()}~m!", targetAccount.Client.Id);
             }
+            else if (type == 2)
+            {
+                int roomID = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == playerName.ToLower()).Account.Character.RoomID;
+                ConnectedAccount targetAccount = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == playerName.ToLower());
+
+                if (targetAccount == null)
+                {
+                    game.SendCommandToClient(account.Client, new NoPlayerFailure());
+                    return;
+                }
+
+                CharacterUpdate(2, targetAccount.Account.Character.RoomID, account.Account.Character);
+                MessageRoom(departureMessage, account.Account.Character.RoomID, account);
+                CharacterUpdate(1, roomID, account.Account.Character);
+                MessageRoom(arrivalMessage, roomID);
+                game.rooms[account.Account.Character.RoomID].RoomCharacters.Remove(account.Account.Character);
+                game.rooms[roomID].RoomCharacters.Add(account.Account.Character);
+                account.Account.Character.RoomID = roomID;
+                account.Account.Character.IsAttacking = false;
+                account.Account.Character.TargetID = "";
+
+                #region -- Hostile Mob Loop --
+                {
+                    var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                    foreach (NPC npc in npcs)
+                    {
+                        var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                        if (characters != null)
+                        {
+                            npc.IsAttacking = true;
+                            npc.TargetID = characters[0].Name.ToLower();
+                            npc.TargetIsPlayer = true;
+                        }
+                    }
+                }
+                #endregion
+
+                MovementUpdate(account);
+                MessageDirect($"~mYou have be teleported to ~w{targetAccount.Account.Character.Name.FirstCharToUpper()}~m!", account.Client.Id);
+            }
+            else if (type == 3)
+            {
+                ConnectedAccount targetAccount = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == playerName.ToLower());
+
+                if (targetAccount == null)
+                {
+                    game.SendCommandToClient(account.Client, new NoPlayerFailure());
+                    return;
+                }
+
+                if (targetAccount.Account.Character.IsDead)
+                {
+                    Functions.MessageDirect($"~w{targetAccount.Account.Character.Name.ToLower().FirstCharToUpper()}~r is currently dead and cannot be teleported!", account.Client.Id);
+                    return;
+                }
+
+                int roomID = targetAccount.Account.Character.Recall;
+
+                CharacterUpdate(2, targetAccount.Account.Character.RoomID, targetAccount.Account.Character);
+                MessageRoom(departureMessage, targetAccount.Account.Character.RoomID, targetAccount);
+                CharacterUpdate(1, roomID, targetAccount.Account.Character);
+                MessageRoom(arrivalMessage, roomID);
+                game.rooms[targetAccount.Account.Character.RoomID].RoomCharacters.Remove(targetAccount.Account.Character);
+                game.rooms[roomID].RoomCharacters.Add(targetAccount.Account.Character);
+                targetAccount.Account.Character.RoomID = roomID;
+                targetAccount.Account.Character.IsAttacking = false;
+                targetAccount.Account.Character.TargetID = "";
+
+                #region -- Hostile Mob Loop --
+                {
+                    var npcs = game.currentNPC.Values.Where(x => x.IsAttacking == false && x.TypeID == 3);
+                    foreach (NPC npc in npcs)
+                    {
+                        var characters = game.rooms[account.Account.Character.RoomID].RoomCharacters.OrderBy(x => x.RankID).ToList();
+                        if (characters != null)
+                        {
+                            npc.IsAttacking = true;
+                            npc.TargetID = characters[0].Name.ToLower();
+                            npc.TargetIsPlayer = true;
+                        }
+                    }
+                }
+                #endregion
+
+                MovementUpdate(targetAccount);
+                MessageDirect($"~mYou have be teleported to your recall by ~w{account.Account.Character.Name.FirstCharToUpper()}~m!", targetAccount.Client.Id);
+            }
+        }
+        public static void GetItem(int dropIndex, ConnectedAccount account)
+        {
+            var room = game.rooms[account.Account.Character.RoomID];
+            int itemID = room.RoomItems[dropIndex].Id;
+            string itemName = room.RoomItems[dropIndex].Name;
+            string itemImage = room.RoomItems[dropIndex].Image;
+            string itemRarity = room.RoomItems[dropIndex].Rarity;
+            var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == room.ID);
+            foreach(ConnectedAccount a in accounts)
+            {
+                Functions.RoomItemUpdate(a, 2, itemName, itemImage, itemRarity);
+            }
+            Item item = game.items[itemID];
+            item.SlotIndex = account.Account.Character.InventoryIndex + 1;
+            account.Account.Character.InventoryIndex += 1;
+            account.Account.Character.Items.Add(item);
+            game.rooms[account.Account.Character.RoomID].RoomItems.Remove(game.items[itemID]);
+            Functions.MessageDirect($"~cYou pick up the ~w{itemName}~c and add it to your pack.",account.Client.Id);
+            Functions.CharacterStatUpdate(account);
         }
         #endregion
 
@@ -531,8 +645,476 @@ namespace Phoenix.Server.Network
                 Functions.MessageDirect($"~wAutoLoot~c has been set to: ~w{account.Account.Character.AutoLoot}~c.", account.Client.Id);
                 return;
             }
+            else if (command[0].ToLower()[1..] == "teleport")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                string defenderID = "";
+                command = command.Skip(1).ToArray();
+                string name = string.Join(" ", command).ToLower();
+                var connectedAccount = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == name);
+                if (connectedAccount != null)
+                    defenderID = connectedAccount.Client.Id;
+                if (defenderID == "")
+                {
+                    Functions.MessageDirect($"~c{name} isn't here!", account.Client.Id);
+                    return;
+                }
+                else
+                {
+                    Functions.MovePlayer(2, account, name, $"&tilda&mA bright white portal opens and &tilda&w{account.Account.Character.Name.ToLower().FirstCharToUpper()}&tilda&m steps through.", $"&tilda&mA bright white portal opens and &tilda&w{account.Account.Character.Name.ToLower().FirstCharToUpper()}&tilda&m steps into it!");
+                    return;
+                }
+            }
+            else if (command[0].ToLower()[1..] == "revteleport")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                string defenderID = "";
+                command = command.Skip(1).ToArray();
+                string name = string.Join(" ", command).ToLower();
+                if (game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == name) != null)
+                    defenderID = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == name).Client.Id;
+                if (defenderID == "")
+                {
+                    Functions.MessageDirect($"~c{name} isn't here!", account.Client.Id);
+                    return;
+                }
+                else
+                {
+                    Functions.MovePlayer(3, account, name, $"&tilda&mA bright white portal opens and &tilda&w{name.ToLower().FirstCharToUpper()}&tilda&m steps through.", $"&tilda&mA bright white portal opens and &tilda&w{name.ToLower().FirstCharToUpper()}&tilda&m steps into it!");
+                    return;
+                }
+            }
+            else if (command[0].ToLower()[1..] == "bcast")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                command = command.Skip(1).ToArray();
+                string msg = string.Join(" ", command).ToLower();
+                string name = "";
+                switch(account.Account.Character.TypeID)
+                {
+                    case 1:
+                        name = "~b" + account.Account.Character.Name + "~g";
+                        break;
+                    case 2:
+                        name = "~q" + account.Account.Character.Name + "~g";
+                        break;
+                    case 3:
+                        name = "~y" + account.Account.Character.Name + "~g";
+                        break;
+                    case 4:
+                        name = "~o" + account.Account.Character.Name + "~g";
+                        break;
+                }
+                Functions.MessageWorld($"~gWorld Message from {name}: ~w{msg}");
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "gcast")
+            {
+                if (account.Account.Character.TypeID < 2)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                command = command.Skip(1).ToArray();
+                string msg = string.Join(" ", command).ToLower();
+                string name = "";
+                switch (account.Account.Character.TypeID)
+                {
+                    case 1:
+                        name = "~b" + account.Account.Character.Name + "~g";
+                        break;
+                    case 2:
+                        name = "~q" + account.Account.Character.Name + "~g";
+                        break;
+                    case 3:
+                        name = "~y" + account.Account.Character.Name + "~g";
+                        break;
+                    case 4:
+                        name = "~o" + account.Account.Character.Name + "~g";
+                        break;
+                }
+                Functions.MessageDiscord(ulong.Parse("882937683616350258"), $"World Message from {account.Account.Character.Name}: {msg}");
+                Functions.MessageWorld($"~gWorld Message from {name}: ~w{msg}");
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "ghost")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "arrest")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "ban")
+            {
+                if (account.Account.Character.TypeID != 1 || account.Account.Character.TypeID >= 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "banlist")
+            {
+                if (account.Account.Character.TypeID != 1 || account.Account.Character.TypeID >= 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "unban")
+            {
+                if (account.Account.Character.TypeID != 1 || account.Account.Character.TypeID >= 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "mute")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "kick")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "alias")
+            {
+                if (account.Account.Character.TypeID < 2)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "charrename")
+            {
+                if (account.Account.Character.TypeID < 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "mod")
+            {
+                if (account.Account.Character.TypeID < 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "reboot")
+            {
+                if (account.Account.Character.TypeID < 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                Process.Start("./Phoenix.Server.exe");
+                Environment.Exit(0);
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "clearquest")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "clearquests")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "addquest")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "spy")
+            {
+                if (account.Account.Character.TypeID != 1 || account.Account.Character.TypeID >= 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "aspy")
+            {
+                if (account.Account.Character.TypeID < 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "record")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "permrecord")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "awarditem")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "awardep")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "restore")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "wrestore")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "spawn")
+            {
+                if (account.Account.Character.TypeID < 2)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "sitem")
+            {
+                if (account.Account.Character.TypeID < 3)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "kill")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "npcattack")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "bonusexp")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "bonusgold")
+            {
+                if (account.Account.Character.TypeID < 1)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "build")
+            {
+                if (account.Account.Character.TypeID < 2)
+                {
+                    Functions.MessageDirect("~cNo command found!", account.Client.Id);
+                    return;
+                }
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "help")
+            {
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "staff")
+            {
+                var characterNames = game.connectedAccounts.Values.Where(x => x.Account.Character.TypeID > 0).Select(x => new { x.Account.Character.Name, x.Account.Character.TypeID});
+                List<string> staffList = new();
 
-            foreach (string script in game.scripts)
+                foreach (var character in characterNames)
+                {
+                    switch (character.TypeID)
+                    {
+                        case 1:
+                            staffList.Add("~b" + character.Name + "~g");
+                            continue;
+                        case 2:
+                            staffList.Add("~q" + character.Name + "~g");
+                            continue;
+                        case 3:
+                            staffList.Add("~y" + character.Name + "~g");
+                            continue;
+                        case 4:
+                            staffList.Add("~o" + character.Name + "~g");
+                            continue;
+                        default:
+                            continue;
+                    }
+                }
+
+                Functions.MessageDirect($"~gThere are currrently ~w{characterNames.Count()} ~gstaff members online: {string.Join(", ", staffList)}~g.", account.Client.Id);
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "pray")
+            {
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "bugreport")
+            {
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "report")
+            {
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "get")
+            {
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "rget")
+            {
+                return;
+            }
+            else if (command[0].ToLower()[1..] == "cast")
+            {
+                foreach (string script in game.spells)
+                {
+                    string[] x = script.Split("/");
+                    string[] z = x[^1].Split("\\");
+                    string scriptNamez = z[^1][0..^4].ToLower();
+
+                    if (scriptNamez == command[1].ToLower()[1..])
+                    {
+                        if (command.Length < 1)
+                        {
+                            ScriptEngine.RunScript(command[1].ToLower()[1..], account.Client.Id, true);
+                            return;
+                        }
+                        else
+                        {
+                            string defenderID = "";
+                            string scriptName = command[1].ToLower()[1..];
+                            command = command.Skip(2).ToArray();
+                            string name = string.Join(" ", command).ToLower();
+                            if (game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == name) != null)
+                                defenderID = game.connectedAccounts.Values.FirstOrDefault(x => x.Account.Character.Name.ToLower() == name).Client.Id;
+                            if (defenderID == "")
+                            {
+                                if (game.currentNPC.Values.FirstOrDefault(x => x.Name.ToLower() == name && x.RoomID == account.Account.Character.RoomID) != null)
+                                    defenderID = game.currentNPC.Values.FirstOrDefault(x => x.Name.ToLower() == name && x.RoomID == account.Account.Character.RoomID).InstanceID.ToString();
+                            }
+                            else
+                            {
+                                ScriptEngine.RunScript(scriptName, account.Client.Id, true, defenderID, true);
+                                return;
+                            }
+                            if (defenderID == "")
+                            {
+                                Functions.MessageDirect($"~c{name} isn't here!", account.Client.Id);
+                                return;
+                            }
+                            else
+                            {
+                                ScriptEngine.RunScript(scriptName, account.Client.Id, true, defenderID, false);
+                                return;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            foreach (string script in game.commands)
             {
                 string[] x = script.Split("/");
                 string[] z = x[^1].Split("\\");
@@ -696,6 +1278,21 @@ namespace Phoenix.Server.Network
                 game.rooms[loginCharacter.RoomID].RoomCharacters.Add(loginCharacter);
                 game.totalConnections++;
                 if (game.maximumPlayers < game.connectedAccounts.Values.Where(x => x.Account.Character.Name != "").ToList().Count) game.maximumPlayers++;
+
+                if (loginCharacter != null)
+                {
+                    if (loginCharacter.IsDead)
+                    {
+                        var respawnCommand = new RespawnCharacterServer
+                        {
+                            RoomID = loginCharacter.Recall.ToString(),
+                            EntityID = account.Client.Id,
+                            ArrivalMessage = $"~w{loginCharacter.Name.FirstCharToUpper()} ~gappears back in the world of the living following a bright white flash!",
+                            DepartureMessage = $"~w{loginCharacter.Name.FirstCharToUpper()} ~gvanishes back to the world of the living following a bright white flash!"
+                        };
+                        Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 20000, respawnCommand, game.serverID.ToString());
+                    }
+                }
 
                 return new CharacterConnectResponse
                 {
@@ -866,7 +1463,7 @@ namespace Phoenix.Server.Network
                     character.Account.Character.HealthRegen = false;
                     Functions.CharacterStatUpdate(character);
                 }
-
+                Functions.CharacterStatUpdate(character);
             }
             Functions.AddToQueue(DateTimeOffset.Now.ToUnixTimeMilliseconds() + 250, new TickTimerServer(), game.serverID.ToString());
         }
@@ -929,7 +1526,7 @@ namespace Phoenix.Server.Network
                 Item newItem = new();
                 newItem.Name = item.Name;
                 newItem.Image = item.Image;
-                newItem.Type = item.Type;
+                newItem.Rarity = item.Rarity;
                 newItem.Amount = item.Amount;
                 clientRoomResponseCommand.Room.RoomItems.Add(newItem);
                 clientRoomResponseCommand.Room.Exits = clientRoomResponseCommand.Room.Exits + "&tilda&c" + item.Name + "&tilda&w, ";
@@ -972,6 +1569,19 @@ namespace Phoenix.Server.Network
             game.SendCommandToClient(account.Client, new CharacterStatUpdate
             {
                 Character = account.Account.Character
+            });
+        }
+        public static void RoomItemUpdate(ConnectedAccount account, int mode, string itemName, string itemImage, string itemRarity)
+        {
+            game.SendCommandToClient(account.Client, new RoomItemUpdate
+            {
+                Mode = mode,
+                Item = new Item
+                {
+                    Name = itemName,
+                    Image = itemImage,
+                    Rarity = itemRarity
+                }
             });
         }
         #endregion

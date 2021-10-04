@@ -1,4 +1,6 @@
-﻿namespace Phoenix.Common.Data.Types
+﻿using System.Collections.Generic;
+
+namespace Phoenix.Common.Data.Types
 {
     public class Character
     {
@@ -32,11 +34,15 @@
         public bool AutoLoot { get; set; }
         public bool AutoAttack { get; set; }
         public int Recall { get; set; }
+        public bool HealthRegen { get; set; }
+        public bool IsDead { get; set; }
+        public bool IsGhosted { get; set; }
         #endregion
 
         #region -- Server Fields --
 
         #region -- General Statistics --
+        public List<Item> Items { get; set; }
         public string Type { get; set; }
         public string Caste { get; set; }
         public string Rank { get; set; }
@@ -44,6 +50,7 @@
         public double Haste { get; set; }
         public double Mastery { get; set; }
         public double Versatility { get; set; }
+        public int Gold { get; set; }
         public int CurrentStrength { get; set; }
         public int CurrentAgility { get; set; }
         public int CurrentIntellect { get; set; }
@@ -54,15 +61,15 @@
 
         #region -- Combat Statistics --
         public double AttackSpeed { get; set; } = 1;
-        public bool HealthRegen { get; set; } = true;
         public bool IsAttacking { get; set; } = false;
-        public bool IsDead { get; set; } = false;
         public string TargetID { get; set; } = "";
         public bool TargetIsPlayer { get; set; } = false;
         #endregion
 
         #region -- Resource Statistics --
         public int MaxExperience { get; set; }
+        public int InventoryIndex { get; set; }
+        public int Weight { get; set; }
         #endregion
 
         #endregion

@@ -63,8 +63,23 @@ namespace Phoenix.Common.Commands.Response
                 this.Character.Versatility.ToString(),
                 this.Character.CurrentHealth.ToString(),
                 this.Character.CurrentMana.ToString(),
-                this.Character.MaxExperience.ToString()
+                this.Character.MaxExperience.ToString(),
+                this.Character.Gold.ToString()
             });
+
+            foreach(Item item in this.Character.Items)
+            {
+                character.Add(new List<string>
+                {
+                    item.Name,
+                    item.Image,
+                    item.Rarity,
+                    item.Amount.ToString(),
+                    item.IsEquipped.ToString(),
+                    item.SlotIndex.ToString(),
+                    item.Type.ToString()
+                });
+            }
 
             return character;
         }

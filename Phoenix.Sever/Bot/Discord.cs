@@ -11,7 +11,7 @@ namespace Phoenix.Server.Bot
 {
     public class Discord
     {
-        public DiscordClient Client { get; private set; }
+        public static DiscordClient Client { get; private set; }
         public CommandsNextExtension Commands { get; private set; }
 
         public async Task RunAsync()
@@ -39,15 +39,15 @@ namespace Phoenix.Server.Bot
                 DmHelp = true
             };
 
-            this.Client = new DiscordClient(discordConfig);
-            this.Client.Ready += OnClientReady;
+            Client = new DiscordClient(discordConfig);
+            Client.Ready += OnClientReady;
 
-            this.Commands = this.Client.UseCommandsNext(commandConfig);
+            this.Commands = Client.UseCommandsNext(commandConfig);
 
             this.Commands.RegisterCommands<UptimeBot>();
             this.Commands.RegisterCommands<VersionBot>();
 
-            await this.Client.ConnectAsync();
+            await Client.ConnectAsync();
         }
 
         private Task OnClientReady(DiscordClient client, ReadyEventArgs e)

@@ -76,6 +76,16 @@ namespace Phoenix.Server.Network
         public readonly List<string> scripts = new();
 
         /// <summary>
+        /// Declaration of Scripts in ./Scripts/Commands/
+        /// </summary>
+        public readonly List<string> commands = new();
+
+        /// <summary>
+        /// Declaration of Scripts in ./Scripts/Spells/
+        /// </summary>
+        public readonly List<string> spells = new();
+
+        /// <summary>
         /// Script Handlers for Game Engine.
         /// </summary>
         public Script script = new();
@@ -187,6 +197,7 @@ namespace Phoenix.Server.Network
                 Functions.MessageWorld($"&tilda&g{connectedAccount.Account.Character.Name}&tilda&w has went &tilda&roffline&tilda&w!");
             }
             Database.SetCharacter(Constants.GAME_MODE, connectedAccount.Account.Character);
+            Database.SetAccountField(Constants.GAME_MODE, "ID", connectedAccount.Account.Id.ToString(), "Gold", connectedAccount.Account.Gold.ToString());
             this.connectedAccounts.Remove(connectedAccount.Client.Id);
 
 
@@ -262,12 +273,25 @@ namespace Phoenix.Server.Network
             ScriptEngine.Initialize();
             Log.Information("Script Globals Initialized!");
 
-            Log.Information("Loading Scripts...");
+            Log.Information("Loading Global Scripts...");
             string[] files = Directory.GetFiles("./Scripts/", "*.*", SearchOption.AllDirectories);
             foreach (string file in files)
             {
                 this.scripts.Add(file.ToLower());
             }
+            Log.Information("Loading Command Scripts...");
+            string[] commandz = Directory.GetFiles("./Scripts/Commands", "*.*", SearchOption.AllDirectories);
+            foreach (string file in commandz)
+            {
+                this.commands.Add(file.ToLower());
+            }
+            Log.Information("Loading Spell Scripts...");
+            string[] spellz = Directory.GetFiles("./Scripts/Spells", "*.*", SearchOption.AllDirectories);
+            foreach (string file in spellz)
+            {
+                this.spells.Add(file.ToLower());
+            }
+            Log.Information("Loading Script Handler...");
             foreach (string script in scripts)
             {
                 Log.Information($"Located Script: {script}");
@@ -477,6 +501,17 @@ namespace Phoenix.Server.Network
                         }
                     #endregion
 
+                    #region  -- Item Loot Request --
+                    case CommandType.ItemLootRequest:
+                        {
+                            var parsedCommand = command as ItemLootRequest;
+
+                            Functions.GetItem(parsedCommand.DropIndex, accountConnected);
+
+                            break;
+                        }
+                    #endregion
+
                     #region  -- Spawn NPC --
                     case CommandType.SpawnNPC:
                         {
@@ -518,7 +553,8 @@ namespace Phoenix.Server.Network
                     case CommandType.RespawnCharacter:
                         {
                             var parsedCommand = command as RespawnCharacterServer;
-
+                            if (!this.connectedAccounts.ContainsKey(parsedCommand.EntityID))
+                                break;
                             Functions.RespawnCharacter(Int32.Parse(parsedCommand.RoomID), this.connectedAccounts[parsedCommand.EntityID], parsedCommand.ArrivalMessage, parsedCommand.DepartureMessage);
                         }
                         break;

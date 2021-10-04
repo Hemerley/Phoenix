@@ -1,0 +1,2985 @@
+2021-10-03 00:07:23.858 -05:00 [INF] Loading Rooms...
+2021-10-03 00:07:24.133 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:07:24.134 -05:00 [INF] Herky the Hawk
+2021-10-03 00:07:24.136 -05:00 [INF] Delmair the Wise
+2021-10-03 00:07:24.136 -05:00 [INF] Field Deer
+2021-10-03 00:07:24.137 -05:00 [INF] Field Deer
+2021-10-03 00:07:24.138 -05:00 [INF] Field Deer
+2021-10-03 00:07:24.138 -05:00 [INF] Field Deer
+2021-10-03 00:07:24.139 -05:00 [INF] Field Deer
+2021-10-03 00:07:24.140 -05:00 [INF] Field Deer
+2021-10-03 00:07:24.141 -05:00 [INF] Field Deer
+2021-10-03 00:07:24.142 -05:00 [INF] Field Deer
+2021-10-03 00:07:24.143 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:07:24.144 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:07:24.145 -05:00 [INF] Loading Items...
+2021-10-03 00:07:24.152 -05:00 [INF] Items Loaded!
+2021-10-03 00:07:24.153 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:07:24.366 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:07:24.367 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:07:24.372 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:07:24.373 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:07:24.374 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:07:24.374 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:07:24.375 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:07:24.376 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:07:24.377 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:07:24.377 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:07:24.378 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:07:24.391 -05:00 [INF] Server Started!
+2021-10-03 00:08:00.475 -05:00 [INF] Loading Rooms...
+2021-10-03 00:08:00.738 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:08:00.739 -05:00 [INF] Herky the Hawk
+2021-10-03 00:08:00.739 -05:00 [INF] Delmair the Wise
+2021-10-03 00:08:00.740 -05:00 [INF] Field Deer
+2021-10-03 00:08:00.740 -05:00 [INF] Field Deer
+2021-10-03 00:08:00.741 -05:00 [INF] Field Deer
+2021-10-03 00:08:00.742 -05:00 [INF] Field Deer
+2021-10-03 00:08:00.742 -05:00 [INF] Field Deer
+2021-10-03 00:08:00.743 -05:00 [INF] Field Deer
+2021-10-03 00:08:00.743 -05:00 [INF] Field Deer
+2021-10-03 00:08:00.744 -05:00 [INF] Field Deer
+2021-10-03 00:08:00.744 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:08:00.745 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:08:00.745 -05:00 [INF] Loading Items...
+2021-10-03 00:08:00.751 -05:00 [INF] Items Loaded!
+2021-10-03 00:08:00.754 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:08:00.964 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:08:00.965 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:08:00.971 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:08:00.972 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:08:00.973 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:08:00.973 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:08:00.974 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:08:00.975 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:08:00.975 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:08:00.976 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:08:00.976 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:08:00.989 -05:00 [INF] Server Started!
+2021-10-03 00:09:25.833 -05:00 [INF] Loading Rooms...
+2021-10-03 00:09:26.118 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:09:26.119 -05:00 [INF] Field Deer
+2021-10-03 00:09:26.120 -05:00 [INF] Field Deer
+2021-10-03 00:09:26.121 -05:00 [INF] Field Deer
+2021-10-03 00:09:26.121 -05:00 [INF] Field Deer
+2021-10-03 00:09:26.122 -05:00 [INF] Field Deer
+2021-10-03 00:09:26.123 -05:00 [INF] Field Deer
+2021-10-03 00:09:26.124 -05:00 [INF] Field Deer
+2021-10-03 00:09:26.124 -05:00 [INF] Field Deer
+2021-10-03 00:09:26.125 -05:00 [INF] Loading Items...
+2021-10-03 00:09:26.131 -05:00 [INF] Items Loaded!
+2021-10-03 00:09:26.132 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:09:26.357 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:09:26.359 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:09:26.365 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:09:26.366 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:09:26.367 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:09:26.367 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:09:26.368 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:09:26.368 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:09:26.369 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:09:26.369 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:09:26.371 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:09:26.396 -05:00 [INF] Server Started!
+2021-10-03 00:11:14.659 -05:00 [INF] Loading Rooms...
+2021-10-03 00:11:14.871 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:11:14.872 -05:00 [INF] Herky the Hawk
+2021-10-03 00:11:14.873 -05:00 [INF] Delmair the Wise
+2021-10-03 00:11:14.874 -05:00 [INF] Field Deer
+2021-10-03 00:11:14.875 -05:00 [INF] Field Deer
+2021-10-03 00:11:14.875 -05:00 [INF] Field Deer
+2021-10-03 00:11:14.876 -05:00 [INF] Field Deer
+2021-10-03 00:11:14.876 -05:00 [INF] Field Deer
+2021-10-03 00:11:14.877 -05:00 [INF] Field Deer
+2021-10-03 00:11:14.878 -05:00 [INF] Field Deer
+2021-10-03 00:11:14.878 -05:00 [INF] Field Deer
+2021-10-03 00:11:14.879 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:11:14.879 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:11:14.880 -05:00 [INF] Loading Items...
+2021-10-03 00:11:14.886 -05:00 [INF] Items Loaded!
+2021-10-03 00:11:14.887 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:11:15.076 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:11:15.078 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:11:15.084 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:11:15.085 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:11:15.086 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:11:15.087 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:11:15.087 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:11:15.088 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:11:15.089 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:11:15.089 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:11:15.091 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:11:15.103 -05:00 [INF] Server Started!
+2021-10-03 00:12:01.805 -05:00 [INF] Loading Rooms...
+2021-10-03 00:12:02.012 -05:00 [INF] Added New Room
+2021-10-03 00:12:02.030 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:12:02.031 -05:00 [INF] Herky the Hawk
+2021-10-03 00:12:02.031 -05:00 [INF] Delmair the Wise
+2021-10-03 00:12:02.032 -05:00 [INF] Field Deer
+2021-10-03 00:12:02.032 -05:00 [INF] Field Deer
+2021-10-03 00:12:02.033 -05:00 [INF] Field Deer
+2021-10-03 00:12:02.033 -05:00 [INF] Field Deer
+2021-10-03 00:12:02.034 -05:00 [INF] Field Deer
+2021-10-03 00:12:02.035 -05:00 [INF] Field Deer
+2021-10-03 00:12:02.036 -05:00 [INF] Field Deer
+2021-10-03 00:12:02.037 -05:00 [INF] Field Deer
+2021-10-03 00:12:02.038 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:12:02.039 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:12:02.039 -05:00 [INF] Loading Items...
+2021-10-03 00:12:02.045 -05:00 [INF] Items Loaded!
+2021-10-03 00:12:02.046 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:12:02.231 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:12:02.232 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:12:02.239 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:12:02.240 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:12:02.241 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:12:02.242 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:12:02.243 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:12:02.244 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:12:02.244 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:12:02.245 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:12:02.246 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:12:02.258 -05:00 [INF] Server Started!
+2021-10-03 00:16:36.302 -05:00 [INF] Loading Rooms...
+2021-10-03 00:16:36.559 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:16:36.561 -05:00 [INF] Herky the Hawk
+2021-10-03 00:16:36.562 -05:00 [INF] Delmair the Wise
+2021-10-03 00:16:36.563 -05:00 [INF] Field Deer
+2021-10-03 00:16:36.563 -05:00 [INF] Field Deer
+2021-10-03 00:16:36.564 -05:00 [INF] Field Deer
+2021-10-03 00:16:36.565 -05:00 [INF] Field Deer
+2021-10-03 00:16:36.565 -05:00 [INF] Field Deer
+2021-10-03 00:16:36.566 -05:00 [INF] Field Deer
+2021-10-03 00:16:36.566 -05:00 [INF] Field Deer
+2021-10-03 00:16:36.567 -05:00 [INF] Field Deer
+2021-10-03 00:16:36.567 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:16:36.568 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:16:36.568 -05:00 [INF] Loading Items...
+2021-10-03 00:16:36.574 -05:00 [INF] Items Loaded!
+2021-10-03 00:16:36.575 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:16:36.758 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:16:36.758 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:16:36.764 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:16:36.765 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:16:36.766 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:16:36.766 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:16:36.767 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:16:36.768 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:16:36.768 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:16:36.769 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:16:36.769 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:16:36.781 -05:00 [INF] Server Started!
+2021-10-03 00:19:45.554 -05:00 [INF] Loading Rooms...
+2021-10-03 00:19:45.765 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:19:45.766 -05:00 [INF] Delmair the Wise
+2021-10-03 00:19:45.767 -05:00 [INF] Herky the Hawk
+2021-10-03 00:19:45.767 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:19:45.768 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:19:45.769 -05:00 [INF] Field Deer
+2021-10-03 00:19:45.769 -05:00 [INF] Field Deer
+2021-10-03 00:19:45.770 -05:00 [INF] Field Deer
+2021-10-03 00:19:45.770 -05:00 [INF] Field Deer
+2021-10-03 00:19:45.771 -05:00 [INF] Field Deer
+2021-10-03 00:19:45.771 -05:00 [INF] Field Deer
+2021-10-03 00:19:45.772 -05:00 [INF] Field Deer
+2021-10-03 00:19:45.779 -05:00 [INF] Field Deer
+2021-10-03 00:19:45.780 -05:00 [INF] Loading Items...
+2021-10-03 00:19:45.786 -05:00 [INF] Items Loaded!
+2021-10-03 00:19:45.787 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:19:45.989 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:19:45.990 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:19:45.996 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:19:45.997 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:19:45.998 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:19:45.998 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:19:45.999 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:19:46.000 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:19:46.001 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:19:46.003 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:19:46.004 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:19:46.020 -05:00 [INF] Server Started!
+2021-10-03 00:21:17.838 -05:00 [INF] Loading Rooms...
+2021-10-03 00:21:18.058 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:21:18.059 -05:00 [INF] Field Deer
+2021-10-03 00:21:18.060 -05:00 [INF] Field Deer
+2021-10-03 00:21:18.061 -05:00 [INF] Field Deer
+2021-10-03 00:21:18.062 -05:00 [INF] Field Deer
+2021-10-03 00:21:18.063 -05:00 [INF] Field Deer
+2021-10-03 00:21:18.063 -05:00 [INF] Field Deer
+2021-10-03 00:21:18.064 -05:00 [INF] Field Deer
+2021-10-03 00:21:18.064 -05:00 [INF] Field Deer
+2021-10-03 00:21:18.065 -05:00 [INF] Loading Items...
+2021-10-03 00:21:18.071 -05:00 [INF] Items Loaded!
+2021-10-03 00:21:18.072 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:21:18.251 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:21:18.252 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:21:18.258 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:21:18.260 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:21:18.260 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:21:18.261 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:21:18.263 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:21:18.263 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:21:18.264 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:21:18.265 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:21:18.265 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:21:18.277 -05:00 [INF] Server Started!
+2021-10-03 00:24:47.077 -05:00 [INF] Loading Rooms...
+2021-10-03 00:24:47.292 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:24:47.294 -05:00 [INF] Delmair the Wise
+2021-10-03 00:24:47.295 -05:00 [INF] Herky the Hawk
+2021-10-03 00:24:47.296 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:24:47.297 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:24:47.298 -05:00 [INF] Field Deer
+2021-10-03 00:24:47.298 -05:00 [INF] Field Deer
+2021-10-03 00:24:47.299 -05:00 [INF] Field Deer
+2021-10-03 00:24:47.299 -05:00 [INF] Field Deer
+2021-10-03 00:24:47.300 -05:00 [INF] Field Deer
+2021-10-03 00:24:47.301 -05:00 [INF] Field Deer
+2021-10-03 00:24:47.302 -05:00 [INF] Field Deer
+2021-10-03 00:24:47.303 -05:00 [INF] Field Deer
+2021-10-03 00:24:47.303 -05:00 [INF] Loading Items...
+2021-10-03 00:24:47.310 -05:00 [INF] Items Loaded!
+2021-10-03 00:24:47.311 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:24:47.561 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:24:47.562 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:24:47.568 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:24:47.569 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:24:47.569 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:24:47.570 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:24:47.571 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:24:47.572 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:24:47.572 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:24:47.573 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:24:47.574 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:24:47.585 -05:00 [INF] Server Started!
+2021-10-03 00:31:52.556 -05:00 [INF] Loading Rooms...
+2021-10-03 00:36:41.723 -05:00 [INF] Loading Rooms...
+2021-10-03 00:37:23.521 -05:00 [INF] Loading Rooms...
+2021-10-03 00:37:23.729 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:37:23.731 -05:00 [INF] Herky the Hawk
+2021-10-03 00:37:23.732 -05:00 [INF] Delmair the Wise
+2021-10-03 00:37:23.732 -05:00 [INF] Field Deer
+2021-10-03 00:37:23.733 -05:00 [INF] Field Deer
+2021-10-03 00:37:23.735 -05:00 [INF] Field Deer
+2021-10-03 00:37:23.736 -05:00 [INF] Field Deer
+2021-10-03 00:37:23.737 -05:00 [INF] Field Deer
+2021-10-03 00:37:23.739 -05:00 [INF] Field Deer
+2021-10-03 00:37:23.740 -05:00 [INF] Field Deer
+2021-10-03 00:37:23.741 -05:00 [INF] Field Deer
+2021-10-03 00:37:23.741 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:37:23.742 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:37:23.743 -05:00 [INF] Loading Items...
+2021-10-03 00:37:23.750 -05:00 [INF] Items Loaded!
+2021-10-03 00:37:23.751 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:37:23.938 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:37:23.939 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:37:23.945 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:37:23.946 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:37:23.947 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:37:23.947 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:37:23.948 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:37:23.948 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:37:23.949 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:37:23.949 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:37:23.951 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:37:23.965 -05:00 [INF] Server Started!
+2021-10-03 00:37:34.776 -05:00 [INF] Loading Rooms...
+2021-10-03 00:37:39.582 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:37:39.583 -05:00 [INF] Herky the Hawk
+2021-10-03 00:37:39.584 -05:00 [INF] Delmair the Wise
+2021-10-03 00:37:39.584 -05:00 [INF] Field Deer
+2021-10-03 00:37:39.585 -05:00 [INF] Field Deer
+2021-10-03 00:37:39.585 -05:00 [INF] Field Deer
+2021-10-03 00:37:39.586 -05:00 [INF] Field Deer
+2021-10-03 00:37:39.586 -05:00 [INF] Field Deer
+2021-10-03 00:37:39.587 -05:00 [INF] Field Deer
+2021-10-03 00:37:39.587 -05:00 [INF] Field Deer
+2021-10-03 00:37:39.588 -05:00 [INF] Field Deer
+2021-10-03 00:37:39.588 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:37:39.589 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:37:39.589 -05:00 [INF] Loading Items...
+2021-10-03 00:37:39.595 -05:00 [INF] Items Loaded!
+2021-10-03 00:37:39.595 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:37:39.778 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:37:39.779 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:37:39.785 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:37:39.786 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:37:39.787 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:37:39.788 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:37:39.788 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:37:39.789 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:37:39.790 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:37:39.790 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:37:39.791 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:37:39.804 -05:00 [INF] Server Started!
+2021-10-03 00:37:47.325 -05:00 [INF] Loading Rooms...
+2021-10-03 00:55:23.264 -05:00 [INF] Loading Rooms...
+2021-10-03 00:58:31.617 -05:00 [INF] Loading Rooms...
+2021-10-03 00:58:31.889 -05:00 [INF] Rooms Loaded!
+2021-10-03 00:58:31.891 -05:00 [INF] Herky the Hawk
+2021-10-03 00:58:31.891 -05:00 [INF] Delmair the Wise
+2021-10-03 00:58:31.892 -05:00 [INF] Field Deer
+2021-10-03 00:58:31.892 -05:00 [INF] Field Deer
+2021-10-03 00:58:31.893 -05:00 [INF] Field Deer
+2021-10-03 00:58:31.893 -05:00 [INF] Field Deer
+2021-10-03 00:58:31.894 -05:00 [INF] Field Deer
+2021-10-03 00:58:31.894 -05:00 [INF] Field Deer
+2021-10-03 00:58:31.895 -05:00 [INF] Field Deer
+2021-10-03 00:58:31.896 -05:00 [INF] Field Deer
+2021-10-03 00:58:31.896 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:58:31.897 -05:00 [INF] Northshire Town Guard
+2021-10-03 00:58:31.898 -05:00 [INF] Loading Items...
+2021-10-03 00:58:31.903 -05:00 [INF] Items Loaded!
+2021-10-03 00:58:31.904 -05:00 [INF] Initializing Script Globals...
+2021-10-03 00:58:32.114 -05:00 [INF] Script Globals Initialized!
+2021-10-03 00:58:32.115 -05:00 [INF] Loading Global Scripts...
+2021-10-03 00:58:32.121 -05:00 [INF] Loading Command Scripts...
+2021-10-03 00:58:32.122 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 00:58:32.123 -05:00 [INF] Loading Script Handler...
+2021-10-03 00:58:32.124 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 00:58:32.125 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 00:58:32.125 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 00:58:32.126 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 00:58:32.126 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 00:58:32.127 -05:00 [INF] Scripts Loaded!
+2021-10-03 00:58:32.141 -05:00 [INF] Server Started!
+2021-10-03 09:44:30.968 -05:00 [INF] Loading Rooms...
+2021-10-03 09:44:31.250 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:44:31.251 -05:00 [INF] Herky the Hawk
+2021-10-03 09:44:31.251 -05:00 [INF] Field Deer
+2021-10-03 09:44:31.252 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:44:31.253 -05:00 [INF] Loading Items...
+2021-10-03 09:44:31.258 -05:00 [INF] Items Loaded!
+2021-10-03 09:44:31.259 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:44:31.959 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:44:31.961 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:44:31.967 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:44:31.968 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:44:31.969 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:44:31.970 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:44:31.970 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:44:31.971 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:44:31.971 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:44:31.972 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:44:31.973 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:44:32.021 -05:00 [INF] Server Started!
+2021-10-03 09:44:56.151 -05:00 [INF] Loading Rooms...
+2021-10-03 09:44:56.396 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:44:56.398 -05:00 [INF] Herky the Hawk
+2021-10-03 09:44:56.398 -05:00 [INF] Delmair the Wise
+2021-10-03 09:44:56.399 -05:00 [INF] Field Deer
+2021-10-03 09:44:56.399 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:44:56.400 -05:00 [INF] Loading Items...
+2021-10-03 09:44:56.406 -05:00 [INF] Items Loaded!
+2021-10-03 09:44:56.407 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:44:56.591 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:44:56.592 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:44:56.598 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:44:56.599 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:44:56.600 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:44:56.601 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:44:56.601 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:44:56.602 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:44:56.602 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:44:56.603 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:44:56.603 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:44:56.615 -05:00 [INF] Server Started!
+2021-10-03 09:45:17.008 -05:00 [INF] a45d07f2-8f76-4cca-8a6d-bcd9515391b6 has connected.
+2021-10-03 09:46:16.438 -05:00 [INF] Loading Rooms...
+2021-10-03 09:46:16.645 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:46:16.646 -05:00 [INF] Purgatory
+2021-10-03 09:46:16.647 -05:00 [INF] Northshire Town Square
+2021-10-03 09:46:16.648 -05:00 [INF] Delmair the Wise
+2021-10-03 09:46:16.648 -05:00 [INF] Herky the Hawk
+2021-10-03 09:46:16.649 -05:00 [INF] Northshire Main Street
+2021-10-03 09:46:16.649 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:46:16.650 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:46:16.650 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:46:16.651 -05:00 [INF] Field Deer
+2021-10-03 09:46:16.651 -05:00 [INF] Loading Items...
+2021-10-03 09:46:16.657 -05:00 [INF] Items Loaded!
+2021-10-03 09:46:16.657 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:46:16.844 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:46:16.845 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:46:16.851 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:46:16.853 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:46:16.853 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:46:16.855 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:46:16.856 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:46:16.856 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:46:16.857 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:46:16.857 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:46:16.858 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:46:16.872 -05:00 [INF] Server Started!
+2021-10-03 09:46:41.281 -05:00 [INF] 740362e2-b6a2-4d8d-8ce1-185e14503743 has connected.
+2021-10-03 09:47:50.620 -05:00 [INF] Loading Rooms...
+2021-10-03 09:47:50.839 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:47:50.841 -05:00 [INF] Purgatory
+2021-10-03 09:47:50.842 -05:00 [INF] Northshire Town Square
+2021-10-03 09:47:50.843 -05:00 [INF] Herky the Hawk
+2021-10-03 09:47:50.843 -05:00 [INF] Delmair the Wise
+2021-10-03 09:47:50.844 -05:00 [INF] Northshire Market Street
+2021-10-03 09:47:50.844 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:47:50.845 -05:00 [INF] Field Deer
+2021-10-03 09:47:50.845 -05:00 [INF] Field Deer
+2021-10-03 09:47:50.846 -05:00 [INF] Field Deer
+2021-10-03 09:47:50.846 -05:00 [INF] Field Deer
+2021-10-03 09:47:50.847 -05:00 [INF] Field Deer
+2021-10-03 09:47:50.847 -05:00 [INF] Field Deer
+2021-10-03 09:47:50.848 -05:00 [INF] Field Deer
+2021-10-03 09:47:50.848 -05:00 [INF] Field Deer
+2021-10-03 09:47:50.849 -05:00 [INF] Northshire Main Street
+2021-10-03 09:47:50.849 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:47:50.850 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:47:50.851 -05:00 [INF] Northshire Main Street
+2021-10-03 09:47:50.853 -05:00 [INF] Loading Items...
+2021-10-03 09:47:50.858 -05:00 [INF] Items Loaded!
+2021-10-03 09:47:50.859 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:47:51.048 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:47:51.049 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:47:51.055 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:47:51.056 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:47:51.057 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:47:51.058 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:47:51.059 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:47:51.060 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:47:51.060 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:47:51.061 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:47:51.062 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:47:51.074 -05:00 [INF] Server Started!
+2021-10-03 09:48:01.719 -05:00 [INF] 9159fc2c-3326-417e-bfb8-34d878a1248b has connected.
+2021-10-03 09:48:07.604 -05:00 [INF] 9159fc2c-3326-417e-bfb8-34d878a1248b has disconnected.
+2021-10-03 09:50:03.101 -05:00 [INF] Loading Rooms...
+2021-10-03 09:50:03.367 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:50:03.368 -05:00 [INF] Purgatory
+2021-10-03 09:50:03.369 -05:00 [INF] Northshire Town Square
+2021-10-03 09:50:03.370 -05:00 [INF] Delmair the Wise
+2021-10-03 09:50:03.370 -05:00 [INF] Herky the Hawk
+2021-10-03 09:50:03.371 -05:00 [INF] Northshire Main Street
+2021-10-03 09:50:03.372 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:50:03.372 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:50:03.373 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:50:03.373 -05:00 [INF] Field Deer
+2021-10-03 09:50:03.374 -05:00 [INF] Loading Items...
+2021-10-03 09:50:03.380 -05:00 [INF] Items Loaded!
+2021-10-03 09:50:03.381 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:50:03.595 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:50:03.596 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:50:03.604 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:50:03.606 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:50:03.607 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:50:03.608 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:50:03.609 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:50:03.609 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:50:03.610 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:50:03.610 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:50:03.611 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:50:03.623 -05:00 [INF] Server Started!
+2021-10-03 09:50:39.117 -05:00 [INF] Loading Rooms...
+2021-10-03 09:50:39.360 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:50:39.361 -05:00 [INF] Purgatory
+2021-10-03 09:50:39.362 -05:00 [INF] Northshire Town Square
+2021-10-03 09:50:39.367 -05:00 [INF] Herky the Hawk
+2021-10-03 09:50:39.368 -05:00 [INF] Delmair the Wise
+2021-10-03 09:50:39.368 -05:00 [INF] Northshire Market Street
+2021-10-03 09:50:39.369 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:50:39.370 -05:00 [INF] Field Deer
+2021-10-03 09:50:39.371 -05:00 [INF] Field Deer
+2021-10-03 09:50:39.371 -05:00 [INF] Field Deer
+2021-10-03 09:50:39.372 -05:00 [INF] Field Deer
+2021-10-03 09:50:39.372 -05:00 [INF] Field Deer
+2021-10-03 09:50:39.373 -05:00 [INF] Field Deer
+2021-10-03 09:50:39.376 -05:00 [INF] Field Deer
+2021-10-03 09:50:39.376 -05:00 [INF] Field Deer
+2021-10-03 09:50:39.377 -05:00 [INF] Northshire Main Street
+2021-10-03 09:50:39.378 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:50:39.378 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:50:39.379 -05:00 [INF] Northshire Main Street
+2021-10-03 09:50:39.380 -05:00 [INF] Loading Items...
+2021-10-03 09:50:39.385 -05:00 [INF] Items Loaded!
+2021-10-03 09:50:39.386 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:50:39.584 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:50:39.585 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:50:39.591 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:50:39.592 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:50:39.593 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:50:39.593 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:50:39.594 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:50:39.595 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:50:39.596 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:50:39.597 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:50:39.598 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:50:39.610 -05:00 [INF] Server Started!
+2021-10-03 09:52:10.024 -05:00 [INF] Loading Rooms...
+2021-10-03 09:52:10.279 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:52:10.280 -05:00 [INF] Purgatory
+2021-10-03 09:52:10.281 -05:00 [INF] Northshire Town Square
+2021-10-03 09:52:10.281 -05:00 [INF] Delmair the Wise
+2021-10-03 09:52:10.282 -05:00 [INF] Herky the Hawk
+2021-10-03 09:52:10.283 -05:00 [INF] Northshire Main Street
+2021-10-03 09:52:10.283 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:52:10.284 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:52:10.284 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:52:10.285 -05:00 [INF] Field Deer
+2021-10-03 09:52:10.286 -05:00 [INF] Loading Items...
+2021-10-03 09:52:10.291 -05:00 [INF] Items Loaded!
+2021-10-03 09:52:10.292 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:52:10.516 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:52:10.517 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:52:10.523 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:52:10.524 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:52:10.525 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:52:10.526 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:52:10.526 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:52:10.527 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:52:10.528 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:52:10.529 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:52:10.529 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:52:10.543 -05:00 [INF] Server Started!
+2021-10-03 09:52:23.854 -05:00 [INF] b7af6e00-c0dc-49bb-b07a-38d618b1e323 has connected.
+2021-10-03 09:54:23.479 -05:00 [INF] Loading Rooms...
+2021-10-03 09:54:23.701 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:54:23.702 -05:00 [INF] Purgatory
+2021-10-03 09:54:23.703 -05:00 [INF] Northshire Town Square
+2021-10-03 09:54:23.704 -05:00 [INF] Delmair the Wise
+2021-10-03 09:54:23.704 -05:00 [INF] Herky the Hawk
+2021-10-03 09:54:23.705 -05:00 [INF] Northshire Main Street
+2021-10-03 09:54:23.706 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:54:23.707 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:54:23.707 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:54:23.708 -05:00 [INF] Field Deer
+2021-10-03 09:54:23.709 -05:00 [INF] Loading Items...
+2021-10-03 09:54:23.714 -05:00 [INF] Items Loaded!
+2021-10-03 09:54:23.715 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:54:23.910 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:54:23.911 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:54:23.916 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:54:23.917 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:54:23.918 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:54:23.918 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:54:23.919 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:54:23.920 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:54:23.921 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:54:23.922 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:54:23.922 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:54:23.934 -05:00 [INF] Server Started!
+2021-10-03 09:54:34.764 -05:00 [INF] 48d9e838-bf98-48aa-89e7-7fd86d312852 has connected.
+2021-10-03 09:56:16.505 -05:00 [INF] Loading Rooms...
+2021-10-03 09:56:16.747 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:56:16.749 -05:00 [INF] Purgatory
+2021-10-03 09:56:16.750 -05:00 [INF] -1
+2021-10-03 09:56:16.751 -05:00 [INF] -1
+2021-10-03 09:56:16.752 -05:00 [INF] -1
+2021-10-03 09:56:16.752 -05:00 [INF] -1
+2021-10-03 09:56:16.753 -05:00 [INF] -1
+2021-10-03 09:56:16.754 -05:00 [INF] -1
+2021-10-03 09:56:16.754 -05:00 [INF] Northshire Town Square
+2021-10-03 09:56:16.755 -05:00 [INF] 2
+2021-10-03 09:56:16.756 -05:00 [INF] 4
+2021-10-03 09:56:16.757 -05:00 [INF] 3
+2021-10-03 09:56:16.757 -05:00 [INF] 5
+2021-10-03 09:56:16.758 -05:00 [INF] -1
+2021-10-03 09:56:16.758 -05:00 [INF] -1
+2021-10-03 09:56:16.759 -05:00 [INF] Delmair the Wise
+2021-10-03 09:56:16.760 -05:00 [INF] Herky the Hawk
+2021-10-03 09:56:16.760 -05:00 [INF] Northshire Main Street
+2021-10-03 09:56:16.761 -05:00 [INF] -1
+2021-10-03 09:56:16.763 -05:00 [INF] -1
+2021-10-03 09:56:16.764 -05:00 [INF] -1
+2021-10-03 09:56:16.765 -05:00 [INF] 1
+2021-10-03 09:56:16.765 -05:00 [INF] -1
+2021-10-03 09:56:16.766 -05:00 [INF] -1
+2021-10-03 09:56:16.767 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:56:16.767 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:56:16.768 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:56:16.769 -05:00 [INF] 1
+2021-10-03 09:56:16.769 -05:00 [INF] -1
+2021-10-03 09:56:16.771 -05:00 [INF] -1
+2021-10-03 09:56:16.772 -05:00 [INF] -1
+2021-10-03 09:56:16.772 -05:00 [INF] -1
+2021-10-03 09:56:16.773 -05:00 [INF] -1
+2021-10-03 09:56:16.774 -05:00 [INF] Field Deer
+2021-10-03 09:56:16.775 -05:00 [INF] Loading Items...
+2021-10-03 09:56:16.781 -05:00 [INF] Items Loaded!
+2021-10-03 09:56:16.782 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:56:16.965 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:56:16.966 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:56:16.973 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:56:16.974 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:56:16.976 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:56:16.977 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:56:16.977 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:56:16.979 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:56:16.980 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:56:16.981 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:56:16.982 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:56:16.994 -05:00 [INF] Server Started!
+2021-10-03 09:57:43.748 -05:00 [INF] Loading Rooms...
+2021-10-03 09:57:44.022 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:57:44.023 -05:00 [INF] Purgatory
+2021-10-03 09:57:44.024 -05:00 [INF] 0
+2021-10-03 09:57:44.025 -05:00 [INF] Northshire Town Square
+2021-10-03 09:57:44.026 -05:00 [INF] 1
+2021-10-03 09:57:44.027 -05:00 [INF] Delmair the Wise
+2021-10-03 09:57:44.027 -05:00 [INF] Herky the Hawk
+2021-10-03 09:57:44.028 -05:00 [INF] Northshire Main Street
+2021-10-03 09:57:44.029 -05:00 [INF] 4
+2021-10-03 09:57:44.029 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:57:44.030 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:57:44.030 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:57:44.031 -05:00 [INF] 3
+2021-10-03 09:57:44.031 -05:00 [INF] Field Deer
+2021-10-03 09:57:44.032 -05:00 [INF] Loading Items...
+2021-10-03 09:57:44.038 -05:00 [INF] Items Loaded!
+2021-10-03 09:57:44.039 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:57:44.224 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:57:44.225 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:57:44.231 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:57:44.232 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:57:44.233 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:57:44.233 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:57:44.234 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:57:44.234 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:57:44.235 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:57:44.235 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:57:44.236 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:57:44.249 -05:00 [INF] Server Started!
+2021-10-03 09:58:49.958 -05:00 [INF] Loading Rooms...
+2021-10-03 09:58:50.170 -05:00 [INF] Rooms Loaded!
+2021-10-03 09:58:50.171 -05:00 [INF] Purgatory
+2021-10-03 09:58:50.172 -05:00 [INF] 0
+2021-10-03 09:58:50.173 -05:00 [INF] Northshire Town Square
+2021-10-03 09:58:50.174 -05:00 [INF] 1
+2021-10-03 09:58:50.175 -05:00 [INF] Herky the Hawk
+2021-10-03 09:58:50.175 -05:00 [INF] Northshire Market Street
+2021-10-03 09:58:50.176 -05:00 [INF] 2
+2021-10-03 09:58:50.176 -05:00 [INF] Northshire Guild Street
+2021-10-03 09:58:50.177 -05:00 [INF] 3
+2021-10-03 09:58:50.177 -05:00 [INF] Field Deer
+2021-10-03 09:58:50.178 -05:00 [INF] Northshire Main Street
+2021-10-03 09:58:50.178 -05:00 [INF] 4
+2021-10-03 09:58:50.179 -05:00 [INF] Northshire Town Guard
+2021-10-03 09:58:50.179 -05:00 [INF] Northshire Main Street
+2021-10-03 09:58:50.180 -05:00 [INF] 5
+2021-10-03 09:58:50.180 -05:00 [INF] Loading Items...
+2021-10-03 09:58:50.186 -05:00 [INF] Items Loaded!
+2021-10-03 09:58:50.187 -05:00 [INF] Initializing Script Globals...
+2021-10-03 09:58:50.378 -05:00 [INF] Script Globals Initialized!
+2021-10-03 09:58:50.379 -05:00 [INF] Loading Global Scripts...
+2021-10-03 09:58:50.385 -05:00 [INF] Loading Command Scripts...
+2021-10-03 09:58:50.386 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 09:58:50.387 -05:00 [INF] Loading Script Handler...
+2021-10-03 09:58:50.387 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 09:58:50.388 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 09:58:50.388 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 09:58:50.389 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 09:58:50.390 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 09:58:50.390 -05:00 [INF] Scripts Loaded!
+2021-10-03 09:58:50.403 -05:00 [INF] Server Started!
+2021-10-03 09:59:07.202 -05:00 [INF] a4aecf07-99a6-4757-b3fa-dbcd4b98914b has connected.
+2021-10-03 09:59:47.574 -05:00 [INF] a4aecf07-99a6-4757-b3fa-dbcd4b98914b has disconnected.
+2021-10-03 10:00:16.453 -05:00 [INF] Loading Rooms...
+2021-10-03 10:00:16.718 -05:00 [INF] Rooms Loaded!
+2021-10-03 10:00:16.726 -05:00 [INF] Purgatory
+2021-10-03 10:00:16.727 -05:00 [INF] 0
+2021-10-03 10:00:16.728 -05:00 [INF] Northshire Town Square
+2021-10-03 10:00:16.729 -05:00 [INF] 1
+2021-10-03 10:00:16.730 -05:00 [INF] Delmair the Wise
+2021-10-03 10:00:16.730 -05:00 [INF] Herky the Hawk
+2021-10-03 10:00:16.731 -05:00 [INF] Northshire Main Street
+2021-10-03 10:00:16.731 -05:00 [INF] 4
+2021-10-03 10:00:16.732 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:00:16.733 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:00:16.734 -05:00 [INF] Northshire Guild Street
+2021-10-03 10:00:16.734 -05:00 [INF] 3
+2021-10-03 10:00:16.735 -05:00 [INF] Field Deer
+2021-10-03 10:00:16.736 -05:00 [INF] Loading Items...
+2021-10-03 10:00:16.741 -05:00 [INF] Items Loaded!
+2021-10-03 10:00:16.742 -05:00 [INF] Initializing Script Globals...
+2021-10-03 10:00:16.920 -05:00 [INF] Script Globals Initialized!
+2021-10-03 10:00:16.921 -05:00 [INF] Loading Global Scripts...
+2021-10-03 10:00:16.928 -05:00 [INF] Loading Command Scripts...
+2021-10-03 10:00:16.929 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 10:00:16.930 -05:00 [INF] Loading Script Handler...
+2021-10-03 10:00:16.930 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 10:00:16.931 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 10:00:16.931 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 10:00:16.932 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 10:00:16.933 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 10:00:16.933 -05:00 [INF] Scripts Loaded!
+2021-10-03 10:00:16.945 -05:00 [INF] Server Started!
+2021-10-03 10:00:45.330 -05:00 [INF] Loading Rooms...
+2021-10-03 10:00:45.602 -05:00 [INF] Rooms Loaded!
+2021-10-03 10:00:45.603 -05:00 [INF] Purgatory
+2021-10-03 10:00:45.604 -05:00 [INF] 0
+2021-10-03 10:00:45.604 -05:00 [INF] Northshire Town Square
+2021-10-03 10:00:45.605 -05:00 [INF] 1
+2021-10-03 10:00:45.606 -05:00 [INF] Herky the Hawk
+2021-10-03 10:00:45.607 -05:00 [INF] Northshire Market Street
+2021-10-03 10:00:45.607 -05:00 [INF] 2
+2021-10-03 10:00:45.608 -05:00 [INF] Northshire Guild Street
+2021-10-03 10:00:45.608 -05:00 [INF] 3
+2021-10-03 10:00:45.609 -05:00 [INF] Field Deer
+2021-10-03 10:00:45.609 -05:00 [INF] Northshire Main Street
+2021-10-03 10:00:45.610 -05:00 [INF] 4
+2021-10-03 10:00:45.610 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:00:45.611 -05:00 [INF] Northshire Main Street
+2021-10-03 10:00:45.612 -05:00 [INF] 5
+2021-10-03 10:00:45.612 -05:00 [INF] Loading Items...
+2021-10-03 10:00:45.618 -05:00 [INF] Items Loaded!
+2021-10-03 10:00:45.619 -05:00 [INF] Initializing Script Globals...
+2021-10-03 10:00:45.871 -05:00 [INF] Script Globals Initialized!
+2021-10-03 10:00:45.872 -05:00 [INF] Loading Global Scripts...
+2021-10-03 10:00:45.879 -05:00 [INF] Loading Command Scripts...
+2021-10-03 10:00:45.880 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 10:00:45.882 -05:00 [INF] Loading Script Handler...
+2021-10-03 10:00:45.883 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 10:00:45.883 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 10:00:45.884 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 10:00:45.884 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 10:00:45.885 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 10:00:45.886 -05:00 [INF] Scripts Loaded!
+2021-10-03 10:00:45.898 -05:00 [INF] Server Started!
+2021-10-03 10:01:08.602 -05:00 [INF] Loading Rooms...
+2021-10-03 10:01:08.877 -05:00 [INF] Rooms Loaded!
+2021-10-03 10:01:08.878 -05:00 [INF] Purgatory
+2021-10-03 10:01:08.879 -05:00 [INF] 0
+2021-10-03 10:01:08.880 -05:00 [INF] Northshire Town Square
+2021-10-03 10:01:08.881 -05:00 [INF] 1
+2021-10-03 10:01:08.881 -05:00 [INF] Herky the Hawk
+2021-10-03 10:01:08.882 -05:00 [INF] Delmair the Wise
+2021-10-03 10:01:08.883 -05:00 [INF] Northshire Market Street
+2021-10-03 10:01:08.883 -05:00 [INF] 2
+2021-10-03 10:01:08.884 -05:00 [INF] Northshire Guild Street
+2021-10-03 10:01:08.884 -05:00 [INF] 3
+2021-10-03 10:01:08.885 -05:00 [INF] Field Deer
+2021-10-03 10:01:08.886 -05:00 [INF] Field Deer
+2021-10-03 10:01:08.886 -05:00 [INF] Field Deer
+2021-10-03 10:01:08.887 -05:00 [INF] Field Deer
+2021-10-03 10:01:08.888 -05:00 [INF] Field Deer
+2021-10-03 10:01:08.891 -05:00 [INF] Field Deer
+2021-10-03 10:01:08.891 -05:00 [INF] Field Deer
+2021-10-03 10:01:08.892 -05:00 [INF] Field Deer
+2021-10-03 10:01:08.893 -05:00 [INF] Northshire Main Street
+2021-10-03 10:01:08.894 -05:00 [INF] 4
+2021-10-03 10:01:08.894 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:01:08.895 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:01:08.895 -05:00 [INF] Northshire Main Street
+2021-10-03 10:01:08.896 -05:00 [INF] 5
+2021-10-03 10:01:08.896 -05:00 [INF] Loading Items...
+2021-10-03 10:01:08.910 -05:00 [INF] Items Loaded!
+2021-10-03 10:01:08.911 -05:00 [INF] Initializing Script Globals...
+2021-10-03 10:01:09.129 -05:00 [INF] Script Globals Initialized!
+2021-10-03 10:01:09.130 -05:00 [INF] Loading Global Scripts...
+2021-10-03 10:01:09.141 -05:00 [INF] Loading Command Scripts...
+2021-10-03 10:01:09.142 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 10:01:09.144 -05:00 [INF] Loading Script Handler...
+2021-10-03 10:01:09.145 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 10:01:09.146 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 10:01:09.148 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 10:01:09.149 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 10:01:09.150 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 10:01:09.152 -05:00 [INF] Scripts Loaded!
+2021-10-03 10:01:09.180 -05:00 [INF] Server Started!
+2021-10-03 10:26:30.923 -05:00 [INF] Loading Rooms...
+2021-10-03 10:26:31.199 -05:00 [INF] Rooms Loaded!
+2021-10-03 10:26:31.200 -05:00 [INF] Purgatory
+2021-10-03 10:26:31.207 -05:00 [INF] 0
+2021-10-03 10:26:31.208 -05:00 [INF] Northshire Town Square
+2021-10-03 10:26:31.209 -05:00 [INF] 1
+2021-10-03 10:26:31.210 -05:00 [INF] Herky the Hawk
+2021-10-03 10:26:31.210 -05:00 [INF] Delmair the Wise
+2021-10-03 10:26:31.211 -05:00 [INF] Northshire Market Street
+2021-10-03 10:26:31.212 -05:00 [INF] 2
+2021-10-03 10:26:31.213 -05:00 [INF] Northshire Guild Street
+2021-10-03 10:26:31.215 -05:00 [INF] 3
+2021-10-03 10:26:31.215 -05:00 [INF] Field Deer
+2021-10-03 10:26:31.216 -05:00 [INF] Field Deer
+2021-10-03 10:26:31.217 -05:00 [INF] Field Deer
+2021-10-03 10:26:31.217 -05:00 [INF] Field Deer
+2021-10-03 10:26:31.218 -05:00 [INF] Field Deer
+2021-10-03 10:26:31.219 -05:00 [INF] Field Deer
+2021-10-03 10:26:31.220 -05:00 [INF] Field Deer
+2021-10-03 10:26:31.221 -05:00 [INF] Field Deer
+2021-10-03 10:26:31.221 -05:00 [INF] Northshire Main Street
+2021-10-03 10:26:31.222 -05:00 [INF] 4
+2021-10-03 10:26:31.222 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:26:31.223 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:26:31.224 -05:00 [INF] Northshire Main Street
+2021-10-03 10:26:31.224 -05:00 [INF] 5
+2021-10-03 10:26:31.225 -05:00 [INF] Loading Items...
+2021-10-03 10:26:31.232 -05:00 [INF] Items Loaded!
+2021-10-03 10:26:31.232 -05:00 [INF] Initializing Script Globals...
+2021-10-03 10:26:31.430 -05:00 [INF] Script Globals Initialized!
+2021-10-03 10:26:31.431 -05:00 [INF] Loading Global Scripts...
+2021-10-03 10:26:31.437 -05:00 [INF] Loading Command Scripts...
+2021-10-03 10:26:31.438 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 10:26:31.439 -05:00 [INF] Loading Script Handler...
+2021-10-03 10:26:31.440 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 10:26:31.441 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 10:26:31.441 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 10:26:31.442 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 10:26:31.443 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 10:26:31.444 -05:00 [INF] Scripts Loaded!
+2021-10-03 10:26:31.462 -05:00 [INF] Server Started!
+2021-10-03 10:26:40.055 -05:00 [INF] 0fd3e617-45e5-4169-82a1-a9bbbe170dda has connected.
+2021-10-03 10:27:03.442 -05:00 [INF] fe037ce9-5717-4525-8f5f-927f83abd9aa has connected.
+2021-10-03 10:27:50.295 -05:00 [INF] fe037ce9-5717-4525-8f5f-927f83abd9aa has disconnected.
+2021-10-03 10:31:23.218 -05:00 [INF] Loading Rooms...
+2021-10-03 10:31:23.447 -05:00 [INF] Rooms Loaded!
+2021-10-03 10:31:23.447 -05:00 [INF] Purgatory
+2021-10-03 10:31:23.448 -05:00 [INF] 0
+2021-10-03 10:31:23.449 -05:00 [INF] Northshire Town Square
+2021-10-03 10:31:23.450 -05:00 [INF] 1
+2021-10-03 10:31:23.451 -05:00 [INF] Herky the Hawk
+2021-10-03 10:31:23.451 -05:00 [INF] Delmair the Wise
+2021-10-03 10:31:23.452 -05:00 [INF] Northshire Market Street
+2021-10-03 10:31:23.453 -05:00 [INF] 2
+2021-10-03 10:31:23.454 -05:00 [INF] Northshire Guild Street
+2021-10-03 10:31:23.455 -05:00 [INF] 3
+2021-10-03 10:31:23.456 -05:00 [INF] Field Deer
+2021-10-03 10:31:23.456 -05:00 [INF] Field Deer
+2021-10-03 10:31:23.457 -05:00 [INF] Field Deer
+2021-10-03 10:31:23.458 -05:00 [INF] Field Deer
+2021-10-03 10:31:23.458 -05:00 [INF] Field Deer
+2021-10-03 10:31:23.459 -05:00 [INF] Field Deer
+2021-10-03 10:31:23.459 -05:00 [INF] Field Deer
+2021-10-03 10:31:23.460 -05:00 [INF] Field Deer
+2021-10-03 10:31:23.460 -05:00 [INF] Northshire Main Street
+2021-10-03 10:31:23.461 -05:00 [INF] 4
+2021-10-03 10:31:23.462 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:31:23.462 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:31:23.463 -05:00 [INF] Northshire Main Street
+2021-10-03 10:31:23.463 -05:00 [INF] 5
+2021-10-03 10:31:23.464 -05:00 [INF] Loading Items...
+2021-10-03 10:31:23.470 -05:00 [INF] Items Loaded!
+2021-10-03 10:31:23.470 -05:00 [INF] Initializing Script Globals...
+2021-10-03 10:31:23.665 -05:00 [INF] Script Globals Initialized!
+2021-10-03 10:31:23.666 -05:00 [INF] Loading Global Scripts...
+2021-10-03 10:31:23.673 -05:00 [INF] Loading Command Scripts...
+2021-10-03 10:31:23.673 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 10:31:23.674 -05:00 [INF] Loading Script Handler...
+2021-10-03 10:31:23.675 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 10:31:23.676 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 10:31:23.677 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 10:31:23.678 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 10:31:23.679 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 10:31:23.679 -05:00 [INF] Scripts Loaded!
+2021-10-03 10:31:23.691 -05:00 [INF] Server Started!
+2021-10-03 10:31:34.490 -05:00 [INF] 2b4d4237-7961-4a1f-a327-e765788f62f0 has connected.
+2021-10-03 10:32:28.177 -05:00 [INF] 1a171da7-247b-4b2a-b49f-2f7d03220913 has connected.
+2021-10-03 10:33:13.652 -05:00 [INF] 1a171da7-247b-4b2a-b49f-2f7d03220913 has disconnected.
+2021-10-03 10:33:14.398 -05:00 [INF] 2b4d4237-7961-4a1f-a327-e765788f62f0 has disconnected.
+2021-10-03 10:35:48.413 -05:00 [INF] Loading Rooms...
+2021-10-03 10:35:48.639 -05:00 [INF] Rooms Loaded!
+2021-10-03 10:35:48.640 -05:00 [INF] Purgatory
+2021-10-03 10:35:48.641 -05:00 [INF] 0
+2021-10-03 10:35:48.642 -05:00 [INF] Northshire Town Square
+2021-10-03 10:35:48.642 -05:00 [INF] 1
+2021-10-03 10:35:48.643 -05:00 [INF] Herky the Hawk
+2021-10-03 10:35:48.644 -05:00 [INF] Delmair the Wise
+2021-10-03 10:35:48.644 -05:00 [INF] Northshire Market Street
+2021-10-03 10:35:48.645 -05:00 [INF] 2
+2021-10-03 10:35:48.645 -05:00 [INF] Northshire Guild Street
+2021-10-03 10:35:48.646 -05:00 [INF] 3
+2021-10-03 10:35:48.646 -05:00 [INF] Field Deer
+2021-10-03 10:35:48.647 -05:00 [INF] Field Deer
+2021-10-03 10:35:48.647 -05:00 [INF] Field Deer
+2021-10-03 10:35:48.649 -05:00 [INF] Field Deer
+2021-10-03 10:35:48.650 -05:00 [INF] Field Deer
+2021-10-03 10:35:48.651 -05:00 [INF] Field Deer
+2021-10-03 10:35:48.652 -05:00 [INF] Field Deer
+2021-10-03 10:35:48.653 -05:00 [INF] Field Deer
+2021-10-03 10:35:48.654 -05:00 [INF] Northshire Main Street
+2021-10-03 10:35:48.655 -05:00 [INF] 4
+2021-10-03 10:35:48.655 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:35:48.656 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:35:48.657 -05:00 [INF] Northshire Main Street
+2021-10-03 10:35:48.657 -05:00 [INF] 5
+2021-10-03 10:35:48.658 -05:00 [INF] Loading Items...
+2021-10-03 10:35:48.664 -05:00 [INF] Items Loaded!
+2021-10-03 10:35:48.666 -05:00 [INF] Initializing Script Globals...
+2021-10-03 10:35:48.854 -05:00 [INF] Script Globals Initialized!
+2021-10-03 10:35:48.855 -05:00 [INF] Loading Global Scripts...
+2021-10-03 10:35:48.862 -05:00 [INF] Loading Command Scripts...
+2021-10-03 10:35:48.863 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 10:35:48.866 -05:00 [INF] Loading Script Handler...
+2021-10-03 10:35:48.867 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 10:35:48.871 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 10:35:48.872 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 10:35:48.873 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 10:35:48.875 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 10:35:48.876 -05:00 [INF] Scripts Loaded!
+2021-10-03 10:35:48.889 -05:00 [INF] Server Started!
+2021-10-03 10:35:56.914 -05:00 [INF] 14d5cdf6-1063-419a-8b8e-ff349ecab5f5 has connected.
+2021-10-03 10:36:09.894 -05:00 [INF] 41f44602-33f2-46f8-9b5c-34ac5fdceecf has connected.
+2021-10-03 10:36:46.850 -05:00 [INF] 41f44602-33f2-46f8-9b5c-34ac5fdceecf has disconnected.
+2021-10-03 10:36:49.413 -05:00 [INF] 14d5cdf6-1063-419a-8b8e-ff349ecab5f5 has disconnected.
+2021-10-03 10:45:08.969 -05:00 [INF] Loading Rooms...
+2021-10-03 10:45:09.240 -05:00 [INF] Rooms Loaded!
+2021-10-03 10:45:09.241 -05:00 [INF] Purgatory
+2021-10-03 10:45:09.242 -05:00 [INF] 0
+2021-10-03 10:45:09.242 -05:00 [INF] Northshire Town Square
+2021-10-03 10:45:09.243 -05:00 [INF] 1
+2021-10-03 10:45:09.244 -05:00 [INF] Herky the Hawk
+2021-10-03 10:45:09.245 -05:00 [INF] Delmair the Wise
+2021-10-03 10:45:09.246 -05:00 [INF] Northshire Market Street
+2021-10-03 10:45:09.246 -05:00 [INF] 2
+2021-10-03 10:45:09.247 -05:00 [INF] Northshire Guild Street
+2021-10-03 10:45:09.248 -05:00 [INF] 3
+2021-10-03 10:45:09.248 -05:00 [INF] Field Deer
+2021-10-03 10:45:09.249 -05:00 [INF] Field Deer
+2021-10-03 10:45:09.249 -05:00 [INF] Field Deer
+2021-10-03 10:45:09.250 -05:00 [INF] Field Deer
+2021-10-03 10:45:09.250 -05:00 [INF] Field Deer
+2021-10-03 10:45:09.251 -05:00 [INF] Field Deer
+2021-10-03 10:45:09.252 -05:00 [INF] Field Deer
+2021-10-03 10:45:09.253 -05:00 [INF] Field Deer
+2021-10-03 10:45:09.253 -05:00 [INF] Northshire Main Street
+2021-10-03 10:45:09.254 -05:00 [INF] 4
+2021-10-03 10:45:09.255 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:45:09.255 -05:00 [INF] Northshire Town Guard
+2021-10-03 10:45:09.256 -05:00 [INF] Northshire Main Street
+2021-10-03 10:45:09.257 -05:00 [INF] 5
+2021-10-03 10:45:09.257 -05:00 [INF] Loading Items...
+2021-10-03 10:45:09.264 -05:00 [INF] Items Loaded!
+2021-10-03 10:45:09.265 -05:00 [INF] Initializing Script Globals...
+2021-10-03 10:45:09.456 -05:00 [INF] Script Globals Initialized!
+2021-10-03 10:45:09.456 -05:00 [INF] Loading Global Scripts...
+2021-10-03 10:45:09.462 -05:00 [INF] Loading Command Scripts...
+2021-10-03 10:45:09.464 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 10:45:09.465 -05:00 [INF] Loading Script Handler...
+2021-10-03 10:45:09.466 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 10:45:09.466 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 10:45:09.467 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 10:45:09.468 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 10:45:09.469 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 10:45:09.470 -05:00 [INF] Scripts Loaded!
+2021-10-03 10:45:09.482 -05:00 [INF] Server Started!
+2021-10-03 10:45:17.769 -05:00 [INF] cef52da9-89b1-4fe5-8b45-94a9de6130e4 has connected.
+2021-10-03 10:46:30.813 -05:00 [INF] cef52da9-89b1-4fe5-8b45-94a9de6130e4 has disconnected.
+2021-10-03 11:06:22.320 -05:00 [INF] Loading Rooms...
+2021-10-03 11:06:22.628 -05:00 [INF] Rooms Loaded!
+2021-10-03 11:06:22.629 -05:00 [INF] Purgatory
+2021-10-03 11:06:22.630 -05:00 [INF] 0
+2021-10-03 11:06:22.631 -05:00 [INF] Northshire Town Square
+2021-10-03 11:06:22.632 -05:00 [INF] 1
+2021-10-03 11:06:22.632 -05:00 [INF] Herky the Hawk
+2021-10-03 11:06:22.633 -05:00 [INF] Delmair the Wise
+2021-10-03 11:06:22.634 -05:00 [INF] Northshire Market Street
+2021-10-03 11:06:22.634 -05:00 [INF] 2
+2021-10-03 11:06:22.635 -05:00 [INF] Northshire Guild Street
+2021-10-03 11:06:22.636 -05:00 [INF] 3
+2021-10-03 11:06:22.637 -05:00 [INF] Field Deer
+2021-10-03 11:06:22.637 -05:00 [INF] Field Deer
+2021-10-03 11:06:22.639 -05:00 [INF] Field Deer
+2021-10-03 11:06:22.640 -05:00 [INF] Field Deer
+2021-10-03 11:06:22.641 -05:00 [INF] Field Deer
+2021-10-03 11:06:22.642 -05:00 [INF] Field Deer
+2021-10-03 11:06:22.642 -05:00 [INF] Field Deer
+2021-10-03 11:06:22.643 -05:00 [INF] Field Deer
+2021-10-03 11:06:22.644 -05:00 [INF] Northshire Main Street
+2021-10-03 11:06:22.645 -05:00 [INF] 4
+2021-10-03 11:06:22.645 -05:00 [INF] Northshire Town Guard
+2021-10-03 11:06:22.646 -05:00 [INF] Northshire Town Guard
+2021-10-03 11:06:22.647 -05:00 [INF] Northshire Main Street
+2021-10-03 11:06:22.647 -05:00 [INF] 5
+2021-10-03 11:06:22.648 -05:00 [INF] Loading Items...
+2021-10-03 11:06:22.654 -05:00 [INF] Items Loaded!
+2021-10-03 11:06:22.655 -05:00 [INF] Initializing Script Globals...
+2021-10-03 11:06:22.860 -05:00 [INF] Script Globals Initialized!
+2021-10-03 11:06:22.861 -05:00 [INF] Loading Global Scripts...
+2021-10-03 11:06:22.868 -05:00 [INF] Loading Command Scripts...
+2021-10-03 11:06:22.869 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 11:06:22.871 -05:00 [INF] Loading Script Handler...
+2021-10-03 11:06:22.872 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 11:06:22.874 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 11:06:22.875 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 11:06:22.876 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 11:06:22.877 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 11:06:22.878 -05:00 [INF] Scripts Loaded!
+2021-10-03 11:06:22.894 -05:00 [INF] Server Started!
+2021-10-03 11:38:41.804 -05:00 [INF] Loading Rooms...
+2021-10-03 11:42:28.454 -05:00 [INF] Loading Rooms...
+2021-10-03 11:44:17.046 -05:00 [INF] Loading Rooms...
+2021-10-03 11:44:20.452 -05:00 [INF] Rooms Loaded!
+2021-10-03 11:44:20.454 -05:00 [INF] Purgatory
+2021-10-03 11:44:20.455 -05:00 [INF] 0
+2021-10-03 11:44:20.455 -05:00 [INF] Northshire Town Square
+2021-10-03 11:44:20.456 -05:00 [INF] 1
+2021-10-03 11:44:20.457 -05:00 [INF] Herky the Hawk
+2021-10-03 11:44:20.457 -05:00 [INF] Delmair the Wise
+2021-10-03 11:44:20.458 -05:00 [INF] Northshire Market Street
+2021-10-03 11:44:20.459 -05:00 [INF] 2
+2021-10-03 11:44:20.459 -05:00 [INF] Northshire Guild Street
+2021-10-03 11:44:20.460 -05:00 [INF] 3
+2021-10-03 11:44:20.460 -05:00 [INF] Field Deer
+2021-10-03 11:44:20.461 -05:00 [INF] Northshire Main Street
+2021-10-03 11:44:20.462 -05:00 [INF] 4
+2021-10-03 11:44:20.462 -05:00 [INF] Northshire Town Guard
+2021-10-03 11:44:20.464 -05:00 [INF] Northshire Main Street
+2021-10-03 11:44:20.465 -05:00 [INF] 5
+2021-10-03 11:44:20.466 -05:00 [INF] Loading Items...
+2021-10-03 11:44:20.471 -05:00 [INF] Items Loaded!
+2021-10-03 11:44:20.472 -05:00 [INF] Initializing Script Globals...
+2021-10-03 11:44:20.677 -05:00 [INF] Script Globals Initialized!
+2021-10-03 11:44:20.678 -05:00 [INF] Loading Global Scripts...
+2021-10-03 11:44:20.684 -05:00 [INF] Loading Command Scripts...
+2021-10-03 11:44:20.685 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 11:44:20.686 -05:00 [INF] Loading Script Handler...
+2021-10-03 11:44:20.687 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 11:44:20.688 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 11:44:20.688 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 11:44:20.689 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 11:44:20.690 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 11:44:20.691 -05:00 [INF] Scripts Loaded!
+2021-10-03 11:44:20.706 -05:00 [INF] Server Started!
+2021-10-03 11:44:33.696 -05:00 [INF] f8dde398-029d-4514-a124-a8d7de21a8f7 has connected.
+2021-10-03 11:46:04.052 -05:00 [INF] 542dc1b7-f793-4a06-afff-fc582e12d243 has connected.
+2021-10-03 11:47:24.083 -05:00 [INF] f8dde398-029d-4514-a124-a8d7de21a8f7 has disconnected.
+2021-10-03 11:47:25.662 -05:00 [INF] 542dc1b7-f793-4a06-afff-fc582e12d243 has disconnected.
+2021-10-03 12:13:47.704 -05:00 [INF] Loading Rooms...
+2021-10-03 12:13:47.980 -05:00 [INF] Rooms Loaded!
+2021-10-03 12:13:47.981 -05:00 [INF] Loading Items...
+2021-10-03 12:13:47.988 -05:00 [INF] Items Loaded!
+2021-10-03 12:13:47.989 -05:00 [INF] Initializing Script Globals...
+2021-10-03 12:13:48.222 -05:00 [INF] Script Globals Initialized!
+2021-10-03 12:13:48.223 -05:00 [INF] Loading Global Scripts...
+2021-10-03 12:13:48.229 -05:00 [INF] Loading Command Scripts...
+2021-10-03 12:13:48.230 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 12:13:48.232 -05:00 [INF] Loading Script Handler...
+2021-10-03 12:13:48.233 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 12:13:48.234 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 12:13:48.235 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 12:13:48.235 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 12:13:48.236 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 12:13:48.237 -05:00 [INF] Scripts Loaded!
+2021-10-03 12:13:48.249 -05:00 [INF] Server Started!
+2021-10-03 12:13:57.824 -05:00 [INF] 8060242d-b5c3-43d9-9e9b-6ec262f28971 has connected.
+2021-10-03 12:14:08.675 -05:00 [INF] Loading Rooms...
+2021-10-03 12:14:08.945 -05:00 [INF] Rooms Loaded!
+2021-10-03 12:14:08.946 -05:00 [INF] Loading Items...
+2021-10-03 12:14:08.953 -05:00 [INF] Items Loaded!
+2021-10-03 12:14:08.954 -05:00 [INF] Initializing Script Globals...
+2021-10-03 12:14:09.146 -05:00 [INF] Script Globals Initialized!
+2021-10-03 12:14:09.147 -05:00 [INF] Loading Global Scripts...
+2021-10-03 12:14:09.153 -05:00 [INF] Loading Command Scripts...
+2021-10-03 12:14:09.154 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 12:14:09.155 -05:00 [INF] Loading Script Handler...
+2021-10-03 12:14:09.155 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 12:14:09.156 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 12:14:09.156 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 12:14:09.157 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 12:14:09.158 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 12:14:09.158 -05:00 [INF] Scripts Loaded!
+2021-10-03 12:14:09.170 -05:00 [INF] Server Started!
+2021-10-03 12:14:18.487 -05:00 [INF] f34562b9-0be8-48c5-961c-518312d1ddf9 has connected.
+2021-10-03 12:15:28.782 -05:00 [INF] Loading Rooms...
+2021-10-03 12:15:29.084 -05:00 [INF] Rooms Loaded!
+2021-10-03 12:15:29.085 -05:00 [INF] Loading Items...
+2021-10-03 12:15:29.092 -05:00 [INF] Items Loaded!
+2021-10-03 12:15:29.094 -05:00 [INF] Initializing Script Globals...
+2021-10-03 12:15:29.337 -05:00 [INF] Script Globals Initialized!
+2021-10-03 12:15:29.339 -05:00 [INF] Loading Global Scripts...
+2021-10-03 12:15:29.347 -05:00 [INF] Loading Command Scripts...
+2021-10-03 12:15:29.348 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 12:15:29.349 -05:00 [INF] Loading Script Handler...
+2021-10-03 12:15:29.350 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 12:15:29.351 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 12:15:29.352 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 12:15:29.352 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 12:15:29.353 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 12:15:29.354 -05:00 [INF] Scripts Loaded!
+2021-10-03 12:15:29.367 -05:00 [INF] Server Started!
+2021-10-03 12:15:39.433 -05:00 [INF] 4fe99e85-e055-45b3-8ac8-c1b8dc81ed99 has connected.
+2021-10-03 12:17:06.008 -05:00 [INF] Loading Rooms...
+2021-10-03 12:17:06.292 -05:00 [INF] Rooms Loaded!
+2021-10-03 12:17:06.293 -05:00 [INF] Loading Items...
+2021-10-03 12:17:06.307 -05:00 [INF] Items Loaded!
+2021-10-03 12:17:06.308 -05:00 [INF] Initializing Script Globals...
+2021-10-03 12:17:06.527 -05:00 [INF] Script Globals Initialized!
+2021-10-03 12:17:06.529 -05:00 [INF] Loading Global Scripts...
+2021-10-03 12:17:06.535 -05:00 [INF] Loading Command Scripts...
+2021-10-03 12:17:06.537 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 12:17:06.538 -05:00 [INF] Loading Script Handler...
+2021-10-03 12:17:06.538 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 12:17:06.539 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 12:17:06.540 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 12:17:06.540 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 12:17:06.541 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 12:17:06.542 -05:00 [INF] Scripts Loaded!
+2021-10-03 12:17:06.554 -05:00 [INF] Server Started!
+2021-10-03 12:17:20.393 -05:00 [INF] a34f6eea-da81-4a49-b357-424daec5a4ab has connected.
+2021-10-03 12:18:24.243 -05:00 [INF] a34f6eea-da81-4a49-b357-424daec5a4ab has disconnected.
+2021-10-03 12:27:46.660 -05:00 [INF] Loading Rooms...
+2021-10-03 12:27:47.110 -05:00 [INF] Rooms Loaded!
+2021-10-03 12:27:47.111 -05:00 [INF] Loading Items...
+2021-10-03 12:27:47.119 -05:00 [INF] Items Loaded!
+2021-10-03 12:27:47.120 -05:00 [INF] Initializing Script Globals...
+2021-10-03 12:27:47.400 -05:00 [INF] Script Globals Initialized!
+2021-10-03 12:27:47.401 -05:00 [INF] Loading Global Scripts...
+2021-10-03 12:27:47.408 -05:00 [INF] Loading Command Scripts...
+2021-10-03 12:27:47.409 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 12:27:47.410 -05:00 [INF] Loading Script Handler...
+2021-10-03 12:27:47.410 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 12:27:47.411 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 12:27:47.412 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 12:27:47.412 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 12:27:47.413 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 12:27:47.414 -05:00 [INF] Scripts Loaded!
+2021-10-03 12:27:47.427 -05:00 [INF] Server Started!
+2021-10-03 12:27:57.637 -05:00 [INF] 89e5d425-505b-44b9-82c3-e7cc122703bc has connected.
+2021-10-03 12:31:46.516 -05:00 [INF] 89e5d425-505b-44b9-82c3-e7cc122703bc has disconnected.
+2021-10-03 12:33:28.885 -05:00 [INF] Loading Rooms...
+2021-10-03 12:33:29.274 -05:00 [INF] Rooms Loaded!
+2021-10-03 12:33:29.275 -05:00 [INF] Loading Items...
+2021-10-03 12:33:29.282 -05:00 [INF] Items Loaded!
+2021-10-03 12:33:29.282 -05:00 [INF] Initializing Script Globals...
+2021-10-03 12:33:29.467 -05:00 [INF] Script Globals Initialized!
+2021-10-03 12:33:29.468 -05:00 [INF] Loading Global Scripts...
+2021-10-03 12:33:29.475 -05:00 [INF] Loading Command Scripts...
+2021-10-03 12:33:29.476 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 12:33:29.476 -05:00 [INF] Loading Script Handler...
+2021-10-03 12:33:29.477 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 12:33:29.477 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 12:33:29.478 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 12:33:29.479 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 12:33:29.479 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 12:33:29.480 -05:00 [INF] Scripts Loaded!
+2021-10-03 12:33:29.492 -05:00 [INF] Server Started!
+2021-10-03 12:33:41.701 -05:00 [INF] 88de07dd-0f3b-4245-b7c6-5167f145a31f has connected.
+2021-10-03 12:33:50.481 -05:00 [INF] ff396435-d488-4fe4-90e2-e2cf23c42d88 has connected.
+2021-10-03 12:33:55.524 -05:00 [INF] ff396435-d488-4fe4-90e2-e2cf23c42d88 has disconnected.
+2021-10-03 13:22:19.153 -05:00 [INF] Loading Rooms...
+2021-10-03 13:22:19.445 -05:00 [INF] Rooms Loaded!
+2021-10-03 13:22:19.446 -05:00 [INF] Loading Items...
+2021-10-03 13:22:19.453 -05:00 [INF] Items Loaded!
+2021-10-03 13:22:19.453 -05:00 [INF] Initializing Script Globals...
+2021-10-03 13:22:19.672 -05:00 [INF] Script Globals Initialized!
+2021-10-03 13:22:19.673 -05:00 [INF] Loading Global Scripts...
+2021-10-03 13:22:19.679 -05:00 [INF] Loading Command Scripts...
+2021-10-03 13:22:19.680 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 13:22:19.680 -05:00 [INF] Loading Script Handler...
+2021-10-03 13:22:19.681 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 13:22:19.681 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 13:22:19.684 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 13:22:19.684 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 13:22:19.686 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 13:22:19.686 -05:00 [INF] Scripts Loaded!
+2021-10-03 13:22:19.700 -05:00 [INF] Server Started!
+2021-10-03 13:22:37.683 -05:00 [INF] cd6d2b86-04ae-4fe2-acac-de80e7d7df79 has connected.
+2021-10-03 13:23:02.453 -05:00 [INF] cd6d2b86-04ae-4fe2-acac-de80e7d7df79 has disconnected.
+2021-10-03 13:23:23.718 -05:00 [INF] Loading Rooms...
+2021-10-03 13:23:24.008 -05:00 [INF] Rooms Loaded!
+2021-10-03 13:23:24.009 -05:00 [INF] Loading Items...
+2021-10-03 13:23:24.014 -05:00 [INF] Items Loaded!
+2021-10-03 13:23:24.015 -05:00 [INF] Initializing Script Globals...
+2021-10-03 13:23:24.266 -05:00 [INF] Script Globals Initialized!
+2021-10-03 13:23:24.267 -05:00 [INF] Loading Global Scripts...
+2021-10-03 13:23:24.273 -05:00 [INF] Loading Command Scripts...
+2021-10-03 13:23:24.275 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 13:23:24.276 -05:00 [INF] Loading Script Handler...
+2021-10-03 13:23:24.277 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 13:23:24.278 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 13:23:24.279 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 13:23:24.279 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 13:23:24.283 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 13:23:24.285 -05:00 [INF] Scripts Loaded!
+2021-10-03 13:23:24.308 -05:00 [INF] Server Started!
+2021-10-03 13:23:32.065 -05:00 [INF] a5806f96-9951-4119-a5a3-4a47eb5e88b8 has connected.
+2021-10-03 13:26:27.230 -05:00 [INF] Loading Rooms...
+2021-10-03 13:26:27.582 -05:00 [INF] Rooms Loaded!
+2021-10-03 13:26:27.583 -05:00 [INF] Loading Items...
+2021-10-03 13:26:27.590 -05:00 [INF] Items Loaded!
+2021-10-03 13:26:27.591 -05:00 [INF] Initializing Script Globals...
+2021-10-03 13:26:27.781 -05:00 [INF] Script Globals Initialized!
+2021-10-03 13:26:27.782 -05:00 [INF] Loading Global Scripts...
+2021-10-03 13:26:27.788 -05:00 [INF] Loading Command Scripts...
+2021-10-03 13:26:27.788 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 13:26:27.789 -05:00 [INF] Loading Script Handler...
+2021-10-03 13:26:27.790 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 13:26:27.790 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 13:26:27.791 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 13:26:27.792 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 13:26:27.793 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 13:26:27.793 -05:00 [INF] Scripts Loaded!
+2021-10-03 13:26:27.806 -05:00 [INF] Server Started!
+2021-10-03 13:26:36.702 -05:00 [INF] 2bc111b8-c25e-49a1-9401-010c5bde2bf3 has connected.
+2021-10-03 13:27:47.883 -05:00 [INF] Loading Rooms...
+2021-10-03 13:27:48.140 -05:00 [INF] Rooms Loaded!
+2021-10-03 13:27:48.141 -05:00 [INF] Loading Items...
+2021-10-03 13:27:48.148 -05:00 [INF] Items Loaded!
+2021-10-03 13:27:48.149 -05:00 [INF] Initializing Script Globals...
+2021-10-03 13:27:48.378 -05:00 [INF] Script Globals Initialized!
+2021-10-03 13:27:48.379 -05:00 [INF] Loading Global Scripts...
+2021-10-03 13:27:48.387 -05:00 [INF] Loading Command Scripts...
+2021-10-03 13:27:48.389 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 13:27:48.390 -05:00 [INF] Loading Script Handler...
+2021-10-03 13:27:48.391 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 13:27:48.391 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 13:27:48.392 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 13:27:48.393 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 13:27:48.394 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 13:27:48.395 -05:00 [INF] Scripts Loaded!
+2021-10-03 13:27:48.410 -05:00 [INF] Server Started!
+2021-10-03 13:27:59.779 -05:00 [INF] ea02ccc2-981c-4e2c-b63f-a0c680849880 has connected.
+2021-10-03 13:28:17.863 -05:00 [INF] ea02ccc2-981c-4e2c-b63f-a0c680849880 has disconnected.
+2021-10-03 13:28:37.240 -05:00 [INF] Loading Rooms...
+2021-10-03 13:28:37.534 -05:00 [INF] Rooms Loaded!
+2021-10-03 13:28:37.535 -05:00 [INF] Loading Items...
+2021-10-03 13:28:37.542 -05:00 [INF] Items Loaded!
+2021-10-03 13:28:37.543 -05:00 [INF] Initializing Script Globals...
+2021-10-03 13:28:37.729 -05:00 [INF] Script Globals Initialized!
+2021-10-03 13:28:37.730 -05:00 [INF] Loading Global Scripts...
+2021-10-03 13:28:37.737 -05:00 [INF] Loading Command Scripts...
+2021-10-03 13:28:37.738 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 13:28:37.739 -05:00 [INF] Loading Script Handler...
+2021-10-03 13:28:37.739 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 13:28:37.740 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 13:28:37.741 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 13:28:37.741 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 13:28:37.742 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 13:28:37.743 -05:00 [INF] Scripts Loaded!
+2021-10-03 13:28:37.755 -05:00 [INF] Server Started!
+2021-10-03 13:28:44.772 -05:00 [INF] 67ab6ea1-c8d3-444a-8ab5-5a8da0677304 has connected.
+2021-10-03 13:29:09.887 -05:00 [INF] 67ab6ea1-c8d3-444a-8ab5-5a8da0677304 has disconnected.
+2021-10-03 13:36:29.267 -05:00 [INF] Loading Rooms...
+2021-10-03 13:36:29.557 -05:00 [INF] Rooms Loaded!
+2021-10-03 13:36:29.558 -05:00 [INF] Loading Items...
+2021-10-03 13:36:29.568 -05:00 [INF] Items Loaded!
+2021-10-03 13:36:29.569 -05:00 [INF] Initializing Script Globals...
+2021-10-03 13:36:29.783 -05:00 [INF] Script Globals Initialized!
+2021-10-03 13:36:29.784 -05:00 [INF] Loading Global Scripts...
+2021-10-03 13:36:29.790 -05:00 [INF] Loading Command Scripts...
+2021-10-03 13:36:29.791 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 13:36:29.792 -05:00 [INF] Loading Script Handler...
+2021-10-03 13:36:29.794 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 13:36:29.794 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 13:36:29.795 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 13:36:29.796 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 13:36:29.796 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 13:36:29.797 -05:00 [INF] Scripts Loaded!
+2021-10-03 13:36:29.810 -05:00 [INF] Server Started!
+2021-10-03 13:36:42.338 -05:00 [INF] a30845eb-8041-447f-9dc6-61d756eb5d9b has connected.
+2021-10-03 13:36:50.761 -05:00 [INF] a30845eb-8041-447f-9dc6-61d756eb5d9b has disconnected.
+2021-10-03 13:42:15.555 -05:00 [INF] Loading Rooms...
+2021-10-03 13:42:15.945 -05:00 [INF] Rooms Loaded!
+2021-10-03 13:42:15.948 -05:00 [INF] Loading Items...
+2021-10-03 13:42:15.955 -05:00 [INF] Items Loaded!
+2021-10-03 13:42:15.956 -05:00 [INF] Initializing Script Globals...
+2021-10-03 13:42:16.157 -05:00 [INF] Script Globals Initialized!
+2021-10-03 13:42:16.158 -05:00 [INF] Loading Global Scripts...
+2021-10-03 13:42:16.165 -05:00 [INF] Loading Command Scripts...
+2021-10-03 13:42:16.166 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 13:42:16.167 -05:00 [INF] Loading Script Handler...
+2021-10-03 13:42:16.168 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 13:42:16.168 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 13:42:16.169 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 13:42:16.170 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 13:42:16.171 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 13:42:16.171 -05:00 [INF] Scripts Loaded!
+2021-10-03 13:42:16.186 -05:00 [INF] Server Started!
+2021-10-03 13:42:25.701 -05:00 [INF] 4dae5d7c-c46c-4d54-9777-f26057eb74cf has connected.
+2021-10-03 13:42:32.559 -05:00 [INF] 4dae5d7c-c46c-4d54-9777-f26057eb74cf has disconnected.
+2021-10-03 14:12:02.220 -05:00 [INF] Loading Rooms...
+2021-10-03 14:12:02.508 -05:00 [INF] Rooms Loaded!
+2021-10-03 14:12:02.509 -05:00 [INF] Loading Items...
+2021-10-03 14:12:02.517 -05:00 [INF] Items Loaded!
+2021-10-03 14:12:02.518 -05:00 [INF] Initializing Script Globals...
+2021-10-03 14:12:02.734 -05:00 [INF] Script Globals Initialized!
+2021-10-03 14:12:02.735 -05:00 [INF] Loading Global Scripts...
+2021-10-03 14:12:02.741 -05:00 [INF] Loading Command Scripts...
+2021-10-03 14:12:02.743 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 14:12:02.744 -05:00 [INF] Loading Script Handler...
+2021-10-03 14:12:02.745 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 14:12:02.745 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 14:12:02.746 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 14:12:02.746 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 14:12:02.747 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 14:12:02.748 -05:00 [INF] Scripts Loaded!
+2021-10-03 14:12:02.763 -05:00 [INF] Server Started!
+2021-10-03 14:12:15.809 -05:00 [INF] 7362abb6-44a9-4c0a-8f93-e76090ab8ca4 has connected.
+2021-10-03 14:12:46.368 -05:00 [INF] b7c3948a-368b-4eaf-abed-3c432c89f426 has connected.
+2021-10-03 14:13:00.348 -05:00 [INF] b7c3948a-368b-4eaf-abed-3c432c89f426 has disconnected.
+2021-10-03 14:15:36.345 -05:00 [INF] Loading Rooms...
+2021-10-03 14:15:36.602 -05:00 [INF] Rooms Loaded!
+2021-10-03 14:15:36.604 -05:00 [INF] Loading Items...
+2021-10-03 14:15:36.611 -05:00 [INF] Items Loaded!
+2021-10-03 14:15:36.612 -05:00 [INF] Initializing Script Globals...
+2021-10-03 14:15:36.855 -05:00 [INF] Script Globals Initialized!
+2021-10-03 14:15:36.856 -05:00 [INF] Loading Global Scripts...
+2021-10-03 14:15:36.863 -05:00 [INF] Loading Command Scripts...
+2021-10-03 14:15:36.864 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 14:15:36.865 -05:00 [INF] Loading Script Handler...
+2021-10-03 14:15:36.866 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 14:15:36.867 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 14:15:36.868 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 14:15:36.868 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 14:15:36.869 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 14:15:36.870 -05:00 [INF] Scripts Loaded!
+2021-10-03 14:15:36.883 -05:00 [INF] Server Started!
+2021-10-03 14:15:49.568 -05:00 [INF] adeed912-1a17-454c-a769-6e680ea5390f has connected.
+2021-10-03 14:15:59.440 -05:00 [INF] ade7af0f-545c-40c8-ba45-ae2a0ce9bf61 has connected.
+2021-10-03 14:17:42.132 -05:00 [INF] Loading Rooms...
+2021-10-03 14:17:42.463 -05:00 [INF] Rooms Loaded!
+2021-10-03 14:17:42.464 -05:00 [INF] Loading Items...
+2021-10-03 14:17:42.471 -05:00 [INF] Items Loaded!
+2021-10-03 14:17:42.479 -05:00 [INF] Initializing Script Globals...
+2021-10-03 14:17:42.668 -05:00 [INF] Script Globals Initialized!
+2021-10-03 14:17:42.669 -05:00 [INF] Loading Global Scripts...
+2021-10-03 14:17:42.675 -05:00 [INF] Loading Command Scripts...
+2021-10-03 14:17:42.676 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 14:17:42.676 -05:00 [INF] Loading Script Handler...
+2021-10-03 14:17:42.677 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 14:17:42.678 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 14:17:42.678 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 14:17:42.679 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 14:17:42.680 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 14:17:42.680 -05:00 [INF] Scripts Loaded!
+2021-10-03 14:17:42.693 -05:00 [INF] Server Started!
+2021-10-03 14:17:53.642 -05:00 [INF] b5438b58-25be-4135-936d-7c2b2d33af2a has connected.
+2021-10-03 14:18:44.294 -05:00 [INF] b5438b58-25be-4135-936d-7c2b2d33af2a has disconnected.
+2021-10-03 14:20:04.510 -05:00 [INF] Loading Rooms...
+2021-10-03 14:20:04.798 -05:00 [INF] Rooms Loaded!
+2021-10-03 14:20:04.799 -05:00 [INF] Loading Items...
+2021-10-03 14:20:04.806 -05:00 [INF] Items Loaded!
+2021-10-03 14:20:04.807 -05:00 [INF] Initializing Script Globals...
+2021-10-03 14:20:04.995 -05:00 [INF] Script Globals Initialized!
+2021-10-03 14:20:04.996 -05:00 [INF] Loading Global Scripts...
+2021-10-03 14:20:05.003 -05:00 [INF] Loading Command Scripts...
+2021-10-03 14:20:05.004 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 14:20:05.005 -05:00 [INF] Loading Script Handler...
+2021-10-03 14:20:05.005 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 14:20:05.006 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 14:20:05.007 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 14:20:05.007 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 14:20:05.008 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 14:20:05.008 -05:00 [INF] Scripts Loaded!
+2021-10-03 14:20:05.022 -05:00 [INF] Server Started!
+2021-10-03 14:20:16.191 -05:00 [INF] 08c8e8e1-9310-4ed1-b9ba-b27aaa6cdc40 has connected.
+2021-10-03 14:21:16.914 -05:00 [INF] 08c8e8e1-9310-4ed1-b9ba-b27aaa6cdc40 has disconnected.
+2021-10-03 14:40:49.458 -05:00 [INF] Loading Rooms...
+2021-10-03 14:40:49.676 -05:00 [INF] Rooms Loaded!
+2021-10-03 14:40:49.678 -05:00 [INF] Loading Items...
+2021-10-03 14:40:49.683 -05:00 [INF] Items Loaded!
+2021-10-03 14:40:49.684 -05:00 [INF] Initializing Script Globals...
+2021-10-03 14:40:49.875 -05:00 [INF] Script Globals Initialized!
+2021-10-03 14:40:49.876 -05:00 [INF] Loading Global Scripts...
+2021-10-03 14:40:49.882 -05:00 [INF] Loading Command Scripts...
+2021-10-03 14:40:49.882 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 14:40:49.883 -05:00 [INF] Loading Script Handler...
+2021-10-03 14:40:49.884 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 14:40:49.884 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 14:40:49.885 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 14:40:49.885 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 14:40:49.886 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 14:40:49.887 -05:00 [INF] Scripts Loaded!
+2021-10-03 14:40:49.900 -05:00 [INF] Server Started!
+2021-10-03 14:40:59.515 -05:00 [INF] c7e779bf-6bcd-48a0-b9ff-a6a1129e5fe1 has connected.
+2021-10-03 14:41:31.038 -05:00 [INF] c7e779bf-6bcd-48a0-b9ff-a6a1129e5fe1 has disconnected.
+2021-10-03 14:41:57.383 -05:00 [INF] Loading Rooms...
+2021-10-03 14:41:57.630 -05:00 [INF] Rooms Loaded!
+2021-10-03 14:41:57.640 -05:00 [INF] Loading Items...
+2021-10-03 14:41:57.646 -05:00 [INF] Items Loaded!
+2021-10-03 14:41:57.647 -05:00 [INF] Initializing Script Globals...
+2021-10-03 14:41:57.859 -05:00 [INF] Script Globals Initialized!
+2021-10-03 14:41:57.860 -05:00 [INF] Loading Global Scripts...
+2021-10-03 14:41:57.867 -05:00 [INF] Loading Command Scripts...
+2021-10-03 14:41:57.868 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 14:41:57.869 -05:00 [INF] Loading Script Handler...
+2021-10-03 14:41:57.870 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 14:41:57.870 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 14:41:57.871 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 14:41:57.871 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 14:41:57.872 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 14:41:57.873 -05:00 [INF] Scripts Loaded!
+2021-10-03 14:41:57.884 -05:00 [INF] Server Started!
+2021-10-03 14:42:08.167 -05:00 [INF] 52d34f81-6ceb-4225-a30c-83fdba622202 has connected.
+2021-10-03 14:43:09.274 -05:00 [INF] 52d34f81-6ceb-4225-a30c-83fdba622202 has disconnected.
+2021-10-03 14:45:32.490 -05:00 [INF] Loading Rooms...
+2021-10-03 14:45:32.721 -05:00 [INF] Rooms Loaded!
+2021-10-03 14:45:32.722 -05:00 [INF] Loading Items...
+2021-10-03 14:45:32.728 -05:00 [INF] Items Loaded!
+2021-10-03 14:45:32.729 -05:00 [INF] Initializing Script Globals...
+2021-10-03 14:45:32.931 -05:00 [INF] Script Globals Initialized!
+2021-10-03 14:45:32.932 -05:00 [INF] Loading Global Scripts...
+2021-10-03 14:45:32.940 -05:00 [INF] Loading Command Scripts...
+2021-10-03 14:45:32.941 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 14:45:32.942 -05:00 [INF] Loading Script Handler...
+2021-10-03 14:45:32.943 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 14:45:32.944 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 14:45:32.945 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 14:45:32.946 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 14:45:32.946 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 14:45:32.947 -05:00 [INF] Scripts Loaded!
+2021-10-03 14:45:32.963 -05:00 [INF] Server Started!
+2021-10-03 14:45:40.808 -05:00 [INF] 405e7e71-5d9d-4947-a564-8aac6e955f37 has connected.
+2021-10-03 14:47:08.051 -05:00 [INF] 405e7e71-5d9d-4947-a564-8aac6e955f37 has disconnected.
+2021-10-03 14:48:54.439 -05:00 [INF] Loading Rooms...
+2021-10-03 14:48:54.713 -05:00 [INF] Rooms Loaded!
+2021-10-03 14:48:54.714 -05:00 [INF] Loading Items...
+2021-10-03 14:48:54.722 -05:00 [INF] Items Loaded!
+2021-10-03 14:48:54.723 -05:00 [INF] Initializing Script Globals...
+2021-10-03 14:48:55.014 -05:00 [INF] Script Globals Initialized!
+2021-10-03 14:48:55.023 -05:00 [INF] Loading Global Scripts...
+2021-10-03 14:48:55.035 -05:00 [INF] Loading Command Scripts...
+2021-10-03 14:48:55.037 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 14:48:55.038 -05:00 [INF] Loading Script Handler...
+2021-10-03 14:48:55.040 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 14:48:55.041 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 14:48:55.043 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 14:48:55.043 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 14:48:55.045 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 14:48:55.045 -05:00 [INF] Scripts Loaded!
+2021-10-03 14:48:55.065 -05:00 [INF] Server Started!
+2021-10-03 14:49:03.757 -05:00 [INF] 00832c96-e849-432d-9743-dfc284953aaf has connected.
+2021-10-03 15:08:57.577 -05:00 [INF] Loading Rooms...
+2021-10-03 15:08:58.149 -05:00 [INF] Rooms Loaded!
+2021-10-03 15:08:58.150 -05:00 [INF] Purgatory
+2021-10-03 15:08:58.151 -05:00 [INF] Northshire Town Square
+2021-10-03 15:08:58.153 -05:00 [INF] Herky the Hawk
+2021-10-03 15:08:58.154 -05:00 [INF] Delmair the Wise
+2021-10-03 15:08:58.154 -05:00 [INF] Northshire Market Street
+2021-10-03 15:08:58.155 -05:00 [INF] Northshire Guild Street
+2021-10-03 15:08:58.156 -05:00 [INF] Field Deer
+2021-10-03 15:08:58.157 -05:00 [INF] Northshire Main Street
+2021-10-03 15:08:58.158 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:08:58.159 -05:00 [INF] Northshire Main Street
+2021-10-03 15:08:58.160 -05:00 [INF] Loading Items...
+2021-10-03 15:08:58.168 -05:00 [INF] Items Loaded!
+2021-10-03 15:08:58.169 -05:00 [INF] Initializing Script Globals...
+2021-10-03 15:08:58.482 -05:00 [INF] Script Globals Initialized!
+2021-10-03 15:08:58.483 -05:00 [INF] Loading Global Scripts...
+2021-10-03 15:08:58.493 -05:00 [INF] Loading Command Scripts...
+2021-10-03 15:08:58.494 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 15:08:58.496 -05:00 [INF] Loading Script Handler...
+2021-10-03 15:08:58.497 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 15:08:58.498 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 15:08:58.499 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 15:08:58.500 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 15:08:58.501 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 15:08:58.502 -05:00 [INF] Scripts Loaded!
+2021-10-03 15:08:58.520 -05:00 [INF] Server Started!
+2021-10-03 15:16:33.637 -05:00 [INF] Loading Rooms...
+2021-10-03 15:16:33.976 -05:00 [INF] Rooms Loaded!
+2021-10-03 15:16:33.977 -05:00 [INF] Purgatory
+2021-10-03 15:16:33.978 -05:00 [INF] Northshire Town Square
+2021-10-03 15:16:33.979 -05:00 [INF] Herky the Hawk
+2021-10-03 15:16:33.980 -05:00 [INF] Delmair the Wise
+2021-10-03 15:16:33.980 -05:00 [INF] Northshire Market Street
+2021-10-03 15:16:33.981 -05:00 [INF] Northshire Guild Street
+2021-10-03 15:16:33.982 -05:00 [INF] Field Deer
+2021-10-03 15:16:33.983 -05:00 [INF] Field Deer
+2021-10-03 15:16:33.984 -05:00 [INF] Field Deer
+2021-10-03 15:16:33.985 -05:00 [INF] Field Deer
+2021-10-03 15:16:33.985 -05:00 [INF] Field Deer
+2021-10-03 15:16:33.986 -05:00 [INF] Field Deer
+2021-10-03 15:16:33.987 -05:00 [INF] Field Deer
+2021-10-03 15:16:33.988 -05:00 [INF] Field Deer
+2021-10-03 15:16:33.989 -05:00 [INF] Northshire Main Street
+2021-10-03 15:16:33.989 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:16:33.990 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:16:33.991 -05:00 [INF] Northshire Main Street
+2021-10-03 15:16:33.992 -05:00 [INF] Loading Items...
+2021-10-03 15:16:34.000 -05:00 [INF] Items Loaded!
+2021-10-03 15:16:34.001 -05:00 [INF] Initializing Script Globals...
+2021-10-03 15:16:34.208 -05:00 [INF] Script Globals Initialized!
+2021-10-03 15:16:34.209 -05:00 [INF] Loading Global Scripts...
+2021-10-03 15:16:34.217 -05:00 [INF] Loading Command Scripts...
+2021-10-03 15:16:34.218 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 15:16:34.219 -05:00 [INF] Loading Script Handler...
+2021-10-03 15:16:34.220 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 15:16:34.220 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 15:16:34.222 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 15:16:34.223 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 15:16:34.224 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 15:16:34.225 -05:00 [INF] Scripts Loaded!
+2021-10-03 15:16:34.243 -05:00 [INF] Server Started!
+2021-10-03 15:25:37.960 -05:00 [INF] Loading Rooms...
+2021-10-03 15:45:45.032 -05:00 [INF] Loading Rooms...
+2021-10-03 15:45:45.323 -05:00 [INF] Rooms Loaded!
+2021-10-03 15:45:45.324 -05:00 [INF] Purgatory
+2021-10-03 15:45:45.325 -05:00 [INF] Northshire Town Square
+2021-10-03 15:45:45.326 -05:00 [INF] Herky the Hawk
+2021-10-03 15:45:45.326 -05:00 [INF] Delmair the Wise
+2021-10-03 15:45:45.327 -05:00 [INF] Northshire Market Street
+2021-10-03 15:45:45.327 -05:00 [INF] Northshire Guild Street
+2021-10-03 15:45:45.328 -05:00 [INF] Field Deer
+2021-10-03 15:45:45.328 -05:00 [INF] Northshire Main Street
+2021-10-03 15:45:45.329 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:45:45.329 -05:00 [INF] Northshire Main Street
+2021-10-03 15:45:45.330 -05:00 [INF] Loading Items...
+2021-10-03 15:45:45.340 -05:00 [INF] Items Loaded!
+2021-10-03 15:45:45.341 -05:00 [INF] Initializing Script Globals...
+2021-10-03 15:45:45.544 -05:00 [INF] Script Globals Initialized!
+2021-10-03 15:45:45.546 -05:00 [INF] Loading Global Scripts...
+2021-10-03 15:45:45.552 -05:00 [INF] Loading Command Scripts...
+2021-10-03 15:45:45.553 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 15:45:45.553 -05:00 [INF] Loading Script Handler...
+2021-10-03 15:45:45.555 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 15:45:45.555 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 15:45:45.556 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 15:45:45.556 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 15:45:45.557 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 15:45:45.557 -05:00 [INF] Scripts Loaded!
+2021-10-03 15:45:45.571 -05:00 [INF] Server Started!
+2021-10-03 15:48:41.947 -05:00 [INF] Loading Rooms...
+2021-10-03 15:50:13.328 -05:00 [INF] Loading Rooms...
+2021-10-03 15:54:39.280 -05:00 [INF] Loading Rooms...
+2021-10-03 15:56:17.552 -05:00 [INF] Loading Rooms...
+2021-10-03 15:56:17.826 -05:00 [INF] Rooms Loaded!
+2021-10-03 15:56:17.827 -05:00 [INF] Purgatory
+2021-10-03 15:56:17.828 -05:00 [INF] Northshire Town Square
+2021-10-03 15:56:17.828 -05:00 [INF] Herky the Hawk
+2021-10-03 15:56:17.829 -05:00 [INF] Delmair the Wise
+2021-10-03 15:56:17.830 -05:00 [INF] Northshire Market Street
+2021-10-03 15:56:17.831 -05:00 [INF] Northshire Guild Street
+2021-10-03 15:56:17.831 -05:00 [INF] Field Deer
+2021-10-03 15:56:17.832 -05:00 [INF] Northshire Main Street
+2021-10-03 15:56:17.833 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:56:17.833 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:56:17.834 -05:00 [INF] Northshire Main Street
+2021-10-03 15:56:17.835 -05:00 [INF] Loading Items...
+2021-10-03 15:56:17.843 -05:00 [INF] Items Loaded!
+2021-10-03 15:56:17.844 -05:00 [INF] Initializing Script Globals...
+2021-10-03 15:56:18.051 -05:00 [INF] Script Globals Initialized!
+2021-10-03 15:56:18.053 -05:00 [INF] Loading Global Scripts...
+2021-10-03 15:56:18.060 -05:00 [INF] Loading Command Scripts...
+2021-10-03 15:56:18.061 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 15:56:18.063 -05:00 [INF] Loading Script Handler...
+2021-10-03 15:56:18.063 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 15:56:18.064 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 15:56:18.065 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 15:56:18.065 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 15:56:18.066 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 15:56:18.067 -05:00 [INF] Scripts Loaded!
+2021-10-03 15:56:18.081 -05:00 [INF] Server Started!
+2021-10-03 15:56:36.752 -05:00 [INF] bb8c315e-b5a1-49b0-a60f-72726d9005e0 has connected.
+2021-10-03 15:58:37.250 -05:00 [INF] Loading Rooms...
+2021-10-03 15:58:37.504 -05:00 [INF] Rooms Loaded!
+2021-10-03 15:58:37.505 -05:00 [INF] Purgatory
+2021-10-03 15:58:37.506 -05:00 [INF] Northshire Town Square
+2021-10-03 15:58:37.507 -05:00 [INF] Herky the Hawk
+2021-10-03 15:58:37.507 -05:00 [INF] Delmair the Wise
+2021-10-03 15:58:37.508 -05:00 [INF] Northshire Market Street
+2021-10-03 15:58:37.509 -05:00 [INF] Northshire Guild Street
+2021-10-03 15:58:37.509 -05:00 [INF] Field Deer
+2021-10-03 15:58:37.510 -05:00 [INF] Northshire Main Street
+2021-10-03 15:58:37.510 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:58:37.511 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:58:37.511 -05:00 [INF] Northshire Main Street
+2021-10-03 15:58:37.512 -05:00 [INF] Loading Items...
+2021-10-03 15:58:37.518 -05:00 [INF] Items Loaded!
+2021-10-03 15:58:37.519 -05:00 [INF] Initializing Script Globals...
+2021-10-03 15:58:37.728 -05:00 [INF] Script Globals Initialized!
+2021-10-03 15:58:37.729 -05:00 [INF] Loading Global Scripts...
+2021-10-03 15:58:37.739 -05:00 [INF] Loading Command Scripts...
+2021-10-03 15:58:37.740 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 15:58:37.741 -05:00 [INF] Loading Script Handler...
+2021-10-03 15:58:37.742 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 15:58:37.743 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 15:58:37.744 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 15:58:37.746 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 15:58:37.748 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 15:58:37.749 -05:00 [INF] Scripts Loaded!
+2021-10-03 15:58:37.763 -05:00 [INF] Server Started!
+2021-10-03 15:58:45.436 -05:00 [INF] 19537de4-8d81-43de-a3f4-d2bc69c361fa has connected.
+2021-10-03 15:58:50.662 -05:00 [INF] 19537de4-8d81-43de-a3f4-d2bc69c361fa has disconnected.
+2021-10-03 15:58:56.875 -05:00 [INF] Loading Rooms...
+2021-10-03 15:58:57.149 -05:00 [INF] Rooms Loaded!
+2021-10-03 15:58:57.150 -05:00 [INF] Purgatory
+2021-10-03 15:58:57.150 -05:00 [INF] Northshire Town Square
+2021-10-03 15:58:57.151 -05:00 [INF] Herky the Hawk
+2021-10-03 15:58:57.151 -05:00 [INF] Delmair the Wise
+2021-10-03 15:58:57.152 -05:00 [INF] Northshire Market Street
+2021-10-03 15:58:57.153 -05:00 [INF] Northshire Guild Street
+2021-10-03 15:58:57.153 -05:00 [INF] Field Deer
+2021-10-03 15:58:57.154 -05:00 [INF] Northshire Main Street
+2021-10-03 15:58:57.154 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:58:57.155 -05:00 [INF] Northshire Town Guard
+2021-10-03 15:58:57.155 -05:00 [INF] Northshire Main Street
+2021-10-03 15:58:57.156 -05:00 [INF] Loading Items...
+2021-10-03 15:58:57.161 -05:00 [INF] Items Loaded!
+2021-10-03 15:58:57.163 -05:00 [INF] Initializing Script Globals...
+2021-10-03 15:58:57.385 -05:00 [INF] Script Globals Initialized!
+2021-10-03 15:58:57.386 -05:00 [INF] Loading Global Scripts...
+2021-10-03 15:58:57.392 -05:00 [INF] Loading Command Scripts...
+2021-10-03 15:58:57.393 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 15:58:57.394 -05:00 [INF] Loading Script Handler...
+2021-10-03 15:58:57.395 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 15:58:57.395 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 15:58:57.396 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 15:58:57.396 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 15:58:57.397 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 15:58:57.398 -05:00 [INF] Scripts Loaded!
+2021-10-03 15:58:57.410 -05:00 [INF] Server Started!
+2021-10-03 15:59:09.165 -05:00 [INF] 9e8abb87-812f-4b63-b8ef-dfaa8f307c10 has connected.
+2021-10-03 16:00:09.999 -05:00 [INF] 9e8abb87-812f-4b63-b8ef-dfaa8f307c10 has disconnected.
+2021-10-03 16:02:06.281 -05:00 [INF] Loading Rooms...
+2021-10-03 16:02:06.566 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:02:06.567 -05:00 [INF] Purgatory
+2021-10-03 16:02:06.568 -05:00 [INF] Northshire Town Square
+2021-10-03 16:02:06.569 -05:00 [INF] Herky the Hawk
+2021-10-03 16:02:06.570 -05:00 [INF] Delmair the Wise
+2021-10-03 16:02:06.571 -05:00 [INF] Northshire Market Street
+2021-10-03 16:02:06.571 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:02:06.572 -05:00 [INF] Field Deer
+2021-10-03 16:02:06.574 -05:00 [INF] Northshire Main Street
+2021-10-03 16:02:06.575 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:02:06.576 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:02:06.576 -05:00 [INF] Northshire Main Street
+2021-10-03 16:02:06.577 -05:00 [INF] Loading Items...
+2021-10-03 16:02:06.585 -05:00 [INF] Items Loaded!
+2021-10-03 16:02:06.586 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:02:06.838 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:02:06.839 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:02:06.846 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:02:06.848 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:02:06.849 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:02:06.850 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:02:06.851 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:02:06.852 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:02:06.853 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:02:06.854 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:02:06.855 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:02:06.888 -05:00 [INF] Server Started!
+2021-10-03 16:02:14.866 -05:00 [INF] 53df9eda-0268-406f-89fe-70ff160d70e9 has connected.
+2021-10-03 16:03:17.741 -05:00 [INF] 53df9eda-0268-406f-89fe-70ff160d70e9 has disconnected.
+2021-10-03 16:04:29.920 -05:00 [INF] Loading Rooms...
+2021-10-03 16:04:30.173 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:04:30.174 -05:00 [INF] Purgatory
+2021-10-03 16:04:30.175 -05:00 [INF] Northshire Town Square
+2021-10-03 16:04:30.176 -05:00 [INF] Herky the Hawk
+2021-10-03 16:04:30.177 -05:00 [INF] Delmair the Wise
+2021-10-03 16:04:30.179 -05:00 [INF] Northshire Market Street
+2021-10-03 16:04:30.180 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:04:30.181 -05:00 [INF] Field Deer
+2021-10-03 16:04:30.182 -05:00 [INF] Northshire Main Street
+2021-10-03 16:04:30.183 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:04:30.197 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:04:30.198 -05:00 [INF] Northshire Main Street
+2021-10-03 16:04:30.199 -05:00 [INF] Loading Items...
+2021-10-03 16:04:30.211 -05:00 [INF] Items Loaded!
+2021-10-03 16:04:30.226 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:04:30.456 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:04:30.458 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:04:30.465 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:04:30.466 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:04:30.467 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:04:30.468 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:04:30.468 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:04:30.469 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:04:30.470 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:04:30.471 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:04:30.475 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:04:30.493 -05:00 [INF] Server Started!
+2021-10-03 16:09:53.482 -05:00 [INF] Loading Rooms...
+2021-10-03 16:09:53.770 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:09:53.771 -05:00 [INF] Purgatory
+2021-10-03 16:09:53.772 -05:00 [INF] Northshire Town Square
+2021-10-03 16:09:53.773 -05:00 [INF] Herky the Hawk
+2021-10-03 16:09:53.774 -05:00 [INF] Delmair the Wise
+2021-10-03 16:09:53.774 -05:00 [INF] Northshire Market Street
+2021-10-03 16:09:53.775 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:09:53.775 -05:00 [INF] Field Deer
+2021-10-03 16:09:53.776 -05:00 [INF] Northshire Main Street
+2021-10-03 16:09:53.777 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:09:53.777 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:09:53.778 -05:00 [INF] Northshire Main Street
+2021-10-03 16:09:53.779 -05:00 [INF] Loading Items...
+2021-10-03 16:09:53.787 -05:00 [INF] Items Loaded!
+2021-10-03 16:09:53.788 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:09:54.048 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:09:54.049 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:09:54.056 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:09:54.057 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:09:54.058 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:09:54.059 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:09:54.060 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:09:54.061 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:09:54.061 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:09:54.062 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:09:54.063 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:09:54.075 -05:00 [INF] Server Started!
+2021-10-03 16:10:07.131 -05:00 [INF] 0a4837c0-3e60-4be2-a522-4549265dc443 has connected.
+2021-10-03 16:16:20.085 -05:00 [INF] 0a4837c0-3e60-4be2-a522-4549265dc443 has disconnected.
+2021-10-03 16:21:30.904 -05:00 [INF] Loading Rooms...
+2021-10-03 16:21:31.282 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:21:31.284 -05:00 [INF] Purgatory
+2021-10-03 16:21:31.285 -05:00 [INF] Northshire Town Square
+2021-10-03 16:21:31.286 -05:00 [INF] Herky the Hawk
+2021-10-03 16:21:31.286 -05:00 [INF] Delmair the Wise
+2021-10-03 16:21:31.287 -05:00 [INF] Northshire Market Street
+2021-10-03 16:21:31.287 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:21:31.288 -05:00 [INF] Field Deer
+2021-10-03 16:21:31.289 -05:00 [INF] Northshire Main Street
+2021-10-03 16:21:31.289 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:21:31.290 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:21:31.291 -05:00 [INF] Northshire Main Street
+2021-10-03 16:21:31.292 -05:00 [INF] Loading Items...
+2021-10-03 16:21:31.299 -05:00 [INF] Items Loaded!
+2021-10-03 16:21:31.300 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:21:31.526 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:21:31.527 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:21:31.537 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:21:31.538 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:21:31.539 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:21:31.541 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:21:31.542 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:21:31.543 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:21:31.544 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:21:31.545 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:21:31.547 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:21:31.565 -05:00 [INF] Server Started!
+2021-10-03 16:21:41.653 -05:00 [INF] 8de70b87-64c0-4a53-a334-a70d9124f6f7 has connected.
+2021-10-03 16:23:47.001 -05:00 [INF] Loading Rooms...
+2021-10-03 16:23:47.242 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:23:47.243 -05:00 [INF] Purgatory
+2021-10-03 16:23:47.244 -05:00 [INF] Northshire Town Square
+2021-10-03 16:23:47.245 -05:00 [INF] Herky the Hawk
+2021-10-03 16:23:47.245 -05:00 [INF] Delmair the Wise
+2021-10-03 16:23:47.246 -05:00 [INF] Northshire Market Street
+2021-10-03 16:23:47.247 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:23:47.248 -05:00 [INF] Field Deer
+2021-10-03 16:23:47.249 -05:00 [INF] Northshire Main Street
+2021-10-03 16:23:47.249 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:23:47.250 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:23:47.250 -05:00 [INF] Northshire Main Street
+2021-10-03 16:23:47.252 -05:00 [INF] Loading Items...
+2021-10-03 16:23:47.258 -05:00 [INF] Items Loaded!
+2021-10-03 16:23:47.259 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:23:47.456 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:23:47.457 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:23:47.463 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:23:47.464 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:23:47.465 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:23:47.466 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:23:47.467 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:23:47.467 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:23:47.468 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:23:47.470 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:23:47.470 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:23:47.483 -05:00 [INF] Server Started!
+2021-10-03 16:23:59.021 -05:00 [INF] d022e09b-e860-4655-9084-ee34b09aecad has connected.
+2021-10-03 16:26:35.102 -05:00 [INF] Loading Rooms...
+2021-10-03 16:26:35.443 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:26:35.444 -05:00 [INF] Purgatory
+2021-10-03 16:26:35.445 -05:00 [INF] Northshire Town Square
+2021-10-03 16:26:35.446 -05:00 [INF] Herky the Hawk
+2021-10-03 16:26:35.447 -05:00 [INF] Delmair the Wise
+2021-10-03 16:26:35.447 -05:00 [INF] Northshire Market Street
+2021-10-03 16:26:35.449 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:26:35.450 -05:00 [INF] Field Deer
+2021-10-03 16:26:35.451 -05:00 [INF] Northshire Main Street
+2021-10-03 16:26:35.452 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:26:35.453 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:26:35.453 -05:00 [INF] Northshire Main Street
+2021-10-03 16:26:35.454 -05:00 [INF] Loading Items...
+2021-10-03 16:26:35.474 -05:00 [INF] Items Loaded!
+2021-10-03 16:26:35.475 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:26:35.720 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:26:35.721 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:26:35.729 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:26:35.730 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:26:35.731 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:26:35.731 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:26:35.732 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:26:35.733 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:26:35.733 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:26:35.734 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:26:35.735 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:26:35.749 -05:00 [INF] Server Started!
+2021-10-03 16:26:48.035 -05:00 [INF] 371a5333-d697-4507-a60f-940f1586a3a3 has connected.
+2021-10-03 16:29:10.486 -05:00 [INF] Loading Rooms...
+2021-10-03 16:29:10.842 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:29:10.843 -05:00 [INF] Purgatory
+2021-10-03 16:29:10.844 -05:00 [INF] Northshire Town Square
+2021-10-03 16:29:10.845 -05:00 [INF] Herky the Hawk
+2021-10-03 16:29:10.846 -05:00 [INF] Delmair the Wise
+2021-10-03 16:29:10.847 -05:00 [INF] Northshire Market Street
+2021-10-03 16:29:10.848 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:29:10.849 -05:00 [INF] Field Deer
+2021-10-03 16:29:10.849 -05:00 [INF] Northshire Main Street
+2021-10-03 16:29:10.850 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:29:10.851 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:29:10.851 -05:00 [INF] Northshire Main Street
+2021-10-03 16:29:10.852 -05:00 [INF] Loading Items...
+2021-10-03 16:29:10.863 -05:00 [INF] Items Loaded!
+2021-10-03 16:29:10.875 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:29:11.097 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:29:11.098 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:29:11.105 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:29:11.106 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:29:11.108 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:29:11.108 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:29:11.109 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:29:11.109 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:29:11.110 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:29:11.111 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:29:11.111 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:29:11.125 -05:00 [INF] Server Started!
+2021-10-03 16:29:20.301 -05:00 [INF] fe8a9456-2231-4330-8072-69e8b4009a99 has connected.
+2021-10-03 16:31:09.717 -05:00 [INF] Loading Rooms...
+2021-10-03 16:31:10.020 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:31:10.021 -05:00 [INF] Purgatory
+2021-10-03 16:31:10.022 -05:00 [INF] Northshire Town Square
+2021-10-03 16:31:10.024 -05:00 [INF] Herky the Hawk
+2021-10-03 16:31:10.025 -05:00 [INF] Delmair the Wise
+2021-10-03 16:31:10.026 -05:00 [INF] Northshire Market Street
+2021-10-03 16:31:10.026 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:31:10.027 -05:00 [INF] Field Deer
+2021-10-03 16:31:10.028 -05:00 [INF] Northshire Main Street
+2021-10-03 16:31:10.029 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:31:10.030 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:31:10.030 -05:00 [INF] Northshire Main Street
+2021-10-03 16:31:10.031 -05:00 [INF] Loading Items...
+2021-10-03 16:31:10.050 -05:00 [INF] Items Loaded!
+2021-10-03 16:31:10.051 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:31:10.294 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:31:10.295 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:31:10.302 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:31:10.303 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:31:10.304 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:31:10.305 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:31:10.306 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:31:10.308 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:31:10.309 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:31:10.310 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:31:10.311 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:31:10.331 -05:00 [INF] Server Started!
+2021-10-03 16:31:22.700 -05:00 [INF] 240a8e75-3349-40de-a068-961da0c024d2 has connected.
+2021-10-03 16:32:01.839 -05:00 [INF] 240a8e75-3349-40de-a068-961da0c024d2 has disconnected.
+2021-10-03 16:35:20.806 -05:00 [INF] Loading Rooms...
+2021-10-03 16:35:21.026 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:35:21.027 -05:00 [INF] Purgatory
+2021-10-03 16:35:21.028 -05:00 [INF] Northshire Town Square
+2021-10-03 16:35:21.029 -05:00 [INF] Herky the Hawk
+2021-10-03 16:35:21.030 -05:00 [INF] Delmair the Wise
+2021-10-03 16:35:21.031 -05:00 [INF] Northshire Market Street
+2021-10-03 16:35:21.032 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:35:21.032 -05:00 [INF] Field Deer
+2021-10-03 16:35:21.033 -05:00 [INF] Northshire Main Street
+2021-10-03 16:35:21.034 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:35:21.034 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:35:21.035 -05:00 [INF] Northshire Main Street
+2021-10-03 16:35:21.036 -05:00 [INF] Loading Items...
+2021-10-03 16:35:21.041 -05:00 [INF] Items Loaded!
+2021-10-03 16:35:21.042 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:35:21.250 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:35:21.251 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:35:21.259 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:35:21.260 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:35:21.260 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:35:21.261 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:35:21.262 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:35:21.263 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:35:21.264 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:35:21.265 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:35:21.266 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:35:21.281 -05:00 [INF] Server Started!
+2021-10-03 16:35:33.037 -05:00 [INF] b073e571-9926-4604-a9af-a10c1e6d63be has connected.
+2021-10-03 16:36:56.918 -05:00 [INF] Loading Rooms...
+2021-10-03 16:36:57.235 -05:00 [INF] Rooms Loaded!
+2021-10-03 16:36:57.244 -05:00 [INF] Purgatory
+2021-10-03 16:36:57.245 -05:00 [INF] Northshire Town Square
+2021-10-03 16:36:57.247 -05:00 [INF] Herky the Hawk
+2021-10-03 16:36:57.248 -05:00 [INF] Delmair the Wise
+2021-10-03 16:36:57.250 -05:00 [INF] Northshire Market Street
+2021-10-03 16:36:57.251 -05:00 [INF] Northshire Guild Street
+2021-10-03 16:36:57.252 -05:00 [INF] Field Deer
+2021-10-03 16:36:57.253 -05:00 [INF] Northshire Main Street
+2021-10-03 16:36:57.256 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:36:57.259 -05:00 [INF] Northshire Town Guard
+2021-10-03 16:36:57.269 -05:00 [INF] Northshire Main Street
+2021-10-03 16:36:57.270 -05:00 [INF] Loading Items...
+2021-10-03 16:36:57.282 -05:00 [INF] Items Loaded!
+2021-10-03 16:36:57.283 -05:00 [INF] Initializing Script Globals...
+2021-10-03 16:36:57.565 -05:00 [INF] Script Globals Initialized!
+2021-10-03 16:36:57.566 -05:00 [INF] Loading Global Scripts...
+2021-10-03 16:36:57.574 -05:00 [INF] Loading Command Scripts...
+2021-10-03 16:36:57.575 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 16:36:57.576 -05:00 [INF] Loading Script Handler...
+2021-10-03 16:36:57.576 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 16:36:57.577 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 16:36:57.578 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 16:36:57.579 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 16:36:57.580 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 16:36:57.580 -05:00 [INF] Scripts Loaded!
+2021-10-03 16:36:57.593 -05:00 [INF] Server Started!
+2021-10-03 16:37:08.956 -05:00 [INF] 5a348aad-bfe2-468b-957d-16b7e185e6d1 has connected.
+2021-10-03 16:40:50.693 -05:00 [INF] 5a348aad-bfe2-468b-957d-16b7e185e6d1 has disconnected.
+2021-10-03 17:00:05.573 -05:00 [INF] Loading Rooms...
+2021-10-03 17:00:05.972 -05:00 [INF] Rooms Loaded!
+2021-10-03 17:00:05.973 -05:00 [INF] Purgatory
+2021-10-03 17:00:05.974 -05:00 [INF] Northshire Town Square
+2021-10-03 17:00:05.975 -05:00 [INF] Herky the Hawk
+2021-10-03 17:00:05.975 -05:00 [INF] Delmair the Wise
+2021-10-03 17:00:05.976 -05:00 [INF] Northshire Market Street
+2021-10-03 17:00:05.977 -05:00 [INF] Northshire Guild Street
+2021-10-03 17:00:05.978 -05:00 [INF] Field Deer
+2021-10-03 17:00:05.978 -05:00 [INF] Northshire Main Street
+2021-10-03 17:00:05.979 -05:00 [INF] Northshire Town Guard
+2021-10-03 17:00:05.980 -05:00 [INF] Northshire Town Guard
+2021-10-03 17:00:05.981 -05:00 [INF] Northshire Main Street
+2021-10-03 17:00:05.982 -05:00 [INF] Loading Items...
+2021-10-03 17:00:05.998 -05:00 [INF] Items Loaded!
+2021-10-03 17:00:05.999 -05:00 [INF] Initializing Script Globals...
+2021-10-03 17:00:06.197 -05:00 [INF] Script Globals Initialized!
+2021-10-03 17:00:06.198 -05:00 [INF] Loading Global Scripts...
+2021-10-03 17:00:06.205 -05:00 [INF] Loading Command Scripts...
+2021-10-03 17:00:06.206 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 17:00:06.207 -05:00 [INF] Loading Script Handler...
+2021-10-03 17:00:06.209 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 17:00:06.209 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 17:00:06.210 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 17:00:06.211 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 17:00:06.212 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 17:00:06.212 -05:00 [INF] Scripts Loaded!
+2021-10-03 17:00:06.236 -05:00 [INF] Server Started!
+2021-10-03 18:32:51.978 -05:00 [INF] Loading Rooms...
+2021-10-03 18:32:52.270 -05:00 [INF] Rooms Loaded!
+2021-10-03 18:32:52.271 -05:00 [INF] Purgatory
+2021-10-03 18:32:52.272 -05:00 [INF] Northshire Town Square
+2021-10-03 18:32:52.273 -05:00 [INF] Herky the Hawk
+2021-10-03 18:32:52.274 -05:00 [INF] Delmair the Wise
+2021-10-03 18:32:52.274 -05:00 [INF] Northshire Market Street
+2021-10-03 18:32:52.275 -05:00 [INF] Northshire Guild Street
+2021-10-03 18:32:52.275 -05:00 [INF] Field Deer
+2021-10-03 18:32:52.276 -05:00 [INF] Northshire Main Street
+2021-10-03 18:32:52.276 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:32:52.277 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:32:52.277 -05:00 [INF] Northshire Main Street
+2021-10-03 18:32:52.278 -05:00 [INF] Loading Items...
+2021-10-03 18:32:52.283 -05:00 [INF] Items Loaded!
+2021-10-03 18:32:52.284 -05:00 [INF] Initializing Script Globals...
+2021-10-03 18:32:52.481 -05:00 [INF] Script Globals Initialized!
+2021-10-03 18:32:52.482 -05:00 [INF] Loading Global Scripts...
+2021-10-03 18:32:52.488 -05:00 [INF] Loading Command Scripts...
+2021-10-03 18:32:52.489 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 18:32:52.490 -05:00 [INF] Loading Script Handler...
+2021-10-03 18:32:52.491 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 18:32:52.491 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 18:32:52.492 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 18:32:52.492 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 18:32:52.493 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 18:32:52.493 -05:00 [INF] Scripts Loaded!
+2021-10-03 18:32:52.508 -05:00 [INF] Server Started!
+2021-10-03 18:33:10.611 -05:00 [INF] c6f8229e-c3e0-45ec-a2fa-154b09b43c83 has connected.
+2021-10-03 18:37:49.645 -05:00 [INF] Loading Rooms...
+2021-10-03 18:37:49.966 -05:00 [INF] Rooms Loaded!
+2021-10-03 18:37:49.968 -05:00 [INF] Purgatory
+2021-10-03 18:37:49.968 -05:00 [INF] Northshire Town Square
+2021-10-03 18:37:49.969 -05:00 [INF] Herky the Hawk
+2021-10-03 18:37:49.970 -05:00 [INF] Delmair the Wise
+2021-10-03 18:37:49.971 -05:00 [INF] Northshire Market Street
+2021-10-03 18:37:49.971 -05:00 [INF] Northshire Guild Street
+2021-10-03 18:37:49.972 -05:00 [INF] Field Deer
+2021-10-03 18:37:49.973 -05:00 [INF] Northshire Main Street
+2021-10-03 18:37:49.974 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:37:49.974 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:37:49.975 -05:00 [INF] Northshire Main Street
+2021-10-03 18:37:49.975 -05:00 [INF] Loading Items...
+2021-10-03 18:37:49.982 -05:00 [INF] Items Loaded!
+2021-10-03 18:37:49.983 -05:00 [INF] Initializing Script Globals...
+2021-10-03 18:37:50.183 -05:00 [INF] Script Globals Initialized!
+2021-10-03 18:37:50.184 -05:00 [INF] Loading Global Scripts...
+2021-10-03 18:37:50.191 -05:00 [INF] Loading Command Scripts...
+2021-10-03 18:37:50.192 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 18:37:50.193 -05:00 [INF] Loading Script Handler...
+2021-10-03 18:37:50.194 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 18:37:50.194 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 18:37:50.195 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 18:37:50.196 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 18:37:50.196 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 18:37:50.197 -05:00 [INF] Scripts Loaded!
+2021-10-03 18:37:50.213 -05:00 [INF] Server Started!
+2021-10-03 18:37:58.329 -05:00 [INF] c0785608-385f-4e5e-9a49-0d19e34228bb has connected.
+2021-10-03 18:41:40.041 -05:00 [INF] Loading Rooms...
+2021-10-03 18:41:40.294 -05:00 [INF] Rooms Loaded!
+2021-10-03 18:41:40.295 -05:00 [INF] Purgatory
+2021-10-03 18:41:40.296 -05:00 [INF] Northshire Town Square
+2021-10-03 18:41:40.297 -05:00 [INF] Herky the Hawk
+2021-10-03 18:41:40.297 -05:00 [INF] Delmair the Wise
+2021-10-03 18:41:40.298 -05:00 [INF] Northshire Market Street
+2021-10-03 18:41:40.299 -05:00 [INF] Northshire Guild Street
+2021-10-03 18:41:40.300 -05:00 [INF] Field Deer
+2021-10-03 18:41:40.301 -05:00 [INF] Northshire Main Street
+2021-10-03 18:41:40.301 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:41:40.302 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:41:40.303 -05:00 [INF] Northshire Main Street
+2021-10-03 18:41:40.303 -05:00 [INF] Loading Items...
+2021-10-03 18:41:40.312 -05:00 [INF] Items Loaded!
+2021-10-03 18:41:40.315 -05:00 [INF] Initializing Script Globals...
+2021-10-03 18:41:40.538 -05:00 [INF] Script Globals Initialized!
+2021-10-03 18:41:40.539 -05:00 [INF] Loading Global Scripts...
+2021-10-03 18:41:40.547 -05:00 [INF] Loading Command Scripts...
+2021-10-03 18:41:40.548 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 18:41:40.548 -05:00 [INF] Loading Script Handler...
+2021-10-03 18:41:40.549 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 18:41:40.549 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 18:41:40.550 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 18:41:40.551 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 18:41:40.551 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 18:41:40.552 -05:00 [INF] Scripts Loaded!
+2021-10-03 18:41:40.565 -05:00 [INF] Server Started!
+2021-10-03 18:41:49.577 -05:00 [INF] edc87275-0ba3-46be-9458-267e150d1ef5 has connected.
+2021-10-03 18:45:27.722 -05:00 [INF] Loading Rooms...
+2021-10-03 18:45:28.001 -05:00 [INF] Rooms Loaded!
+2021-10-03 18:45:28.003 -05:00 [INF] Purgatory
+2021-10-03 18:45:28.005 -05:00 [INF] Northshire Town Square
+2021-10-03 18:45:28.006 -05:00 [INF] Herky the Hawk
+2021-10-03 18:45:28.008 -05:00 [INF] Delmair the Wise
+2021-10-03 18:45:28.008 -05:00 [INF] Northshire Market Street
+2021-10-03 18:45:28.009 -05:00 [INF] Northshire Guild Street
+2021-10-03 18:45:28.010 -05:00 [INF] Field Deer
+2021-10-03 18:45:28.011 -05:00 [INF] Northshire Main Street
+2021-10-03 18:45:28.011 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:45:28.012 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:45:28.013 -05:00 [INF] Northshire Main Street
+2021-10-03 18:45:28.013 -05:00 [INF] Loading Items...
+2021-10-03 18:45:28.021 -05:00 [INF] Items Loaded!
+2021-10-03 18:45:28.022 -05:00 [INF] Initializing Script Globals...
+2021-10-03 18:45:28.272 -05:00 [INF] Script Globals Initialized!
+2021-10-03 18:45:28.273 -05:00 [INF] Loading Global Scripts...
+2021-10-03 18:45:28.280 -05:00 [INF] Loading Command Scripts...
+2021-10-03 18:45:28.282 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 18:45:28.284 -05:00 [INF] Loading Script Handler...
+2021-10-03 18:45:28.285 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 18:45:28.286 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 18:45:28.287 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 18:45:28.288 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 18:45:28.289 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 18:45:28.290 -05:00 [INF] Scripts Loaded!
+2021-10-03 18:45:28.307 -05:00 [INF] Server Started!
+2021-10-03 18:45:35.963 -05:00 [INF] c681dc7b-9c0d-4814-883d-d244d852226c has connected.
+2021-10-03 18:50:32.498 -05:00 [INF] Loading Rooms...
+2021-10-03 18:50:32.747 -05:00 [INF] Rooms Loaded!
+2021-10-03 18:50:32.749 -05:00 [INF] Purgatory
+2021-10-03 18:50:32.750 -05:00 [INF] Northshire Town Square
+2021-10-03 18:50:32.751 -05:00 [INF] Herky the Hawk
+2021-10-03 18:50:32.752 -05:00 [INF] Delmair the Wise
+2021-10-03 18:50:32.753 -05:00 [INF] Northshire Market Street
+2021-10-03 18:50:32.754 -05:00 [INF] Northshire Guild Street
+2021-10-03 18:50:32.755 -05:00 [INF] Field Deer
+2021-10-03 18:50:32.756 -05:00 [INF] Northshire Main Street
+2021-10-03 18:50:32.756 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:50:32.757 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:50:32.758 -05:00 [INF] Northshire Main Street
+2021-10-03 18:50:32.759 -05:00 [INF] Loading Items...
+2021-10-03 18:50:32.767 -05:00 [INF] Items Loaded!
+2021-10-03 18:50:32.770 -05:00 [INF] Initializing Script Globals...
+2021-10-03 18:50:33.022 -05:00 [INF] Script Globals Initialized!
+2021-10-03 18:50:33.023 -05:00 [INF] Loading Global Scripts...
+2021-10-03 18:50:33.028 -05:00 [INF] Loading Command Scripts...
+2021-10-03 18:50:33.030 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 18:50:33.030 -05:00 [INF] Loading Script Handler...
+2021-10-03 18:50:33.032 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 18:50:33.032 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 18:50:33.033 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 18:50:33.033 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 18:50:33.034 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 18:50:33.034 -05:00 [INF] Scripts Loaded!
+2021-10-03 18:50:33.046 -05:00 [INF] Server Started!
+2021-10-03 18:50:42.979 -05:00 [INF] d8bf4554-1fe5-4be1-ae9a-0f6bb9ffec0e has connected.
+2021-10-03 18:50:48.988 -05:00 [INF] c76fa60c-55ba-49d0-bf82-23a3d417b5d1 has connected.
+2021-10-03 18:54:24.049 -05:00 [INF] Loading Rooms...
+2021-10-03 18:54:24.308 -05:00 [INF] Rooms Loaded!
+2021-10-03 18:54:24.310 -05:00 [INF] Purgatory
+2021-10-03 18:54:24.311 -05:00 [INF] Northshire Town Square
+2021-10-03 18:54:24.311 -05:00 [INF] Herky the Hawk
+2021-10-03 18:54:24.312 -05:00 [INF] Delmair the Wise
+2021-10-03 18:54:24.313 -05:00 [INF] Northshire Market Street
+2021-10-03 18:54:24.314 -05:00 [INF] Northshire Guild Street
+2021-10-03 18:54:24.314 -05:00 [INF] Field Deer
+2021-10-03 18:54:24.315 -05:00 [INF] Northshire Main Street
+2021-10-03 18:54:24.316 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:54:24.316 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:54:24.317 -05:00 [INF] Northshire Main Street
+2021-10-03 18:54:24.318 -05:00 [INF] Loading Items...
+2021-10-03 18:54:24.323 -05:00 [INF] Items Loaded!
+2021-10-03 18:54:24.324 -05:00 [INF] Initializing Script Globals...
+2021-10-03 18:54:24.541 -05:00 [INF] Script Globals Initialized!
+2021-10-03 18:54:24.542 -05:00 [INF] Loading Global Scripts...
+2021-10-03 18:54:24.548 -05:00 [INF] Loading Command Scripts...
+2021-10-03 18:54:24.549 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 18:54:24.550 -05:00 [INF] Loading Script Handler...
+2021-10-03 18:54:24.551 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 18:54:24.551 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 18:54:24.552 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 18:54:24.552 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 18:54:24.553 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 18:54:24.554 -05:00 [INF] Scripts Loaded!
+2021-10-03 18:54:24.568 -05:00 [INF] Server Started!
+2021-10-03 18:54:33.049 -05:00 [INF] 9a3b27cb-5826-49c6-a048-2cd0cf638465 has connected.
+2021-10-03 18:56:22.171 -05:00 [INF] Loading Rooms...
+2021-10-03 18:56:22.425 -05:00 [INF] Rooms Loaded!
+2021-10-03 18:56:22.426 -05:00 [INF] Purgatory
+2021-10-03 18:56:22.428 -05:00 [INF] Northshire Town Square
+2021-10-03 18:56:22.429 -05:00 [INF] Herky the Hawk
+2021-10-03 18:56:22.430 -05:00 [INF] Delmair the Wise
+2021-10-03 18:56:22.430 -05:00 [INF] Northshire Market Street
+2021-10-03 18:56:22.431 -05:00 [INF] Northshire Guild Street
+2021-10-03 18:56:22.432 -05:00 [INF] Field Deer
+2021-10-03 18:56:22.433 -05:00 [INF] Northshire Main Street
+2021-10-03 18:56:22.433 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:56:22.434 -05:00 [INF] Northshire Town Guard
+2021-10-03 18:56:22.435 -05:00 [INF] Northshire Main Street
+2021-10-03 18:56:22.435 -05:00 [INF] Loading Items...
+2021-10-03 18:56:22.442 -05:00 [INF] Items Loaded!
+2021-10-03 18:56:22.443 -05:00 [INF] Initializing Script Globals...
+2021-10-03 18:56:22.685 -05:00 [INF] Script Globals Initialized!
+2021-10-03 18:56:22.687 -05:00 [INF] Loading Global Scripts...
+2021-10-03 18:56:22.696 -05:00 [INF] Loading Command Scripts...
+2021-10-03 18:56:22.699 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 18:56:22.700 -05:00 [INF] Loading Script Handler...
+2021-10-03 18:56:22.701 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 18:56:22.702 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 18:56:22.703 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 18:56:22.704 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 18:56:22.705 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 18:56:22.706 -05:00 [INF] Scripts Loaded!
+2021-10-03 18:56:22.729 -05:00 [INF] Server Started!
+2021-10-03 18:56:29.563 -05:00 [INF] 97c689dd-c251-4f44-9f81-30587d55ab94 has connected.
+2021-10-03 18:56:34.216 -05:00 [INF] bc1d43fa-d2be-46e8-a744-823fd240bff6 has connected.
+2021-10-03 19:02:21.901 -05:00 [INF] Loading Rooms...
+2021-10-03 19:02:22.178 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:02:22.179 -05:00 [INF] Purgatory
+2021-10-03 19:02:22.180 -05:00 [INF] Northshire Town Square
+2021-10-03 19:02:22.181 -05:00 [INF] Herky the Hawk
+2021-10-03 19:02:22.182 -05:00 [INF] Delmair the Wise
+2021-10-03 19:02:22.183 -05:00 [INF] Northshire Market Street
+2021-10-03 19:02:22.183 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:02:22.185 -05:00 [INF] Field Deer
+2021-10-03 19:02:22.185 -05:00 [INF] Northshire Main Street
+2021-10-03 19:02:22.186 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:02:22.187 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:02:22.188 -05:00 [INF] Northshire Main Street
+2021-10-03 19:02:22.188 -05:00 [INF] Loading Items...
+2021-10-03 19:02:22.206 -05:00 [INF] Items Loaded!
+2021-10-03 19:02:22.207 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:02:22.454 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:02:22.455 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:02:22.462 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:02:22.463 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:02:22.464 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:02:22.465 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:02:22.466 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:02:22.466 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:02:22.467 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:02:22.468 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:02:22.468 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:02:22.482 -05:00 [INF] Server Started!
+2021-10-03 19:02:32.048 -05:00 [INF] e8853bf9-2fef-42e4-b133-7e272491eb24 has connected.
+2021-10-03 19:03:19.947 -05:00 [INF] Loading Rooms...
+2021-10-03 19:03:20.321 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:03:20.323 -05:00 [INF] Purgatory
+2021-10-03 19:03:20.324 -05:00 [INF] Northshire Town Square
+2021-10-03 19:03:20.325 -05:00 [INF] Herky the Hawk
+2021-10-03 19:03:20.325 -05:00 [INF] Delmair the Wise
+2021-10-03 19:03:20.326 -05:00 [INF] Northshire Market Street
+2021-10-03 19:03:20.327 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:03:20.328 -05:00 [INF] Field Deer
+2021-10-03 19:03:20.328 -05:00 [INF] Northshire Main Street
+2021-10-03 19:03:20.329 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:03:20.330 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:03:20.330 -05:00 [INF] Northshire Main Street
+2021-10-03 19:03:20.331 -05:00 [INF] Loading Items...
+2021-10-03 19:03:20.341 -05:00 [INF] Items Loaded!
+2021-10-03 19:03:20.343 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:03:20.641 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:03:20.642 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:03:20.650 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:03:20.652 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:03:20.653 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:03:20.654 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:03:20.655 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:03:20.655 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:03:20.656 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:03:20.657 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:03:20.658 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:03:20.670 -05:00 [INF] Server Started!
+2021-10-03 19:03:28.407 -05:00 [INF] 9839d9f9-4fd7-49a9-9b7d-3a59588fe3c0 has connected.
+2021-10-03 19:04:05.239 -05:00 [INF] Loading Rooms...
+2021-10-03 19:04:05.488 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:04:05.489 -05:00 [INF] Purgatory
+2021-10-03 19:04:05.489 -05:00 [INF] Northshire Town Square
+2021-10-03 19:04:05.490 -05:00 [INF] Herky the Hawk
+2021-10-03 19:04:05.490 -05:00 [INF] Delmair the Wise
+2021-10-03 19:04:05.491 -05:00 [INF] Northshire Market Street
+2021-10-03 19:04:05.492 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:04:05.492 -05:00 [INF] Field Deer
+2021-10-03 19:04:05.493 -05:00 [INF] Northshire Main Street
+2021-10-03 19:04:05.493 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:04:05.494 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:04:05.495 -05:00 [INF] Northshire Main Street
+2021-10-03 19:04:05.495 -05:00 [INF] Loading Items...
+2021-10-03 19:04:05.501 -05:00 [INF] Items Loaded!
+2021-10-03 19:04:05.502 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:04:05.773 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:04:05.774 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:04:05.780 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:04:05.782 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:04:05.782 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:04:05.783 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:04:05.784 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:04:05.785 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:04:05.785 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:04:05.786 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:04:05.788 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:04:05.807 -05:00 [INF] Server Started!
+2021-10-03 19:04:12.661 -05:00 [INF] e6e18043-6019-49be-a472-88ea2c8b1b58 has connected.
+2021-10-03 19:04:16.724 -05:00 [INF] e6e18043-6019-49be-a472-88ea2c8b1b58 has disconnected.
+2021-10-03 19:04:43.799 -05:00 [INF] Loading Rooms...
+2021-10-03 19:04:44.139 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:04:44.140 -05:00 [INF] Purgatory
+2021-10-03 19:04:44.141 -05:00 [INF] Northshire Town Square
+2021-10-03 19:04:44.142 -05:00 [INF] Herky the Hawk
+2021-10-03 19:04:44.142 -05:00 [INF] Delmair the Wise
+2021-10-03 19:04:44.143 -05:00 [INF] Northshire Market Street
+2021-10-03 19:04:44.144 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:04:44.144 -05:00 [INF] Field Deer
+2021-10-03 19:04:44.145 -05:00 [INF] Northshire Main Street
+2021-10-03 19:04:44.145 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:04:44.146 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:04:44.146 -05:00 [INF] Northshire Main Street
+2021-10-03 19:04:44.147 -05:00 [INF] Loading Items...
+2021-10-03 19:04:44.153 -05:00 [INF] Items Loaded!
+2021-10-03 19:04:44.153 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:04:44.349 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:04:44.351 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:04:44.357 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:04:44.358 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:04:44.359 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:04:44.360 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:04:44.360 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:04:44.361 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:04:44.361 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:04:44.362 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:04:44.362 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:04:44.374 -05:00 [INF] Server Started!
+2021-10-03 19:04:50.830 -05:00 [INF] 14c95c3a-2129-40ed-8eee-46168e36ff3b has connected.
+2021-10-03 19:04:55.679 -05:00 [INF] 14c95c3a-2129-40ed-8eee-46168e36ff3b has disconnected.
+2021-10-03 19:06:19.606 -05:00 [INF] Loading Rooms...
+2021-10-03 19:06:19.851 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:06:19.853 -05:00 [INF] Purgatory
+2021-10-03 19:06:19.854 -05:00 [INF] Northshire Town Square
+2021-10-03 19:06:19.855 -05:00 [INF] Herky the Hawk
+2021-10-03 19:06:19.855 -05:00 [INF] Delmair the Wise
+2021-10-03 19:06:19.856 -05:00 [INF] Northshire Market Street
+2021-10-03 19:06:19.857 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:06:19.858 -05:00 [INF] Field Deer
+2021-10-03 19:06:19.859 -05:00 [INF] Northshire Main Street
+2021-10-03 19:06:19.860 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:06:19.862 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:06:19.862 -05:00 [INF] Northshire Main Street
+2021-10-03 19:06:19.863 -05:00 [INF] Loading Items...
+2021-10-03 19:06:19.869 -05:00 [INF] Items Loaded!
+2021-10-03 19:06:19.870 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:06:20.060 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:06:20.061 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:06:20.069 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:06:20.070 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:06:20.071 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:06:20.072 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:06:20.072 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:06:20.074 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:06:20.074 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:06:20.075 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:06:20.076 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:06:20.089 -05:00 [INF] Server Started!
+2021-10-03 19:06:29.217 -05:00 [INF] a833acd0-a5f9-41c5-a70a-6ddfe15e712a has connected.
+2021-10-03 19:06:46.771 -05:00 [INF] a833acd0-a5f9-41c5-a70a-6ddfe15e712a has disconnected.
+2021-10-03 19:07:49.941 -05:00 [INF] Loading Rooms...
+2021-10-03 19:07:50.258 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:07:50.260 -05:00 [INF] Purgatory
+2021-10-03 19:07:50.261 -05:00 [INF] Northshire Town Square
+2021-10-03 19:07:50.262 -05:00 [INF] Herky the Hawk
+2021-10-03 19:07:50.262 -05:00 [INF] Delmair the Wise
+2021-10-03 19:07:50.263 -05:00 [INF] Northshire Market Street
+2021-10-03 19:07:50.264 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:07:50.264 -05:00 [INF] Field Deer
+2021-10-03 19:07:50.265 -05:00 [INF] Northshire Main Street
+2021-10-03 19:07:50.266 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:07:50.267 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:07:50.267 -05:00 [INF] Northshire Main Street
+2021-10-03 19:07:50.268 -05:00 [INF] Loading Items...
+2021-10-03 19:07:50.274 -05:00 [INF] Items Loaded!
+2021-10-03 19:07:50.275 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:07:50.504 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:07:50.505 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:07:50.512 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:07:50.513 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:07:50.515 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:07:50.516 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:07:50.517 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:07:50.517 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:07:50.518 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:07:50.518 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:07:50.519 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:07:50.534 -05:00 [INF] Server Started!
+2021-10-03 19:07:58.032 -05:00 [INF] 509e0a92-7bc4-4ca2-a9ab-8d1fca19e660 has connected.
+2021-10-03 19:08:04.255 -05:00 [INF] f1562797-c395-4fa2-8273-3134172458a6 has connected.
+2021-10-03 19:10:16.542 -05:00 [INF] Loading Rooms...
+2021-10-03 19:10:16.797 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:10:16.798 -05:00 [INF] Purgatory
+2021-10-03 19:10:16.799 -05:00 [INF] Northshire Town Square
+2021-10-03 19:10:16.799 -05:00 [INF] Herky the Hawk
+2021-10-03 19:10:16.800 -05:00 [INF] Delmair the Wise
+2021-10-03 19:10:16.801 -05:00 [INF] Northshire Market Street
+2021-10-03 19:10:16.801 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:10:16.802 -05:00 [INF] Field Deer
+2021-10-03 19:10:16.803 -05:00 [INF] Northshire Main Street
+2021-10-03 19:10:16.803 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:10:16.804 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:10:16.804 -05:00 [INF] Northshire Main Street
+2021-10-03 19:10:16.805 -05:00 [INF] Loading Items...
+2021-10-03 19:10:16.811 -05:00 [INF] Items Loaded!
+2021-10-03 19:10:16.812 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:10:17.015 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:10:17.016 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:10:17.023 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:10:17.024 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:10:17.024 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:10:17.025 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:10:17.026 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:10:17.028 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:10:17.028 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:10:17.029 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:10:17.029 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:10:17.047 -05:00 [INF] Server Started!
+2021-10-03 19:10:25.939 -05:00 [INF] 0368c802-4c43-473a-b41c-eaca6997f5d8 has connected.
+2021-10-03 19:10:31.595 -05:00 [INF] 38cf6525-18df-4d09-9da5-54feaf3ae7c0 has connected.
+2021-10-03 19:10:44.633 -05:00 [INF] 38cf6525-18df-4d09-9da5-54feaf3ae7c0 has disconnected.
+2021-10-03 19:11:15.943 -05:00 [INF] Loading Rooms...
+2021-10-03 19:11:16.185 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:11:16.186 -05:00 [INF] Purgatory
+2021-10-03 19:11:16.187 -05:00 [INF] Northshire Town Square
+2021-10-03 19:11:16.188 -05:00 [INF] Herky the Hawk
+2021-10-03 19:11:16.189 -05:00 [INF] Delmair the Wise
+2021-10-03 19:11:16.189 -05:00 [INF] Northshire Market Street
+2021-10-03 19:11:16.190 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:11:16.191 -05:00 [INF] Field Deer
+2021-10-03 19:11:16.191 -05:00 [INF] Northshire Main Street
+2021-10-03 19:11:16.192 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:11:16.193 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:11:16.194 -05:00 [INF] Northshire Main Street
+2021-10-03 19:11:16.194 -05:00 [INF] Loading Items...
+2021-10-03 19:11:16.201 -05:00 [INF] Items Loaded!
+2021-10-03 19:11:16.202 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:11:16.407 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:11:16.408 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:11:16.414 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:11:16.415 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:11:16.416 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:11:16.416 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:11:16.417 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:11:16.418 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:11:16.419 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:11:16.419 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:11:16.422 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:11:16.435 -05:00 [INF] Server Started!
+2021-10-03 19:11:23.492 -05:00 [INF] 08480756-6f1c-45d2-9099-2ed0cefc33cb has connected.
+2021-10-03 19:11:29.339 -05:00 [INF] 08480756-6f1c-45d2-9099-2ed0cefc33cb has disconnected.
+2021-10-03 19:11:35.151 -05:00 [INF] Loading Rooms...
+2021-10-03 19:11:35.390 -05:00 [INF] Rooms Loaded!
+2021-10-03 19:11:35.391 -05:00 [INF] Purgatory
+2021-10-03 19:11:35.392 -05:00 [INF] Northshire Town Square
+2021-10-03 19:11:35.393 -05:00 [INF] Herky the Hawk
+2021-10-03 19:11:35.394 -05:00 [INF] Delmair the Wise
+2021-10-03 19:11:35.395 -05:00 [INF] Northshire Market Street
+2021-10-03 19:11:35.395 -05:00 [INF] Northshire Guild Street
+2021-10-03 19:11:35.396 -05:00 [INF] Field Deer
+2021-10-03 19:11:35.397 -05:00 [INF] Northshire Main Street
+2021-10-03 19:11:35.397 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:11:35.398 -05:00 [INF] Northshire Town Guard
+2021-10-03 19:11:35.399 -05:00 [INF] Northshire Main Street
+2021-10-03 19:11:35.400 -05:00 [INF] Loading Items...
+2021-10-03 19:11:35.406 -05:00 [INF] Items Loaded!
+2021-10-03 19:11:35.407 -05:00 [INF] Initializing Script Globals...
+2021-10-03 19:11:35.589 -05:00 [INF] Script Globals Initialized!
+2021-10-03 19:11:35.590 -05:00 [INF] Loading Global Scripts...
+2021-10-03 19:11:35.596 -05:00 [INF] Loading Command Scripts...
+2021-10-03 19:11:35.597 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 19:11:35.598 -05:00 [INF] Loading Script Handler...
+2021-10-03 19:11:35.599 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 19:11:35.599 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 19:11:35.600 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 19:11:35.600 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 19:11:35.601 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 19:11:35.602 -05:00 [INF] Scripts Loaded!
+2021-10-03 19:11:35.616 -05:00 [INF] Server Started!
+2021-10-03 19:11:42.907 -05:00 [INF] b46936ed-4c30-4000-96a0-45740a341657 has connected.
+2021-10-03 19:12:34.835 -05:00 [INF] b46936ed-4c30-4000-96a0-45740a341657 has disconnected.
+2021-10-03 20:43:08.716 -05:00 [INF] Loading Rooms...
+2021-10-03 20:43:09.063 -05:00 [INF] Rooms Loaded!
+2021-10-03 20:43:09.064 -05:00 [INF] Purgatory
+2021-10-03 20:43:09.065 -05:00 [INF] Northshire Town Square
+2021-10-03 20:43:09.065 -05:00 [INF] Herky the Hawk
+2021-10-03 20:43:09.066 -05:00 [INF] Delmair the Wise
+2021-10-03 20:43:09.067 -05:00 [INF] Northshire Market Street
+2021-10-03 20:43:09.067 -05:00 [INF] Northshire Guild Street
+2021-10-03 20:43:09.068 -05:00 [INF] Field Deer
+2021-10-03 20:43:09.068 -05:00 [INF] Northshire Main Street
+2021-10-03 20:43:09.069 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:43:09.070 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:43:09.071 -05:00 [INF] Northshire Main Street
+2021-10-03 20:43:09.072 -05:00 [INF] Loading Items...
+2021-10-03 20:43:09.077 -05:00 [INF] Items Loaded!
+2021-10-03 20:43:09.078 -05:00 [INF] Initializing Script Globals...
+2021-10-03 20:43:09.287 -05:00 [INF] Script Globals Initialized!
+2021-10-03 20:43:09.288 -05:00 [INF] Loading Global Scripts...
+2021-10-03 20:43:09.295 -05:00 [INF] Loading Command Scripts...
+2021-10-03 20:43:09.297 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 20:43:09.297 -05:00 [INF] Loading Script Handler...
+2021-10-03 20:43:09.298 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 20:43:09.298 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 20:43:09.299 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 20:43:09.300 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 20:43:09.300 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 20:43:09.301 -05:00 [INF] Scripts Loaded!
+2021-10-03 20:43:09.321 -05:00 [INF] Server Started!
+2021-10-03 20:43:21.793 -05:00 [INF] 47556b36-c293-4405-b9fc-53517076c370 has connected.
+2021-10-03 20:44:42.666 -05:00 [INF] Loading Rooms...
+2021-10-03 20:44:42.965 -05:00 [INF] Rooms Loaded!
+2021-10-03 20:44:42.967 -05:00 [INF] Purgatory
+2021-10-03 20:44:42.967 -05:00 [INF] Northshire Town Square
+2021-10-03 20:44:42.968 -05:00 [INF] Herky the Hawk
+2021-10-03 20:44:42.969 -05:00 [INF] Delmair the Wise
+2021-10-03 20:44:42.970 -05:00 [INF] Northshire Market Street
+2021-10-03 20:44:42.971 -05:00 [INF] Northshire Guild Street
+2021-10-03 20:44:42.971 -05:00 [INF] Field Deer
+2021-10-03 20:44:42.972 -05:00 [INF] Northshire Main Street
+2021-10-03 20:44:42.973 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:44:42.973 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:44:42.974 -05:00 [INF] Northshire Main Street
+2021-10-03 20:44:42.977 -05:00 [INF] Loading Items...
+2021-10-03 20:44:42.983 -05:00 [INF] Items Loaded!
+2021-10-03 20:44:42.984 -05:00 [INF] Initializing Script Globals...
+2021-10-03 20:44:43.243 -05:00 [INF] Script Globals Initialized!
+2021-10-03 20:44:43.244 -05:00 [INF] Loading Global Scripts...
+2021-10-03 20:44:43.252 -05:00 [INF] Loading Command Scripts...
+2021-10-03 20:44:43.253 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 20:44:43.256 -05:00 [INF] Loading Script Handler...
+2021-10-03 20:44:43.257 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 20:44:43.258 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 20:44:43.258 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 20:44:43.260 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 20:44:43.261 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 20:44:43.261 -05:00 [INF] Scripts Loaded!
+2021-10-03 20:44:43.283 -05:00 [INF] Server Started!
+2021-10-03 20:44:50.531 -05:00 [INF] c0a667f6-8006-407a-9c9d-dce8e61e775f has connected.
+2021-10-03 20:48:08.979 -05:00 [INF] Loading Rooms...
+2021-10-03 20:48:09.271 -05:00 [INF] Rooms Loaded!
+2021-10-03 20:48:09.272 -05:00 [INF] Purgatory
+2021-10-03 20:48:09.273 -05:00 [INF] Northshire Town Square
+2021-10-03 20:48:09.274 -05:00 [INF] Herky the Hawk
+2021-10-03 20:48:09.275 -05:00 [INF] Delmair the Wise
+2021-10-03 20:48:09.275 -05:00 [INF] Northshire Market Street
+2021-10-03 20:48:09.276 -05:00 [INF] Northshire Guild Street
+2021-10-03 20:48:09.277 -05:00 [INF] Field Deer
+2021-10-03 20:48:09.277 -05:00 [INF] Northshire Main Street
+2021-10-03 20:48:09.278 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:48:09.279 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:48:09.280 -05:00 [INF] Northshire Main Street
+2021-10-03 20:48:09.281 -05:00 [INF] Loading Items...
+2021-10-03 20:48:09.289 -05:00 [INF] Items Loaded!
+2021-10-03 20:48:09.291 -05:00 [INF] Initializing Script Globals...
+2021-10-03 20:48:09.504 -05:00 [INF] Script Globals Initialized!
+2021-10-03 20:48:09.505 -05:00 [INF] Loading Global Scripts...
+2021-10-03 20:48:09.513 -05:00 [INF] Loading Command Scripts...
+2021-10-03 20:48:09.514 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 20:48:09.515 -05:00 [INF] Loading Script Handler...
+2021-10-03 20:48:09.515 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 20:48:09.516 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 20:48:09.517 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 20:48:09.517 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 20:48:09.518 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 20:48:09.519 -05:00 [INF] Scripts Loaded!
+2021-10-03 20:48:09.534 -05:00 [INF] Server Started!
+2021-10-03 20:48:20.056 -05:00 [INF] 67544bd7-6065-4fb3-ab06-b1456002832a has connected.
+2021-10-03 20:48:28.894 -05:00 [INF] 67544bd7-6065-4fb3-ab06-b1456002832a has disconnected.
+2021-10-03 20:50:05.718 -05:00 [INF] Loading Rooms...
+2021-10-03 20:50:05.966 -05:00 [INF] Rooms Loaded!
+2021-10-03 20:50:05.967 -05:00 [INF] Purgatory
+2021-10-03 20:50:05.968 -05:00 [INF] Northshire Town Square
+2021-10-03 20:50:05.968 -05:00 [INF] Herky the Hawk
+2021-10-03 20:50:05.969 -05:00 [INF] Delmair the Wise
+2021-10-03 20:50:05.970 -05:00 [INF] Northshire Market Street
+2021-10-03 20:50:05.970 -05:00 [INF] Northshire Guild Street
+2021-10-03 20:50:05.971 -05:00 [INF] Field Deer
+2021-10-03 20:50:05.971 -05:00 [INF] Northshire Main Street
+2021-10-03 20:50:05.972 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:50:05.973 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:50:05.973 -05:00 [INF] Northshire Main Street
+2021-10-03 20:50:05.974 -05:00 [INF] Loading Items...
+2021-10-03 20:50:05.979 -05:00 [INF] Items Loaded!
+2021-10-03 20:50:05.981 -05:00 [INF] Initializing Script Globals...
+2021-10-03 20:50:06.180 -05:00 [INF] Script Globals Initialized!
+2021-10-03 20:50:06.182 -05:00 [INF] Loading Global Scripts...
+2021-10-03 20:50:06.189 -05:00 [INF] Loading Command Scripts...
+2021-10-03 20:50:06.190 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 20:50:06.191 -05:00 [INF] Loading Script Handler...
+2021-10-03 20:50:06.192 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 20:50:06.193 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 20:50:06.193 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 20:50:06.194 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 20:50:06.195 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 20:50:06.196 -05:00 [INF] Scripts Loaded!
+2021-10-03 20:50:06.219 -05:00 [INF] Server Started!
+2021-10-03 20:50:14.933 -05:00 [INF] fbbab640-9308-42e0-a368-aa7d4a949c74 has connected.
+2021-10-03 20:50:27.678 -05:00 [INF] fbbab640-9308-42e0-a368-aa7d4a949c74 has disconnected.
+2021-10-03 20:52:35.801 -05:00 [INF] Loading Rooms...
+2021-10-03 20:52:36.054 -05:00 [INF] Rooms Loaded!
+2021-10-03 20:52:36.056 -05:00 [INF] Purgatory
+2021-10-03 20:52:36.057 -05:00 [INF] Northshire Town Square
+2021-10-03 20:52:36.058 -05:00 [INF] Herky the Hawk
+2021-10-03 20:52:36.059 -05:00 [INF] Delmair the Wise
+2021-10-03 20:52:36.060 -05:00 [INF] Northshire Market Street
+2021-10-03 20:52:36.061 -05:00 [INF] Northshire Guild Street
+2021-10-03 20:52:36.062 -05:00 [INF] Field Deer
+2021-10-03 20:52:36.063 -05:00 [INF] Northshire Main Street
+2021-10-03 20:52:36.064 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:52:36.065 -05:00 [INF] Northshire Town Guard
+2021-10-03 20:52:36.065 -05:00 [INF] Northshire Main Street
+2021-10-03 20:52:36.066 -05:00 [INF] Loading Items...
+2021-10-03 20:52:36.074 -05:00 [INF] Items Loaded!
+2021-10-03 20:52:36.076 -05:00 [INF] Initializing Script Globals...
+2021-10-03 20:52:36.328 -05:00 [INF] Script Globals Initialized!
+2021-10-03 20:52:36.329 -05:00 [INF] Loading Global Scripts...
+2021-10-03 20:52:36.336 -05:00 [INF] Loading Command Scripts...
+2021-10-03 20:52:36.337 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 20:52:36.338 -05:00 [INF] Loading Script Handler...
+2021-10-03 20:52:36.338 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 20:52:36.340 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 20:52:36.341 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 20:52:36.341 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 20:52:36.342 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 20:52:36.342 -05:00 [INF] Scripts Loaded!
+2021-10-03 20:52:36.391 -05:00 [INF] Server Started!
+2021-10-03 20:52:45.747 -05:00 [INF] 68ec3f94-1127-4062-9d06-22bc87de137f has connected.
+2021-10-03 21:00:48.535 -05:00 [INF] Loading Rooms...
+2021-10-03 21:00:48.781 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:00:48.782 -05:00 [INF] Purgatory
+2021-10-03 21:00:48.783 -05:00 [INF] Northshire Town Square
+2021-10-03 21:00:48.784 -05:00 [INF] Herky the Hawk
+2021-10-03 21:00:48.784 -05:00 [INF] Delmair the Wise
+2021-10-03 21:00:48.785 -05:00 [INF] Northshire Market Street
+2021-10-03 21:00:48.785 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:00:48.786 -05:00 [INF] Field Deer
+2021-10-03 21:00:48.787 -05:00 [INF] Northshire Main Street
+2021-10-03 21:00:48.788 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:00:48.789 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:00:48.789 -05:00 [INF] Northshire Main Street
+2021-10-03 21:00:48.790 -05:00 [INF] Loading Items...
+2021-10-03 21:00:48.797 -05:00 [INF] Items Loaded!
+2021-10-03 21:00:48.798 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:00:49.038 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:00:49.039 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:00:49.050 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:00:49.052 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:00:49.056 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:00:49.057 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:00:49.058 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:00:49.059 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:00:49.061 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:00:49.062 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:00:49.063 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:00:49.080 -05:00 [INF] Server Started!
+2021-10-03 21:00:59.864 -05:00 [INF] 7fa22dd4-3b2d-4e81-b3b9-271720c8b78c has connected.
+2021-10-03 21:02:33.930 -05:00 [INF] 7fa22dd4-3b2d-4e81-b3b9-271720c8b78c has disconnected.
+2021-10-03 21:28:35.678 -05:00 [INF] Loading Rooms...
+2021-10-03 21:28:36.031 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:28:36.032 -05:00 [INF] Purgatory
+2021-10-03 21:28:36.034 -05:00 [INF] Northshire Town Square
+2021-10-03 21:28:36.035 -05:00 [INF] Herky the Hawk
+2021-10-03 21:28:36.036 -05:00 [INF] Delmair the Wise
+2021-10-03 21:28:36.037 -05:00 [INF] Northshire Market Street
+2021-10-03 21:28:36.038 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:28:36.038 -05:00 [INF] Field Deer
+2021-10-03 21:28:36.039 -05:00 [INF] Northshire Main Street
+2021-10-03 21:28:36.040 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:28:36.041 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:28:36.042 -05:00 [INF] Northshire Main Street
+2021-10-03 21:28:36.044 -05:00 [INF] Loading Items...
+2021-10-03 21:28:36.063 -05:00 [INF] Items Loaded!
+2021-10-03 21:28:36.063 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:28:36.299 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:28:36.300 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:28:36.307 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:28:36.308 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:28:36.309 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:28:36.310 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:28:36.311 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:28:36.311 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:28:36.312 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:28:36.312 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:28:36.313 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:28:36.328 -05:00 [INF] Server Started!
+2021-10-03 21:28:51.271 -05:00 [INF] e48c78c4-bda7-4dea-b599-d40ee0f0281d has connected.
+2021-10-03 21:38:51.030 -05:00 [INF] Loading Rooms...
+2021-10-03 21:38:51.320 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:38:51.321 -05:00 [INF] Purgatory
+2021-10-03 21:38:51.322 -05:00 [INF] Northshire Town Square
+2021-10-03 21:38:51.323 -05:00 [INF] Herky the Hawk
+2021-10-03 21:38:51.324 -05:00 [INF] Delmair the Wise
+2021-10-03 21:38:51.325 -05:00 [INF] Northshire Market Street
+2021-10-03 21:38:51.325 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:38:51.326 -05:00 [INF] Field Deer
+2021-10-03 21:38:51.326 -05:00 [INF] Northshire Main Street
+2021-10-03 21:38:51.327 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:38:51.328 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:38:51.328 -05:00 [INF] Northshire Main Street
+2021-10-03 21:38:51.329 -05:00 [INF] Loading Items...
+2021-10-03 21:38:51.337 -05:00 [INF] Items Loaded!
+2021-10-03 21:38:51.338 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:38:51.571 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:38:51.572 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:38:51.578 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:38:51.579 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:38:51.580 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:38:51.581 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:38:51.581 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:38:51.582 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:38:51.582 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:38:51.583 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:38:51.584 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:38:51.599 -05:00 [INF] Server Started!
+2021-10-03 21:39:03.841 -05:00 [INF] cbad1fd6-8674-476e-8cbd-44bba41a7c57 has connected.
+2021-10-03 21:40:11.878 -05:00 [INF] Loading Rooms...
+2021-10-03 21:40:12.119 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:40:12.120 -05:00 [INF] Purgatory
+2021-10-03 21:40:12.121 -05:00 [INF] Northshire Town Square
+2021-10-03 21:40:12.122 -05:00 [INF] Herky the Hawk
+2021-10-03 21:40:12.122 -05:00 [INF] Delmair the Wise
+2021-10-03 21:40:12.123 -05:00 [INF] Northshire Market Street
+2021-10-03 21:40:12.123 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:40:12.124 -05:00 [INF] Field Deer
+2021-10-03 21:40:12.125 -05:00 [INF] Northshire Main Street
+2021-10-03 21:40:12.125 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:40:12.126 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:40:12.127 -05:00 [INF] Northshire Main Street
+2021-10-03 21:40:12.128 -05:00 [INF] Loading Items...
+2021-10-03 21:40:12.134 -05:00 [INF] Items Loaded!
+2021-10-03 21:40:12.135 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:40:12.339 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:40:12.340 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:40:12.347 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:40:12.348 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:40:12.349 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:40:12.350 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:40:12.351 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:40:12.352 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:40:12.352 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:40:12.353 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:40:12.354 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:40:12.373 -05:00 [INF] Server Started!
+2021-10-03 21:40:20.902 -05:00 [INF] ff0354d3-3a22-49c3-912e-cb620d918c9a has connected.
+2021-10-03 21:40:59.720 -05:00 [INF] ff0354d3-3a22-49c3-912e-cb620d918c9a has disconnected.
+2021-10-03 21:44:44.796 -05:00 [INF] Loading Rooms...
+2021-10-03 21:44:45.105 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:44:45.106 -05:00 [INF] Purgatory
+2021-10-03 21:44:45.107 -05:00 [INF] Northshire Town Square
+2021-10-03 21:44:45.107 -05:00 [INF] Herky the Hawk
+2021-10-03 21:44:45.108 -05:00 [INF] Delmair the Wise
+2021-10-03 21:44:45.109 -05:00 [INF] Northshire Market Street
+2021-10-03 21:44:45.110 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:44:45.110 -05:00 [INF] Field Deer
+2021-10-03 21:44:45.111 -05:00 [INF] Northshire Main Street
+2021-10-03 21:44:45.112 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:44:45.112 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:44:45.113 -05:00 [INF] Northshire Main Street
+2021-10-03 21:44:45.114 -05:00 [INF] Loading Items...
+2021-10-03 21:44:45.120 -05:00 [INF] Items Loaded!
+2021-10-03 21:44:45.121 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:44:45.400 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:44:45.401 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:44:45.410 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:44:45.412 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:44:45.412 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:44:45.413 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:44:45.414 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:44:45.414 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:44:45.415 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:44:45.416 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:44:45.416 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:44:45.429 -05:00 [INF] Server Started!
+2021-10-03 21:45:01.525 -05:00 [INF] 6db1c711-65f7-4880-92fd-6047b035397e has connected.
+2021-10-03 21:45:07.499 -05:00 [INF] 5efef058-c96d-4a41-b251-91ae62cf43b4 has connected.
+2021-10-03 21:45:52.158 -05:00 [INF] Loading Rooms...
+2021-10-03 21:45:52.398 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:45:52.399 -05:00 [INF] Purgatory
+2021-10-03 21:45:52.400 -05:00 [INF] Northshire Town Square
+2021-10-03 21:45:52.401 -05:00 [INF] Herky the Hawk
+2021-10-03 21:45:52.402 -05:00 [INF] Delmair the Wise
+2021-10-03 21:45:52.403 -05:00 [INF] Northshire Market Street
+2021-10-03 21:45:52.403 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:45:52.404 -05:00 [INF] Field Deer
+2021-10-03 21:45:52.404 -05:00 [INF] Northshire Main Street
+2021-10-03 21:45:52.405 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:45:52.406 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:45:52.406 -05:00 [INF] Northshire Main Street
+2021-10-03 21:45:52.407 -05:00 [INF] Loading Items...
+2021-10-03 21:45:52.413 -05:00 [INF] Items Loaded!
+2021-10-03 21:45:52.414 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:45:52.634 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:45:52.635 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:45:52.642 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:45:52.643 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:45:52.644 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:45:52.646 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:45:52.647 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:45:52.648 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:45:52.649 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:45:52.650 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:45:52.650 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:45:52.663 -05:00 [INF] Server Started!
+2021-10-03 21:45:59.679 -05:00 [INF] ff02f473-95ad-4e9a-bddf-81c6f0e28482 has connected.
+2021-10-03 21:49:36.625 -05:00 [INF] Loading Rooms...
+2021-10-03 21:49:36.862 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:49:36.863 -05:00 [INF] Purgatory
+2021-10-03 21:49:36.864 -05:00 [INF] Northshire Town Square
+2021-10-03 21:49:36.865 -05:00 [INF] Herky the Hawk
+2021-10-03 21:49:36.865 -05:00 [INF] Delmair the Wise
+2021-10-03 21:49:36.866 -05:00 [INF] Northshire Market Street
+2021-10-03 21:49:36.866 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:49:36.867 -05:00 [INF] Field Deer
+2021-10-03 21:49:36.868 -05:00 [INF] Northshire Main Street
+2021-10-03 21:49:36.869 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:49:36.869 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:49:36.870 -05:00 [INF] Northshire Main Street
+2021-10-03 21:49:36.870 -05:00 [INF] Loading Items...
+2021-10-03 21:49:36.887 -05:00 [INF] Items Loaded!
+2021-10-03 21:49:36.888 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:49:37.082 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:49:37.083 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:49:37.090 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:49:37.092 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:49:37.093 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:49:37.094 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:49:37.094 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:49:37.095 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:49:37.095 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:49:37.096 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:49:37.097 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:49:37.109 -05:00 [INF] Server Started!
+2021-10-03 21:49:55.501 -05:00 [INF] 3f27e244-a761-4fe6-9209-8c46d9cd63ba has connected.
+2021-10-03 21:58:03.311 -05:00 [INF] Loading Rooms...
+2021-10-03 21:58:03.667 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:58:03.668 -05:00 [INF] Purgatory
+2021-10-03 21:58:03.669 -05:00 [INF] Northshire Town Square
+2021-10-03 21:58:03.670 -05:00 [INF] Herky the Hawk
+2021-10-03 21:58:03.671 -05:00 [INF] Delmair the Wise
+2021-10-03 21:58:03.671 -05:00 [INF] Northshire Market Street
+2021-10-03 21:58:03.672 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:58:03.680 -05:00 [INF] Field Deer
+2021-10-03 21:58:03.681 -05:00 [INF] Northshire Main Street
+2021-10-03 21:58:03.683 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:58:03.684 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:58:03.685 -05:00 [INF] Northshire Main Street
+2021-10-03 21:58:03.685 -05:00 [INF] Loading Items...
+2021-10-03 21:58:03.691 -05:00 [INF] Items Loaded!
+2021-10-03 21:58:03.693 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:58:03.898 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:58:03.901 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:58:03.909 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:58:03.911 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:58:03.912 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:58:03.912 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:58:03.913 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:58:03.914 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:58:03.915 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:58:03.916 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:58:03.917 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:58:03.945 -05:00 [INF] Server Started!
+2021-10-03 21:58:15.532 -05:00 [INF] bffb860b-d69f-4bce-9185-9f0130f32a2d has connected.
+2021-10-03 21:58:57.384 -05:00 [INF] bffb860b-d69f-4bce-9185-9f0130f32a2d has disconnected.
+2021-10-03 21:59:13.713 -05:00 [INF] Loading Rooms...
+2021-10-03 21:59:14.069 -05:00 [INF] Rooms Loaded!
+2021-10-03 21:59:14.071 -05:00 [INF] Purgatory
+2021-10-03 21:59:14.071 -05:00 [INF] Northshire Town Square
+2021-10-03 21:59:14.072 -05:00 [INF] Herky the Hawk
+2021-10-03 21:59:14.074 -05:00 [INF] Delmair the Wise
+2021-10-03 21:59:14.075 -05:00 [INF] Northshire Market Street
+2021-10-03 21:59:14.075 -05:00 [INF] Northshire Guild Street
+2021-10-03 21:59:14.076 -05:00 [INF] Field Deer
+2021-10-03 21:59:14.077 -05:00 [INF] Northshire Main Street
+2021-10-03 21:59:14.078 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:59:14.078 -05:00 [INF] Northshire Town Guard
+2021-10-03 21:59:14.079 -05:00 [INF] Northshire Main Street
+2021-10-03 21:59:14.080 -05:00 [INF] Loading Items...
+2021-10-03 21:59:14.090 -05:00 [INF] Items Loaded!
+2021-10-03 21:59:14.091 -05:00 [INF] Initializing Script Globals...
+2021-10-03 21:59:14.410 -05:00 [INF] Script Globals Initialized!
+2021-10-03 21:59:14.411 -05:00 [INF] Loading Global Scripts...
+2021-10-03 21:59:14.420 -05:00 [INF] Loading Command Scripts...
+2021-10-03 21:59:14.421 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 21:59:14.422 -05:00 [INF] Loading Script Handler...
+2021-10-03 21:59:14.423 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 21:59:14.424 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 21:59:14.425 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 21:59:14.425 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 21:59:14.426 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 21:59:14.427 -05:00 [INF] Scripts Loaded!
+2021-10-03 21:59:14.439 -05:00 [INF] Server Started!
+2021-10-03 21:59:24.760 -05:00 [INF] 83e34044-0b9c-48b2-aca3-65bf5addf30e has connected.
+2021-10-03 22:00:52.174 -05:00 [INF] Loading Rooms...
+2021-10-03 22:00:52.423 -05:00 [INF] Rooms Loaded!
+2021-10-03 22:00:52.425 -05:00 [INF] Purgatory
+2021-10-03 22:00:52.426 -05:00 [INF] Northshire Town Square
+2021-10-03 22:00:52.427 -05:00 [INF] Herky the Hawk
+2021-10-03 22:00:52.428 -05:00 [INF] Delmair the Wise
+2021-10-03 22:00:52.428 -05:00 [INF] Northshire Market Street
+2021-10-03 22:00:52.429 -05:00 [INF] Northshire Guild Street
+2021-10-03 22:00:52.430 -05:00 [INF] Field Deer
+2021-10-03 22:00:52.430 -05:00 [INF] Northshire Main Street
+2021-10-03 22:00:52.431 -05:00 [INF] Northshire Town Guard
+2021-10-03 22:00:52.432 -05:00 [INF] Northshire Town Guard
+2021-10-03 22:00:52.432 -05:00 [INF] Northshire Main Street
+2021-10-03 22:00:52.433 -05:00 [INF] Loading Items...
+2021-10-03 22:00:52.439 -05:00 [INF] Items Loaded!
+2021-10-03 22:00:52.442 -05:00 [INF] Initializing Script Globals...
+2021-10-03 22:00:52.654 -05:00 [INF] Script Globals Initialized!
+2021-10-03 22:00:52.655 -05:00 [INF] Loading Global Scripts...
+2021-10-03 22:00:52.661 -05:00 [INF] Loading Command Scripts...
+2021-10-03 22:00:52.662 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 22:00:52.663 -05:00 [INF] Loading Script Handler...
+2021-10-03 22:00:52.664 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 22:00:52.664 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 22:00:52.665 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 22:00:52.665 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 22:00:52.666 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 22:00:52.667 -05:00 [INF] Scripts Loaded!
+2021-10-03 22:00:52.678 -05:00 [INF] Server Started!
+2021-10-03 22:01:01.831 -05:00 [INF] 5fa3cefc-e352-49ca-8b71-5a28b4e30ff9 has connected.
+2021-10-03 22:01:34.857 -05:00 [INF] 5fa3cefc-e352-49ca-8b71-5a28b4e30ff9 has disconnected.
+2021-10-03 22:31:20.118 -05:00 [INF] Loading Rooms...
+2021-10-03 22:31:20.416 -05:00 [INF] Rooms Loaded!
+2021-10-03 22:31:20.417 -05:00 [INF] Loading Items...
+2021-10-03 22:31:20.422 -05:00 [INF] Items Loaded!
+2021-10-03 22:31:20.423 -05:00 [INF] Initializing Script Globals...
+2021-10-03 22:31:20.619 -05:00 [INF] Script Globals Initialized!
+2021-10-03 22:31:20.620 -05:00 [INF] Loading Global Scripts...
+2021-10-03 22:31:20.626 -05:00 [INF] Loading Command Scripts...
+2021-10-03 22:31:20.628 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 22:31:20.629 -05:00 [INF] Loading Script Handler...
+2021-10-03 22:31:20.629 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 22:31:20.630 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 22:31:20.630 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 22:31:20.631 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 22:31:20.633 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 22:31:20.634 -05:00 [INF] Scripts Loaded!
+2021-10-03 22:31:20.649 -05:00 [INF] Server Started!
+2021-10-03 22:31:33.080 -05:00 [INF] 0d21e989-8d92-4809-8238-c7be4c4e42fa has connected.
+2021-10-03 22:31:38.728 -05:00 [INF] b0ceb481-a97c-4597-aced-9beb3f8ac67d has connected.
+2021-10-03 22:31:44.576 -05:00 [INF] 5a8968ea-752b-4a7e-9736-360588066fa8 has connected.
+2021-10-03 22:33:39.406 -05:00 [INF] Loading Rooms...
+2021-10-03 22:33:39.765 -05:00 [INF] Rooms Loaded!
+2021-10-03 22:33:39.767 -05:00 [INF] Loading Items...
+2021-10-03 22:33:39.777 -05:00 [INF] Items Loaded!
+2021-10-03 22:33:39.778 -05:00 [INF] Initializing Script Globals...
+2021-10-03 22:33:40.062 -05:00 [INF] Script Globals Initialized!
+2021-10-03 22:33:40.063 -05:00 [INF] Loading Global Scripts...
+2021-10-03 22:33:40.070 -05:00 [INF] Loading Command Scripts...
+2021-10-03 22:33:40.071 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 22:33:40.072 -05:00 [INF] Loading Script Handler...
+2021-10-03 22:33:40.073 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 22:33:40.073 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 22:33:40.074 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 22:33:40.075 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 22:33:40.075 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 22:33:40.076 -05:00 [INF] Scripts Loaded!
+2021-10-03 22:33:40.089 -05:00 [INF] Server Started!
+2021-10-03 22:33:51.291 -05:00 [INF] ab23e3c4-4ad5-4dc3-9aae-c9aa23abae10 has connected.
+2021-10-03 22:33:56.650 -05:00 [INF] 57788559-0f39-4a35-948b-d0a06a8a3caf has connected.
+2021-10-03 22:36:19.604 -05:00 [INF] Loading Rooms...
+2021-10-03 22:36:19.846 -05:00 [INF] Rooms Loaded!
+2021-10-03 22:36:19.847 -05:00 [INF] Loading Items...
+2021-10-03 22:36:19.854 -05:00 [INF] Items Loaded!
+2021-10-03 22:36:19.854 -05:00 [INF] Initializing Script Globals...
+2021-10-03 22:36:20.081 -05:00 [INF] Script Globals Initialized!
+2021-10-03 22:36:20.082 -05:00 [INF] Loading Global Scripts...
+2021-10-03 22:36:20.088 -05:00 [INF] Loading Command Scripts...
+2021-10-03 22:36:20.089 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 22:36:20.090 -05:00 [INF] Loading Script Handler...
+2021-10-03 22:36:20.090 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 22:36:20.091 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 22:36:20.091 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 22:36:20.092 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 22:36:20.093 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 22:36:20.093 -05:00 [INF] Scripts Loaded!
+2021-10-03 22:36:20.107 -05:00 [INF] Server Started!
+2021-10-03 22:37:19.451 -05:00 [INF] Loading Rooms...
+2021-10-03 22:37:19.764 -05:00 [INF] Rooms Loaded!
+2021-10-03 22:37:19.765 -05:00 [INF] Loading Items...
+2021-10-03 22:37:19.775 -05:00 [INF] Items Loaded!
+2021-10-03 22:37:19.775 -05:00 [INF] Initializing Script Globals...
+2021-10-03 22:37:20.032 -05:00 [INF] Script Globals Initialized!
+2021-10-03 22:37:20.033 -05:00 [INF] Loading Global Scripts...
+2021-10-03 22:37:20.040 -05:00 [INF] Loading Command Scripts...
+2021-10-03 22:37:20.041 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 22:37:20.042 -05:00 [INF] Loading Script Handler...
+2021-10-03 22:37:20.043 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 22:37:20.044 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 22:37:20.046 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 22:37:20.046 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 22:37:20.053 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 22:37:20.057 -05:00 [INF] Scripts Loaded!
+2021-10-03 22:37:20.077 -05:00 [INF] Server Started!
+2021-10-03 22:37:29.276 -05:00 [INF] b84c09b5-497b-4010-b064-35258e69948c has connected.
+2021-10-03 22:37:33.557 -05:00 [INF] 45ab95eb-81f4-41c5-8131-68bc72787f63 has connected.
+2021-10-03 22:42:06.566 -05:00 [INF] Loading Rooms...
+2021-10-03 22:42:06.820 -05:00 [INF] Rooms Loaded!
+2021-10-03 22:42:06.821 -05:00 [INF] Loading Items...
+2021-10-03 22:42:06.827 -05:00 [INF] Items Loaded!
+2021-10-03 22:42:06.828 -05:00 [INF] Initializing Script Globals...
+2021-10-03 22:42:07.063 -05:00 [INF] Script Globals Initialized!
+2021-10-03 22:42:07.064 -05:00 [INF] Loading Global Scripts...
+2021-10-03 22:42:07.071 -05:00 [INF] Loading Command Scripts...
+2021-10-03 22:42:07.072 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 22:42:07.073 -05:00 [INF] Loading Script Handler...
+2021-10-03 22:42:07.073 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 22:42:07.074 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 22:42:07.075 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 22:42:07.076 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 22:42:07.076 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 22:42:07.077 -05:00 [INF] Scripts Loaded!
+2021-10-03 22:42:07.093 -05:00 [INF] Server Started!
+2021-10-03 22:42:17.756 -05:00 [INF] 0504dc67-497f-4c2a-bddd-15f6b232cab4 has connected.
+2021-10-03 22:43:23.660 -05:00 [INF] 0504dc67-497f-4c2a-bddd-15f6b232cab4 has disconnected.
+2021-10-03 22:49:19.651 -05:00 [INF] Loading Rooms...
+2021-10-03 22:49:20.055 -05:00 [INF] Rooms Loaded!
+2021-10-03 22:49:20.057 -05:00 [INF] Loading Items...
+2021-10-03 22:49:20.063 -05:00 [INF] Items Loaded!
+2021-10-03 22:49:20.064 -05:00 [INF] Initializing Script Globals...
+2021-10-03 22:49:20.295 -05:00 [INF] Script Globals Initialized!
+2021-10-03 22:49:20.295 -05:00 [INF] Loading Global Scripts...
+2021-10-03 22:49:20.302 -05:00 [INF] Loading Command Scripts...
+2021-10-03 22:49:20.303 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 22:49:20.304 -05:00 [INF] Loading Script Handler...
+2021-10-03 22:49:20.305 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 22:49:20.305 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 22:49:20.306 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 22:49:20.307 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 22:49:20.308 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 22:49:20.310 -05:00 [INF] Scripts Loaded!
+2021-10-03 22:49:20.324 -05:00 [INF] Server Started!
+2021-10-03 22:49:37.813 -05:00 [INF] decb34e4-87cf-450d-b876-8d88d8bdb521 has connected.
+2021-10-03 22:54:02.782 -05:00 [INF] Loading Rooms...
+2021-10-03 22:54:03.087 -05:00 [INF] Rooms Loaded!
+2021-10-03 22:54:03.088 -05:00 [INF] Loading Items...
+2021-10-03 22:54:03.094 -05:00 [INF] Items Loaded!
+2021-10-03 22:54:03.095 -05:00 [INF] Initializing Script Globals...
+2021-10-03 22:54:03.304 -05:00 [INF] Script Globals Initialized!
+2021-10-03 22:54:03.305 -05:00 [INF] Loading Global Scripts...
+2021-10-03 22:54:03.311 -05:00 [INF] Loading Command Scripts...
+2021-10-03 22:54:03.312 -05:00 [INF] Loading Spell Scripts...
+2021-10-03 22:54:03.314 -05:00 [INF] Loading Script Handler...
+2021-10-03 22:54:03.314 -05:00 [INF] Located Script: ./scripts/main.lua
+2021-10-03 22:54:03.315 -05:00 [INF] Located Script: ./scripts/npc.lua
+2021-10-03 22:54:03.316 -05:00 [INF] Located Script: ./scripts/commands\attack.lua
+2021-10-03 22:54:03.317 -05:00 [INF] Located Script: ./scripts/commands\nuke.lua
+2021-10-03 22:54:03.318 -05:00 [INF] Located Script: ./scripts/main\movement.lua
+2021-10-03 22:54:03.318 -05:00 [INF] Scripts Loaded!
+2021-10-03 22:54:03.331 -05:00 [INF] Server Started!
+2021-10-03 22:54:20.945 -05:00 [INF] aa2f52ae-38c2-4a04-ba23-ded50e7e1461 has connected.
+2021-10-03 22:55:23.222 -05:00 [INF] aa2f52ae-38c2-4a04-ba23-ded50e7e1461 has disconnected.

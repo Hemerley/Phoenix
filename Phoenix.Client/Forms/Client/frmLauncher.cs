@@ -662,5 +662,29 @@ namespace Phoenix.Client
 
         #endregion
 
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (this.txtAccountName.Text == "" || this.txtPassword.Text == "" || this.txtAccountName.Text == "Account Name" || this.txtPassword.Text == "Password" || Helper.HasSpecialChar(this.txtAccountName.Text))
+                {
+                    MessageBox.Show("Please enter valid credentials and then attempt to authenticate.", Constants.GAME_NAME_DISPLAY, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    this.btnAuthenticate.Enabled = false;
+                    this.authMode = true;
+                    if (!Constants.DEBUG)
+                    {
+                        this.client.Start(IPAddress.Parse(Constants.SERVER_IP), Constants.LIVE_PORT);
+                    }
+                    else
+                    {
+                        this.client.Start(IPAddress.Loopback, Constants.LIVE_PORT);
+                    }
+                }
+            }
+        }
     }
 }

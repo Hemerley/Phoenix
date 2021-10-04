@@ -39,10 +39,13 @@ namespace Phoenix.Client
         private void Client_OnActivity(object sender, string e)
 
         {
-            this.Invoke((Action)delegate
+            if(Constants.DEBUG_SHOW)
             {
-                this.NewPacket?.Invoke(this, e);
-            });
+                Invoke((Action)delegate
+                {
+                    this.NewPacket?.Invoke(this, e);
+                });
+            }
             string[] commands = e.Split("%", StringSplitOptions.RemoveEmptyEntries);
             foreach (string c in commands)
             {
@@ -110,7 +113,7 @@ namespace Phoenix.Client
                                     }
                                     foreach (Item item in clientRooomResponseCommand.Room.RoomItems)
                                     {
-                                        UpdateDrop(1, item.Name, item.Image, item.Type);
+                                        UpdateDrop(1, item.Name, item.Image, item.Rarity);
                                     }
                                 });
                             }
@@ -169,13 +172,12 @@ namespace Phoenix.Client
 
                             this.Invoke((Action)delegate
                             {
-                                this.UpdateDrop(parsedCommand.Mode, parsedCommand.Item.Name, parsedCommand.Item.Image, parsedCommand.Item.Type);
+                                this.UpdateDrop(parsedCommand.Mode, parsedCommand.Item.Name, parsedCommand.Item.Image, parsedCommand.Item.Rarity);
                             });
 
                             continue;
                         }
                     #endregion
-
 
                     #region -- Message Room --
                     case CommandType.MessageRoom:
@@ -293,7 +295,7 @@ namespace Phoenix.Client
         }
         #endregion
 
-        #region -- Data Controllers --
+        #region -- Send Command --
         /// <summary>
         /// Sends command to server.
         /// </summary>
@@ -495,19 +497,28 @@ namespace Phoenix.Client
             this.lblBaseHaste.Text = this.character.Haste.ToString() + "%";
             this.lblBaseVers.Text = this.character.Versatility.ToString() + "%";
             this.lblWeight.Text = "Weight: 0 / " + (this.character.Strength * 2);
+            this.vbExp.Maximum = this.character.MaxExperience;
             if (this.character.Experience > this.vbExp.Maximum)
                 this.vbExp.Value = this.vbExp.Maximum;
             else
-                this.vbExp.Value = this.character.Experience;
-            this.vbExp.Maximum = this.character.MaxExperience;
+            this.vbExp.Value = this.character.Experience;
             this.vbExp.Refresh();
-            this.vbHealth.Value = this.character.CurrentHealth;
             this.vbHealth.Maximum = this.character.Health;
+            this.vbHealth.Value = this.character.CurrentHealth;
             this.vbHealth.Refresh();
-            this.vbMana.Value = this.character.CurrentMana;
             this.vbMana.Maximum = this.character.Mana;
+            this.vbMana.Value = this.character.CurrentMana;
             this.vbMana.Refresh();
-
+            this.lblGold.Text = "Gold: " + this.character.Gold.ToString();
+            foreach (Item item in this.character.Items)
+            {
+                if (item.IsEquipped)
+                    UpdateEquipped(3, item.Name, item.Image, item.Rarity, "", item.SlotIndex);
+                else if (item.SlotIndex != -1)
+                    UpdateInventory(3, item.Name, item.Image, item.Rarity, item.Type, item.SlotIndex);
+                else
+                    UpdateInventory(1, item.Name, item.Image, item.Rarity, item.Type);
+            }
         }
         #endregion
 
@@ -562,25 +573,15 @@ namespace Phoenix.Client
             }
         }
 
-        private void UpdateEquipped(int mode, string itemName = "", string itemImage = "", string itemType = "", string slotType = "", int updateSlot = -1, bool imageShow = true)
+        private void UpdateEquipped(int mode, string itemName = "", string itemImage = "", string itemType = "", string slotType = "", int updateSlot = -1)
         {
             // Mode 1 = Add, Mode 2 = Remove, Mode 3 = Update
             if (mode == 1)
             {
-                if (imageShow)
-                {
-                    lstvEquipped.Items.Add(itemName, itemImage).SubItems.Add(slotType);
-                    int NPCIndex = lstvEquipped.Items.Count - 1;
-                    lstvEquipped.Items[NPCIndex].SubItems.Add(itemType);
-                    UpdateEquipColor(NPCIndex, itemType);
-                }
-                else
-                {
-                    lstvEquipped.Items.Add(itemName).SubItems.Add(slotType);
-                    int NPCIndex = lstvEquipped.Items.Count - 1;
-                    lstvEquipped.Items[NPCIndex].SubItems.Add(itemType);
-                    UpdateEquipColor(NPCIndex, itemType);
-                }
+                lstvEquipped.Items.Add(itemName).SubItems.Add(slotType);
+                int NPCIndex = lstvEquipped.Items.Count - 1;
+                lstvEquipped.Items[NPCIndex].SubItems.Add(itemType);
+                UpdateEquipColor(NPCIndex, itemType);
             }
             else if (mode == 2)
             {
@@ -595,217 +596,95 @@ namespace Phoenix.Client
             }
             else if (mode == 3)
             {
+                if (!this.ilItems.Images.Keys.Contains(itemImage))
+                {
+                    this.ilItems.Images.Add(itemImage, Image.FromFile("./Images/Items/" + itemImage));
+                }
                 switch (updateSlot)
                 {
                     case 0: // Helmet
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 1: // Shoulder
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 2: // Cloak
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 3: // Neck
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 4: // Wrist
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 5: // Chest
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 6: // Waist
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 7: // Legs
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 8: // Gloves
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 9: // Boots
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 10: // Main Hand
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 11: // Off Hand
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 12: // Left Ring
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     case 13: // Right Ring
-                        if (imageShow)
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].ImageKey = itemImage;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
-                        else
-                        {
-                            lstvEquipped.Items[updateSlot].Text = itemName;
-                            lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
-                            UpdateEquipColor(updateSlot, itemType);
-                        }
+                        lstvEquipped.Items[updateSlot].Text = itemName;
+                        lstvEquipped.Items[updateSlot].ImageKey = itemImage;
+                        lstvEquipped.Items[updateSlot].SubItems[2].Text = itemType;
+                        UpdateEquipColor(updateSlot, itemType);
                         return;
                     default:
                         return;
@@ -813,25 +692,19 @@ namespace Phoenix.Client
             }
         }
 
-        private void UpdateInventory(int mode, string itemName = "", string itemImage = "", string itemType = "", string slotType = "", bool imageShow = true)
+        private void UpdateInventory(int mode, string itemName = "", string itemImage = "", string itemType = "", string slotType = "", int updateSlot = -1)
         {
             // Mode 1 = Add, Mode 2 = Remove
             if (mode == 1)
             {
-                if (imageShow)
+                if (!this.ilItems.Images.Keys.Contains(itemImage))
                 {
-                    lstvInventory.Items.Add(itemName, itemImage).SubItems.Add(slotType);
-                    int NPCIndex = lstvInventory.Items.Count - 1;
-                    lstvInventory.Items[NPCIndex].SubItems.Add(itemType);
-                    UpdateInventoryColor(NPCIndex, itemType);
+                    this.ilItems.Images.Add(itemImage, Image.FromFile("./Images/Items/" + itemImage));
                 }
-                else
-                {
-                    lstvInventory.Items.Add(itemName).SubItems.Add(slotType);
-                    int NPCIndex = lstvInventory.Items.Count - 1;
-                    lstvInventory.Items[NPCIndex].SubItems.Add(itemType);
-                    UpdateInventoryColor(NPCIndex, itemType);
-                }
+                lstvInventory.Items.Add(itemName, itemImage).SubItems.Add(slotType);
+                int NPCIndex = lstvInventory.Items.Count - 1;
+                lstvInventory.Items[NPCIndex].SubItems.Add(itemType);
+                UpdateInventoryColor(NPCIndex, itemType);
             }
             else if (mode == 2)
             {
@@ -841,6 +714,29 @@ namespace Phoenix.Client
                     {
                         lstvInventory.Items.Remove(item);
                     }
+                }
+            }
+            else if (mode == 3)
+            {
+                if (lstvInventory.Items.Count < updateSlot && updateSlot != -1)
+                {
+                    if (!this.ilItems.Images.Keys.Contains(itemImage))
+                    {
+                        this.ilItems.Images.Add(itemImage, Image.FromFile("./Images/Items/" + itemImage));
+                    }
+                    lstvInventory.Items.Add(itemName, itemImage).SubItems.Add(slotType);
+                    int NPCIndex = lstvInventory.Items.Count - 1;
+                    lstvInventory.Items[NPCIndex].SubItems.Add(itemType);
+                    UpdateInventoryColor(NPCIndex, itemType);
+                    return;
+                }
+                else
+                {
+                    lstvInventory.Items[updateSlot - 1].Text = itemName;
+                    lstvInventory.Items[updateSlot - 1].ImageKey = itemImage;
+                    lstvInventory.Items[updateSlot - 1].SubItems[2].Text = itemType;
+                    UpdateInventoryColor(updateSlot - 1, itemType);
+                    return;
                 }
             }
         }
@@ -872,6 +768,12 @@ namespace Phoenix.Client
                 case "(Ancient)":
                     lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.Red;
                     return;
+                case "(Ethryeal)":
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.PaleTurquoise;
+                    return;
+                case "(Godly)":
+                    lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.OrangeRed;
+                    return;
                 default:
                     lstvEquipped.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
                     return;
@@ -902,6 +804,12 @@ namespace Phoenix.Client
                     return;
                 case "(Ancient)":
                     lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.Red;
+                    return;
+                case "(Ethyreal)":
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.PaleTurquoise;
+                    return;
+                case "(Godly)":
+                    lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.OrangeRed;
                     return;
                 default:
                     lstvDrops.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
@@ -970,6 +878,12 @@ namespace Phoenix.Client
                     return;
                 case "(Ancient)":
                     lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.Red;
+                    return;
+                case "(Ethyreal)":
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.PaleTurquoise;
+                    return;
+                case "(Godly)":
+                    lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.OrangeRed;
                     return;
                 default:
                     lstvInventory.Items[NPCIndex].SubItems[0].ForeColor = Color.Gray;
@@ -1165,7 +1079,6 @@ namespace Phoenix.Client
                 }
             }
         }
-
         private void EquipToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in lstvInventory.Items)
@@ -1180,7 +1093,15 @@ namespace Phoenix.Client
                 }
             }
         }
+        private void CMDropsGet_Click(object sender, EventArgs e)
+        {
+            SendCommand(new ItemLootRequest
+            {
+                DropIndex = lstvDrops.FocusedItem.Index
+            });
+        }
         #endregion
+
 
     }
 }

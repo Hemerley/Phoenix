@@ -44,8 +44,7 @@
         CharacterMoveRequest = 208,
         CharacterStatUpdate = 209,
         RoomItemUpdate = 210,
-        CharacterInventoryUpdate = 211,
-
+        ItemLootRequest = 211,
 
         #endregion
 

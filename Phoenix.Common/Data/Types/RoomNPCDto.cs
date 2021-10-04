@@ -1,6 +1,6 @@
 ﻿namespace Phoenix.Common.Data.Types
 {
-    public class RoomNPCDto
+    public class RoomNPCDTO
     {
         public int RoomID { get; set; }
         public string RoomName { get; set; }
@@ -76,5 +76,6 @@
         public int? NPCDItemID { get; set; }
         public double? NPCDDropChance { get; set; }
         public int? NPCDItemAmount { get; set; }
+        public int? NPCRID { get; set; }
     }
 }
