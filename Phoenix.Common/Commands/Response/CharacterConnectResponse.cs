@@ -67,7 +67,7 @@ namespace Phoenix.Common.Commands.Response
                 this.Character.Gold.ToString()
             });
 
-            foreach(Item item in this.Character.Items)
+            foreach (Item item in this.Character.Items)
             {
                 character.Add(new List<string>
                 {

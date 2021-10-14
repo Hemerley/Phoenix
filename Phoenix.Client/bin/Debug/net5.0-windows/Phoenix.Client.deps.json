@@ -1,0 +1,80 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Phoenix.Client/1.0.0": {
+        "dependencies": {
+          "Phoenix.Common": "1.0.0",
+          "Unclassified.AsyncTcpClient": "1.0.2",
+          "CircularProgressBar": "1.0.0.0",
+          "ExpandPanel": "1.0.0.0"
+        },
+        "runtime": {
+          "Phoenix.Client.dll": {}
+        }
+      },
+      "Unclassified.AsyncTcpClient/1.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/AsyncTcpClient.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
+      },
+      "Phoenix.Common/1.0.0": {
+        "runtime": {
+          "Phoenix.Common.dll": {}
+        }
+      },
+      "CircularProgressBar/1.0.0.0": {
+        "runtime": {
+          "CircularProgressBar.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ExpandPanel/1.0.0.0": {
+        "runtime": {
+          "ExpandPanel.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Phoenix.Client/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unclassified.AsyncTcpClient/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kMttAth+0AiWy70JGjbxq6E8Y2Zw0cvme9e0gFDjDGMd+MCIac8bbL//1c1sicYRWTyHd13xQOE01jmIb9GfmQ==",
+      "path": "unclassified.asynctcpclient/1.0.2",
+      "hashPath": "unclassified.asynctcpclient.1.0.2.nupkg.sha512"
+    },
+    "Phoenix.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CircularProgressBar/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ExpandPanel/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

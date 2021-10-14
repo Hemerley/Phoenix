@@ -1,6 +1,5 @@
 ﻿using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
-using static Phoenix.Server.Program;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -8,6 +7,7 @@ using System.Configuration;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
+using static Phoenix.Server.Program;
 
 namespace Phoenix.Server.Data
 {
@@ -475,7 +475,7 @@ namespace Phoenix.Server.Data
                     CharStrength = Int32.Parse(reader["CharStrength"]?.ToString()),
                     CharTitle = reader["CharTitle"].ToString(),
                     CICharacterID = int.TryParse(reader["CICharacterID"]?.ToString(), out int CICharacterID) ? CICharacterID : (int?)null,
-                    CIID = int.TryParse(reader["CIID"]?.ToString(), out int CIID) ? CIID: (int?)null,
+                    CIID = int.TryParse(reader["CIID"]?.ToString(), out int CIID) ? CIID : (int?)null,
                     CIIsEquipped = bool.TryParse(reader["CIIsEquipped"]?.ToString(), out bool CIIsEquipped) ? CIIsEquipped : (bool?)null,
                     CIItemAmount = int.TryParse(reader["CIItemAmount"]?.ToString(), out int CIItemAmount) ? CIItemAmount : (int?)null,
                     CIItemID = int.TryParse(reader["CIItemID"]?.ToString(), out int CIItemID) ? CIItemID : (int?)null,
@@ -566,37 +566,37 @@ namespace Phoenix.Server.Data
                         Versatility = 0,
                         Items = g.Where(e => e.CIItemID.HasValue).GroupBy(z => z.CIID).ToList().Select(e => new Item
                         {
-                           Id = e.First().ItemId.Value,
-                           Image = e.First().ItemImage,
-                           Agility = e.First().ItemAgility.Value,
-                           AgilityReq = e.First().ItemAgilityReq.Value,
-                           AlignmentReq = e.First().ItemAlignmentReq.Value,
-                           Amount = e.First().CIItemAmount.Value,
-                           Crit = e.First().ItemCrit.Value,
-                           Damage = e.First().ItemDamage.Value,
-                           Haste = e.First().ItemHaste.Value,
-                           Intellect = e.First().ItemIntellect.Value,
-                           IntellectReq = e.First().ItemIntellectReq.Value,
-                           Mastery = e.First().ItemMastery.Value,
-                           Name = e.First().ItemName,
-                           PhilosophyReq = e.First().ItemPhilosophyReq.Value,
-                           RankReq = e.First().ItemRankReq.Value,
-                           Rarity = Helper.ReturnRarityText(e.First().ItemRarityID.Value),
-                           RarityID = e.First().ItemRarityID.Value,
-                           Script = e.First().ItemScript,
-                           Slot = Helper.ReturnSlotText(e.First().ItemSlotID.Value),
-                           SlotID = e.First().ItemSlotID.Value,
-                           Stamina = e.First().ItemStamina.Value,
-                           StaminaReq = e.First().ItemStamina.Value,
-                           Strength = e.First().ItemStrength.Value,
-                           StrengthReq = e.First().ItemStrengthReq.Value,
-                           Type = Helper.ReturnTypeText(e.First().ItemTypeID.Value),
-                           TypeID = e.First().ItemTypeID.Value,
-                           Value = e.First().ItemValue.Value,
-                           Versatility = e.First().ItemVersatility.Value,
-                           Weight = e.First().ItemWeight.Value,
-                           SlotIndex = e.First().CISlotIndex.Value,
-                           IsEquipped = e.First().CIIsEquipped.Value
+                            Id = e.First().ItemId.Value,
+                            Image = e.First().ItemImage,
+                            Agility = e.First().ItemAgility.Value,
+                            AgilityReq = e.First().ItemAgilityReq.Value,
+                            AlignmentReq = e.First().ItemAlignmentReq.Value,
+                            Amount = e.First().CIItemAmount.Value,
+                            Crit = e.First().ItemCrit.Value,
+                            Damage = e.First().ItemDamage.Value,
+                            Haste = e.First().ItemHaste.Value,
+                            Intellect = e.First().ItemIntellect.Value,
+                            IntellectReq = e.First().ItemIntellectReq.Value,
+                            Mastery = e.First().ItemMastery.Value,
+                            Name = e.First().ItemName,
+                            PhilosophyReq = e.First().ItemPhilosophyReq.Value,
+                            RankReq = e.First().ItemRankReq.Value,
+                            Rarity = Helper.ReturnRarityText(e.First().ItemRarityID.Value),
+                            RarityID = e.First().ItemRarityID.Value,
+                            Script = e.First().ItemScript,
+                            Slot = Helper.ReturnSlotText(e.First().ItemSlotID.Value),
+                            SlotID = e.First().ItemSlotID.Value,
+                            Stamina = e.First().ItemStamina.Value,
+                            StaminaReq = e.First().ItemStamina.Value,
+                            Strength = e.First().ItemStrength.Value,
+                            StrengthReq = e.First().ItemStrengthReq.Value,
+                            Type = Helper.ReturnTypeText(e.First().ItemTypeID.Value),
+                            TypeID = e.First().ItemTypeID.Value,
+                            Value = e.First().ItemValue.Value,
+                            Versatility = e.First().ItemVersatility.Value,
+                            Weight = e.First().ItemWeight.Value,
+                            SlotIndex = e.First().CISlotIndex.Value,
+                            IsEquipped = e.First().CIIsEquipped.Value
                         }).ToList(),
                         InventoryIndex = g.Where(e => e.CIItemID.HasValue).GroupBy(z => z.CIID).ToList().Count
                     }).ToList().Where(x => x.Name.ToLower() == name.ToLower() && x.AccountId == accountID).FirstOrDefault();

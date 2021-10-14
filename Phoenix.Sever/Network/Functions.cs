@@ -5,8 +5,8 @@ using Phoenix.Common.Commands.Server;
 using Phoenix.Common.Commands.Updates;
 using Phoenix.Common.Data;
 using Phoenix.Common.Data.Types;
-using Phoenix.Server.Connections;
 using Phoenix.Server.Bot.Commands;
+using Phoenix.Server.Connections;
 using Phoenix.Server.Data;
 using Phoenix.Server.Scripts;
 using Serilog;
@@ -16,7 +16,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using static Phoenix.Server.Program;
-using System.Threading.Tasks;
 
 namespace Phoenix.Server.Network
 {
@@ -108,7 +107,7 @@ namespace Phoenix.Server.Network
         }
         public static void MessageDiscord(ulong channel, string msg)
         {
-           _ = MessageChannelBot.MessageChannel(channel, msg);
+            _ = MessageChannelBot.MessageChannel(channel, msg);
         }
         public static void MessageParty()
         {
@@ -539,7 +538,7 @@ namespace Phoenix.Server.Network
             string itemImage = room.RoomItems[dropIndex].Image;
             string itemRarity = room.RoomItems[dropIndex].Rarity;
             var accounts = game.connectedAccounts.Values.Where(x => x.Account.Character.RoomID == room.ID);
-            foreach(ConnectedAccount a in accounts)
+            foreach (ConnectedAccount a in accounts)
             {
                 Functions.RoomItemUpdate(a, 2, itemName, itemImage, itemRarity);
             }
@@ -548,7 +547,7 @@ namespace Phoenix.Server.Network
             account.Account.Character.InventoryIndex += 1;
             account.Account.Character.Items.Add(item);
             game.rooms[account.Account.Character.RoomID].RoomItems.Remove(game.items[itemID]);
-            Functions.MessageDirect($"~cYou pick up the ~w{itemName}~c and add it to your pack.",account.Client.Id);
+            Functions.MessageDirect($"~cYou pick up the ~w{itemName}~c and add it to your pack.", account.Client.Id);
             Functions.CharacterStatUpdate(account);
         }
         #endregion
@@ -702,7 +701,7 @@ namespace Phoenix.Server.Network
                 command = command.Skip(1).ToArray();
                 string msg = string.Join(" ", command).ToLower();
                 string name = "";
-                switch(account.Account.Character.TypeID)
+                switch (account.Account.Character.TypeID)
                 {
                     case 1:
                         name = "~b" + account.Account.Character.Name + "~g";
@@ -1018,7 +1017,7 @@ namespace Phoenix.Server.Network
             }
             else if (command[0].ToLower()[1..] == "staff")
             {
-                var characterNames = game.connectedAccounts.Values.Where(x => x.Account.Character.TypeID > 0).Select(x => new { x.Account.Character.Name, x.Account.Character.TypeID});
+                var characterNames = game.connectedAccounts.Values.Where(x => x.Account.Character.TypeID > 0).Select(x => new { x.Account.Character.Name, x.Account.Character.TypeID });
                 List<string> staffList = new();
 
                 foreach (var character in characterNames)

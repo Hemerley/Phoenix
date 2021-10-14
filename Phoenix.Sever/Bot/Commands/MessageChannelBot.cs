@@ -1,6 +1,4 @@
-﻿using DSharpPlus.CommandsNext;
-using DSharpPlus.CommandsNext.Attributes;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Phoenix.Server.Bot.Commands
 {

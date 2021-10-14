@@ -39,7 +39,7 @@ namespace Phoenix.Client
         private void Client_OnActivity(object sender, string e)
 
         {
-            if(Constants.DEBUG_SHOW)
+            if (Constants.DEBUG_SHOW)
             {
                 Invoke((Action)delegate
                 {
@@ -501,7 +501,7 @@ namespace Phoenix.Client
             if (this.character.Experience > this.vbExp.Maximum)
                 this.vbExp.Value = this.vbExp.Maximum;
             else
-            this.vbExp.Value = this.character.Experience;
+                this.vbExp.Value = this.character.Experience;
             this.vbExp.Refresh();
             this.vbHealth.Maximum = this.character.Health;
             this.vbHealth.Value = this.character.CurrentHealth;
